@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dm_builtin_expr?name=dm_builtin_expr" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_builtin_expr">
+      <primaryElement>
+        <attributes attr_name="builtin_tag">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Function Tag" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_description="NULL Literal" map_display_string="NULL"/>
+              <value_mappings map_data_string="2" map_description="Current time function now()" map_display_string="Now"/>
+              <value_mappings map_data_string="3" map_description="Current date function today()" map_display_string="Today"/>
+              <value_mappings map_data_string="4" map_description="Next date function tomorrow()" map_display_string="Tomorrow"/>
+              <value_mappings map_data_string="5" map_description="Previous date function yesterday()" map_display_string="Yesterday"/>
+              <value_mappings map_data_string="6" map_description="Current user name" map_display_string="User"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT"/>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="Builtin Expression" help_text="" comment_text="" nls_key="en"/>
+        </typeAnnotations>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dm_expression?name=dm_expression#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

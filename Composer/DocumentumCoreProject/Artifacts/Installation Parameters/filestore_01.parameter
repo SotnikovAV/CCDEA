@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01" categoryId="com.emc.ide.storageparameter" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="installparameter:StorageParameter" name="filestore_01" defaultValue="filestore_01"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

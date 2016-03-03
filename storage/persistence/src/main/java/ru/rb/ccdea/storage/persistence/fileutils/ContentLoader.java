@@ -1,0 +1,452 @@
+package ru.rb.ccdea.storage.persistence.fileutils;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.ArchiveException;
+import org.apache.commons.compress.archivers.ArchiveInputStream;
+import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+
+import com.documentum.fc.client.DfQuery;
+import com.documentum.fc.client.IDfCollection;
+import com.documentum.fc.client.IDfQuery;
+import com.documentum.fc.client.IDfSession;
+import com.documentum.fc.client.IDfSysObject;
+import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfLogger;
+import com.github.junrar.Archive;
+import com.github.junrar.exception.RarException;
+import com.github.junrar.rarfile.FileHeader;
+import com.jcraft.jsch.JSchException;
+
+import jcifs.smb.NtlmPasswordAuthentication;
+import jcifs.smb.SmbFile;
+import jcifs.smb.SmbFileInputStream;
+import ru.rb.ccdea.adapters.mq.binding.docput.ContentType;
+import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocReference;
+import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocScan;
+import ru.rb.ccdea.adapters.mq.binding.docput.FileFormat;
+
+public class ContentLoader {
+
+    protected static final String SYSPROP_SFTP_USER_NAME = "ccdea.sftp.user.name";
+    protected static final String SYSPROP_SFTP_KEYFILE_PATH = "ccdea.sftp.keyfile.path";
+    protected static final String SYSPROP_SFTP_NEED_DELETE = "ccdea.sftp.need.delete";
+
+    protected static final String SYSPROP_SMB_USER_DOMAIN = "ccdea.smb.user.domain";
+    protected static final String SYSPROP_SMB_USER_NAME = "ccdea.smb.user.name";
+    protected static final String SYSPROP_SMB_USER_PASSWORD = "ccdea.smb.user.password";
+    protected static final String SYSPROP_SMB_NEED_DELETE = "ccdea.smb.need.delete";
+
+    protected static final Set<String> SUPPORTED_FORMAT = new HashSet<String>();
+
+    static {
+        SUPPORTED_FORMAT.add("pdf");
+        SUPPORTED_FORMAT.add("jpeg");
+        SUPPORTED_FORMAT.add("tiff");
+        SUPPORTED_FORMAT.add("jpg");
+        SUPPORTED_FORMAT.add("tif");
+        SUPPORTED_FORMAT.add("doc");
+        SUPPORTED_FORMAT.add("docx");
+        SUPPORTED_FORMAT.add("xls");
+        SUPPORTED_FORMAT.add("xlsx");
+        SUPPORTED_FORMAT.add("ppt");
+        SUPPORTED_FORMAT.add("pptx");
+        SUPPORTED_FORMAT.add("txt");
+        SUPPORTED_FORMAT.add("rtf");
+        SUPPORTED_FORMAT.add("odt");
+        SUPPORTED_FORMAT.add("xml");
+        SUPPORTED_FORMAT.add("png");
+        SUPPORTED_FORMAT.add("gif");
+        SUPPORTED_FORMAT.add("bmp");
+        SUPPORTED_FORMAT.add("prn");
+    }
+    
+    public static final void loadContentFile(IDfSysObject contentSysObject, String filepath) throws DfException {
+    	InputStream is = null;
+    	try {
+    		FileAccessProperties accessProperties = FileAccessProperties.parseUrl(filepath);
+    		String fileFormat = getFileFormat(accessProperties.getFileFormat());
+    		
+    		is = new FileInputStream(filepath);
+    		ByteArrayOutputStream os = new ByteArrayOutputStream();
+			int b;
+			while ((b = is.read()) != -1) {
+			    os.write(b);
+			}
+			contentSysObject.setContentType(fileFormat);
+			contentSysObject.setContent(os); 
+			contentSysObject.save();
+    	} catch (IOException e) {
+			throw new DfException("Ошибка",e);
+		} finally {
+    		if(is != null) {
+    			try {
+					is.close();
+				} catch (IOException ex) {
+					DfLogger.warn(contentSysObject, "Ошибка при закрытии потока", null, ex);
+				}
+    		}
+    	}
+    }
+    
+    public static void loadContent(DocScan docScan, OutputStream out) throws DfException {
+    	try {
+    		out.write(docScan.getFileScan());
+        }
+        catch (IOException e) {
+            throw new DfException("Cant create buffer with fileScan", e);
+        }
+    }
+    
+    public static void loadContent(IDfSession dfSession, DocReference docReference, OutputStream out) throws DfException {
+    	String fileReference = null;
+        if (docReference.getFileReference() != null && !docReference.getFileReference().trim().isEmpty()) {
+            fileReference = docReference.getFileReference();
+        } else if (docReference.getFileReferenceSMB() != null && !docReference.getFileReferenceSMB().trim().isEmpty()) {
+            fileReference = docReference.getFileReferenceSMB();
+        } else {
+            throw new CantFindFileReferenceException("Cant find file reference to load");
+        }
+        FileAccessProperties accessProperties = FileAccessProperties.parseUrl(fileReference);
+        if (JschSFTP.SFTP.equalsIgnoreCase(accessProperties.getProtocol())) {
+        	loadContentBySftp(dfSession, accessProperties, out);
+        } else {
+        	loadContentBySmb(dfSession, accessProperties, out);
+        }
+    }
+
+    public static void loadContentBySmb(IDfSession dfSession, FileAccessProperties accessProperties, OutputStream out) throws DfException {
+    	try {
+			String domain = "";
+			try {
+				domain = getSyspropValue(dfSession, SYSPROP_SMB_USER_DOMAIN);
+			} catch (DfException ex) {
+				DfLogger.warn(dfSession, "Ошибка при получении наименования домена для авторизации по smb", null,
+						ex);
+			}
+            String userName = getSyspropValue(dfSession, SYSPROP_SMB_USER_NAME);
+            String userPassword = getSyspropValue(dfSession, SYSPROP_SMB_USER_PASSWORD);
+            boolean deleteFile = "true".equalsIgnoreCase(getSyspropValue(dfSession, SYSPROP_SMB_NEED_DELETE));
+
+            NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(domain, userName, userPassword);
+            String fileReference = "smb:" + accessProperties.getUrl().replace('\\', '/');
+            
+            SmbFile smbFile = new SmbFile(fileReference, auth);
+            SmbFileInputStream smbFileOS = null;
+
+            try {
+                smbFileOS = new SmbFileInputStream(smbFile);
+                byte[] temp = new byte[1024];
+                int read;
+                while ((read = smbFileOS.read(temp)) >= 0) {
+                    out.write(temp, 0, read);
+                }
+            } finally {
+                if (smbFileOS != null) {
+                    smbFileOS.close();
+                }
+            }
+
+            if (deleteFile) {
+				if (smbFile != null) {
+					try {
+						smbFile.delete();
+					} catch (Exception ex) {
+						DfLogger.warn(dfSession, "Не удалось удалить файл " + smbFile.getCanonicalPath(),
+								null, ex);
+					}
+				}
+            }
+        }
+        catch (Exception ex) {
+            throw new DfException("Cant download file by reference: " + accessProperties.getUrl(), ex);
+        }
+	}
+
+	public static void loadContentBySftp(IDfSession dfSession, FileAccessProperties accessProperties, OutputStream out) throws DfException {
+    	accessProperties.setUser(getSyspropValue(dfSession, SYSPROP_SFTP_USER_NAME));
+        accessProperties.setKeyFilePath(getSyspropValue(dfSession, SYSPROP_SFTP_KEYFILE_PATH));
+        boolean deleteFile = "true".equalsIgnoreCase(getSyspropValue(dfSession, SYSPROP_SFTP_NEED_DELETE));
+        JschSFTP jsftp = null;
+        try {
+            JschSFTPBuilder builder = new JschSFTPBuilder();
+            jsftp = builder.host(accessProperties.getHost())
+                    .user(accessProperties.getUser())
+                    .password(accessProperties.getPassword())
+                    .keyFilePath(accessProperties.getKeyFilePath()).build();
+            jsftp.connect();
+            jsftp.get(accessProperties.getPath(), out);
+			if (deleteFile) {
+				try {
+					jsftp.remove(accessProperties.getPath());
+				} catch (Exception ex) {
+					DfLogger.warn(dfSession, "Не удалось удалить файл " + accessProperties.getPath(),
+							null, ex);
+				}
+			}
+        } catch (JSchException e) {
+            throw new DfException("Ошибка при работе с файлом: " + accessProperties.getUrl(), e);
+        } finally {
+            if (jsftp != null) {
+                try {
+                    jsftp.disconnect();
+                } catch (JSchException e) {
+                    DfLogger.error(
+                            null,
+                            "Ошибка при закрытии sftp-соединения c "
+                                    + accessProperties.getHost(), null, e);
+                }
+            }
+        }
+	}
+
+	public static void loadContentFile(IDfSysObject contentSysObject, ContentType contentXmlObject) throws DfException {
+    	String fileFormat = null;
+    	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        if (contentXmlObject.getDocScan() != null && contentXmlObject.getDocScan().size() > 0) {
+            ContentType.DocScan docScan = contentXmlObject.getDocScan().get(0);
+            if(docScan.getFileFormat() == null) {
+            	throw new DfException("Не указан формат файла");
+            }
+            fileFormat = getFileFormat(docScan.getFileFormat().value());
+            loadContent(docScan, buffer);            
+        } else if (contentXmlObject.getDocReference() != null && contentXmlObject.getDocReference().size() > 0) {
+            ContentType.DocReference docReference = contentXmlObject.getDocReference().get(0);
+            if(docReference.getFileFormat() == null) {
+            	throw new DfException("Не указан формат файла");
+            }       
+            fileFormat = getFileFormat(docReference.getFileFormat().value());
+            loadContent(contentSysObject.getSession(), docReference, buffer);
+        }
+        
+        contentSysObject.setContent(buffer);
+        contentSysObject.save();
+
+        processIfArchive(contentSysObject, fileFormat);
+    }
+    
+   
+	protected static String getFileFormat(String fileExt) {
+    	if(FileFormat.PPT.value().equalsIgnoreCase(fileExt)) {
+        	return "ppt8";
+        } else if(FileFormat.PPTX.value().equalsIgnoreCase(fileExt)) {
+        	return "ppt12";
+        } else if(FileFormat.TXT.value().equalsIgnoreCase(fileExt)) {
+        	return "crtext";
+        } else if(FileFormat.DOC.value().equalsIgnoreCase(fileExt)) {
+        	return "msw8";
+        } else if(FileFormat.DOCX.value().equalsIgnoreCase(fileExt)) {
+        	return "msw12";
+        } else if(FileFormat.ODT.value().equalsIgnoreCase(fileExt)) {
+        	return "odt";
+        } else if(FileFormat.XLS.value().equalsIgnoreCase(fileExt)) {
+        	return "excel8book";
+        } else if(FileFormat.XLSX.value().equalsIgnoreCase(fileExt)) {
+        	return "excel12book";
+        } else if(FileFormat.JPG.value().equalsIgnoreCase(fileExt)) {
+        	return "jpeg";
+        } else if(FileFormat.TIF.value().equalsIgnoreCase(fileExt)) {
+        	return "tiff";
+        }  else if(FileFormat.XML.value().equalsIgnoreCase(fileExt)) {
+        	return "crtext";
+        } 
+//        else if(FileFormat.PRN.value().equalsIgnoreCase(fileExt)) {
+//        	return "crtext";
+//        } 
+        else {
+        	return fileExt;
+        }
+    }
+
+    protected static void processIfArchive(IDfSysObject contentSysObject, String fileFormat) throws DfException{
+        if (FileFormat.ZIP.value().equalsIgnoreCase(fileFormat)) {
+        	processArchive(contentSysObject, ArchiveStreamFactory.ZIP);
+        } else if(FileFormat.ARJ.value().equalsIgnoreCase(fileFormat)) {
+        	processArchive(contentSysObject, ArchiveStreamFactory.ARJ);
+		} else if (FileFormat.RAR.value().equalsIgnoreCase(fileFormat)) {
+            processRarArchive(contentSysObject);
+        }
+    }
+    
+	/**
+	 * Это формат архива?
+	 * 
+	 * @param contentType
+	 *            - формат
+	 * @return true, если указанный формат - это формат архива; иначе - false
+	 */
+	public static final boolean isArchiveType(String contentType) {
+		return FileFormat.ZIP.value().equalsIgnoreCase(contentType)
+				|| FileFormat.ARJ.value().equalsIgnoreCase(contentType)
+				|| FileFormat.RAR.value().equalsIgnoreCase(contentType);
+	}
+
+	/**
+	 * Это PDF?
+	 * 
+	 * @param contentType
+	 *            - формат
+	 * @return true, если указанный формат - это формат PDF; иначе - false
+	 */
+	public static final boolean isPdfType(String contentType) {
+		return FileFormat.PDF.value().equalsIgnoreCase(contentType);
+	}
+
+    public static void processArchive(IDfSysObject contentSysObject, String archniveType) throws DfException {
+		ArchiveInputStream archiveInputStream = null;
+		try {
+			archiveInputStream = new ArchiveStreamFactory().createArchiveInputStream(archniveType, contentSysObject.getContent());
+			
+			ArchiveEntry archiveEntry = null;
+			int entryIndex = 0;
+			while ((archiveEntry = archiveInputStream.getNextEntry()) != null) {
+				String archiveEntryName = archiveEntry.getName();
+				if (archiveEntryName.trim().length() > 3) {
+					String archiveEntryType = archiveEntryName.substring(archiveEntryName.length() - 3);
+					if (SUPPORTED_FORMAT.contains(archiveEntryType.toLowerCase())) {
+						byte[] zipBuffer = new byte[1024];
+						int count = 0;
+						ByteArrayOutputStream entryStream = new ByteArrayOutputStream();
+						while ((count = archiveInputStream.read(zipBuffer)) != -1) {
+							entryStream.write(zipBuffer, 0, count);
+						}
+						IDfSysObject contentPartSysObject = (IDfSysObject) contentSysObject.getSession()
+								.newObject("ccdea_doc_content_part");
+						contentPartSysObject.setObjectName(archiveEntryName);
+						contentPartSysObject.setContentType(getFileFormat(archiveEntryType));
+						contentPartSysObject.setContent(entryStream);
+						contentPartSysObject.setId("id_content", contentSysObject.getObjectId());
+						contentPartSysObject.setInt("n_index", entryIndex);
+						contentPartSysObject.save();
+						entryIndex++;
+					} else {
+						DfLogger.warn(
+								ContentLoader.class, "Wrong format found in archive entry: "
+										+ contentSysObject.getObjectId().getId() + " - " + archiveEntryName,
+								null, null);
+					}
+				} else {
+					DfLogger.warn(ContentLoader.class, "Wrong format found in archive entry: "
+							+ contentSysObject.getObjectId().getId() + " - " + archiveEntryName, null, null);
+				}
+			}
+		} catch (IOException ioEx) {
+			throw new DfException("Cant unzip content: " + contentSysObject.getObjectId().getId(), ioEx);
+		} catch (ArchiveException e) {
+			throw new DfException("Cant unzip content: " + contentSysObject.getObjectId().getId(), e);
+		} catch (DfException e) {
+			throw new DfException("Cant unzip content: " + contentSysObject.getObjectId().getId(), e);
+		} finally {
+			if(archiveInputStream != null) {
+				try {
+					archiveInputStream.close();
+				} catch (IOException ex) {
+					DfLogger.warn(ContentLoader.class, "Не удалось закрыть поток чтения zip: "
+							+ contentSysObject.getObjectId().getId(), null, ex);
+				}
+			}
+		}
+    }
+    
+    public static void processRarArchive(IDfSysObject contentSysObject) throws DfException {
+    	File archiveFile = new File(contentSysObject.getFile(System.getProperty("dfc.data.dir") + "/ccdea/" + contentSysObject.getObjectId().getId() + ".rar"));
+        Archive arch = null;
+        try {
+            arch = new Archive(archiveFile);
+            if (arch != null) {
+                if (arch.isEncrypted()) {
+                	throw new DfException("Unrar error: file is encrypted " + contentSysObject.getObjectId().getId());
+                } else {
+                    FileHeader fh = null;
+                    int entryIndex = 0;
+                    while ((fh = arch.nextFileHeader()) != null) {
+                        String fileNameString = fh.getFileNameString();
+                        if (fh.isEncrypted()) {
+                            DfLogger.error(ContentLoader.class, "Unrar error: file is encrypted " + fileNameString, null, null);
+                        }
+                        else {
+                            try {
+                                if (fileNameString.trim().length() > 3) {
+                                    String entryType = fileNameString.substring(fileNameString.length() - 3);
+                                    if (SUPPORTED_FORMAT.contains(entryType.toLowerCase())) {
+                                        ByteArrayOutputStream entryStream = new ByteArrayOutputStream();
+                                        arch.extractFile(fh, entryStream);
+                                        IDfSysObject contentPartSysObject = (IDfSysObject) contentSysObject.getSession().newObject("ccdea_doc_content_part");
+                                        contentPartSysObject.setObjectName(fileNameString);
+                                        contentPartSysObject.setContentType(getFileFormat(entryType));
+                                        contentPartSysObject.setContent(entryStream);
+                                        contentPartSysObject.setId("id_content", contentSysObject.getObjectId());
+                                        contentPartSysObject.setInt("n_index", entryIndex);
+                                        contentPartSysObject.save();
+                                        entryIndex++;
+                                    }
+                                    else {
+                                        DfLogger.warn(ContentLoader.class, "Wrong format found in archive entry: " + contentSysObject.getObjectId().getId() + " - " + fileNameString, null, null);
+                                    }
+                                }
+                                else {
+                                    DfLogger.warn(ContentLoader.class, "Wrong format found in archive entry: " + contentSysObject.getObjectId().getId() + " - " + fileNameString, null, null);
+                                }
+                            } catch (RarException e) {
+                                DfLogger.error(ContentLoader.class, "Unrar error", null, e);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (RarException e) {
+            throw new DfException("Unrar error " + contentSysObject.getObjectId().getId(), e);
+        } catch (IOException e) {
+        	throw new DfException("Unrar error " + contentSysObject.getObjectId().getId(), e);
+        } finally {
+        	if(arch != null) {
+        		try {
+					arch.close();
+				} catch (IOException e) {
+					DfLogger.warn(ContentLoader.class, "Ошибка при закрытии потока чтения архива " + contentSysObject.getObjectId().getId(), null, e);
+				}
+        	}
+            if (archiveFile != null) {
+            	try {
+            		archiveFile.delete();
+            	} catch (Exception ex) {
+            		DfLogger.warn(ContentLoader.class, "Ошибка при удалении архива" + contentSysObject.getObjectId().getId(), null, ex);
+            	}
+            }
+        }
+    }
+    
+    public static String getSyspropValue(IDfSession dfSession, String name) throws DfException {
+        String value = null;
+        String dql = "SELECT \"value\" FROM ucb_sysprop WHERE name='" + name + "'";
+        IDfCollection rs = null;
+        try {
+            IDfQuery query = new DfQuery();
+            query.setDQL(dql);
+            rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
+            if (rs.next()) {
+                value = rs.getString("value");
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        if (value != null && !value.trim().isEmpty()) {
+            return value;
+        } else {
+            throw new DfException(
+                    "Не указано значение в ucb_sysprop for name:" + name);
+        }
+    }
+
+
+}

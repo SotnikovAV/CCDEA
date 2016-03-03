@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:forms="http://documentum.emc.com/artifact/12012007/forms" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.formschema/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_schema" categoryId="com.emc.ide.artifact.formschema" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="forms:FormSchema" objectName="ccdea_vbk_view" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="xsd" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" storageOption="2" dataModel="ccdea_vbk_view" formSchemaContent="//@contentStore/@contentEntries.0/@value">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_xfm_schema?name=dm_xfm_schema#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/xsd?name=xsd#//@dataModel"/>
+    <schemaInstance href="urn:com.emc.ide.artifact.forminstance/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_instance#//@dataModel"/>
+    <schemaXmlapp href="urn:com.emc.ide.artifact.xmlapplication/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view%2FXML+Applications&amp;name=ccdea_vbk_view&amp;type=dm_xml_application#//@dataModel"/>
+    <schemaXfmadaptor href="urn:com.emc.ide.artifact.formadaptorconfig/CCDEAPassportContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAPassportContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+    <formStorageType href="urn:com.emc.ide.artifact.dclass/ccdea_vbk?name=ccdea_vbk#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="formSchemaContent.xsd">
+      <value filePath="content/36/-1781315136/formSchemaContent.xsd"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

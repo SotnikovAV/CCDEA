@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relationtype="http://documentum.emc.com/artifact/12012007/relationtype" urn="urn:com.emc.ide.artifact.relationtype/dm_subscription?name=dm_subscription" categoryId="com.emc.ide.artifact.relationtype" modifiedByUser="false">
+  <dataModel xsi:type="relationtype:RelationType" relationName="dm_subscription" description="User subscriptions" permanentLink="false" controllingKind="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_relation_type?name=dm_relation_type#//@dataModel"/>
+    <parentType href="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
+    <childType href="urn:com.emc.ide.artifact.dclass/dm_user?name=dm_user#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

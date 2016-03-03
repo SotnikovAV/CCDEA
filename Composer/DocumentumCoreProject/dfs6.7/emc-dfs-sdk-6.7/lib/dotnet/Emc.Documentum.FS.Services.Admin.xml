@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Emc.Documentum.FS.Services.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException">
+            <summary>
+            Core Service Exception thrown by Admin Services
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.ReadXml(System.Xml.XmlReader)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.WriteXml(System.Xml.XmlWriter)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.GetSchema">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.ExportSchema(System.Xml.Schema.XmlSchemaSet)">
+            <exclude/>
+        </member>
+        <member name="P:Emc.Documentum.FS.Services.Admin.admin.services.fs.documentum.emc.com.CoreServiceException.Nodes">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient">
+            <exclude/>
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.IUserManagementService">
+             <summary>
+            UserManagementService provides fundamental operations for creating, getting, updating, and deleting repository users
+             and groups.
+             <p/>
+             All of the services can operate on multiple objects, enabling clients to optimize service usage by minimizing the
+             number of service interactions.
+            </summary>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.IUserManagementService.Get(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+             <summary>
+            gets the properties of one or more number of users/groups
+            </summary>
+             <param name="adminObjectIdentitySet">represent a list of users/groups identities for which the properties are to be retrieved</param>
+             <param name="options">Represents the operation options</param>
+             <returns>
+            PrincipalPackage which contains the detailed information about the user/group retrieved from the repository
+            </returns>
+             <exception>CoreServiceException</exception>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.UserManagementServicePort">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePort.get(Emc.Documentum.FS.Services.Admin.getRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.GetServiceContext">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.Emc#Documentum#FS#Services#Admin#UserManagementServicePort#get(Emc.Documentum.FS.Services.Admin.getRequest)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.get(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.UserManagementServicePortClient.Get(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.getRequest">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getRequest.adminObjectIdentitySet">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getRequest.options">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getRequest.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getRequest.#ctor(Emc.Documentum.FS.DataModel.Admin.AdminObjectIdentitySet,Emc.Documentum.FS.DataModel.Core.OperationOptions)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.getResponse">
+            <exclude/>
+        </member>
+        <member name="F:Emc.Documentum.FS.Services.Admin.getResponse.return">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getResponse.#ctor">
+            <exclude/>
+        </member>
+        <member name="M:Emc.Documentum.FS.Services.Admin.getResponse.#ctor(Emc.Documentum.FS.DataModel.Admin.UserManagement.PrincipalPackage)">
+            <exclude/>
+        </member>
+        <member name="T:Emc.Documentum.FS.Services.Admin.UserManagementServicePortChannel">
+            <exclude/>
+        </member>
+    </members>
+</doc>

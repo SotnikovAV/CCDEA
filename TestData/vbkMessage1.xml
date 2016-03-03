@@ -1,0 +1,27 @@
+<NS1:MCDocInfoModifyVBK xmlns:NS1="pr">
+	<NS1:OriginIdentification>
+		<NS1:SourceSystem>TBSVK</NS1:SourceSystem>
+		<NS1:SourceId>345213</NS1:SourceId>
+	</NS1:OriginIdentification>
+	<NS1:OriginIdentification>
+		<NS1:SourceSystem>JETDOCER</NS1:SourceSystem>
+		<NS1:SourceId>6652183</NS1:SourceId>
+	</NS1:OriginIdentification>
+	<NS1:ModificationVerb>C</NS1:ModificationVerb>
+	<NS1:Customer>
+		<NS1:CustomerNumber>00602797</NS1:CustomerNumber>
+		<NS1:CustomerName>SAMSUNG ELECTRONICS</NS1:CustomerName>
+	</NS1:Customer>
+	<NS1:VBKDetails>
+		<NS1:RegNum>0001</NS1:RegNum>
+		<NS1:DealPassport>45637657/1234/2345/4</NS1:DealPassport>
+		<NS1:Contractor>
+			<NS1:ContractorName>SAMSUNG ELECTRONICS</NS1:ContractorName>
+			<NS1:ContractorCountry>KOR</NS1:ContractorCountry>
+		</NS1:Contractor>
+		<NS1:Currency>USD</NS1:Currency>
+		<NS1:NoAmount>true</NS1:NoAmount>
+	</NS1:VBKDetails>
+	<NS1:UserId>ivanov</NS1:UserId>
+	<NS1:ModificationDateTime>2015-08-25T15:41:15+03:00</NS1:ModificationDateTime>
+</NS1:MCDocInfoModifyVBK>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-application xmlns="http://www.bea.com/ns/weblogic/90">
+    <prefer-application-packages>
+        <package-name>javax.xml.ws.*</package-name>
+        <package-name>javax.xml.bind.*</package-name>
+        <package-name>javax.jws.*</package-name>
+        <package-name>javax.namespace.xml.*</package-name>
+        <package-name>javax.xml.soap.*</package-name>
+        <package-name>org.apache.xerces.*</package-name>
+        <package-name>org.apache.commons.*</package-name>
+        <package-name>com.sun.xml.*</package-name>
+    </prefer-application-packages>
+    <!-- remove element prefer-application-resources for WebLogic 10.3.0 deployment -->
+    <prefer-application-resources>
+        <resource-name>META-INF/services/*</resource-name> 
+    </prefer-application-resources>
+</weblogic-application>

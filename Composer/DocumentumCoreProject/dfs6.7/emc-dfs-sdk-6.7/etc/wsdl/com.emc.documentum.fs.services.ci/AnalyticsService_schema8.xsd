@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://ci.services.fs.documentum.emc.com/" xmlns:tns="http://ci.services.fs.documentum.emc.com/" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://rt.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://ci.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="AnalyticsService_schema6.xsd"/>
+
+  <xs:import namespace="http://ci.datamodel.fs.documentum.emc.com/" schemaLocation="AnalyticsService_schema9.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="AnalyticsService_schema2.xsd"/>
+
+  <xs:element name="CIServiceException" type="tns:CIServiceException"/>
+
+  <xs:element name="analyze" type="tns:analyze"/>
+
+  <xs:element name="analyzeResponse" type="tns:analyzeResponse"/>
+
+  <xs:complexType name="analyze">
+    <xs:sequence>
+      <xs:element name="sourceObjects" type="ns1:ObjectIdentitySet" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="analyzeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:AnalyticsResult" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CIServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns3:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+    <scope>
+
+        <component id="ccdea_properties_container"  extends="tseditxforms:taskspace/config/xforms/tseditxforms_container.xml">
+
+            <params>
+                <param name="objectId" required="true"/>
+                <param name="formTemplateId" required="false"/>
+                <param name="formTemplateName" required="false"/>
+            </params>
+
+            <pages>
+                <start>/ccdea/library/xforms/docview_container.jsp</start>
+            </pages>
+            <contains>
+                <component>ccdea_properties_component</component>
+            </contains>
+
+            <readOnly>false</readOnly>
+            <lockInstance>false</lockInstance>
+            <class>ru.rb.ccdea.xforms.PropertiesContainer</class>
+        </component>
+
+
+        <component id="ccdea_properties_component" extends="xforms:webcomponent/config/xforms/xforms_component.xml">
+
+            <desc>
+                D6 Imaging Services inline document view with xforms template
+            </desc>
+
+            <params>
+                <param name="objectId" required="true"/>
+                <param name="formTemplateId" required="false"/>
+                <param name="formTemplateName" required="false"/>
+            </params>
+
+            <pages>
+                <start>/ccdea/library/xforms/xformscard.jsp</start>
+            </pages>
+            <class>ru.rb.ccdea.xforms.PropertiesComponent</class>
+            <nlsbundle>ru.rb.ccdea.xforms.DocumentPropertiesNlsProp</nlsbundle>
+            <helpcontextid>dmdocumentopen</helpcontextid>
+        </component>
+
+    </scope>
+</config>
+

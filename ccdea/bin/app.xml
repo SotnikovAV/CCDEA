@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config>
+   <scope>
+      <application extends="taskspace/app.xml">
+      		<language>
+                <supported_locales>
+                    <locale>ru_RU</locale>
+                </supported_locales>
+
+                <default_locale>ru_RU</default_locale>
+                <fallback_to_english_locale>true</fallback_to_english_locale>
+            </language>
+      </application>
+   </scope>
+</config>

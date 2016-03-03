@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urnd:com.emc.ide.artifact.dclass/ccdea_passport?name=ccdea_passport" categoryId="com.emc.ide.artifact.dclass" implicitlyCreated="true">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="ccdea_passport">
+      <primaryElement>
+        <attributes attr_name="t_passport_date" ID="2Jj3UiE3Ar3b38Yd+dkhmo">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x41f;&#x421;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="t_close_date" ID="3gowhGLoAKOarvQBcihEPy">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x437;&#x430;&#x43a;&#x440;&#x44b;&#x442;&#x438;&#x44f; &#x41f;&#x421;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="s_close_reason" attr_length="2000" ID="7N*iX7xfk5F8BmMhIySCWz">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41e;&#x441;&#x43d;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435; &#x437;&#x430;&#x43a;&#x440;&#x44b;&#x442;&#x438;&#x44f; &#x41f;&#x421;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contractor_column" attr_length="2000" ID="aWC8NZ7WQCcaQeVNgOo8rB">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43b;&#x43e;&#x43d;&#x43a;&#x430; &#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contractor_name_r" attr_repeating="true" attr_length="255" ID="8osMIWdHA1eaxkqHPj9Bcc">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41d;&#x430;&#x438;&#x43c;&#x435;&#x43d;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contractor_country_code_r" attr_repeating="true" attr_length="3" ID="5buuBx0lAiDaBcNF4M2F5t">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x441;&#x442;&#x440;&#x430;&#x43d;&#x44b; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="b_no_amount" ID="9Y0OKjqUAFDa5HkhQ8EfeB">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x43e;&#x442;&#x441;&#x443;&#x442;&#x441;&#x442;&#x432;&#x438;&#x44f; &#x441;&#x443;&#x43c;&#x43c;&#x44b;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="d_amount" ID="C1TEWO5AGM8oDjmJFz5Or">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x443;&#x43c;&#x43c;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="t_contract_end_date" ID="few70aGOQodb72kysFu3Th">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x43e;&#x43a;&#x43e;&#x43d;&#x447;&#x430;&#x43d;&#x438;&#x44f; &#x438;&#x441;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;&#x438;&#x44f; &#x43e;&#x431;&#x44f;&#x437;&#x430;&#x442;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="s_contract_currency_code" attr_length="3" ID="5FSiDsH04EDbPj2mjh6XJt">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x432;&#x430;&#x43b;&#x44e;&#x442;&#x44b; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x43a;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="t_receive_date" ID="91r7Cp64kKu8om4+QbphI7">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x43f;&#x440;&#x435;&#x434;&#x441;&#x442;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432; &#x431;&#x430;&#x43d;&#x43a;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="t_accept_date" ID="cOfVAFZSA8talNwpjUlCS7">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x43f;&#x440;&#x438;&#x43d;&#x44f;&#x442;&#x438;&#x44f;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="&#x41f;&#x430;&#x441;&#x43f;&#x43e;&#x440;&#x442; &#x441;&#x434;&#x435;&#x43b;&#x43a;&#x438;" help_text="" comment_text="" nls_key="ru"/>
+        </typeAnnotations>
+      </primaryElement>
+      <super_name href="urnd:com.emc.ide.artifact.dclass/ccdea_base_doc?name=ccdea_base_doc#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

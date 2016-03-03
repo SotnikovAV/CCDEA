@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dm_dd_info?name=dm_dd_info" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_dd_info">
+      <primaryElement>
+        <attributes attr_name="parent_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Parent ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="default_value" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Value ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="ignore_immutable">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Allow Change" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="not_null">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Not Null" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="not_null_enf">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Not Null Enforcer" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_description="Enforcement is disabled" map_display_string="Disabled"/>
+              <value_mappings map_data_string="2" map_description="Enforcement is up to the application" map_display_string="Application"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="cond_value_assist">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Conditional Value Assistance ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="value_assist_dep" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Value Assistance Attributes" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="val_assist_dep_usr">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Dep User for Value Assistance" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="is_searchable">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Searchable" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="allowed_search_ops" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Allowed Search Operators" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_display_string="="/>
+              <value_mappings map_data_string="2" map_display_string="&lt;>"/>
+              <value_mappings map_data_string="3" map_display_string=">"/>
+              <value_mappings map_data_string="4" map_display_string="&lt;"/>
+              <value_mappings map_data_string="5" map_display_string=">="/>
+              <value_mappings map_data_string="6" map_display_string="&lt;="/>
+              <value_mappings map_data_string="7" map_display_string="begins with"/>
+              <value_mappings map_data_string="8" map_display_string="contains"/>
+              <value_mappings map_data_string="9" map_display_string="does not contain"/>
+              <value_mappings map_data_string="10" map_display_string="ends with"/>
+              <value_mappings map_data_string="11" map_display_string="in"/>
+              <value_mappings map_data_string="12" map_display_string="not in"/>
+              <value_mappings map_data_string="13" map_display_string="between"/>
+              <value_mappings map_data_string="14" map_display_string="is null"/>
+              <value_mappings map_data_string="15" map_display_string="is not null"/>
+              <value_mappings map_data_string="16" map_display_string="not"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="default_search_op">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Search Operator" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_display_string="="/>
+              <value_mappings map_data_string="2" map_display_string="&lt;>"/>
+              <value_mappings map_data_string="3" map_display_string=">"/>
+              <value_mappings map_data_string="4" map_display_string="&lt;"/>
+              <value_mappings map_data_string="5" map_display_string=">="/>
+              <value_mappings map_data_string="6" map_display_string="&lt;="/>
+              <value_mappings map_data_string="7" map_display_string="begins with"/>
+              <value_mappings map_data_string="8" map_display_string="contains"/>
+              <value_mappings map_data_string="9" map_display_string="does not contain"/>
+              <value_mappings map_data_string="10" map_display_string="ends with"/>
+              <value_mappings map_data_string="11" map_display_string="in"/>
+              <value_mappings map_data_string="12" map_display_string="not in"/>
+              <value_mappings map_data_string="13" map_display_string="between"/>
+              <value_mappings map_data_string="14" map_display_string="is null"/>
+              <value_mappings map_data_string="15" map_display_string="is not null"/>
+              <value_mappings map_data_string="16" map_display_string="not"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="default_search_arg" attr_length="255">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Search Value" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="read_only">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Read Only Value" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="reference_kind">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" life_cycle="FUTURE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Reference Kind" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="is_required">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Required" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="is_hidden">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Hidden" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="val_constraint" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Validation Constraint" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="val_constraint_enf" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Validation Constraint Enforcer" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_description="Enforcement is disabled" map_display_string="Disabled"/>
+              <value_mappings map_data_string="2" map_description="Enforcement is up to the application" map_display_string="Application"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="val_constraint_dep" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Dependent Attributes" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="constraint_dep_usr">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Dep User Constraint" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="unique_keys" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Unique Keys" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="unique_key_enfs" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Unique Key Enforcer" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_description="Enforcement is disabled" map_display_string="Disabled"/>
+              <value_mappings map_data_string="2" map_description="Enforcement is up to the application" map_display_string="Application"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="foreign_keys" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Foreign Keys" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="foreign_key_enfs" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Foreign Key Enforcer" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_description="Enforcement is disabled" map_display_string="Disabled"/>
+              <value_mappings map_data_string="2" map_description="Enforcement is up to the application" map_display_string="Application"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="ignore_constraints">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Ignore Constraints" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="life_cycle">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Current Policy State" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="default_policy_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Business Policy" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="policy_ver_label" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Business Policy Version Label" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="primary_key">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Primary Key ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="primary_key_enf">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Primary Key Enforcer" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_description="Enforcement is disabled" map_display_string="Disabled"/>
+              <value_mappings map_data_string="2" map_description="Enforcement is up to the application" map_display_string="Application"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="icon_index">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Icon File Index" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="comp_classifier" attr_repeating="true" attr_length="128">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Qualified Components" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="qual_comp_id" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Qualified Component IDs" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="cond_computed_expr">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" life_cycle="FUTURE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Conditional Computed Expression ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="computed_expr_dep" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" life_cycle="FUTURE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Computed Expression Attributes" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="computed_dep_usr">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Computed Dep User" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="auditable_sysevents" attr_repeating="true" attr_length="64">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Auditable System Events" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="dm_audit" map_display_string="Audit Event"/>
+              <value_mappings map_data_string="dm_unaudit" map_display_string="Unaudit Event"/>
+              <value_mappings map_data_string="dm_all" map_display_string="All Events"/>
+              <value_mappings map_data_string="dm_checkout" map_display_string="Checkout Object"/>
+              <value_mappings map_data_string="dm_checkin" map_display_string="Checkin Object"/>
+              <value_mappings map_data_string="dm_destroy" map_display_string="Destroy Object"/>
+              <value_mappings map_data_string="dm_fetch" map_display_string="Fetch Object"/>
+              <value_mappings map_data_string="dm_lock" map_display_string="Lock Object"/>
+              <value_mappings map_data_string="dm_prune" map_display_string="Prune Versions"/>
+              <value_mappings map_data_string="dm_save" map_display_string="Save Object"/>
+              <value_mappings map_data_string="dm_unlock" map_display_string="Cancel Checkout"/>
+              <value_mappings map_data_string="dm_branch" map_display_string="Branch Version"/>
+              <value_mappings map_data_string="dm_mark" map_display_string="Add Version Label"/>
+              <value_mappings map_data_string="dm_unmark" map_display_string="Remove Version Label"/>
+              <value_mappings map_data_string="dm_archive" map_display_string="Archive Objects"/>
+              <value_mappings map_data_string="dm_restore" map_display_string="Restore Object"/>
+              <value_mappings map_data_string="dm_link" map_display_string="Link To"/>
+              <value_mappings map_data_string="dm_unlink" map_display_string="Unlink From"/>
+              <value_mappings map_data_string="dm_status" map_display_string="Change Object Status"/>
+              <value_mappings map_data_string="dm_setfile" map_display_string="Set Content"/>
+              <value_mappings map_data_string="dm_freeze" map_display_string="Freeze Object"/>
+              <value_mappings map_data_string="dm_unfreeze" map_display_string="Unfreeze Object"/>
+              <value_mappings map_data_string="dm_bp_promote" map_display_string="Promote to Lifecycle State"/>
+              <value_mappings map_data_string="dm_bp_demote" map_display_string="Demote from Lifecycle State"/>
+              <value_mappings map_data_string="dm_bp_attach" map_display_string="Attach Lifecycle"/>
+              <value_mappings map_data_string="dm_bp_suspend" map_display_string="Suspend Lifecycle"/>
+              <value_mappings map_data_string="dm_bp_resume" map_display_string="Resume Lifecycle"/>
+              <value_mappings map_data_string="dm_startedworkitem" map_display_string="Start Workitem"/>
+              <value_mappings map_data_string="dm_selectedworkitem" map_display_string="Select Workitem"/>
+              <value_mappings map_data_string="dm_completedworkitem" map_display_string="Complete Workitem"/>
+              <value_mappings map_data_string="dm_pseudocompletedworkitem" map_display_string="Pseudo-Complete Task"/>
+              <value_mappings map_data_string="dm_delegatedworkitem" map_display_string="Delegate Workitem"/>
+              <value_mappings map_data_string="dm_repeatworkitem" map_display_string="Repeat Workflow Workitem"/>
+              <value_mappings map_data_string="dm_createworkflow" map_display_string="Create Workflow"/>
+              <value_mappings map_data_string="dm_startworkflow" map_display_string="Start Workflow"/>
+              <value_mappings map_data_string="dm_finishworkflow" map_display_string="Finish Workflow"/>
+              <value_mappings map_data_string="dm_abortworkflow" map_display_string="Abort Workflow"/>
+              <value_mappings map_data_string="dm_changestateworkflow" map_display_string="Change Workflow State"/>
+              <value_mappings map_data_string="dm_changeworkflowsupervisor" map_display_string="Change Workflow Supervisor"/>
+              <value_mappings map_data_string="dm_autotransactivity" map_display_string="Automatic Workflow Activity Transition"/>
+              <value_mappings map_data_string="dm_changedactivityinstancestate" map_display_string="Change Workflow Activity State"/>
+              <value_mappings map_data_string="dm_changestateactivity" map_display_string="Change State Activity"/>
+              <value_mappings map_data_string="dm_portselect" map_display_string="Select Workflow Port"/>
+              <value_mappings map_data_string="dm_changestateprocess" map_display_string="Change Workflow Template State"/>
+              <value_mappings map_data_string="dm_addpackage" map_display_string="Add Workflow Package"/>
+              <value_mappings map_data_string="dm_removepackage" map_display_string="Remove Workflow Package"/>
+              <value_mappings map_data_string="dm_addnote" map_display_string="Add Note"/>
+              <value_mappings map_data_string="dm_removenote" map_display_string="Remove Note"/>
+              <value_mappings map_data_string="dm_addattachment" map_display_string="Add Workflow Attachment"/>
+              <value_mappings map_data_string="dm_removeattachment" map_display_string="Remove Workflow Attachment"/>
+              <value_mappings map_data_string="dm_changepriorityworkitem" map_display_string="Change Workitem Priority"/>
+              <value_mappings map_data_string="dm_pauseworkitem" map_display_string="Pause Workitem"/>
+              <value_mappings map_data_string="dm_resumeworkitem" map_display_string="Resume Workitem"/>
+              <value_mappings map_data_string="dm_faultedworkitem" map_display_string="Fault Workitem"/>
+              <value_mappings map_data_string="dm_unfaultedworkitem" map_display_string="Unfault Workitem"/>
+              <value_mappings map_data_string="dm_retryfailedworkitem" map_display_string="Retry Failed Workitem"/>
+              <value_mappings map_data_string="dm_startedactgroupinstance" map_display_string="Start Activity Group Instance"/>
+              <value_mappings map_data_string="dm_completedactgroupinstance" map_display_string="Complete Activity Group Instance"/>
+              <value_mappings map_data_string="dm_all_workflow" map_display_string="All Workflow Events"/>
+              <value_mappings map_data_string="dm_assemble" map_display_string="Assemble Virtual Document"/>
+              <value_mappings map_data_string="dm_jobstart" map_display_string="Start Job"/>
+              <value_mappings map_data_string="dm_saveasnew" map_display_string="Copy Object"/>
+              <value_mappings map_data_string="dm_getfile" map_display_string="View/Export"/>
+              <value_mappings map_data_string="dm_removecontent" map_display_string="Remove Content"/>
+              <value_mappings map_data_string="dm_addrendition" map_display_string="Add Rendition"/>
+              <value_mappings map_data_string="dm_removerendition" map_display_string="Remove Rendition"/>
+              <value_mappings map_data_string="dm_appendpart" map_display_string="Append to Virtual Document"/>
+              <value_mappings map_data_string="dm_insertpart" map_display_string="Insert into Virtual Document"/>
+              <value_mappings map_data_string="dm_removepart" map_display_string="Remove from Virtual Document"/>
+              <value_mappings map_data_string="dm_updatepart" map_display_string="Update in Virtual Document"/>
+              <value_mappings map_data_string="dm_disassemble" map_display_string="Disassemble Virtual Document"/>
+              <value_mappings map_data_string="dm_validate" map_display_string="Validate"/>
+              <value_mappings map_data_string="dm_invalidate" map_display_string="Invalidate"/>
+              <value_mappings map_data_string="dm_install" map_display_string="Install"/>
+              <value_mappings map_data_string="dm_uninstall" map_display_string="Uninstall"/>
+              <value_mappings map_data_string="dm_logon_failure" map_display_string="Log-on Failure"/>
+              <value_mappings map_data_string="dm_getlogin" map_display_string="Get Login"/>
+              <value_mappings map_data_string="dm_assume" map_display_string="Assume User"/>
+              <value_mappings map_data_string="dm_authenticate" map_display_string="Authenticate User"/>
+              <value_mappings map_data_string="dm_connect" map_display_string="Logon"/>
+              <value_mappings map_data_string="dm_disconnect" map_display_string="Logoff"/>
+              <value_mappings map_data_string="dm_kill" map_display_string="Kill Session"/>
+              <value_mappings map_data_string="dm_setoutputport" map_display_string="Set Output Port"/>
+              <value_mappings map_data_string="dm_adddigsignature" map_display_string="Add Digital Signature"/>
+              <value_mappings map_data_string="dm_purgeaudit" map_display_string="Purge Audit Record"/>
+              <value_mappings map_data_string="dm_signoff" map_display_string="Signoff Object"/>
+              <value_mappings map_data_string="dm_addesignature" map_display_string="Add Electronic Signature"/>
+              <value_mappings map_data_string="dm_move_content" map_display_string="Move Content"/>
+              <value_mappings map_data_string="dm_add_dynamic_group" map_display_string="Add Dynamic Group"/>
+              <value_mappings map_data_string="dm_remove_dynamic_group" map_display_string="Remove Dynamic Group"/>
+              <value_mappings map_data_string="dm_default_set" map_display_string="Default Event Set"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="auditable_appevents" attr_repeating="true" attr_length="64">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Auditable Application Events" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="scope_config" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Scope Configuration" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="i_is_replica">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Replica" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_vstamp">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Version Stamp" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <proxyAttributes proxy_attr_name="r_object_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Object ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+        </proxyAttributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT"/>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="Data Dictionary Information" help_text="" comment_text="" nls_key="en"/>
+        </typeAnnotations>
+      </primaryElement>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

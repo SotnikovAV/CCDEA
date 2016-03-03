@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/ccdea_attr_history?name=ccdea_attr_history" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="ccdea_attr_history">
+      <primaryElement>
+        <attributes attr_name="id_audittrail" ID="dzVmokWakyI8tNhcE570Hb">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="INHERIT" not_null="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x417;&#x430;&#x43f;&#x438;&#x441;&#x44c; &#x432; &#x430;&#x443;&#x434;&#x438;&#x442;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="s_attr_name" attr_length="64" ID="2vh+tjGNA3Wbwd9mMianQv">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x418;&#x43c;&#x44f; &#x430;&#x442;&#x440;&#x438;&#x431;&#x443;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_value" attr_length="2000" ID="faX4o9nlQJw8j3QiygX4du">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x422;&#x435;&#x43a;&#x443;&#x449;&#x435;&#x435; &#x437;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_old_value" attr_length="2000" ID="8GXmqKuIQ9o85ZRuR75XOa">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x435;&#x434;&#x44b;&#x434;&#x443;&#x449;&#x435;&#x435; &#x437;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_attr_description" attr_length="255" ID="aBG3qm6FAuc9gwx1ZH13MF">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41e;&#x43f;&#x438;&#x441;&#x430;&#x43d;&#x438;&#x435; &#x430;&#x442;&#x440;&#x438;&#x431;&#x443;&#x442;&#x44b;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_is_replica" ID="aFjzmpKHQ8EaE4pkSoTkqm">
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_vstamp" ID="dh87x079Amo86w1QrxWjwV">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="&#x412;&#x435;&#x440;&#x441;&#x438;&#x44f; &#x430;&#x442;&#x440;&#x438;&#x431;&#x443;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru"/>
+        </typeAnnotations>
+      </primaryElement>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

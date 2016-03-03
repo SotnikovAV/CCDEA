@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/ucb_ccdea_docput_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_docput_message_job.job" categoryId="com.emc.ide.artifact.job">
+  <dataModel xsi:type="job:Job" objectName="ucb_ccdea_docput_message_job" passStandardArguments="true" runInterval="5" runMode="Minute(s)">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <methodName href="urn:com.emc.ide.artifact.method/ucb_ccdea_docput_message_mthd?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Methods/ucb_ccdea_docput_message_mthd.method#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

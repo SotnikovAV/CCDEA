@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://bpm.core.datamodel.fs.documentum.emc.com/" xmlns:tns="http://bpm.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-bpm="http://bpm.core.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="WorkflowService_schema3.xsd"/>
+
+  <xs:complexType name="ProcessInfo">
+    <xs:sequence>
+      <xs:element name="ProcessId" type="ns1:ObjectId" minOccurs="0"/>
+      <xs:element name="StartActivityIdentities" type="ns1:ObjectId" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="StartActivityNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Packages" type="tns:ProcessPackageInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PerformerAssignments" type="tns:ProcessPerformerAssignmentInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AliasAssignments" type="tns:ProcessAliasAssignmentInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="WorkflowAttachmentIdentities" type="ns1:ObjectId" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="WorkflowAttachmentTypeNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="processInstanceName" type="xs:string"/>
+    <xs:attribute name="supervisor" type="xs:string"/>
+    <xs:attribute name="repository" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="ProcessPackageInfo">
+    <xs:sequence>
+      <xs:element name="RequiredLabels" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Documents" type="ns1:ObjectId" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Notes" type="tns:ProcessNoteInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="FormTemplateId" type="ns1:ObjectId" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="packageName" type="xs:string"/>
+    <xs:attribute name="requiredType" type="xs:string"/>
+    <xs:attribute name="formTemplateName" type="xs:string"/>
+    <xs:attribute name="isFormForProperties" type="xs:boolean" use="required"/>
+    <xs:attribute name="isOptional" type="xs:boolean" use="required"/>
+    <xs:attribute name="isVisible" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ProcessNoteInfo">
+    <xs:sequence/>
+    <xs:attribute name="noteText" type="xs:string"/>
+    <xs:attribute name="isPersistent" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ProcessPerformerAssignmentInfo">
+    <xs:sequence>
+      <xs:element name="PERFORMER_CATEGORY_USER" type="xs:int"/>
+      <xs:element name="PERFORMER_CATEGORY_GROUP" type="xs:int"/>
+      <xs:element name="PERFORMER_CATEGORY_USER_OR_GROUP" type="xs:int"/>
+      <xs:element name="PERFORMER_CATEGORY_WORKQUEUE" type="xs:int"/>
+      <xs:element name="Performers" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="SelectFromGroups" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="isMultiplePerformersAllowed" type="xs:boolean" use="required"/>
+    <xs:attribute name="category" type="xs:int" use="required"/>
+    <xs:attribute name="performerType" type="xs:int" use="required"/>
+    <xs:attribute name="targetActivityIndex" type="xs:int" use="required"/>
+    <xs:attribute name="targetActivityName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="ProcessAliasAssignmentInfo">
+    <xs:sequence>
+      <xs:element name="UsedInActivityNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="aliasCategory" type="xs:int" use="required"/>
+    <xs:attribute name="aliasDescription" type="xs:string"/>
+    <xs:attribute name="aliasName" type="xs:string"/>
+    <xs:attribute name="aliasValue" type="xs:string"/>
+  </xs:complexType>
+</xs:schema>
+

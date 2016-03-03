@@ -1,0 +1,24 @@
+<NS1:MCDocInfoModifyContract xmlns:NS1="pr">
+	<NS1:OriginIdentification>
+		<NS1:SourceSystem>DVK</NS1:SourceSystem>
+		<NS1:SourceId>1345214</NS1:SourceId>
+	</NS1:OriginIdentification>
+	<NS1:OriginIdentification>
+		<NS1:SourceSystem>JETDOCER</NS1:SourceSystem>
+		<NS1:SourceId>6652183</NS1:SourceId>
+	</NS1:OriginIdentification>
+	<NS1:ModificationVerb>C</NS1:ModificationVerb>
+	<NS1:Customer>
+		<NS1:CustomerNumber>00602797</NS1:CustomerNumber>
+		<NS1:CustomerName>SAMSUNG ELECTRONICS</NS1:CustomerName>
+	</NS1:Customer>
+	<NS1:ContractDetails>
+		<NS1:RegNum>0001</NS1:RegNum>
+		<NS1:DateSigning>2014-08-25</NS1:DateSigning>
+		<NS1:DealPassport>45637657/1234/2345/4</NS1:DealPassport>
+		<NS1:DocCurrency>USD</NS1:DocCurrency>
+		<NS1:NoGeneralAmount>true</NS1:NoGeneralAmount>
+	</NS1:ContractDetails>
+	<NS1:UserId>ivanov</NS1:UserId>
+	<NS1:ModificationDateTime>2015-08-25T15:41:15+03:00</NS1:ModificationDateTime>
+</NS1:MCDocInfoModifyContract>

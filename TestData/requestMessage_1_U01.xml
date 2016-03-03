@@ -1,0 +1,24 @@
+<NS1:MCDocInfoModifyZA xmlns:NS1="pr" xmlns:NS2="cmn:pr">
+	<NS1:OriginIdentification>
+		<NS2:OriginIdentification>
+			<NS2:SourceSystem>JETDOCER</NS2:SourceSystem>
+			<NS2:SourceId>6652183</NS2:SourceId>
+		</NS2:OriginIdentification>
+		<NS2:OriginIdentification>
+			<NS2:SourceSystem>JETDOCER</NS2:SourceSystem>
+			<NS2:SourceId>1164525</NS2:SourceId>
+		</NS2:OriginIdentification>
+	</NS1:OriginIdentification>
+	<NS1:ModificationVerb>U</NS1:ModificationVerb>
+	<NS1:Customer>
+		<NS2:CustomerNumber>00602797</NS2:CustomerNumber>
+		<NS2:CustomerName>SAMSUNG ELECTRONICS</NS2:CustomerName>
+	</NS1:Customer>
+	<NS1:ZADetails>
+		<NS1:RegNum>0001</NS1:RegNum>
+		<NS1:DealPassport>45637657/1234/2345/4</NS1:DealPassport>
+		<NS1:OriginDate>2015-07-15</NS1:OriginDate>
+	</NS1:ZADetails>
+	<NS1:UserId>ivanov</NS1:UserId>
+	<NS1:ModificationDateTime>2015-07-29T16:11:15+03:00</NS1:ModificationDateTime>
+</NS1:MCDocInfoModifyZA>

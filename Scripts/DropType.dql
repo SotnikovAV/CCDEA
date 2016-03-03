@@ -1,0 +1,141 @@
+-----------------------------
+-- Скритп на удаление типов Documentum --
+-- Модель CCD_E-Archive v0.5 --
+-- Дата генерации 05.08.2015 10:32:16 --
+-----------------------------
+--------------------------------
+--drop type ccdea_content
+--------------------------------
+delete ccdea_content object
+go
+drop type ccdea_content
+go
+
+--------------------------------
+--drop type ccdea_external_message
+--------------------------------
+delete ccdea_external_message object
+go
+drop type ccdea_external_message
+go
+
+--------------------------------
+--drop type ccdea_content_part
+--------------------------------
+delete ccdea_content_part object
+go
+drop type ccdea_content_part
+go
+
+--------------------------------
+--drop type ccdea_contract
+--------------------------------
+delete ccdea_contract object
+go
+drop type ccdea_contract
+go
+
+--------------------------------
+--drop type ccdea_passport
+--------------------------------
+delete ccdea_passport object
+go
+drop type ccdea_passport
+go
+
+--------------------------------
+--drop type ccdea_svo_detail
+--------------------------------
+delete ccdea_svo_detail object
+go
+drop type ccdea_svo_detail
+go
+
+--------------------------------
+--drop type ccdea_spd
+--------------------------------
+delete ccdea_spd object
+go
+drop type ccdea_spd
+go
+
+--------------------------------
+--drop type ccdea_pd
+--------------------------------
+delete ccdea_pd object
+go
+drop type ccdea_pd
+go
+
+--------------------------------
+--drop type ccdea_request
+--------------------------------
+delete ccdea_request object
+go
+drop type ccdea_request
+go
+
+--------------------------------
+--drop type ccdea_vbk
+--------------------------------
+delete ccdea_vbk object
+go
+drop type ccdea_vbk
+go
+
+--------------------------------
+--drop type ccdea_base_doc
+--------------------------------
+delete ccdea_base_doc object
+go
+drop type ccdea_base_doc
+go
+
+--------------------------------
+--drop type ccdea_dossier
+--------------------------------
+delete ccdea_dossier object
+go
+drop type ccdea_dossier
+go
+
+--------------------------------
+--drop type ccdea_currency
+--------------------------------
+delete ccdea_currency object
+go
+drop type ccdea_currency
+go
+
+--------------------------------
+--drop type ccdea_customer
+--------------------------------
+delete ccdea_customer object
+go
+drop type ccdea_customer
+go
+
+--------------------------------
+--drop type ccdea_attr_history
+--------------------------------
+delete ccdea_attr_history object
+go
+drop type ccdea_attr_history
+go
+
+--------------------------------
+--drop type ccdea_dossier_numerator
+--------------------------------
+delete ccdea_dossier_numerator object
+go
+drop type ccdea_dossier_numerator
+go
+
+--------------------------------
+--drop type ccdea_branch
+--------------------------------
+delete ccdea_branch object
+go
+drop type ccdea_branch
+go
+

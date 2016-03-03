@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dm_xfm_form?name=dm_xfm_form" categoryId="com.emc.ide.artifact.dclass">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_xfm_form">
+      <primaryElement>
+        <attributes attr_name="relationship_to_base">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Relationship Type to Base XForms" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="definition_state">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Definition State" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="description" attr_length="300">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Description" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="template_type" attr_length="128">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Template Type" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="is_schema_validated">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Is Schema Validated" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="ready_for_translation">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Ready for Translation" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="XForms Template" help_text="" comment_text="" nls_key="en"/>
+        </typeAnnotations>
+        <domain>
+          <locale_info nls_key="en"/>
+          <attrDomains attr_name="relationship_to_base">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="definition_state">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="description">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="template_type">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="is_schema_validated">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="ready_for_translation">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+        </domain>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dm_document?name=dm_document#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

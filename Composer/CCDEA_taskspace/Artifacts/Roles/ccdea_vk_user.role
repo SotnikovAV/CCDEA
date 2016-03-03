@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:group="http://documentum.emc.com/artifact/12012007/group" urn="urn:com.emc.ide.artifact.role/ccdea_vk_user?name=ccdea_vk_user" categoryId="com.emc.ide.artifact.role" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="group:Role" groupName="ccdea_vk_user" groupAddress="" description="&#x421;&#x43e;&#x442;&#x440;&#x443;&#x434;&#x43d;&#x438;&#x43a; &#x412;&#x41a;" groupClass="role" groupDisplayName="ccdea_vk_user">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_group?name=dm_group#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

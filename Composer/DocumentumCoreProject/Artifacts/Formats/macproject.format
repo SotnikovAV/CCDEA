@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:format="http://documentum.emc.com/artifact/12012007/format" urn="urn:com.emc.ide.artifact.format/macproject?name=macproject" categoryId="com.emc.ide.artifact.format" modifiedByUser="false">
+  <dataModel xsi:type="format:Format" name="macproject" description="MacProject 1.x" canIndex="false" macCreator="MPRZ" macType="MPRD" dosExtension="" win31App="" comClassId="" mimeType="" assetClass="" filenameModifier="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_format?name=dm_format#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

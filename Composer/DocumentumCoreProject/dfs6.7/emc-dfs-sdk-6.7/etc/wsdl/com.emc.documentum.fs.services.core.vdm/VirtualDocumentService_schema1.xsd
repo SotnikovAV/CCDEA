@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://vdm.core.services.fs.documentum.emc.com/" xmlns:tns="http://vdm.core.services.fs.documentum.emc.com/" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://vdm.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://rt.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="VirtualDocumentService_schema8.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="VirtualDocumentService_schema4.xsd"/>
+
+  <xs:import namespace="http://vdm.core.datamodel.fs.documentum.emc.com/" schemaLocation="VirtualDocumentService_schema2.xsd"/>
+
+  <xs:element name="CoreServiceException" type="tns:CoreServiceException"/>
+
+  <xs:element name="createSnapshot" type="tns:createSnapshot"/>
+
+  <xs:element name="createSnapshotResponse" type="tns:createSnapshotResponse"/>
+
+  <xs:element name="removeSnapshot" type="tns:removeSnapshot"/>
+
+  <xs:element name="removeSnapshotResponse" type="tns:removeSnapshotResponse"/>
+
+  <xs:element name="retrieve" type="tns:retrieve"/>
+
+  <xs:element name="retrieveResponse" type="tns:retrieveResponse"/>
+
+  <xs:element name="update" type="tns:update"/>
+
+  <xs:element name="updateResponse" type="tns:updateResponse"/>
+
+  <xs:complexType name="createSnapshot">
+    <xs:sequence>
+      <xs:element name="parent" type="ns1:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="associate" type="ns1:DataObject" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createSnapshotResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:DataObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CoreServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns2:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="update">
+    <xs:sequence>
+      <xs:element name="parent" type="ns1:DataObject" minOccurs="0"/>
+      <xs:element name="children" type="ns3:VdmChildrenActionInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:DataObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeSnapshot">
+    <xs:sequence>
+      <xs:element name="associate" type="ns1:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeSnapshotResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="retrieve">
+    <xs:sequence>
+      <xs:element name="parent" type="ns1:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="retrieveResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:DataObject" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

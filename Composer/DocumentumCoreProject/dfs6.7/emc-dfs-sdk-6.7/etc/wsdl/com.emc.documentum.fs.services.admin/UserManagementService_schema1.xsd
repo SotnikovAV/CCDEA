@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://usermanagement.admin.datamodel.fs.documentum.emc.com/" xmlns:tns="http://usermanagement.admin.datamodel.fs.documentum.emc.com/" xmlns:ns4="http://properties.core.datamodel.fs.documentum.emc.com/" xmlns:ns1="http://admin.services.fs.documentum.emc.com/" xmlns:ns3="http://core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://admin.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://admin.services.fs.documentum.emc.com/" schemaLocation="UserManagementService_schema9.xsd"/>
+
+  <xs:import namespace="http://admin.datamodel.fs.documentum.emc.com/" schemaLocation="UserManagementService_schema10.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="UserManagementService_schema7.xsd"/>
+
+  <xs:import namespace="http://properties.core.datamodel.fs.documentum.emc.com/" schemaLocation="UserManagementService_schema5.xsd"/>
+
+  <xs:complexType name="PrincipalPackage">
+    <xs:sequence>
+      <xs:element name="Principal" type="tns:Principal" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="repositoryName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="Principal" abstract="true">
+    <xs:sequence>
+      <xs:element name="Identity" type="ns2:AdminObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Group">
+    <xs:complexContent>
+      <xs:extension base="tns:Principal">
+        <xs:sequence>
+          <xs:element name="AliasSetId" type="ns3:ObjectId" minOccurs="0"/>
+          <xs:element name="NativeRoomId" type="ns3:ObjectId" minOccurs="0"/>
+          <xs:element name="DirectoryId" type="ns3:ObjectId" minOccurs="0"/>
+          <xs:element name="MemberInfos" type="tns:MemberInfo" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="DisplayName" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string"/>
+        <xs:attribute name="Address" type="xs:string"/>
+        <xs:attribute name="OwnerName" type="xs:string"/>
+        <xs:attribute name="GroupClass" type="xs:string"/>
+        <xs:attribute name="AdminName" type="xs:string"/>
+        <xs:attribute name="GlobalUniqueId" type="xs:string"/>
+        <xs:attribute name="IsPrivate" type="xs:boolean" use="required"/>
+        <xs:attribute name="IsProtected" type="xs:boolean" use="required"/>
+        <xs:attribute name="IsDynamic" type="xs:boolean" use="required"/>
+        <xs:attribute name="IsDynamicDefault" type="xs:boolean" use="required"/>
+        <xs:attribute name="IsGloballyManaged" type="xs:boolean" use="required"/>
+        <xs:attribute name="IsModuleOnly" type="xs:boolean" use="required"/>
+        <xs:attribute name="GroupSource" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MemberInfo">
+    <xs:sequence/>
+    <xs:attribute name="MemberName" type="xs:string"/>
+    <xs:attribute name="MemberType" type="tns:MemberType"/>
+    <xs:attribute name="OperationType" type="tns:OperationType"/>
+  </xs:complexType>
+
+  <xs:complexType name="User">
+    <xs:complexContent>
+      <xs:extension base="tns:Principal">
+        <xs:sequence>
+          <xs:element name="UserPrivilege" type="tns:UserPrivileges" minOccurs="0"/>
+          <xs:element name="ClientCapabilities" type="tns:ClientCapabilities" minOccurs="0"/>
+          <xs:element name="ExtendedPrivilege" type="tns:ExtendedPrivileges" minOccurs="0"/>
+          <xs:element name="RestrictedFolderIds" type="ns3:ObjectId" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="DefaultFolderPath" type="ns3:ObjectPath" minOccurs="0"/>
+          <xs:element name="AliasSetId" type="ns3:ObjectId" minOccurs="0"/>
+          <xs:element name="UserState" type="tns:UserStates" minOccurs="0"/>
+          <xs:element name="FailedAuthenticationFeature" type="tns:FailedAuthenticationFeature" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="LoginName" type="xs:string"/>
+        <xs:attribute name="LoginDomain" type="xs:string"/>
+        <xs:attribute name="OSName" type="xs:string"/>
+        <xs:attribute name="OSDomain" type="xs:string"/>
+        <xs:attribute name="Description" type="xs:string"/>
+        <xs:attribute name="DefaultGroupName" type="xs:string"/>
+        <xs:attribute name="Address" type="xs:string"/>
+        <xs:attribute name="DbName" type="xs:string"/>
+        <xs:attribute name="HomeDocbase" type="xs:string"/>
+        <xs:attribute name="AclName" type="xs:string"/>
+        <xs:attribute name="AdminName" type="xs:string"/>
+        <xs:attribute name="UserSource" type="xs:string"/>
+        <xs:attribute name="IsGloballyManaged" type="xs:boolean" use="required"/>
+        <xs:attribute name="IsWorkflowDisabled" type="xs:boolean" use="required"/>
+        <xs:attribute name="Password" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CustomUser">
+    <xs:complexContent>
+      <xs:extension base="tns:User">
+        <xs:sequence>
+          <xs:element name="Properties" type="ns4:PropertySet" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Type" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="MemberType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USER"/>
+      <xs:enumeration value="GROUP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REMOVE_MEMBERS"/>
+      <xs:enumeration value="ADD_MEMBERS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="UserPrivileges">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="CREATE_TYPE"/>
+      <xs:enumeration value="CREATE_CABINET"/>
+      <xs:enumeration value="CREATE_TYPE_CABINET"/>
+      <xs:enumeration value="CREATE_GROUP"/>
+      <xs:enumeration value="CREATE_GROUP_TYPE"/>
+      <xs:enumeration value="CREATE_GROUP_CABINET"/>
+      <xs:enumeration value="CREATE_GROUP_TYPE_CABINET"/>
+      <xs:enumeration value="SYSADMIN"/>
+      <xs:enumeration value="SUPERUSER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ClientCapabilities">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CONSUMER"/>
+      <xs:enumeration value="CONTRIBUTOR"/>
+      <xs:enumeration value="COORDINATOR"/>
+      <xs:enumeration value="SYSTEM_ADMINISTRATOR"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ExtendedPrivileges">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="CONFIG_AUDIT"/>
+      <xs:enumeration value="PURGE_AUDIT"/>
+      <xs:enumeration value="CONFIG_PURGE_AUDIT"/>
+      <xs:enumeration value="VIEW_AUDIT"/>
+      <xs:enumeration value="CONFIG_VIEW_AUDIT"/>
+      <xs:enumeration value="VIEW_PURGE_AUDIT"/>
+      <xs:enumeration value="CONFIG_VIEW_PURGE_AUDIT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="UserStates">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="INACTIVE"/>
+      <xs:enumeration value="LOCKED"/>
+      <xs:enumeration value="LOCKED_INACTIVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FailedAuthenticationFeature">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ENABLE"/>
+      <xs:enumeration value="DISABLE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

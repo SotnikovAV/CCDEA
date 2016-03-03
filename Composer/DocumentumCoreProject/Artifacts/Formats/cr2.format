@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:format="http://documentum.emc.com/artifact/12012007/format" urn="urn:com.emc.ide.artifact.format/cr2?name=cr2" categoryId="com.emc.ide.artifact.format" modifiedByUser="false">
+  <dataModel xsi:type="format:Format" name="cr2" description="Canon Digital Camera Raw Image Format" topicFilter="None" macCreator="????" macType="????" dosExtension="cr2" win31App="" comClassId="" mimeType="image/x-canon-cr2" assetClass="" filenameModifier="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_format?name=dm_format#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

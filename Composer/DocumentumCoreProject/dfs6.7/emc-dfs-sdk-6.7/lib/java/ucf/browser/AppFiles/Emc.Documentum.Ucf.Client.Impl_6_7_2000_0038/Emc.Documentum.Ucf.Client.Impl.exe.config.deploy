@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="OptionalRequestHandlerSection" type="Emc.Documentum.Ucf.Client.Impl.Transport.OptionalRequestHandlerSection, Emc.Documentum.Ucf.Client.Impl"/>
+  </configSections>
+  <!-- Optional Request Handler Definitions -->
+  <OptionalRequestHandlerSection>
+    <OptionalRequestHandlerMap xmlns="http://www.emc.com/documentum/ucf">
+      <OptionalRequestHandlers>
+        <OptionalRequestHandler>
+          <name>MailMsgToEef</name>
+          <class>Emc.Documentum.Ucf.Client.MessageConverter.MailMsgToEefHandler</class>
+          <assembly>Emc.Documentum.Ucf.Client.MessageConverter</assembly>
+          <filegroup>MessageConverter</filegroup>
+        </OptionalRequestHandler>
+        <OptionalRequestHandler>
+          <name>EefToMailMsg</name>
+          <class>Emc.Documentum.Ucf.Client.MessageConverter.EefToMailMsgHandler</class>
+          <assembly>Emc.Documentum.Ucf.Client.MessageConverter</assembly>
+          <filegroup>MessageConverter</filegroup>
+        </OptionalRequestHandler>
+      </OptionalRequestHandlers>
+    </OptionalRequestHandlerMap>  
+  </OptionalRequestHandlerSection>
+  <system.diagnostics>
+    <switches>
+      <!--Default UCF trace/log level configuration. Valid values are "Off", "Error", "Warning", "Info" or "Verbose"-->
+      <!--User can customize the trace/log level in UCF client config file-->
+      <add name="UCFTraceLevel" value="Warning"/>
+    </switches>
+  </system.diagnostics>
+  <system.net>
+    <settings>
+      <servicePointManager expect100Continue="false"/>
+    </settings>
+  </system.net>
+</configuration>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://core.services.fs.documentum.emc.com/" xmlns:tns="http://core.services.fs.documentum.emc.com/" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://properties.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://schema.core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="SchemaService_schema7.xsd"/>
+
+  <xs:import namespace="http://schema.core.datamodel.fs.documentum.emc.com/" schemaLocation="SchemaService_schema1.xsd"/>
+
+  <xs:import namespace="http://properties.core.datamodel.fs.documentum.emc.com/" schemaLocation="SchemaService_schema4.xsd"/>
+
+  <xs:element name="getDynamicAssistValues" type="tns:getDynamicAssistValues"/>
+
+  <xs:element name="getDynamicAssistValuesResponse" type="tns:getDynamicAssistValuesResponse"/>
+
+  <xs:element name="getPropertyInfo" type="tns:getPropertyInfo"/>
+
+  <xs:element name="getPropertyInfoResponse" type="tns:getPropertyInfoResponse"/>
+
+  <xs:element name="getRepositoryInfo" type="tns:getRepositoryInfo"/>
+
+  <xs:element name="getRepositoryInfoResponse" type="tns:getRepositoryInfoResponse"/>
+
+  <xs:element name="getSchemaInfo" type="tns:getSchemaInfo"/>
+
+  <xs:element name="getSchemaInfoResponse" type="tns:getSchemaInfoResponse"/>
+
+  <xs:element name="getTypeInfo" type="tns:getTypeInfo"/>
+
+  <xs:element name="getTypeInfoResponse" type="tns:getTypeInfoResponse"/>
+
+  <xs:element name="getTypeInfos" type="tns:getTypeInfos"/>
+
+  <xs:element name="getTypeInfosResponse" type="tns:getTypeInfosResponse"/>
+
+  <xs:complexType name="getTypeInfo">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="schemaName" type="xs:string" minOccurs="0"/>
+      <xs:element name="typeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTypeInfoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:TypeInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDynamicAssistValues">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="schemaName" type="xs:string" minOccurs="0"/>
+      <xs:element name="typeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="propertyName" type="xs:string" minOccurs="0"/>
+      <xs:element name="propertySet" type="ns3:PropertySet" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDynamicAssistValuesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:ValueAssist" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryInfo">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryInfoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:RepositoryInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPropertyInfo">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="schemaName" type="xs:string" minOccurs="0"/>
+      <xs:element name="typeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="propertyName" type="xs:string" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPropertyInfoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:PropertyInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTypeInfos">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="schemaName" type="xs:string" minOccurs="0"/>
+      <xs:element name="filter" type="ns2:TypeFilter" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTypeInfosResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:TypeInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSchemaInfo">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="schemaName" type="xs:string" minOccurs="0"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSchemaInfoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:SchemaInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

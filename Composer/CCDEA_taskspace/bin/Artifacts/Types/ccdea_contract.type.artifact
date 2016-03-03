@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urnd:com.emc.ide.artifact.dclass/ccdea_contract?name=ccdea_contract" categoryId="com.emc.ide.artifact.dclass" implicitlyCreated="true">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="ccdea_contract">
+      <primaryElement>
+        <attributes attr_name="s_doc_type" attr_length="255" ID="6nFG4rD0ke2aB9U7ZFxkt*">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x422;&#x438;&#x43f; &#x434;&#x43e;&#x43a;&#x443;&#x43c;&#x435;&#x43d;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="t_receive_date" ID="c77Uci0JAMubQfdMIP3Xqk">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x43f;&#x440;&#x435;&#x434;&#x441;&#x442;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432; &#x431;&#x430;&#x43d;&#x43a;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="s_state" attr_length="255" ID="5GIIlUcb4N89U6SE8f*yTA">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_state_comment" attr_length="512" ID="1rQQ96W94y896v993Ngg0f">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43c;&#x43c;&#x435;&#x43d;&#x442;&#x430;&#x440;&#x438;&#x439; &#x43a; &#x441;&#x442;&#x430;&#x442;&#x443;&#x441;&#x443;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="d_amount" ID="aMt8NR4wApGaq5zY0HCicE">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x443;&#x43c;&#x43c;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="s_currency_code" attr_length="3" ID="c+EkC0KY44e8FeGpqH9GHA">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x432;&#x430;&#x43b;&#x44e;&#x442;&#x44b;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="b_is_urgent" ID="6YbbKoukAI8bzmpyH8TMfS">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x441;&#x440;&#x43e;&#x447;&#x43d;&#x43e;&#x441;&#x442;&#x438;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_is_vip" ID="2T5nWSo546oaSc3Qn0W77I">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; VIP" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_is_aml" ID="bxt5sjldkwObHWmFVVsK1W">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; AML" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_is_payment_advance" ID="edcQB8or46ubl5UfgfO9LR">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x430;&#x432;&#x430;&#x43d;&#x441;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_is_payment_delay" ID="cL1rgt7QQ0DabjkO+Sa9h5">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x43e;&#x442;&#x441;&#x440;&#x43e;&#x447;&#x43a;&#x438; &#x43f;&#x43b;&#x430;&#x442;&#x435;&#x436;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_is_closed" ID="epMCYaS4kzf9oCXRbWTw1k">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x437;&#x430;&#x43a;&#x440;&#x44b;&#x442;&#x438;&#x44f; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x43a;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="t_expire_date" ID="8YITAorCkOmbCNT0uTpTWL">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x440;&#x43e;&#x43a; &#x434;&#x435;&#x439;&#x441;&#x442;&#x432;&#x438;&#x44f;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="t_close_date" ID="5o5HVCR1kBs9qWQ5+QlGHS">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x444;&#x430;&#x43a;&#x442;&#x438;&#x447;&#x435;&#x441;&#x43a;&#x43e;&#x433;&#x43e; &#x437;&#x430;&#x43a;&#x440;&#x44b;&#x442;&#x438;&#x44f;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="s_archive_dossier_number" attr_length="512" ID="1HZz+DkC4Nn9ivlHrJ+JV9">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41d;&#x43e;&#x43c;&#x435;&#x440; &#x430;&#x440;&#x445;&#x438;&#x432;&#x43d;&#x43e;&#x433;&#x43e; &#x434;&#x43e;&#x441;&#x44c;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="b_is_third_party" ID="7E+7r2qmQVMbuPOcAxAA9X">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x442;&#x440;&#x435;&#x442;&#x44c;&#x435;&#x433;&#x43e; &#x43b;&#x438;&#x446;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_report402" ID="cSaBiLSG4l+9pvzRPJ32Gf">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x43e;&#x442;&#x447;&#x435;&#x442;&#x43d;&#x43e;&#x441;&#x442;&#x438; &#x43f;&#x43e; &#x444;402" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_report405" ID="7u0mYVSWQwk9VM2DUQAFwQ">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x43e;&#x442;&#x447;&#x435;&#x442;&#x43d;&#x43e;&#x441;&#x442;&#x438; &#x43f;&#x43e; &#x444;405" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_report406" ID="baMIBTLL4Q69jhAtE2oBp2">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x43e;&#x442;&#x447;&#x435;&#x442;&#x43d;&#x43e;&#x441;&#x442;&#x438; &#x43f;&#x43e; &#x444;406" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="b_no_general_amount" ID="a0gX4UHe4+i8AqcXXZXORX">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x43e;&#x442;&#x441;&#x443;&#x442;&#x441;&#x442;&#x432;&#x438;&#x44f; &#x43e;&#x431;&#x449;&#x435;&#x439; &#x441;&#x443;&#x43c;&#x43c;&#x44b;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="d_general_amount" ID="fNpu9oqDkGg9aAIdQ26fzG">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41e;&#x431;&#x449;&#x430;&#x44f; &#x441;&#x443;&#x43c;&#x43c;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="d_general_payment_amount" ID="3fy33C8xQOb8lCPEuooD*v">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41e;&#x431;&#x449;&#x430;&#x44f; &#x441;&#x443;&#x43c;&#x43c;&#x430; &#x43f;&#x43b;&#x430;&#x442;&#x435;&#x436;&#x435;&#x439;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="s_general_currency_code" attr_length="3" ID="s81ZEOW4W6a83QKJYtccX">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x432;&#x430;&#x43b;&#x44e;&#x442;&#x44b; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x43a;&#x442;&#x430; &#x426;&#x411;&#x420;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="b_is_reorganization" ID="7XFl79jB4mY9qSir1sIH1P">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x437;&#x43d;&#x430;&#x43a; &#x440;&#x435;&#x43e;&#x440;&#x433;&#x430;&#x43d;&#x438;&#x437;&#x430;&#x446;&#x438;&#x438;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="s_reorganization_info" attr_length="1000" ID="rJMXhmHkDTbzOB9qMwxt+">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x418;&#x43d;&#x444;&#x43e;&#x440;&#x43c;&#x430;&#x446;&#x438;&#x44f; &#x43f;&#x43e; &#x440;&#x435;&#x43e;&#x440;&#x433;&#x430;&#x43d;&#x438;&#x437;&#x430;&#x446;&#x438;&#x438;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="d_customer_capital" ID="28fhrhBjACE9C1giaG8HeR">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x423;&#x441;&#x442;&#x430;&#x432;&#x43d;&#x43e;&#x439; &#x43a;&#x430;&#x43f;&#x438;&#x442;&#x430;&#x43b;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="t_customer_reg_date" ID="2rT+HeRy4b2aRIbUc5yPJ0">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x440;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x438; &#x43a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="s_shipping_country_code" attr_length="3" ID="bRxvzomH4fe8sGN6xPz**c">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x441;&#x442;&#x440;&#x430;&#x43d;&#x44b; &#x43e;&#x442;&#x433;&#x440;&#x443;&#x437;&#x43a;&#x438;/&#x43f;&#x43e;&#x441;&#x442;&#x430;&#x432;&#x43a;&#x438;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_shipper_country_code" attr_length="3" ID="8ZE1eiOkA0Mbgbvlfawzu1">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x441;&#x442;&#x440;&#x430;&#x43d;&#x44b; &#x433;&#x440;&#x443;&#x437;&#x43e;&#x43e;&#x442;&#x43f;&#x440;&#x430;&#x432;&#x438;&#x442;&#x435;&#x43b;&#x44f;/&#x433;&#x440;&#x443;&#x437;&#x43e;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_port_country_code" attr_length="3" ID="4B7TKQxp4gn92gmkS4ajXB">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x434; &#x441;&#x442;&#x440;&#x430;&#x43d;&#x44b; &#x43f;&#x43e;&#x440;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_ship_name" attr_length="400" ID="65NaaRlA41m85BCkx3BZIE">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41d;&#x430;&#x438;&#x43c;&#x435;&#x43d;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435; &#x441;&#x443;&#x434;&#x43d;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_third_country_code" attr_length="3" ID="2CQJnm61AbmbE7KtqOTwnx">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x442;&#x440;&#x430;&#x43d;&#x430; &#x442;&#x440;&#x435;&#x442;&#x44c;&#x435;&#x433;&#x43e; &#x43b;&#x438;&#x446;&#x430; &#x43f;&#x43b;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x449;&#x438;&#x43a;&#x430;/&#x43f;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_third_bank_country_code" attr_length="3" ID="fv*+3r5AQP0ajAABSXWSDm">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x442;&#x440;&#x430;&#x43d;&#x430; &#x431;&#x430;&#x43d;&#x43a;&#x430; &#x442;&#x440;&#x435;&#x442;&#x44c;&#x435;&#x433;&#x43e; &#x43b;&#x438;&#x446;&#x430; &#x43f;&#x43b;&#x430;&#x442;&#x435;&#x43b;&#x44c;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_comment" attr_length="1000" ID="7tvsmNbkAyjaGTnR0*sAQ9">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41f;&#x440;&#x438;&#x43c;&#x435;&#x447;&#x430;&#x43d;&#x438;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="n_sums_order_num_r" attr_repeating="true" ID="7M*WxE4YA479uMAn6xtVc3">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x443;&#x43c;&#x43c;&#x44b; - &#x43f;&#x43e;&#x440;&#x44f;&#x434;&#x43a;&#x43e;&#x432;&#x44b;&#x439; &#x43d;&#x43e;&#x43c;&#x435;&#x440;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="d_sums_amount_r" attr_repeating="true" ID="a5cNKYZ+4jw8TTOaqJX38k">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x443;&#x43c;&#x43c;&#x44b; - &#x437;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="s_sums_currency_code_r" attr_repeating="true" attr_length="3" ID="eklqFQ7S4YMbJgrwyfd+hW">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x421;&#x443;&#x43c;&#x43c;&#x44b; - &#x432;&#x430;&#x43b;&#x44e;&#x442;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="n_contr_order_num_r" attr_repeating="true" ID="eh7Tbjh4APea3ywfwXXELX">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x44b; - &#x43f;&#x43e;&#x440;&#x44f;&#x434;&#x43a;&#x43e;&#x432;&#x44b;&#x439; &#x43d;&#x43e;&#x43c;&#x435;&#x440;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="s_contr_name_r" attr_repeating="true" attr_length="255" ID="8PCJgQx1kt091wi9JkFX7m">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x44b; - &#x43d;&#x430;&#x438;&#x43c;&#x435;&#x43d;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contr_country_code_r" attr_repeating="true" attr_length="3" ID="7deXuLdNAyca7oMPFrQAdG">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x44b; - &#x43a;&#x43e;&#x434; &#x441;&#x442;&#x440;&#x430;&#x43d;&#x44b;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contr_bank_country_code_r" attr_repeating="true" attr_length="3" ID="1J3vdiJl44b9rDT*XqA57*">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x44b; - &#x43a;&#x43e;&#x434; &#x441;&#x442;&#x440;&#x430;&#x43d;&#x44b; &#x431;&#x430;&#x43d;&#x43a;&#x430;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_402_service_code_r" attr_repeating="true" attr_length="100" ID="1PNMh9lwQSS9eq*mQ5C5KV">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x424;402 - &#x43a;&#x43e;&#x434; &#x443;&#x441;&#x43b;&#x443;&#x433;&#x438;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_402_service_name_r" attr_repeating="true" attr_length="1000" ID="cP*XNvX6QRy8R0CLU*8RP9">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x424;402 - &#x43d;&#x430;&#x438;&#x43c;&#x435;&#x43d;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435; &#x443;&#x441;&#x43b;&#x443;&#x433;&#x438;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contract_type_code_r" attr_repeating="true" attr_length="255" ID="d02e8Wdu4t48qhqaHPbEog">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x412;&#x438;&#x434;&#x44b; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x43a;&#x442;&#x43e;&#x432; - &#x43a;&#x43e;&#x434; &#x432;&#x438;&#x434;&#x430; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x43a;&#x442;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="s_contractor_column" attr_length="2000" ID="5sL7k1l*QtVawpYPO9pXO0">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x41a;&#x43e;&#x43b;&#x43e;&#x43d;&#x43a;&#x430; &#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="t_signing_date" ID="9P1Fj6hQAOKaCE6pHJlHc0">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x414;&#x430;&#x442;&#x430; &#x43f;&#x43e;&#x434;&#x43f;&#x438;&#x441;&#x430;&#x43d;&#x438;&#x44f;" help_text="" comment_text="" nls_key="ru" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x43a;&#x442;" help_text="" comment_text="" nls_key="ru"/>
+        </typeAnnotations>
+      </primaryElement>
+      <super_name href="urnd:com.emc.ide.artifact.dclass/ccdea_base_doc?name=ccdea_base_doc#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

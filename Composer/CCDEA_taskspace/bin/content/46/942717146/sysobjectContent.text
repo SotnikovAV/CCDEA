@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.documentum.services.preset.definition:PresetPackageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.documentum.services.preset.definition="http:///com/documentum/services/preset/definition.ecore" name="TaskSpace_Role">
+     <configTargetDefinitions id="taskspace_assigned_tabs" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="preset_item[id=assigned_tabs]"/>
+     <configTargetDefinitions id="taskspace_default_tab" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="preset_item[id=default_tab]"/>
+     <configTargetDefinitions id="taskspace_role_globalsearchtemplate" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="preset_item[id=globalsearchtemplate]"/>
+     <configTargetDefinitions id="taskspace_role_togglegetnexttaskautomode" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="actions.getnexttask.preset_item[id=togglegetnexttaskautomode]"/>
+     <configTargetDefinitions id="taskspace_role_workqueue-tasklist-mapping" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="components.preset_item[id=workqueue-tasklist-mapping]"/>
+     <configTargetDefinitions id="taskspace_role_documenttype-form-mapping" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="components.documentview.preset_item[id=documenttype-form-mapping]"/>
+     <configTargetDefinitions id="taskspace_role_foldertype-form-mapping" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="components.folderview.preset_item[id=foldertype-form-mapping]"/>
+     <configTargetDefinitions id="taskspace_role_defaultusertasklist" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="components.preset_item[id=defaultusertasklist]"/>
+     <configTargetDefinitions id="taskspace_role_showtasktree" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="components.preset_item[id=showtasktree]"/>
+     <configTargetDefinitions id="taskspace_assigned_actions" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="preset_item[id=assigned_actions]"/>
+     <configTargetDefinitions id="taskspace_role_processinstancelisttype-form-mapping" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="components.pilview.preset_item[id=processinstancelisttype-form-mapping]"/>
+     <configTargetDefinitions id="taskspace_assigned_menus" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="preset_item[id=assigned_menus]"/>
+	 <configTargetDefinitions id="taskspace_role_folderview" name="appconfig" inputSource="taskspace_role:taskspace\config\library\configuration\taskspace_role_config.xml" pathExpression="preset_item[id=folderview]"/>
+
+   <itemDefinitions id="assigned_tabs">
+   </itemDefinitions>
+   <itemDefinitions id="default_tab">
+   </itemDefinitions>
+   <itemDefinitions id="globalsearchtemplate">
+   </itemDefinitions>
+   <itemDefinitions id="togglegetnexttaskautomode">
+   </itemDefinitions>
+   <itemDefinitions id="workqueue-tasklist-mapping">
+   </itemDefinitions>
+   <itemDefinitions id="documenttype-form-mapping">
+   </itemDefinitions>
+   <itemDefinitions id="foldertype-form-mapping">
+   </itemDefinitions>   
+   <itemDefinitions id="defaultusertasklist">
+   </itemDefinitions>
+   <itemDefinitions id="showtasktree">
+   </itemDefinitions>
+   <itemDefinitions id="assigned_actions">
+   </itemDefinitions>   
+   <itemDefinitions id="processinstancelisttype-form-mapping">
+   </itemDefinitions>
+   <itemDefinitions id="assigned_menus">
+   </itemDefinitions>
+   <itemDefinitions id="folderview">
+   </itemDefinitions>
+  <scopeDefinitions name="taskspacerole"/>
+  <scopeDefinitions name="taskspaceapp"/>
+</com.documentum.services.preset.definition:PresetPackageDefinition>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://collaboration.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-content="http://content.core.datamodel.fs.documentum.emc.com/" xmlns:tns="http://collaboration.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dfs-dm-collaboration="http://collaboration.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="CommentService_schema3.xsd"/>
+
+  <xs:complexType name="Comment">
+    <xs:sequence>
+      <xs:element name="Identity" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="Body" type="dfs-dm-core:RichText" minOccurs="0"/>
+      <xs:element name="ReplyTo" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="UnreadState" type="tns:Unread" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="title" type="xs:string"/>
+    <xs:attribute name="creatorName" type="xs:string"/>
+    <xs:attribute name="creationDate" type="xs:dateTime"/>
+  </xs:complexType>
+
+  <xs:simpleType name="Unread">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Read"/>
+      <xs:enumeration value="Unread"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

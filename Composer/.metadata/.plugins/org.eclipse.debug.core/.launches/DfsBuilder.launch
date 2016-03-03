@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="true"/>
+<stringAttribute key="org.eclipse.debug.ui.ATTR_CAPTURE_IN_FILE" value="C:\Users\sotnik\AppData\Local\Temp\/dfs-build.xml.log"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_CONSOLE_OUTPUT_ON" value="false"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.ui.antsupport.InternalAntRunner"/>
+<mapAttribute key="org.eclipse.ui.externaltools.ATTR_ANT_PROPERTIES">
+<mapEntry key="dfs.sdk.home" value="C:\Development\Workspaces\CCDEA_GIT\Composer\DocumentumCoreProject\dfs6.7\emc-dfs-sdk-6.7"/>
+<mapEntry key="gen.rsc" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\bin\gen-rsc"/>
+<mapEntry key="gen.build" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\bin\gen-bin"/>
+<mapEntry key="gen.src.dir" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\bin\gen-src"/>
+<mapEntry key="src.dir" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\src"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_ANT_TARGETS" value="clean"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Development\Workspaces\CCDEA_GIT\Composer\DocumentumCoreProject\dfs6.7\dfs-build.xml"/>
+<stringAttribute key="process_factory_id" value="org.eclipse.ant.ui.remoteAntProcessFactory"/>
+</launchConfiguration>

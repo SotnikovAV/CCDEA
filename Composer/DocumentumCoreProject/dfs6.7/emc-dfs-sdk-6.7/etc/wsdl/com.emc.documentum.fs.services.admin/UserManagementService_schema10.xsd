@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://admin.datamodel.fs.documentum.emc.com/" xmlns:tns="http://admin.datamodel.fs.documentum.emc.com/" xmlns:ns1="http://admin.services.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://admin.services.fs.documentum.emc.com/" schemaLocation="UserManagementService_schema9.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="UserManagementService_schema7.xsd"/>
+
+  <xs:complexType name="AdminObjectIdentitySet">
+    <xs:sequence>
+      <xs:element name="Identities" type="tns:AdminObjectIdentity" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="isInternal" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="AdminObjectIdentity">
+    <xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:element name="ObjectId" type="ns2:ObjectId"/>
+        <xs:element name="ObjectKey" type="ns2:ObjectKey"/>
+        <xs:element name="Qualification" type="ns2:Qualification"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="valueType" type="tns:AdminObjectIdentityType"/>
+    <xs:attribute name="repositoryName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:simpleType name="AdminObjectIdentityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNDEFINED"/>
+      <xs:enumeration value="OBJECT_ID"/>
+      <xs:enumeration value="OBJECT_KEY"/>
+      <xs:enumeration value="QUALIFICATION"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

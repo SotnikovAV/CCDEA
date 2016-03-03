@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://collaboration.services.fs.documentum.emc.com/" xmlns:tns="http://collaboration.services.fs.documentum.emc.com/" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://rt.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://collaboration.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="CommentService_schema3.xsd"/>
+
+  <xs:import namespace="http://collaboration.datamodel.fs.documentum.emc.com/" schemaLocation="CommentService_schema6.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="CommentService_schema1.xsd"/>
+
+  <xs:element name="CollaborationServiceException" type="tns:CollaborationServiceException"/>
+
+  <xs:element name="createComment" type="tns:createComment"/>
+
+  <xs:element name="createCommentResponse" type="tns:createCommentResponse"/>
+
+  <xs:element name="enumComments" type="tns:enumComments"/>
+
+  <xs:element name="enumCommentsResponse" type="tns:enumCommentsResponse"/>
+
+  <xs:element name="getComment" type="tns:getComment"/>
+
+  <xs:element name="getCommentResponse" type="tns:getCommentResponse"/>
+
+  <xs:element name="markRead" type="tns:markRead"/>
+
+  <xs:element name="markReadResponse" type="tns:markReadResponse"/>
+
+  <xs:element name="markUnread" type="tns:markUnread"/>
+
+  <xs:element name="markUnreadResponse" type="tns:markUnreadResponse"/>
+
+  <xs:element name="updateComment" type="tns:updateComment"/>
+
+  <xs:element name="updateCommentResponse" type="tns:updateCommentResponse"/>
+
+  <xs:complexType name="enumComments">
+    <xs:sequence>
+      <xs:element name="parentIdentity" type="ns1:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="enumCommentsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:Comment" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CollaborationServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns3:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getComment">
+    <xs:sequence>
+      <xs:element name="commentIdentity" type="ns1:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCommentResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:Comment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="markUnread">
+    <xs:sequence>
+      <xs:element name="parentIdentity" type="ns1:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="markUnreadResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="updateComment">
+    <xs:sequence>
+      <xs:element name="commentData" type="ns2:Comment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateCommentResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="markRead">
+    <xs:sequence>
+      <xs:element name="parentIdentity" type="ns1:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="markReadResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="createComment">
+    <xs:sequence>
+      <xs:element name="parentIdentity" type="ns1:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="commentData" type="ns2:Comment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createCommentResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:Comment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

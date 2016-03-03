@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<publishedServiceManifest xmlns="http://registry.fs.documentum.emc.com/">
+    <Organization name="EMC"/>
+    <Service module="core" name="ObjectService">
+        <Description>ObjectService Provides fundamental operations for creating, getting, updating, and deleting repository objects, as   well as copy and move operations     The object service provides a set of basic operations on repository objects, in cases where the client does not need   to explicitly use the version control system. Each operation within the object service uses default behaviors as   relates to object versions that are appropriate for the specific operation. All of the object services can operate   on multiple objects (contained in either a DataPackage or an ObjectIdentitySet), enabling clients to optimize service   usage by minimizing the number of service interactions.     @see com.emc.documentum.fs.datamodel.core.OperationOptions   @see com.emc.documentum.fs.datamodel.core.profiles.Profile     @since 6.0  </Description>
+        <Classification value="content_management:generation" name="Content Management:Generation" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="VersionControlService">
+        <Description>The version control service provides operations that enable access and changes to specific object versions.     @see com.emc.documentum.fs.datamodel.core.OperationOptions     @since 6.0  </Description>
+        <Classification value="content_management:generation" name="Content Management:Generation" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="AccessControlService">
+        <Description>The AccessControlService provides operations for creating, getting, updating, and deleting ACL (Access Control List) objects.   ACLs are used by Content Server to implement object-level permissions and folder security.     @since 6.5  </Description>
+        <Classification value="content_management:processing" name="Content Management:Processing" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="bpm" name="WorkflowService">
+        <Description>IWorkflowService provides functionality to query available process templates and start process.  </Description>
+        <Classification value="content_management:processing" name="Content Management:Processing" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="bpm" name="TaskManagementService">
+        <Classification value="content_management:processing" name="Content Management:Processing" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="admin" name="UserManagementService">
+        <Description>UserManagementService provides fundamental operations for creating, getting, updating, and deleting repository users   and groups.   &lt;p/&gt;   All of the services can operate on multiple objects, enabling clients to optimize service usage by minimizing the   number of service interactions.  </Description>
+        <Classification value="content_management:administration" name="Content Management:Administration" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="QueryService">
+        <Description>Query service is a primary mechanism for retrieving information from a repository. Query Service is general purpose   and uses execution semantics similar to the use of queries in an RDBMS. The service returns a data set resulting from   the query to the user either directly or through asynchronous caching.      @since 6.0  </Description>
+        <Classification value="content_management:discovery" name="Content Management:Discovery" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="QueryStoreService">
+        <Description>&lt;B&gt;Purpose&lt;/B&gt;: QueryStoreService provides fundamental operations for listing, creating, updating, loading SavedQueries objects   from the repository.     To delete a SavedQuery, one should use the ObjectService.delete() operation.     @see com.emc.documentum.fs.datamodel.core.query.Query   @see com.emc.documentum.fs.datamodel.core.query.SavedQuery   @see com.emc.documentum.fs.datamodel.core.OperationOptions   @see com.emc.documentum.fs.datamodel.core.profiles.Profile  </Description>
+        <Classification value="content_management:discovery" name="Content Management:Discovery" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="SchemaService">
+        <Description>The schema service provides a mechanism for retrieving information regarding repository schemas. A schema is a formal   definition of repository metadata, including types, properties, and relationships. For the current release only the   RICH repository schema is supported, which provides metadata information concerning the data dictionary. In future   releases a repository will potentially have an arbitrary number of named schemas. The schema service can be used for   creating a data structure against which a client can perform offline validation of objects against repository   metadata.     @see com.emc.documentum.fs.datamodel.core.profiles.SchemaProfile     @since 6.0  </Description>
+        <Classification value="content_management:discovery" name="Content Management:Discovery" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="search" name="SearchService">
+        <Description>SearchService is a primary mechanism for searching objects in multiple docbases and external repositories.   &lt;p/&gt;   It provides basic operations for listing the available repositories and searching objects in theses sources.   &lt;p/&gt;   External Repositories will only be available when FS2 option is configured and connected to the DFS System   through the DFC.     @see com.emc.documentum.fs.datamodel.core.OperationOptions   @see com.emc.documentum.fs.datamodel.core.profiles.Profile   @since 6.0  </Description>
+        <Classification value="content_management:discovery" name="Content Management:Discovery" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="ci" name="AnalyticsService">
+        <Classification value="content_management:discovery" name="Content Management:Discovery" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="VirtualDocumentService">
+        <Description>The VirtualDocument service  provides operations for managing virtual documents, such as modifying virtual documents by adding,    removing, or reordering nodes, retrieving virtual documents from the repository, creating snapshots, and removing snapshots.     @since 6.5  </Description>
+        <Classification value="content_management:delivery" name="Content Management:Delivery" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="core" name="LifecycleService">
+        <Description>The Lifecycle service provides operations for runtime use of lifecycles,    such as attaching objects to lifecycles, detaching objects from lifecycles,    moving objects from one lifecycle state to another, and examining the lifecycles associated with objects.     @since 6.5  </Description>
+        <Classification value="content_management:collaboration" name="Content Management:Collaboration" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+    <Service module="collaboration" name="CommentService">
+        <Description>CommentService provides functionality to create, update, retrieve comments asssociated with a data object.     @since 6.5  </Description>
+        <Classification value="content_management:collaboration" name="Content Management:Collaboration" scheme="fs-documentum-emc-com:category"/>
+    </Service>
+</publishedServiceManifest>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relationtype="http://documentum.emc.com/artifact/12012007/relationtype" urn="urnd:com.emc.ide.artifact.relationtype/ts_action_rel?name=ts_action_rel" categoryId="com.emc.ide.artifact.relationtype" implicitlyCreated="true">
+  <dataModel xsi:type="relationtype:RelationType" relationName="ts_action_rel" description="" permanentLink="false" controllingKind="">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dm_relation_type?name=dm_relation_type#//@dataModel"/>
+    <parentType href="urnd:com.emc.ide.artifact.dclass/dmc_taskspace_app?name=dmc_taskspace_app#//@dataModel"/>
+    <childType href="urnd:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

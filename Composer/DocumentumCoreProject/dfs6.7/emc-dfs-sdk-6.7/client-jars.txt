@@ -1,0 +1,47 @@
+commons
+  - commons-cli-1.0.jar
+  - commons-codec-1.3.jar
+  - commons-io-1.2.jar
+  - commons-lang-2.4.jar
+dfc
+  - aspectjrt.jar
+  - dfc.jar
+  - xtrim-api.jar
+  - xtrim-server.jar
+jaxws
+  - activation.jar
+  - FastInfoset.jar
+  - http.jar
+  - jaxb-api.jar
+  - jaxb-impl.jar
+  - jaxb-xjc.jar
+  - jaxws-api.jar
+  - jaxws-rt.jar
+  - jaxws-tools.jar
+  - jsr173_api.jar
+  - jsr181-api.jar
+  - jsr250-api.jar
+  - resolver.jar
+  - saaj-api.jar
+  - saaj-impl.jar
+  - sjsxp.jar
+  - stax-ex.jar
+  - streambuffer.jar
+ucf
+  - client
+  - server
+utils
+  - javassist.jar
+  - log4j.jar
+  - serializer.jar
+  - servlet.jar
+  - tools.jar
+  - xalan.jar
+  - xml-apis.jar
+  - xmlsec.jar
+  - xws-security.jar
+emc-dfs-rt-remote.jar
+emc-dfs-rt.jar
+emc-dfs-services-remote.jar
+emc-dfs-services.jar
+emc-dfs-tools.jar

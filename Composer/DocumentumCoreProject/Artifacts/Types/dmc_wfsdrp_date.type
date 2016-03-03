@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dmc_wfsdrp_date?name=dmc_wfsdrp_date" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dmc_wfsdrp_date">
+      <primaryElement>
+        <attributes attr_name="date_value">
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dmc_wfsdrp_parent?name=dmc_wfsdrp_parent#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

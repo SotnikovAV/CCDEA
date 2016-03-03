@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" xmlns:moduledef="http://documentum.emc.com/artifact/12012007/moduledef" urn="urn:com.emc.ide.artifact.daspect/dm_annotatable?name=dm_annotatable" categoryId="com.emc.ide.artifact.daspect" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DAspect">
+    <attributes name="dm_annotatable" typeCategory="ASPECT">
+      <primaryElement>
+        <attributes attr_name="annotation_name" attr_repeating="true" attr_length="255" attr_restriction="NonQualifiable">
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="module_name" attr_repeating="true" attr_length="255" attr_restriction="NonQualifiable">
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="annotation_metadata" attr_repeating="true" attr_length="1024" attr_restriction="NonQualifiable">
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_partition">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+      </primaryElement>
+    </attributes>
+    <moduleAttached xsi:type="moduledef:AspectModuleDef" href="urn:com.emc.ide.artifact.aspectmoduledef/dm_annotatable?name=dm_annotatable#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://core.services.fs.documentum.emc.com/" xmlns:tns="http://core.services.fs.documentum.emc.com/" xmlns:ns1="http://query.core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://rt.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://query.core.datamodel.fs.documentum.emc.com/" schemaLocation="QueryStoreService_schema3.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="QueryStoreService_schema7.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="QueryStoreService_schema2.xsd"/>
+
+  <xs:element name="CoreServiceException" type="tns:CoreServiceException"/>
+
+  <xs:element name="listSavedQueries" type="tns:listSavedQueries"/>
+
+  <xs:element name="listSavedQueriesResponse" type="tns:listSavedQueriesResponse"/>
+
+  <xs:element name="loadSavedQuery" type="tns:loadSavedQuery"/>
+
+  <xs:element name="loadSavedQueryResponse" type="tns:loadSavedQueryResponse"/>
+
+  <xs:element name="saveQuery" type="tns:saveQuery"/>
+
+  <xs:element name="saveQueryResponse" type="tns:saveQueryResponse"/>
+
+  <xs:complexType name="listSavedQueries">
+    <xs:sequence>
+      <xs:element name="repository" type="xs:string" minOccurs="0"/>
+      <xs:element name="exec" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="filter" type="ns1:SavedQueryFilter" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listSavedQueriesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:DataPackage" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CoreServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns3:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveQuery">
+    <xs:sequence>
+      <xs:element name="object" type="ns2:DataObject" minOccurs="0"/>
+      <xs:element name="richQuery" type="ns1:RichQuery" minOccurs="0"/>
+      <xs:element name="exec" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="results" type="ns2:ObjectIdentitySet" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveQueryResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadSavedQuery">
+    <xs:sequence>
+      <xs:element name="savedQueryId" type="ns2:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="pagingInfo" type="ns2:pagingInfo" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadSavedQueryResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:SavedQuery" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

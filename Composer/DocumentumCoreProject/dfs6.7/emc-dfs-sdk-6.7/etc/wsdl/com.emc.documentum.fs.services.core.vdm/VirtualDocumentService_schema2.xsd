@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://vdm.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-vdm="http://vdm.core.datamodel.fs.documentum.emc.com/" xmlns:tns="http://vdm.core.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="VirtualDocumentService_schema8.xsd"/>
+
+  <xs:complexType name="VdmChildrenActionInfo">
+    <xs:sequence>
+      <xs:element name="Node" type="tns:VirtualDocumentNode" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="action" type="tns:VdmChildrenAction"/>
+    <xs:attribute name="index" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="VirtualDocumentNode">
+    <xs:sequence>
+      <xs:element name="Identity" type="ns1:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="Policy" type="tns:VirtualDocumentInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VirtualDocumentInfo">
+    <xs:sequence/>
+    <xs:attribute name="binding" type="xs:string"/>
+    <xs:attribute name="copyBehavior" type="tns:CopyBehaviorMode"/>
+    <xs:attribute name="overrideLateBinding" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="VdmChildrenAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INSERT"/>
+      <xs:enumeration value="APPEND"/>
+      <xs:enumeration value="REMOVE"/>
+      <xs:enumeration value="SET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CopyBehaviorMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNSPECIFIED"/>
+      <xs:enumeration value="REFERENCE"/>
+      <xs:enumeration value="COPY"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

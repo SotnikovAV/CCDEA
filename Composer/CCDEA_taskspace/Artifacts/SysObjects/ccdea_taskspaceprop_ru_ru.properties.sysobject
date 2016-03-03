@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_ru_RU.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_ru_RU.properties&amp;type=dm_document" categoryId="com.emc.ide.artifact.sysobjectsubtype" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="sysobject:SysobjectSubtype" objectName="CCDEA_taskspaceProp_ru_RU.properties" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="property" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" rootObject="false" sysobjectContent="//@contentStore/@contentEntries.0/@value">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_document?name=dm_document#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/property?name=property#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="sysobjectContent.property">
+      <value filePath="content/00/-2023362900/sysobjectContent.property"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

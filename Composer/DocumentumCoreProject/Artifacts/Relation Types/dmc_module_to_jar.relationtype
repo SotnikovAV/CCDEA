@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relationtype="http://documentum.emc.com/artifact/12012007/relationtype" urn="urn:com.emc.ide.artifact.relationtype/dmc_module_to_jar?name=dmc_module_to_jar" categoryId="com.emc.ide.artifact.relationtype" modifiedByUser="false">
+  <dataModel xsi:type="relationtype:RelationType" relationName="dmc_module_to_jar" securityType="System" description="Relation from a validation module to a jar to allow cascading deletions" integrityKind="Cascade delete" permanentLink="false" controllingKind="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_relation_type?name=dm_relation_type#//@dataModel"/>
+    <parentChildLabel>module_to_jar</parentChildLabel>
+    <childParentLabel>jar_to_module</childParentLabel>
+    <parentType href="urn:com.emc.ide.artifact.dclass/dmc_module?name=dmc_module#//@dataModel"/>
+    <childType href="urn:com.emc.ide.artifact.dclass/dmc_jar?name=dmc_jar#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

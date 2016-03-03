@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pr="pr" targetNamespace="pr" elementFormDefault="qualified">
+
+	<xsd:element name="MCDocInfoModifyZA" type="pr:MCDocInfoModifyZAType"/>
+
+    <xsd:complexType name="MCDocInfoModifyZAType">
+		<xsd:sequence>
+			<xsd:element name="OriginIdentification" type="pr:ObjectIdentifiersType" maxOccurs="2"/>
+			<xsd:element name="ModificationVerb" type="pr:CRUDType" minOccurs="0"/>
+			<xsd:element name="Customer" type="pr:CustomerDetailsType"/>
+			<xsd:element name="ZADetails" type="pr:ZADetailsType"/>
+            <xsd:element name="UserId" type="xsd:string"/>
+			<xsd:element name="ModificationDateTime" type="xsd:dateTime"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ZADetailsType">
+		<xsd:sequence>
+			<xsd:element name="RegNum" type="pr:BranchCodeType"/>
+			<xsd:element name="OriginDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="AcceptDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="RejectDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="StatusDesc" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="DealPassport" type="pr:DealPassportType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContractDetails" type="pr:ContractRecordType" minOccurs="0"/>
+			<xsd:element name="ReceiveDate" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+    <xsd:complexType name="ContractRecordType">
+        <xsd:sequence>
+            <xsd:element name="ContractNumber" type="xsd:string"/>
+            <xsd:element name="ContractDate" type="xsd:date"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+	<xsd:simpleType name="CRUDType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="C"/>
+			<xsd:enumeration value="U"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="ObjectIdentifiersType">
+		<xsd:sequence>
+			<xsd:element name="SourceSystem">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="TBSVK"/>
+						<xsd:enumeration value="JETDOCER"/>
+						<xsd:enumeration value="DVK"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SourceId" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerDetailsType">
+		<xsd:sequence>
+			<xsd:element name="CustomerNumber" type="pr:CustomerNumberType"/>
+			<xsd:element name="CustomerName" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CustomerNumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="BranchCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="DealPassportType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="22"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

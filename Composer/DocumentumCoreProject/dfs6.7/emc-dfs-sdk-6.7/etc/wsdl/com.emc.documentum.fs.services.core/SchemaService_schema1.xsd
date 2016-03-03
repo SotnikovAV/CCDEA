@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://schema.core.datamodel.fs.documentum.emc.com/" xmlns:tns="http://schema.core.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dfs-dm-core-query="http://query.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-schema="http://schema.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://query.core.datamodel.fs.documentum.emc.com/" schemaLocation="SchemaService_schema3.xsd"/>
+
+  <xs:complexType name="TypeInfo">
+    <xs:sequence>
+      <xs:element name="SubtypeInfos" type="tns:TypeInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PropertyInfos" type="tns:PropertyInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PropertyDisplaySections" type="tns:PropertyDisplaySection" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="RelationshipInfos" type="tns:RelationshipInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="parentName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="PropertyInfo">
+    <xs:sequence>
+      <xs:element name="DefaultValues" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="SearchOperations" type="dfs-dm-core-query:Condition" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ValueAssist" type="tns:ValueAssist" minOccurs="0"/>
+      <xs:element name="ValueMap" type="tns:ValueInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Dependencies" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="dataType" type="tns:DataType"/>
+    <xs:attribute name="isArray" type="xs:boolean" use="required"/>
+    <xs:attribute name="isSearchable" type="xs:boolean" use="required"/>
+    <xs:attribute name="isDynamic" type="xs:boolean" use="required"/>
+    <xs:attribute name="length" type="xs:int" use="required"/>
+    <xs:attribute name="isNotNull" type="xs:boolean" use="required"/>
+    <xs:attribute name="isRequired" type="xs:boolean" use="required"/>
+    <xs:attribute name="isReadOnly" type="xs:boolean" use="required"/>
+    <xs:attribute name="isHidden" type="xs:boolean" use="required"/>
+    <xs:attribute name="helpText" type="xs:string"/>
+    <xs:attribute name="formatPattern" type="xs:string"/>
+    <xs:attribute name="mDefaultCondition" type="dfs-dm-core-query:Condition"/>
+  </xs:complexType>
+
+  <xs:complexType name="ValueAssist">
+    <xs:sequence>
+      <xs:element name="Values" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="allowUserValues" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ValueInfo">
+    <xs:sequence/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="label" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="PropertyDisplaySection">
+    <xs:sequence>
+      <xs:element name="PropertyDisplayInfos" type="tns:PropertyDisplayInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="PropertyDisplayInfo">
+    <xs:sequence/>
+    <xs:attribute name="propertyName" type="xs:string"/>
+    <xs:attribute name="isSeparator" type="xs:boolean" use="required"/>
+    <xs:attribute name="isSecondary" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="RelationshipInfo">
+    <xs:sequence>
+      <xs:element name="PropertyInfos" type="tns:PropertyInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="currentType" type="xs:string" use="required"/>
+    <xs:attribute name="currentTypeRole" type="xs:string" use="required"/>
+    <xs:attribute name="targetType" type="xs:string" use="required"/>
+    <xs:attribute name="targetTypeRole" type="xs:string" use="required"/>
+    <xs:attribute name="degree" type="tns:RelationshipDegree"/>
+  </xs:complexType>
+
+  <xs:complexType name="RepositoryInfo">
+    <xs:sequence>
+      <xs:element name="SchemaNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="defaultSchemaName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="TypeFilter">
+    <xs:sequence>
+      <xs:element name="TypeNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="includeSubtypes" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SchemaInfo">
+    <xs:sequence>
+      <xs:element name="TypeInfos" type="tns:TypeInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="label" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:simpleType name="PropertyInfoFilter">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="NON_INHERITED"/>
+      <xs:enumeration value="DISPLAY_CONFIG"/>
+      <xs:enumeration value="ALL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STRING"/>
+      <xs:enumeration value="SHORT"/>
+      <xs:enumeration value="INTEGER"/>
+      <xs:enumeration value="LONG"/>
+      <xs:enumeration value="DOUBLE"/>
+      <xs:enumeration value="DATE"/>
+      <xs:enumeration value="BOOLEAN"/>
+      <xs:enumeration value="OBJECT_ID"/>
+      <xs:enumeration value="CUSTOM"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RelationshipDegree">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MANY_TO_MANY"/>
+      <xs:enumeration value="ONE_TO_MANY"/>
+      <xs:enumeration value="ONE_TO_ONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pr="pr" targetNamespace="pr" elementFormDefault="qualified">
+
+	<xsd:element name="MCDocInfoModifyVBK" type="pr:MCDocInfoModifyVBKType"/>
+
+	<xsd:complexType name="MCDocInfoModifyVBKType">
+		<xsd:sequence>
+			<xsd:element name="OriginIdentification" type="pr:ObjectIdentifiersType" maxOccurs="2"/>
+			<xsd:element name="ModificationVerb" type="pr:CRUDType" minOccurs="0"/>
+			<xsd:element name="Customer" type="pr:CustomerDetailsType"/>
+			<xsd:element name="VBKDetails" type="pr:VBKDetailsType"/>
+			<xsd:element name="UserId" type="xsd:string"/>
+			<xsd:element name="ModificationDateTime" type="xsd:dateTime"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="VBKDetailsType">
+		<xsd:sequence>
+			<xsd:element name="RegNum" type="pr:BranchCodeType"/>
+			<xsd:element name="DealPassport" type="pr:DealPassportType"/>
+			<xsd:element name="DealPassportDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="ContractNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ContractDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Contractor" type="pr:ContractorType" minOccurs="1" maxOccurs="unbounded"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="NoAmount" type="xsd:boolean" />
+				<xsd:element name="Amount" type="xsd:decimal" />
+			</xsd:choice>
+			<xsd:element name="DateExpire" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Currency" type="pr:CurrencyCodeType"/>
+			<xsd:element name="CloseDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="CloseDesc" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CRUDType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="C"/>
+			<xsd:enumeration value="U"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="ObjectIdentifiersType">
+		<xsd:sequence>
+			<xsd:element name="SourceSystem">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="TBSVK"/>
+						<xsd:enumeration value="JETDOCER"/>
+						<xsd:enumeration value="DVK"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SourceId" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerDetailsType">
+		<xsd:sequence>
+			<xsd:element name="CustomerNumber" type="pr:CustomerNumberType"/>
+			<xsd:element name="CustomerName" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CustomerNumberType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="BranchCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="DealPassportType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="22"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CurrencyCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="ContractorType">
+		<xsd:sequence>
+			<xsd:element name="ContractorName" type="xsd:string"/>
+			<xsd:element name="ContractorCountry" type="pr:CountryCodeType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CountryCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

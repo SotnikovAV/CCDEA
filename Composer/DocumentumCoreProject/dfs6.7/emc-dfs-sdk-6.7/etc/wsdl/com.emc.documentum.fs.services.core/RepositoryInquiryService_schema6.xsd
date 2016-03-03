@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://core.services.fs.documentum.emc.com/" xmlns:tns="http://core.services.fs.documentum.emc.com/" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://query.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://rt.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="RepositoryInquiryService_schema7.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="RepositoryInquiryService_schema2.xsd"/>
+
+  <xs:import namespace="http://query.core.datamodel.fs.documentum.emc.com/" schemaLocation="RepositoryInquiryService_schema3.xsd"/>
+
+  <xs:element name="CoreServiceException" type="tns:CoreServiceException"/>
+
+  <xs:element name="getRepositoryList" type="tns:getRepositoryList"/>
+
+  <xs:element name="getRepositoryListResponse" type="tns:getRepositoryListResponse"/>
+
+  <xs:element name="getRepositoryNameByObjectId" type="tns:getRepositoryNameByObjectId"/>
+
+  <xs:element name="getRepositoryNameByObjectIdResponse" type="tns:getRepositoryNameByObjectIdResponse"/>
+
+  <xs:complexType name="getRepositoryNameByObjectId">
+    <xs:sequence>
+      <xs:element name="objectIdList" type="ns1:ObjectId" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryNameByObjectIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:ObjectIdentitySet" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CoreServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns2:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryList">
+    <xs:sequence>
+      <xs:element name="options" type="ns1:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryListResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns3:Repository" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

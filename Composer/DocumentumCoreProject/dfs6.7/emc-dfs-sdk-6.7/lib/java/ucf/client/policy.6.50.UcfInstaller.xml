@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+	<configuration>
+	   <runtime>	   	  
+	      <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+	         <dependentAssembly>			 
+	            <assemblyIdentity name="UcfInstaller"
+	                              publicKeyToken="d39ce23f875665d8"
+	                              culture="neutral" />
+	            <bindingRedirect oldVersion="6.50.0.0-6.70.2000.37"
+	                             newVersion="6.70.2000.38"/>
+	         </dependentAssembly>
+	      </assemblyBinding>
+	   </runtime>
+	</configuration>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://lifecycle.core.services.fs.documentum.emc.com/" xmlns:tns="http://lifecycle.core.services.fs.documentum.emc.com/" xmlns:ns1="http://lifecycle.core.datamodel.fs.documentum.emc.com/" xmlns:ns3="http://rt.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://lifecycle.core.datamodel.fs.documentum.emc.com/" schemaLocation="LifecycleService_schema7.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="LifecycleService_schema8.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="LifecycleService_schema2.xsd"/>
+
+  <xs:element name="CoreServiceException" type="tns:CoreServiceException"/>
+
+  <xs:element name="attach" type="tns:attach"/>
+
+  <xs:element name="attachResponse" type="tns:attachResponse"/>
+
+  <xs:element name="detach" type="tns:detach"/>
+
+  <xs:element name="detachResponse" type="tns:detachResponse"/>
+
+  <xs:element name="execute" type="tns:execute"/>
+
+  <xs:element name="executeResponse" type="tns:executeResponse"/>
+
+  <xs:element name="getLifecycle" type="tns:getLifecycle"/>
+
+  <xs:element name="getLifecycleResponse" type="tns:getLifecycleResponse"/>
+
+  <xs:complexType name="attach">
+    <xs:sequence>
+      <xs:element name="lifecycleInfos" type="ns1:AttachLifecycleInfo" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="attachResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="CoreServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns3:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element name="lifecycleOperations" type="ns1:LifecycleOperation" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="executeResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="detach">
+    <xs:sequence>
+      <xs:element name="objectIds" type="ns2:ObjectIdentitySet" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detachResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getLifecycle">
+    <xs:sequence>
+      <xs:element name="objectIds" type="ns2:ObjectIdentitySet" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLifecycleResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:LifecycleInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?dctm original_encoding="UTF-8" has_bom="false" config_locator="090000388000042f"?>
+<action-writers>
+   <action-writer name="standard">
+      <class>com.documentum.imaging.processmanager.configuration.data.action.service.impl.TaskSpaceActionStandardDefWriter</class>
+   </action-writer>
+   <action-writer name="launch">
+      <class>com.documentum.imaging.processmanager.configuration.data.action.service.impl.TaskSpaceActionLaunchComponentDefWriter</class>
+   </action-writer>
+</action-writers>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:group="http://documentum.emc.com/artifact/12012007/group" urn="urn:com.emc.ide.artifact.role/queue_advance_processor?name=queue_advance_processor" categoryId="com.emc.ide.artifact.role" modifiedByUser="false">
+  <dataModel xsi:type="group:Role" groupName="queue_advance_processor" groupAddress="" description="User who is queue_processor and is capable to select task from work queues to work on" groupClass="role" groupDisplayName="queue_advance_processor">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_group?name=dm_group#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

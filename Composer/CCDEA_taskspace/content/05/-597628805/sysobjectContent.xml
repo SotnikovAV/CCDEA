@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?dctm original_encoding="UTF-8" has_bom="false" config_locator="0900028c80000425"?>
+<config>
+	<tab-configs>
+		<open-item-tab-configs>
+			<open-item-tab-config>
+				<id>Default</id>
+				<desc>Uses the Default tab label configuration with the type icon</desc>
+				<label>Default</label>
+				<icon/>
+			</open-item-tab-config>	
+			<open-item-tab-config>
+				<id>Relationships</id>
+				<desc>Uses the Relationships tab label and Search icon configurations</desc>
+				<label>Relationships</label>
+				<icon>Search</icon>									
+			</open-item-tab-config>
+		</open-item-tab-configs>		
+	</tab-configs>
+	<icon-configs>
+		<icon-config>
+			<id>Search</id>
+			<desc>Search icon used for open item search components</desc>
+			<icon>/icons/search/search-go.gif</icon>		
+			<width/>		
+			<height/>		
+		</icon-config>
+		<icon-config>
+			<id>Big Search</id>
+			<desc>Search icon used for open item search components</desc>
+			<icon>/icons/search/search-go.gif</icon>		
+			<width>32</width>		
+			<height>32</height>		
+		</icon-config>	
+	</icon-configs>
+</config>

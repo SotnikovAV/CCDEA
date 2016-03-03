@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="tCommentMetaData">
+    <xs:sequence>
+      <xs:element name="noteFlag" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tAttachmentMetaData">
+    <xs:sequence>
+      <xs:element name="objectId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tTaskMetaData">
+    <xs:sequence>
+      <xs:element name="isSignoffRequired" type="xs:boolean"/>
+      <xs:element name="isFailedAutoTask" type="xs:boolean"/>
+      <xs:element name="selectNextActivities" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="activity" nillable="true" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence/>
+                <xs:attribute name="name" type="xs:string"/>
+                <xs:attribute name="type" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="isRequired" type="xs:boolean"/>
+          <xs:attribute name="minSelect" type="xs:integer"/>
+          <xs:attribute name="maxSelect" type="xs:integer"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="selectDynamicPerformers" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="activity" nillable="true" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence/>
+                <xs:attribute name="name" type="xs:string"/>
+                <xs:attribute name="performerType" type="xs:integer"/>
+                <xs:attribute name="selectFrom" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="packages" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="package" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence/>
+                <xs:attribute name="name" type="xs:string"/>
+                <xs:attribute name="type" type="xs:string"/>
+                <xs:attribute name="isMandatory" type="xs:boolean"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="processVariables" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="processVariable" nillable="true" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence/>
+                <xs:attribute name="name" type="xs:string"/>
+                <xs:attribute name="type" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="processParameters" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="processParameter" nillable="true" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence/>
+                <xs:attribute name="name" type="xs:string"/>
+                <xs:attribute name="type" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tCompleteTaskData">
+    <xs:sequence>
+      <xs:element name="signoff" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="password" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="nextActivities" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="activity" nillable="true" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence/>
+                <xs:attribute name="name" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dynamicPerformers" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="activity" nillable="true" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="name" type="xs:string"/>
+                  <xs:element name="selectedPerformers" type="ns1:tOrganizationalEntity" xmlns:ns1="http://www.example.org/WS-HT"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="rerunAutoTask" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence/>
+          <xs:attribute name="rerun" type="xs:boolean"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

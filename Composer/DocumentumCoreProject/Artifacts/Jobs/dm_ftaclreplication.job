@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_FTACLReplication?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_FTACLReplication" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_FTACLReplication" title="Fulltext" subject="Copies dm_acl and dm_group objects in the docbase to ESS." applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runMode="Day(s)" isInactive="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_FTACLReplication?name=dm_FTACLReplication#//@dataModel"/>
+    <methodArguments>-dsearch_host localhost</methodArguments>
+    <methodArguments>-dsearch_port 9200</methodArguments>
+    <methodArguments>-dsearch_domain docbase1</methodArguments>
+    <methodArguments>-replication_option both</methodArguments>
+    <methodArguments>-acl_where_clause</methodArguments>
+    <methodArguments>-group_where_clause</methodArguments>
+    <methodArguments>-max_object_count</methodArguments>
+    <methodArguments>-verbose false</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

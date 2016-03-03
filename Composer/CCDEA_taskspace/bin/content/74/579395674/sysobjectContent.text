@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.documentum.services.preset.instance:PresetPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.documentum.services.preset.instance="http:///com/documentum/services/preset/instance.ecore" name="CCDEA_taskspace_preset_package_role_ccdea_vk_user" lastModifier="dmadmin" lastAuthenticationRepository="UCB" lockedBy="">
+  <configScope>
+    <scopes>
+      <values>CCDEA_taskspace</values>
+      <scopeDefinition href="../TaskSpace_Role.definition#//@scopeDefinitions.1"/>
+    </scopes>
+    <scopes>
+      <values>ccdea_vk_user</values>
+      <scopeDefinition href="../TaskSpace_Role.definition#//@scopeDefinitions.0"/>
+    </scopes>
+  </configScope>
+  <items itemDefinitionId="assigned_tabs" packageDefinitionName="TaskSpace_Role">
+    <itemData configData="&lt;assigned_tabs>&lt;tab>ccdea_vk_search_tab&lt;/tab>&lt;/assigned_tabs>" modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_assigned_tabs">
+      <configTargetDefinitions href="../TaskSpace_Role.definition#//@configTargetDefinitions.0"/>
+    </itemData>
+  </items>
+  <items itemDefinitionId="globalsearchtemplate" packageDefinitionName="TaskSpace_Role">
+    <itemData configData="&lt;globalsearchtemplate>&lt;showsearchboxontop>false&lt;/showsearchboxontop>&lt;searchtab>default_search_tab&lt;/searchtab>&lt;searchtemplatename>DefaultSearchView&lt;/searchtemplatename>&lt;searchterm>object_name&lt;/searchterm>&lt;masktext>ccdea_vk_user.global_search_mask_text.label&lt;/masktext>&lt;searchbuttontext>ccdea_vk_user.global_search_searchbuttontext.label&lt;/searchbuttontext>&lt;/globalsearchtemplate>" modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_role_globalsearchtemplate">
+      <configTargetDefinitions href="../TaskSpace_Role.definition#//@configTargetDefinitions.2"/>
+    </itemData>
+  </items>
+  <items itemDefinitionId="processinstancelisttype-form-mapping" packageDefinitionName="TaskSpace_Role">
+    <itemData modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_role_processinstancelisttype-form-mapping">
+      <configTargetDefinitions href="../TaskSpace_Role.definition#//@configTargetDefinitions.10"/>
+    </itemData>
+  </items>
+  <items itemDefinitionId="workqueue-tasklist-mapping" packageDefinitionName="TaskSpace_Role">
+    <itemData modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_role_workqueue-tasklist-mapping">
+      <configTargetDefinitions href="../TaskSpace_Role.definition#//@configTargetDefinitions.4"/>
+    </itemData>
+  </items>
+  <items itemDefinitionId="documenttype-form-mapping" packageDefinitionName="TaskSpace_Role">
+    <itemData modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_role_documenttype-form-mapping">
+      <configTargetDefinitions href="../TaskSpace_Role.definition#//@configTargetDefinitions.5"/>
+    </itemData>
+  </items>
+  <items itemDefinitionId="assigned_menus" packageDefinitionName="TaskSpace_Role">
+    <itemData configData="&lt;assigned_menus>&lt;/assigned_menus>" modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_assigned_menus">
+      <configTargetDefinitions href="../TaskSpace_Role.definition#//@configTargetDefinitions.11"/>
+    </itemData>
+  </items>
+</com.documentum.services.preset.instance:PresetPackage>

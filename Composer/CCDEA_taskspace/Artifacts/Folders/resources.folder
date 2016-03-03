@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.foldersubtype/Resources?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Resources&amp;type=dm_folder" categoryId="com.emc.ide.artifact.foldersubtype" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="sysobject:FolderSubtype" objectName="Resources" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" rootObject="false">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <sysobjects href="urn:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_ru_RU.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_ru_RU.properties&amp;type=dm_document#//@dataModel"/>
+    <sysobjects href="urn:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
+    <sysobjects href="urn:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceActionProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceActionProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

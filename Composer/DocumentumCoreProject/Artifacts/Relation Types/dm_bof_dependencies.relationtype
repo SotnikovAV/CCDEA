@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relationtype="http://documentum.emc.com/artifact/12012007/relationtype" urn="urn:com.emc.ide.artifact.relationtype/dm_bof_dependencies?name=dm_bof_dependencies" categoryId="com.emc.ide.artifact.relationtype" modifiedByUser="false">
+  <dataModel xsi:type="relationtype:RelationType" relationName="dm_bof_dependencies" description="BOF module dependencies" integrityKind="Restrict delete" permanentLink="false" controllingKind="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_relation_type?name=dm_relation_type#//@dataModel"/>
+    <childParentLabel>dm_bof_dependencies</childParentLabel>
+    <parentType href="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
+    <childType href="urn:com.emc.ide.artifact.dclass/dmc_module?name=dmc_module#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

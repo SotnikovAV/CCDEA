@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relationtype="http://documentum.emc.com/artifact/12012007/relationtype" urn="urn:com.emc.ide.artifact.relationtype/dmc_wf_package_skill?name=dmc_wf_package_skill" categoryId="com.emc.ide.artifact.relationtype" modifiedByUser="false">
+  <dataModel xsi:type="relationtype:RelationType" relationName="dmc_wf_package_skill" securityType="Parent" description="Relation between package and skill_level" permanentLink="false" controllingKind="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_relation_type?name=dm_relation_type#//@dataModel"/>
+    <parentType href="urn:com.emc.ide.artifact.dclass/dm_workflow?name=dm_workflow#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

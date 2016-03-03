@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_FederationImport?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_FederationImport" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_FederationImport" title="Federation" subject="Imports Global Users and Groups into Docbase" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="1.0.0" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runMode="Day(s)" isInactive="true" methodTraceLevel="4">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_FederationImport?name=dm_FederationImport#//@dataModel"/>
+    <methodArguments>-window_interval 1440</methodArguments>
+    <methodArguments>-queueperson</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

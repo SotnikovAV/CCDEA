@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relation="http://documentum.emc.com/artifact/12012007/relation" urn="urn:com.emc.ide.artifact.relation/ts_alias_set_rel?childId=665bbc6a8000dd00&amp;childUrn=urn%3Acom.emc.ide.artifact.aliasset%2FCCDEA_taskspace%3Fname%3DCCDEA_taskspace&amp;name=ts_alias_set_rel&amp;parentId=085bbc6a815fa5bd&amp;parentUrn=urn%3Acom.emc.ide.artifact.sysobjectsubtype%2FCCDEA_taskspace%3Flanguage_code%3D%26location%3D%252FSystem%252FApplications%252FCCDEA_taskspace%26name%3DCCDEA_taskspace%26type%3Ddmc_taskspace_app" categoryId="com.emc.ide.artifact.relation" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="relation:RelationSubType" childLabel="" description="This is an alias set relation" name="ts_alias_set_rel">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_relation?name=dm_relation#//@dataModel"/>
+    <parentId href="urn:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=CCDEA_taskspace&amp;type=dmc_taskspace_app#//@dataModel"/>
+    <childId href="urn:com.emc.ide.artifact.aliasset/CCDEA_taskspace?name=CCDEA_taskspace#//@dataModel"/>
+    <relationName href="urn:com.emc.ide.artifact.relationtype/ts_alias_set_rel?name=ts_alias_set_rel#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

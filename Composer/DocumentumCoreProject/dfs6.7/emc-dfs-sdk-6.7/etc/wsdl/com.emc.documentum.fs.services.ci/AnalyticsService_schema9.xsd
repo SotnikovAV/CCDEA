@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://ci.datamodel.fs.documentum.emc.com/" xmlns:tns="http://ci.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dfs-dm-ci="http://ci.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core="http://content.core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="AnalyticsService_schema6.xsd"/>
+
+  <xs:complexType name="AnalyticsResult">
+    <xs:sequence>
+      <xs:element name="categoryAssignList" type="tns:CategoryAssign" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Identity" type="ns1:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CategoryAssign">
+    <xs:sequence>
+      <xs:element name="category" type="tns:Category" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="score" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element name="Identity" type="ns1:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="path" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="candidateThreshold" type="xs:int" use="required"/>
+    <xs:attribute name="onTargetThreshold" type="xs:int" use="required"/>
+  </xs:complexType>
+</xs:schema>
+

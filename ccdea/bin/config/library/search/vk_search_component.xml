@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+   <scope>
+
+      <component id="ccdea_vk_search">
+
+         <desc>
+            Прототип компонента поиска для проекта CCDEA
+         </desc>
+
+         <params>
+         </params>
+
+         <!-- Component Behavior -->
+
+         <pages>
+            <start>/ccdea/library/search/ccdea_vk_search.jsp</start>
+         </pages>
+
+         <class>ru.rb.ccdea.search.SearchComponent</class>
+         <nlsbundle>ru.rb.ccdea.search.VkSearchComponentNlsProp</nlsbundle>
+         <contains>
+            <component>ccdea_vk_search_results</component>
+            <component>ccdea_vk_search_results_passport</component>
+            <component>ccdea_vk_search_results_vbk</component>
+            <component>ccdea_vk_search_results_contract</component>
+            <component>ccdea_vk_search_results_spd</component>
+            <component>ccdea_vk_search_results_svo_detail</component>
+            <component>ccdea_vk_search_results_request</component>
+            <component>ccdea_vk_search_results_pd</component>
+         </contains>
+      </component>
+
+   </scope>
+</config>
+
+ 

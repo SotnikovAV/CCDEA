@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:moduledef="http://documentum.emc.com/artifact/12012007/moduledef" urn="urnd:com.emc.ide.artifact.moduledef/com.documentum.services.cts.df.transform.ICTSTransformService?name=com.documentum.services.cts.df.transform.ICTSTransformService" categoryId="com.emc.ide.artifact.moduledef">
+  <dataModel xsi:type="moduledef:ModuleDef" objectName="com.documentum.services.cts.df.transform.ICTSTransformService" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" min_dfc_version="" implementation_technology="Java" contact_info="" a_bof_version="1.0" a_module_type="SBO" module_description="">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dmc_module?name=dmc_module#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <interfaceJars href="urnd:com.emc.ide.artifact.jardef.jardef/ctsTransform.jar?language_code=&amp;location=%2FSystem%2FApplications%2FTransformation%2FctsTransform&amp;name=ctsTransform.jar&amp;type=dmc_jar#//@dataModel"/>
+    <implementationJars href="urnd:com.emc.ide.artifact.jardef.jardef/ctsTransformImpl.jar?language_code=&amp;location=%2FSystem%2FApplications%2FTransformation%2FctstransformImpl&amp;name=ctsTransformImpl.jar&amp;type=dmc_jar#//@dataModel"/>
+    <runtimeEnvironmentXML objectName="RuntimeEnvironment.xml" contentType="xml" rootObject="false" xmlFile="//@contentStore/@contentEntries.0/@value" minDFCVersion="" minVmVersion="">
+      <objectType href="urnd:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
+      <log message="" level="NONE"/>
+    </runtimeEnvironmentXML>
+    <primaryElement primary_class="com.documentum.services.cts.impl.transform.CTSTransformService">
+      <a_interfaces>com.documentum.services.cts.df.transform.ICTSTransformService</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfService</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfModule</a_interfaces>
+    </primaryElement>
+    <thirdPartyLibraries href="urnd:com.emc.ide.artifact.jardef.javalibrary/RealTime?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService&amp;name=RealTime&amp;type=dmc_java_library#//@dataModel"/>
+    <thirdPartyLibraries href="urnd:com.emc.ide.artifact.jardef.javalibrary/log4j?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService&amp;name=log4j&amp;type=dmc_java_library#//@dataModel"/>
+    <miscellaneous objectName="Miscellaneous" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="" rootObject="false">
+      <objectType href="urnd:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+      <versionLabel>1.0</versionLabel>
+      <versionLabel>CURRENT</versionLabel>
+    </miscellaneous>
+    <externalInterfaces objectName="External Interfaces" rootObject="false">
+      <objectType href="urn:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+    </externalInterfaces>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="RuntimeEnvironment">
+      <value filePath="content/00/-2088335500/RuntimeEnvironment"/>
+    </contentEntries>
+  </contentStore>
+  <derivedDataModel xsi:type="Artifact:InstallableProxy" proxiedObject="//@dataModel/@runtimeEnvironmentXML"/>
+  <derivedDataModel xsi:type="Artifact:InstallableProxy" proxiedObject="//@dataModel/@miscellaneous"/>
+  <derivedDataModel xsi:type="Artifact:InstallableProxy" proxiedObject="//@dataModel/@externalInterfaces"/>
+</Artifact:Artifact>

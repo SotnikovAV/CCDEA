@@ -1,0 +1,19 @@
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+    <handler-chain>
+        <handler>
+            <handler-name>Authorization</handler-name>
+            <handler-class>com.emc.documentum.fs.rt.impl.handler.AuthorizationHandler</handler-class>
+        </handler>
+        <!--handler>
+            <handler-name>Privileged DFC</handler-name>
+            <handler-class>com.emc.documentum.fs.rt.handlers.PrivilegedDfcHandler</handler-class>
+        </handler-->
+        <!-- Any handler using ContextFactory, like KerberosTokenServerHandler or AuthorizationHandler
+	     must be inserted above this comment -->
+        <handler>
+            <handler-name>Context Local Registry</handler-name>
+            <handler-class>com.emc.documentum.fs.rt.impl.handler.ServerContextHandler</handler-class>
+        </handler>
+        <!-- Any handler modifying DFS SOAP headers must come below this comment -->
+    </handler-chain>
+</handler-chains>

@@ -1,0 +1,38 @@
+create ccdea_branch object set s_code = '0001', set s_name = 'АО ЮниКредит Банк, Москва';
+create ccdea_branch object set s_code = '0002', set s_name = 'Петербургский Филиал АО ЮниКредит Банка, г.Санкт-Петербург';
+create ccdea_branch object set s_code = '0009', set s_name = 'Пермский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0013', set s_name = 'Ставропольский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0016', set s_name = 'ЮниКредит Банк, Челябинск';
+create ccdea_branch object set s_code = '0015', set s_name = 'ЮниКредит Банк, Ростов-на-Дону';
+create ccdea_branch object set s_code = '0023', set s_name = 'Краснодарский  Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0030', set s_name = 'Воронежский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0033', set s_name = 'Самарский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0040', set s_name = 'Екатеринбургский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0045', set s_name = 'Нижегородский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0050', set s_name = 'Новосибирский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0066', set s_name = 'Башкирский Филиал АО ЮниКредит Банка';
+create ccdea_branch object set s_code = '0093', set s_name = 'Волгоградский Филиал АО ЮниКредит Банка';
+
+
+create ccdea_currency object set s_code = 'CAD', set s_name = 'CANAD.DOLLAR';
+create ccdea_currency object set s_code = 'CHF', set s_name = 'SWISS FRANC';
+create ccdea_currency object set s_code = 'DEM', set s_name = 'DEUTSCHE MARK';
+create ccdea_currency object set s_code = 'EUR', set s_name = 'EURO';
+create ccdea_currency object set s_code = 'FRF', set s_name = 'FRENCH FRANC';
+create ccdea_currency object set s_code = 'GBP', set s_name = 'POUND STERLING';
+create ccdea_currency object set s_code = 'ITL', set s_name = 'ITALIAN LIRA';
+create ccdea_currency object set s_code = 'RUR', set s_name = 'RUSSIAN ROUBLE';
+create ccdea_currency object set s_code = 'USD', set s_name = 'AMERICAN.DOLL.';
+create ccdea_currency object set s_code = 'XCC', set s_name = 'Escrow CHF(CN)';
+
+
+create ccdea_customer object set s_number = '00602383', set s_name = 'FIAT', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00602797', set s_name = 'SAMSUNG ELECTRONICS', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00600460', set s_name = 'SOVAGRITAL', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00600551', set s_name = 'INTER MTD', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00600643', set s_name = 'VNESHINTORG', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00600825', set s_name = 'OPTINTORG', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00603894', set s_name = 'SAMSUNG INFORMSYSTEMS', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00609115', set s_name = 'INTERNATIONAL CREDIT SOUSE', set s_branch_code = '0001';
+create ccdea_customer object set s_number = '00603241', set s_name = 'SOYUZELECTROGAS', set s_branch_code = '0023';
+create ccdea_customer object set s_number = '00603944', set s_name = 'URALAZ', set s_branch_code = '0016';

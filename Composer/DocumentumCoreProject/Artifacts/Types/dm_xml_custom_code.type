@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dm_xml_custom_code?name=dm_xml_custom_code" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_xml_custom_code">
+      <primaryElement>
+        <attributes attr_name="class_path" attr_length="255">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Class Path" help_text="" comment_text="" nls_key="en" category_name="Custom" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="code_type">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Code Type" help_text="" comment_text="" nls_key="en" category_name="Custom" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="com_class_id" attr_length="80">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="COM Class ID" help_text="" comment_text="" nls_key="en" category_name="Custom" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT">
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>webtop</scope_value>
+            <display_config object_name="dm_info" inherited="true">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_name>keywords</attribute_name>
+              <attribute_name>authors</attribute_name>
+              <attribute_name>r_content_size</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>r_version_label</attribute_name>
+              <attribute_name>r_lock_date</attribute_name>
+              <attribute_name>r_lock_owner</attribute_name>
+              <attribute_name>r_policy_id</attribute_name>
+              <attribute_name>r_current_state</attribute_name>
+              <attribute_name>log_entry</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_creator_name</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>r_modifier</attribute_name>
+              <attribute_name>r_access_date</attribute_name>
+              <attribute_name>a_storage_type</attribute_name>
+              <attribute_name>i_retain_until</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+            </display_config>
+          </scopes>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>DcDesktopClient</scope_value>
+            <display_config object_name="dm_general" inherited="true">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>r_object_type</attribute_name>
+              <attribute_name>a_content_type</attribute_name>
+              <attribute_name>r_content_size</attribute_name>
+              <attribute_name>i_folder_id</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>a_full_text</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_summary" inherited="true">
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_name>keywords</attribute_name>
+              <attribute_name>authors</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_version" inherited="true">
+              <attribute_name>r_version_label</attribute_name>
+              <attribute_name>log_entry</attribute_name>
+              <attribute_name>r_lock_date</attribute_name>
+              <attribute_name>r_lock_owner</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_security" fixed_source="true" inherited="true"/>
+            <display_config object_name="dm_advanced" inherited="true">
+              <attribute_name>r_policy_id</attribute_name>
+              <attribute_name>r_current_state</attribute_name>
+              <attribute_name>a_storage_type</attribute_name>
+              <attribute_name>r_object_id</attribute_name>
+              <attribute_name>a_is_hidden</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_custom">
+              <attribute_name>class_path</attribute_name>
+              <attribute_name>code_type</attribute_name>
+              <attribute_name>com_class_id</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+          </scopes>
+        </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="XML Custom Code" help_text="" comment_text="" nls_key="en">
+            <value_mappings map_data_string="dm_custom" map_display_string="Custom"/>
+          </locales>
+        </typeAnnotations>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dm_document?name=dm_document#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

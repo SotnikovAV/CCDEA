@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?dctm original_encoding="UTF-8" has_bom="false" config_locator="0900028c80000425"?>
+<config>
+	<labels>
+		<format-items>
+			<format-item>
+				<id>ATT</id>
+				<desc>Object Attribute</desc>
+				<allowable-child-items>
+					<item>ATT_RULE</item>
+				</allowable-child-items>
+				<class>com.documentum.imaging.processmanager.configuration.data.label.ObjectAttributeLabelDefintion</class>					
+			</format-item>	
+			<format-item>
+				<id>NLS</id>
+				<desc>NLS Property Label</desc>
+				<allowable-child-items>
+					<item>ATT_RULE</item>
+				</allowable-child-items>			
+				<class>com.documentum.imaging.processmanager.configuration.data.label.NlsPropertyLabelDefintion</class>		
+			</format-item>			
+			<format-item>
+				<id>ATT_RULE</id>
+				<desc>Fallback Attribute</desc>
+				<allowable-child-items/>
+				<class>com.documentum.imaging.processmanager.configuration.data.label.FallbackAttributeLabelRule</class>			
+			</format-item>	
+		</format-items>
+		<label-formats>
+			<label-format>
+				<id>Default</id>
+				<desc>Displays the object name attribute</desc>
+				<nls/>
+				<format-item rules="">
+					<id>ATT_RULE</id>
+					<key>object_name</key>
+					<child-formats/>
+				</format-item>									
+			</label-format>	
+			<label-format>
+				<id>Relationships</id>
+				<desc>Displays "Relationship for" plus the object name attribute</desc>
+				<nls/>
+				<format-item rules="">
+					<id>NLS</id>
+					<key>MSG_RELATIONSHIP</key>
+					<child-items>
+						<format-item rules="">
+							<id>ATT_RULE</id>
+							<key>object_name</key>
+							<child-formats/>
+						</format-item>				
+					</child-items>				
+				</format-item>
+			</label-format>
+			<label-format>
+				<id>Title</id>
+				<desc>Displays the title att is available, otherwise the object name attribute</desc>
+				<nls/>
+				<format-item rules="">
+					<id>ATT</id>
+					<key>title</key>
+					<child-items>
+						<format-item rules="">
+							<id>ATT_RULE</id>
+							<key>object_name</key>
+							<child-formats/>
+						</format-item>				
+					</child-items>				
+				</format-item>						
+			</label-format>		
+		</label-formats>
+	</labels>
+</config>

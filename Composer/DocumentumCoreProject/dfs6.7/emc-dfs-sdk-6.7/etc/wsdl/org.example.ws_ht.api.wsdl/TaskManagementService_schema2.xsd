@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.example.org/WS-HT/api/wsdl" xmlns:tns="http://www.example.org/WS-HT/api/wsdl" xmlns:ns4="http://www.example.org/WS-HT/api/xsd" xmlns:ns1="http://www.example.org/WS-HT/api" xmlns:ns3="http://www.example.org/WS-HT" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://rt.fs.documentum.emc.com/" xmlns:ns5="http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/" xmlns:ns6="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://www.example.org/WS-HT/api" schemaLocation="TaskManagementService_schema3.xsd"/>
+
+  <xs:import namespace="http://rt.fs.documentum.emc.com/" schemaLocation="TaskManagementService_schema6.xsd"/>
+
+  <xs:import namespace="http://www.example.org/WS-HT" schemaLocation="TaskManagementService_schema4.xsd"/>
+
+  <xs:import namespace="http://www.example.org/WS-HT/api/xsd" schemaLocation="TaskManagementService_schema1.xsd"/>
+
+  <xs:import namespace="http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/" schemaLocation="TaskManagementService_schema5.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="TaskManagementService_schema8.xsd"/>
+
+  <xs:element name="BpmServiceException" type="tns:BpmServiceException"/>
+
+  <xs:element name="activate" type="tns:activate"/>
+
+  <xs:element name="activateResponse" type="tns:activateResponse"/>
+
+  <xs:element name="addAttachment" type="tns:addAttachment"/>
+
+  <xs:element name="addAttachmentResponse" type="tns:addAttachmentResponse"/>
+
+  <xs:element name="addComment" type="tns:addComment"/>
+
+  <xs:element name="addCommentResponse" type="tns:addCommentResponse"/>
+
+  <xs:element name="claim" type="tns:claim"/>
+
+  <xs:element name="claimResponse" type="tns:claimResponse"/>
+
+  <xs:element name="complete" type="tns:complete"/>
+
+  <xs:element name="completeResponse" type="tns:completeResponse"/>
+
+  <xs:element name="delegate" type="tns:delegate"/>
+
+  <xs:element name="delegateResponse" type="tns:delegateResponse"/>
+
+  <xs:element name="deleteAttachments" type="tns:deleteAttachments"/>
+
+  <xs:element name="deleteAttachmentsResponse" type="tns:deleteAttachmentsResponse"/>
+
+  <xs:element name="deleteFault" type="tns:deleteFault"/>
+
+  <xs:element name="deleteFaultResponse" type="tns:deleteFaultResponse"/>
+
+  <xs:element name="deleteOutput" type="tns:deleteOutput"/>
+
+  <xs:element name="deleteOutputResponse" type="tns:deleteOutputResponse"/>
+
+  <xs:element name="fail" type="tns:fail"/>
+
+  <xs:element name="failResponse" type="tns:failResponse"/>
+
+  <xs:element name="forward" type="tns:forward"/>
+
+  <xs:element name="forwardResponse" type="tns:forwardResponse"/>
+
+  <xs:element name="getAttachmentInfos" type="tns:getAttachmentInfos"/>
+
+  <xs:element name="getAttachmentInfosResponse" type="tns:getAttachmentInfosResponse"/>
+
+  <xs:element name="getAttachments" type="tns:getAttachments"/>
+
+  <xs:element name="getAttachmentsResponse" type="tns:getAttachmentsResponse"/>
+
+  <xs:element name="getComments" type="tns:getComments"/>
+
+  <xs:element name="getCommentsResponse" type="tns:getCommentsResponse"/>
+
+  <xs:element name="getFault" type="tns:getFault"/>
+
+  <xs:element name="getFaultResponse" type="tns:getFaultResponse"/>
+
+  <xs:element name="getInput" type="tns:getInput"/>
+
+  <xs:element name="getInputResponse" type="tns:getInputResponse"/>
+
+  <xs:element name="getMyTaskAbstracts" type="tns:getMyTaskAbstracts"/>
+
+  <xs:element name="getMyTaskAbstractsResponse" type="tns:getMyTaskAbstractsResponse"/>
+
+  <xs:element name="getMyTasks" type="tns:getMyTasks"/>
+
+  <xs:element name="getMyTasksResponse" type="tns:getMyTasksResponse"/>
+
+  <xs:element name="getOutput" type="tns:getOutput"/>
+
+  <xs:element name="getOutputResponse" type="tns:getOutputResponse"/>
+
+  <xs:element name="getRendering" type="tns:getRendering"/>
+
+  <xs:element name="getRenderingResponse" type="tns:getRenderingResponse"/>
+
+  <xs:element name="getRenderingTypes" type="tns:getRenderingTypes"/>
+
+  <xs:element name="getRenderingTypesResponse" type="tns:getRenderingTypesResponse"/>
+
+  <xs:element name="getTaskDescription" type="tns:getTaskDescription"/>
+
+  <xs:element name="getTaskDescriptionResponse" type="tns:getTaskDescriptionResponse"/>
+
+  <xs:element name="getTaskInfo" type="tns:getTaskInfo"/>
+
+  <xs:element name="getTaskInfoResponse" type="tns:getTaskInfoResponse"/>
+
+  <xs:element name="nominate" type="tns:nominate"/>
+
+  <xs:element name="nominateResponse" type="tns:nominateResponse"/>
+
+  <xs:element name="query" type="tns:query"/>
+
+  <xs:element name="queryResponse" type="tns:queryResponse"/>
+
+  <xs:element name="release" type="tns:release"/>
+
+  <xs:element name="releaseResponse" type="tns:releaseResponse"/>
+
+  <xs:element name="remove" type="tns:remove"/>
+
+  <xs:element name="removeResponse" type="tns:removeResponse"/>
+
+  <xs:element name="resume" type="tns:resume"/>
+
+  <xs:element name="resumeResponse" type="tns:resumeResponse"/>
+
+  <xs:element name="setFault" type="tns:setFault"/>
+
+  <xs:element name="setFaultResponse" type="tns:setFaultResponse"/>
+
+  <xs:element name="setGenericHumanRole" type="tns:setGenericHumanRole"/>
+
+  <xs:element name="setGenericHumanRoleResponse" type="tns:setGenericHumanRoleResponse"/>
+
+  <xs:element name="setOutput" type="tns:setOutput"/>
+
+  <xs:element name="setOutputResponse" type="tns:setOutputResponse"/>
+
+  <xs:element name="setPriority" type="tns:setPriority"/>
+
+  <xs:element name="setPriorityResponse" type="tns:setPriorityResponse"/>
+
+  <xs:element name="skip" type="tns:skip"/>
+
+  <xs:element name="skipResponse" type="tns:skipResponse"/>
+
+  <xs:element name="start" type="tns:start"/>
+
+  <xs:element name="startResponse" type="tns:startResponse"/>
+
+  <xs:element name="stop" type="tns:stop"/>
+
+  <xs:element name="stopResponse" type="tns:stopResponse"/>
+
+  <xs:element name="suspend" type="tns:suspend"/>
+
+  <xs:element name="suspendResponse" type="tns:suspendResponse"/>
+
+  <xs:element name="suspendUntil" type="tns:suspendUntil"/>
+
+  <xs:element name="suspendUntilResponse" type="tns:suspendUntilResponse"/>
+
+  <xs:complexType name="getComments">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCommentsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tComment" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BpmServiceException">
+    <xs:sequence>
+      <xs:element name="exceptionBean" type="ns2:DfsExceptionHolder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="exceptionType" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageArgs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+      <xs:element name="stackTraceAsString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRenderingTypes">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRenderingTypesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:QName" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAttachmentInfos">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAttachmentInfosResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tAttachmentInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addComment">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addCommentResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="forward">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="organizationalEntity" type="ns3:tOrganizationalEntity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="forwardResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAttachments">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="attachmentName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAttachmentsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tAttachment" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="suspend">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="suspendResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getMyTasks">
+    <xs:sequence>
+      <xs:element name="taskType" type="xs:string" minOccurs="0"/>
+      <xs:element name="genericHumanRole" type="xs:string" minOccurs="0"/>
+      <xs:element name="workQueue" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="ns1:tStatus" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="whereClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="createdOnClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="maxTasks" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getMyTasksResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tTask" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInput">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="partName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInputResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activate">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activateResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getRendering">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:anyType" minOccurs="0"/>
+      <xs:element name="renderingType" type="xs:QName" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRenderingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOutput">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="partName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOutputResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fail">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultName" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultData" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="failResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="suspendUntil">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="time" type="ns4:tTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="suspendUntilResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteAttachments">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="attachmentName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteAttachmentsResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getMyTaskAbstracts">
+    <xs:sequence>
+      <xs:element name="taskType" type="xs:string" minOccurs="0"/>
+      <xs:element name="genericHumanRole" type="xs:string" minOccurs="0"/>
+      <xs:element name="workQueue" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="ns1:tStatus" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="whereClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="createdOnClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="maxTasks" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getMyTaskAbstractsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tTaskAbstract" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delegate">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="organizationalEntity" type="ns3:tOrganizationalEntity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delegateResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="setFault">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultName" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultData" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setFaultResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="complete">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="tCompleteTaskData" type="ns5:tCompleteTaskData" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="completeResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskInfo">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskInfoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tTask" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addAttachment">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="attachmentName" type="xs:string" minOccurs="0"/>
+      <xs:element name="accessType" type="xs:string" minOccurs="0"/>
+      <xs:element name="attachment" type="ns6:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addAttachmentResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="skip">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="skipResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="claim">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="claimResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="resume">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resumeResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="setPriority">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="priority" type="xs:integer" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setPriorityResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="setGenericHumanRole">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="genericHumanRole" type="xs:string" minOccurs="0"/>
+      <xs:element name="organizationalEntity" type="ns3:tOrganizationalEntity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setGenericHumanRoleResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteOutput">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteOutputResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="release">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="releaseResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="start">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="startResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="query">
+    <xs:sequence>
+      <xs:element name="selectClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="whereClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="orderByClause" type="xs:string" minOccurs="0"/>
+      <xs:element name="maxTasks" type="xs:int" minOccurs="0"/>
+      <xs:element name="taskIndexOffset" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queryResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:tTaskQueryResultSet" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskDescription">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="contentType" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTaskDescriptionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stop">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stopResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="remove">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="setOutput">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="partName" type="xs:string" minOccurs="0"/>
+      <xs:element name="taskData" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setOutputResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getFault">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultName" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultData" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFaultResponse">
+    <xs:sequence>
+      <xs:element name="faultName" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultData" type="xs:anyType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nominate">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="organizationalEntity" type="ns3:tOrganizationalEntity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nominateResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteFault">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteFaultResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+

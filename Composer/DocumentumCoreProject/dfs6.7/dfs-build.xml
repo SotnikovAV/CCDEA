@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<project name="EMC DFS SDK 6.5 build script (Ant) template" default="info">
+
+	<property file="${basedir}/dfs-build.properties"/>
+    <property file="${basedir}/dfs-autodeploy.properties"/>
+
+	<!-- mandatory properties -->
+	<fail unless="dfs.sdk.home" message="DFS SDK HOME (dfs.sdk.home) not set"/>
+	
+	<!-- optional properties, default values are set here -->
+	<property name="project.resources.folder" value="${gen.rsc}"/>
+	<property name="project.gen.build.folder" value="${gen.build}"/>
+	<property name="dfs.sdk.libs" value="${dfs.sdk.home}/lib/java"/>
+	<property name="dfs.sdk.etc" value="${dfs.sdk.home}/etc"/>
+	
+	<taskdef file="${dfs.sdk.libs}/emc-dfs-tasks.xml"/>
+	
+	<!-- private propertes -->
+	<property name="project" value="DFS Build (Services + Remote Client)"/>
+	
+    <fileset id="dfs.classpath" dir="${dfs.sdk.home}/lib">
+        <include name="emc-dfs-rt.jar"/>
+        <include name="emc-dfs-tools.jar"/>
+        <include name="emc-dfs-services.jar"/>
+    </fileset>
+
+    <fileset id="jaxws.classpath" dir="${dfs.sdk.libs}/jaxws">
+        <include name="activation.jar"/>
+        <include name="FastInfoset.jar"/>
+        <include name="http.jar"/>
+        <include name="jaxb-api.jar"/>
+        <include name="jaxb-impl.jar"/>
+        <include name="jaxb-xjc.jar"/>
+        <include name="jaxws-api.jar"/>
+        <include name="jaxws-rt.jar"/>
+        <include name="jaxws-tools.jar"/>
+        <include name="jsr173_api.jar"/>
+        <include name="jsr181-api.jar"/>
+        <include name="jsr250-api.jar"/>
+        <include name="resolver.jar"/>
+        <include name="saaj-api.jar"/>
+        <include name="saaj-impl.jar"/>
+        <include name="sjsxp.jar"/>
+        <include name="stax-ex.jar"/>
+        <include name="streambuffer.jar"/>
+    </fileset>
+
+    <fileset id="dfc.classpath" dir="${dfs.sdk.libs}">
+        <include name="dfc/dfc.jar"/>
+        <!-- Keep the following path element list in sync with dfc.jar manifest (i.e. internal manifest.mf file: -->
+        <include name="ucf/client/All-MB.jar"/>
+        <include name="jaxws/activation.jar"/>
+        <include name="utils/aspectjrt.jar"/>
+        <include name="dfc/certjFIPS.jar"/>
+        <include name="dfc/dms-client-api.jar"/>
+        <include name="jaxws/jaxb-api.jar"/>
+        <include name="jaxws/jaxb-impl.jar"/>
+        <include name="dfc/jsafeFIPS.jar"/>
+        <include name="jaxws/jsr173_api.jar"/>
+        <include name="utils/log4j.jar"/>
+        <include name="utils/serializer.jar"/>
+        <include name="utils/xalan.jar"/>
+        <include name="utils/xercesImpl.jar"/>
+        <include name="utils/xml-apis.jar"/>
+        <include name="utils/xtrim-api.jar"/>
+        <include name="utils/xtrim-server.jar"/>
+        <!-- Additional library for Workflow service: -->
+        <include name="dfc/bpm_infra.jar"/>
+    </fileset>
+
+    <fileset id="ucf.client.classpath" dir="${dfs.sdk.libs}/ucf/client">
+        <include name="*.jar"/>
+    </fileset>
+
+    <fileset id="ucf.client.all.files" dir="${dfs.sdk.libs}/ucf/client"/>
+
+    <fileset id="ucf.installer.classpath" dir="${dfs.sdk.libs}/ucf/client">
+        <include name="ucf-installer.jar"/>
+    </fileset>
+
+    <fileset id="ucf.server.classpath" dir="${dfs.sdk.libs}/ucf/server">
+        <include name="*.jar"/>
+    </fileset>
+
+    <fileset id="apache.common.classpath" dir="${dfs.sdk.libs}/commons">
+        <include name="*.jar"/>
+    </fileset>
+
+    <fileset id="utils.classpath" dir="${dfs.sdk.libs}/utils">
+        <include name="*.jar"/>
+    </fileset>
+
+    <path id="project.classpath">
+        <fileset refid="dfs.classpath"/>
+        <fileset refid="jaxws.classpath"/>
+        <fileset refid="dfc.classpath"/>
+        <fileset refid="ucf.server.classpath"/>
+        <fileset refid="ucf.client.classpath"/>
+        <fileset refid="apache.common.classpath"/>
+        <fileset refid="utils.classpath"/>
+    	<path location="${project.resources.folder}"/>
+        <path location="${dfs.sdk.etc}"/>
+    </path>
+
+    <property name="defaultclasspath" refid="project.classpath"/>
+    <echo message="defaultclasspath is ${defaultclasspath}"/>
+	
+	<condition property="projectclasspath" value="${defaultclasspath}">
+		<not>
+			<isset property="projectclasspath" />
+		</not>
+	</condition>
+
+	<echo message="projectclasspath is ${projectclasspath}" />
+	
+	<path id="projectclasspath.path">
+		<pathelement path="${projectclasspath}"/>
+	</path>
+
+	<path id="default_project_libraries.path" location="" />
+	<property name="default_project_libraries" refid="default_project_libraries.path"/>
+    <echo message="default_project_libraries is ${default_project_libraries}"/>
+	
+	<condition property="project_libraries" value="${default_project_libraries}">
+		<not>
+		        <isset property="project_libraries" />
+		</not>
+	</condition>
+
+	<path id="project_libraries.path">
+		<pathelement path="${project_libraries}" />
+	</path>
+
+	<property name="project_libraries.path.echo" refid="project_libraries.path"/>
+    <echo message="project_libraries.path is ${project_libraries.path.echo}"/>
+
+	<path id="default_project_resources.path" location="" />
+	<property name="default_project_resources" refid="default_project_resources.path"/>
+    <echo message="default_project_resources is ${default_project_resources}"/>
+	
+	<condition property="project_resources" value="${default_project_resources}">
+		<not>
+			<isset property="project_resources" />
+		</not>
+	</condition>
+
+	<path id="project_resources.path">
+		<pathelement path="${project_resources}" />
+	</path>
+
+	<property name="project_resources.path.echo" refid="project_resources.path"/>
+    <echo message="project_resources.path is ${project_resources.path.echo}"/>
+
+    <target name="clean">
+        <echo message="Clean the ${project}"/>
+
+    	<delete failonerror="false" includeemptydirs="true">
+            <fileset dir="${gen.src.dir}/" includes="**/*"/>
+        </delete>
+
+    	<delete failonerror="false" includeemptydirs="true">
+            <fileset dir="${project.resources.folder}/" includes="**/*"/>
+        </delete>
+
+    	<delete failonerror="false" includeemptydirs="true">
+            <fileset dir="${project.gen.build.folder}/" includes="**/*"/>
+        </delete>
+
+    </target>
+
+    <target name="generate">
+    	<!-- always clean out the generated src, is this right? -->
+    	<delete>
+            <fileset dir="${gen.src.dir}/" excludes=".svn/, _svn"/>
+        </delete>
+
+        <generateModel contextRoot="${context.root}"
+                       moduleName="${module.name}"
+                       destdir="${gen.src.dir}/">
+            <services>
+                <fileset dir="${src.dir}">
+                    <include name="**/*.java"/>
+                </fileset>
+            </services>
+            <classpath>
+                <path refid="projectclasspath.path"/>
+            </classpath>
+        </generateModel>
+
+        <generateArtifacts serviceModel="${gen.src.dir}/${context.root}-${module.name}-service-model.xml"
+                           destdir="${gen.src.dir}/">
+            <src location="${src.dir}"/>
+            <classpath>
+            	<path refid="projectclasspath.path" />
+            </classpath>
+        </generateArtifacts>
+
+    	<!-- signal build is done -->
+    	<!-- used by DFSBuilder.java -->
+    	<copy todir="${src.dir}/../" file="${basedir}/dfs-builddone.flag"/>    	
+    </target>
+	
+	<target name="package">
+        <echo message="Package the ${project}"/>
+
+        <move todir="${project.resources.folder}">
+            <fileset dir="${gen.src.dir}/" includes="wsdl/, *.xml"/>
+        </move>
+        	
+    	<mkdir dir="${project.gen.build.folder}/"/> 
+
+    	<buildService serviceName="${module.name}"
+                      destDir="${project.gen.build.folder}"
+                      generatedArtifactsDir="${project.resources.folder}">
+            <src>
+               <path location="${src.dir}"/>
+               <path location="${gen.src.dir}/"/>
+            </src>
+
+            <classpath>
+            	<path refid="projectclasspath.path" />
+            </classpath>
+        </buildService>
+
+        <packageService deploymentName="${module.name}"
+                        destDir="${project.gen.build.folder}"
+                        generatedArtifactsDir="${project.resources.folder}">
+            <libraries>
+            	<path refid="project_libraries.path" />
+                <pathelement location="${project.gen.build.folder}/${module.name}.jar"/>
+            </libraries>
+            <resources>
+            	<path refid="project_resources.path" />
+            </resources>
+        </packageService>
+    </target>
+
+    <target name="export" depends="package">
+    	<move todir="${export.dir}">
+            <fileset dir="${project.gen.build.folder}" includes="*.ear, *-remote.jar"/>
+        </move>    	
+	</target>
+       
+    <target name="deploy">
+        <echo message="Deploy the ${project}"/>
+        <copy file="${basedir}/build/${module.name}.ear" todir="${autodeploy.dir}"/>
+    </target>
+	
+	<target name="generate-service">		
+		<generateService wsdlUri="${wsdl.uri}" destDir="${dest.dir}"/>
+	</target>
+	
+	<target name="generate-decoupled-client">		
+		<generateRemoteClient wsdlUri="${wsdl.uri}" destDir="${dest.dir}"/>    	
+    </target>
+
+    <target name="info">
+        <echo message="Available tasks for ${project}"/>
+        <echo message="ant clean      - to clean the project"/>
+        <echo message="ant package    - to package the project"/>
+        <echo message="---- Optional tasks -------------------------------"/>
+        <echo message="ant generate   - to build JAX-WS specific artifacts"/>
+        <echo message="---------------------------------------------------"/>
+    </target>
+
+</project>

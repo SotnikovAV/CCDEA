@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" xmlns:lwdclass="http://documentum.emc.com/artifact/03052008/lwdclass" urn="urn:com.emc.ide.artifact.lwdclass/dmc_wfsd_element_string?name=dmc_wfsd_element_string" categoryId="com.emc.ide.artifact.lwdclass" modifiedByUser="false">
+  <dataModel xsi:type="lwdclass:LwDClass" materialization="Auto-Materialize">
+    <type name="dmc_wfsd_element_string" typeCategory="LIGHTWEIGHT">
+      <primaryElement>
+        <attributes attr_name="string_value" attr_length="2000">
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.lwdclass/dmc_wfsd_element?name=dmc_wfsd_element#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

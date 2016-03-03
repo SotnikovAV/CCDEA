@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" xmlns:lwdclass="http://documentum.emc.com/artifact/03052008/lwdclass" urn="urn:com.emc.ide.artifact.lwdclass/dmc_wfsd_element?name=dmc_wfsd_element" categoryId="com.emc.ide.artifact.lwdclass" modifiedByUser="false">
+  <dataModel xsi:type="lwdclass:LwDClass" materialization="Auto-Materialize">
+    <type name="dmc_wfsd_element" typeCategory="LIGHTWEIGHT">
+      <primaryElement>
+        <attributes attr_name="sd_type_info_id">
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="workflow_id">
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="process_id">
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="i_partition">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="object_name" attr_length="255">
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_sharing_parent">
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="r_page_cnt">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_vstamp">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dmc_wfsd_element_parent?name=dmc_wfsd_element_parent#//@dataModel"/>
+      <sharedParent href="urn:com.emc.ide.artifact.dclass/dmc_wfsd_element_parent?name=dmc_wfsd_element_parent#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

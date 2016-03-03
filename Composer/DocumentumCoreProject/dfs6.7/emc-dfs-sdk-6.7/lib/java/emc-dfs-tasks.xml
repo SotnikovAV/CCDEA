@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<antlib>
+    <taskdef name="generatePublishManifest" classname="com.emc.documentum.fs.tools.registry.ant.GeneratePublishManifestTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxr/jaxr-impl.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxr/jaxr-api.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxws/jaxb-api.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxws/jaxb-impl.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxws/jaxb1-impl.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxws/jsr181-api.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/jaxws/jsr173_api.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/commons/commons-lang-2.4.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/log4j.jar"/>
+    </taskdef>
+    
+    <taskdef name="generateModel" classname="com.emc.documentum.fs.tools.GenerateModelTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>
+
+    <taskdef name="generateArtifacts" classname="com.emc.documentum.fs.tools.GenerateArtifactsTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>    
+
+    <taskdef name="buildService" classname="com.emc.documentum.fs.tools.BuildServiceTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>
+
+    <taskdef name="packageService" classname="com.emc.documentum.fs.tools.PackageServiceTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>
+
+    <taskdef name="generateRemoteClient" classname="com.emc.documentum.fs.tools.GenerateRemoteClientTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>
+    
+    <taskdef name="generateService" classname="com.emc.documentum.fs.tools.GenerateServiceTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>
+    
+    <taskdef name="repackageService" classname="com.emc.documentum.fs.tools.RepackageServiceTask">
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-tools.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/emc-dfs-rt.jar"/>
+        <classpath location="${dfs.sdk.home}/lib/java/utils/aspectjrt.jar"/>
+    </taskdef>
+</antlib>										          

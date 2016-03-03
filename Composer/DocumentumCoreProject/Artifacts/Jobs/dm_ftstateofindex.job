@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_FTStateOfIndex?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_FTStateOfIndex" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_FTStateOfIndex" title="Fulltext" subject="State of Index" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runMode="Week(s)">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_FTStateOfIndex?name=dm_FTStateOfIndex#//@dataModel"/>
+    <methodArguments>-window_interval 12000</methodArguments>
+    <methodArguments>-queueperson dmadmin</methodArguments>
+    <methodArguments>-batchsize 1000</methodArguments>
+    <methodArguments>-writetodb_threshold 1000000</methodArguments>
+    <methodArguments>-serverbase F</methodArguments>
+    <methodArguments>-usefilter F</methodArguments>
+    <methodArguments>-dumpfailedid F</methodArguments>
+    <methodArguments>-matchsysobjversion F</methodArguments>
+    <methodArguments>-matchallversion F</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

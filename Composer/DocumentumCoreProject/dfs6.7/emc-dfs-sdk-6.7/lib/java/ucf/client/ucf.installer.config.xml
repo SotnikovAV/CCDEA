@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?dctm fileVersion="5.3.0.1" compatibilityVersion="5.3.0.1"?>
+<ucfInstaller codebase="@ucf.codebase@" loggerLevel="INFO">
+    <app id="shared" version="6.7.2000.0038" compatibilityVersion="5.3.0"/>
+    <platform os="all" arch="all">
+        <runtime type="all" version="any">
+            <nativelibs>
+                <lib version="6.7.2000.0038" href="ucf-client-installer.zip"/>
+            </nativelibs>
+            <defaults>
+                <ucfHome value="$java{user.home}/Documentum/ucf"/>
+                <ucfInstallsHome value="$java{user.home}/Documentum/ucf"/>
+                <configuration name="com.documentum.ucf">
+                    <option name="user.dir">
+                        <value>$java{user.home}/Documentum</value>
+                    </option>
+                    <option name="export.dir">
+                        <value>$ucf{user.dir}/Export</value>
+                    </option>
+                    <option name="checkout.dir">
+                        <value>$ucf{user.dir}/Checkout</value>
+                    </option>
+                    <option name="viewed.dir">
+                        <value>$ucf{user.dir}/Viewed</value>
+                    </option>
+                    <option name="registry.mode">
+                        <value>file</value>
+                    </option>
+                    <option name="registry.file">
+                        <value>$ucf{user.dir}/documentum.ini</value>
+                    </option>
+                    <option name="temp.working.dir">
+                        <value>$ucf{user.dir}/Temp</value>
+                    </option>
+                    <option name="logs.dir">
+                        <value>$ucf{user.dir}/Logs</value>
+                    </option>
+                    <option name="tracing.enabled">
+                        <value>false</value>
+                    </option>
+                    <option name="file.poll.interval">
+                        <value>60</value>
+                    </option>
+                    <option name="optimal.chunk.size">
+                        <value>262144</value>
+                    </option>
+                    <option name="ucf.launcher.executablefile.pathcheck">
+                        <value>false</value>
+                    </option>
+                    <option name="max.parallel.download.streams">
+                        <value>5</value>
+                    </option>
+                    <option name="min.parallel.segment.size">
+                        <value>131072</value>
+                    </option>
+                    <option name="enable.registry.migration">
+                        <value>true</value>
+                    </option>
+                    <option name="client.engine.timeout">
+                        <value>60</value>
+                    </option>                   
+                </configuration>
+            </defaults>
+        </runtime>
+    </platform>
+    <platform os="windows" arch="all">
+        <runtime type="java" version="1.6.0.27" href="win-jre1.6.0_27.zip" exePath="jre1.6.0_27\bin\java.exe">
+            <jars>
+                <jar version="6.7.2000.0038" href="ucf-ca-office-auto.jar"/>
+                <jar version="6.7.2000.0038" href="jacob.jar"/>
+            </jars>
+            <nativelibs>
+                <lib version="6.7.2000.0038" href="UCFWin32JNI.dll"/>
+                <lib version="6.7.2000.0038" href="jacob.dll"/>
+            </nativelibs>
+        </runtime>
+        <runtime type=".net" href="Emc.Documentum.Ucf.Client.Impl.application">
+            <defaults>
+                <ucfHome value="$java{user.home}/Documentum/ucf-net"/>
+                <ucfInstallsHome value="$java{user.home}/Documentum/ucf-net"/>
+                <configuration name="com.documentum.ucf">
+                    <option name="temp.working.dir" persistent="true">
+                        <value>$ucf{user.dir}/Temp</value>
+                    </option>
+                    <option name="logs.dir" persistent="true">
+                        <value>$ucf{user.dir}/Logs</value>
+                    </option>
+                </configuration>
+            </defaults>
+        </runtime>
+    </platform>
+    <platform os="mac" arch="ppc">
+        <runtime type="java" version="1.5.0" href="">
+            <jars>
+                <jar version="6.7.2000.0038" href="All-MB.jar"/>
+                <jar version="6.7.2000.0038" href="mac_utilities.jar"/>
+                <jar version="6.7.2000.0038" href="MacOSXForker.jar"/>
+            </jars>
+            <nativelibs>
+                <lib version="6.7.2000.0038" href="libMacOSXForkerIO.jnilib"/>
+            </nativelibs>
+        </runtime>
+    </platform>
+    <platform os="solaris" arch="sparc">
+        <runtime type="java" version="1.5.0" href="">
+            <nativelibs>
+                <lib version="6.7.2000.0038" href="libUCFSolarisJNI.so"/>
+                <lib version="6.7.2000.0038" href="libUCFSolarisGNOME.so"/>
+            </nativelibs>
+        </runtime>
+    </platform>
+    <platform os="hp-ux" arch="pa_risc">
+        <runtime type="java" version="1.5.0" href=""/>
+    </platform>
+    <platform os="aix" arch="power_rs">
+        <runtime type="java" version="1.5.0" href=""/>
+    </platform>
+    <platform os="linux" arch="i386">
+        <runtime type="java" version="1.5.0" href="">
+            <nativelibs>
+                <lib version="6.7.2000.0038" href="libUCFLinuxJNI.so"/>
+                <lib version="6.7.2000.0038" href="libUCFLinuxGNOME.so"/>
+                <lib version="6.7.2000.0038" href="libUCFLinuxKDE.so"/>
+            </nativelibs>
+        </runtime>
+    </platform>
+</ucfInstaller>

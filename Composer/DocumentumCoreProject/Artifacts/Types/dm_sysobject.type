@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_sysobject">
+      <primaryElement>
+        <attributes attr_name="object_name" attr_length="255">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_object_type" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Type" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="title" attr_length="400">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Title" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="subject" attr_length="192">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Subject" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="authors" attr_repeating="true" attr_length="48">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Authors" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="keywords" attr_repeating="true" attr_length="48">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Keywords" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_application_type" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" life_cycle="FUTURE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Application Type" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_status" attr_length="16">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Status" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_creation_date">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Created" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="r_modify_date">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Modified" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="r_modifier" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Modified By" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_access_date">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Accessed" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="a_is_hidden">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Hidden" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_is_deleted">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Root Deleted" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="a_retention_date">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Retained" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="a_archive">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Archive" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="a_compound_architecture" attr_length="16">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Compound Architecture" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_link_resolved">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Link Resolved" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_reference_cnt">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Reference Count" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_has_folder">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="In Folder" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_folder_id" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Parent Folder IDs" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="r_composite_id" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" life_cycle="OBSOLETE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Composite IDs" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="r_composite_label" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" life_cycle="OBSOLETE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Composite Version" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_component_label" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Component Version" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_order_no" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Position" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_link_cnt">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Link Count" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_link_high_cnt">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Maximum Link Count" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_assembled_from_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Assembled From" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="r_frzn_assembly_cnt">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Frozen Assembly Count" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_has_frzn_assembly">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Has Frozen Assembly" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="resolution_label" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Resolution Version" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_is_virtual_doc">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Virtual Document" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_contents_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Content ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="a_content_type" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Format" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_page_cnt">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Content File Count" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_content_size">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Size" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="a_full_text">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Full Text Indexed" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="a_storage_type" attr_length="64">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Storage Type" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_cabinet_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Primary Cabinet" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="owner_name" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Owner Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="owner_permit">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Owner Permission" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_display_string="None"/>
+              <value_mappings map_data_string="2" map_display_string="Browse"/>
+              <value_mappings map_data_string="3" map_display_string="Read"/>
+              <value_mappings map_data_string="4" map_display_string="Relate"/>
+              <value_mappings map_data_string="5" map_display_string="Version"/>
+              <value_mappings map_data_string="6" map_display_string="Write"/>
+              <value_mappings map_data_string="7" map_display_string="Delete"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="group_name" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Group Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="group_permit">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Group Permit" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_display_string="None"/>
+              <value_mappings map_data_string="2" map_display_string="Browse"/>
+              <value_mappings map_data_string="3" map_display_string="Read"/>
+              <value_mappings map_data_string="4" map_display_string="Relate"/>
+              <value_mappings map_data_string="5" map_display_string="Version"/>
+              <value_mappings map_data_string="6" map_display_string="Write"/>
+              <value_mappings map_data_string="7" map_display_string="Delete"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="world_permit">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="World Permissions" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="1" map_display_string="None"/>
+              <value_mappings map_data_string="2" map_display_string="Browse"/>
+              <value_mappings map_data_string="3" map_display_string="Read"/>
+              <value_mappings map_data_string="4" map_display_string="Relate"/>
+              <value_mappings map_data_string="5" map_display_string="Version"/>
+              <value_mappings map_data_string="6" map_display_string="Write"/>
+              <value_mappings map_data_string="7" map_display_string="Delete"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_antecedent_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Parent Version" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="i_chronicle_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Version Tree Root Object" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="i_latest_flag">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Latest Version on Branch" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_lock_owner" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Checked Out By" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_lock_date">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Checkout Date" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="r_lock_machine" attr_length="80">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Lock Owner's Host" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="log_entry" attr_length="120">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="User Comments" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_version_label" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Version Label" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_branch_cnt">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Branch Count" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_direct_dsc">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Has Versions" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_immutable_flag">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Is Immutable" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_frozen_flag">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Frozen" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_has_events">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Has Events" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="acl_domain" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="ACL Domain" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="acl_name" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="ACL Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_special_app" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Special Application" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_is_reference">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Reference" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_creator_name" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Creator Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_is_public">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Public" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_policy_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Lifecycle ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="r_resume_state">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Resume to state" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_current_state">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" ignore_immutable="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Current State" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_alias_set_id">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Alias Set" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="a_effective_date" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Effective Date" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="a_expiration_date" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Expiration Date" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="a_publish_formats" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Publish Formats" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_effective_label" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Effective Label" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_effective_flag" attr_repeating="true" attr_length="8">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Effective Flag" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_category" attr_length="64">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Category" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="language_code" attr_length="5">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Language Code" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_is_template">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Template" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="a_controlling_app" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Controlling Application" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_full_content_size">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Full Content Size" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="DOUBLE"/>
+        </attributes>
+        <attributes attr_name="a_extended_properties" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Extended Properties" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_is_signed">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Is Signed" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="a_last_review_date">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Last Review Date" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="i_retain_until">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" is_searchable="TRUE" read_only="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Retain Content Until" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="r_aspect_name" attr_repeating="true" attr_length="64">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Aspect Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="i_retainer_id" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Retainer ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="ID"/>
+        </attributes>
+        <attributes attr_name="i_partition">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_is_replica">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Is Replica" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_vstamp">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" read_only="true" ignore_immutable="true" is_hidden="true" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Version Stamp" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <proxyAttributes proxy_attr_name="r_object_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Object ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+        </proxyAttributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT" is_searchable="TRUE">
+          <auditable_sysevents>dm_all</auditable_sysevents>
+          <auditable_sysevents>dm_checkin</auditable_sysevents>
+          <auditable_sysevents>dm_checkout</auditable_sysevents>
+          <auditable_sysevents>dm_destroy</auditable_sysevents>
+          <auditable_sysevents>dm_fetch</auditable_sysevents>
+          <auditable_sysevents>dm_lock</auditable_sysevents>
+          <auditable_sysevents>dm_prune</auditable_sysevents>
+          <auditable_sysevents>dm_save</auditable_sysevents>
+          <auditable_sysevents>dm_unlock</auditable_sysevents>
+          <auditable_sysevents>dm_route</auditable_sysevents>
+          <auditable_sysevents>dm_forward</auditable_sysevents>
+          <auditable_sysevents>dm_reverse</auditable_sysevents>
+          <auditable_sysevents>dm_reassign</auditable_sysevents>
+          <auditable_sysevents>dm_halt</auditable_sysevents>
+          <auditable_sysevents>dm_end</auditable_sysevents>
+          <auditable_sysevents>dm_signoff</auditable_sysevents>
+          <auditable_sysevents>dm_acquire</auditable_sysevents>
+          <auditable_sysevents>dm_force</auditable_sysevents>
+          <auditable_sysevents>dm_pause</auditable_sysevents>
+          <auditable_sysevents>dm_resume</auditable_sysevents>
+          <auditable_sysevents>dm_start</auditable_sysevents>
+          <auditable_sysevents>dm_branch</auditable_sysevents>
+          <auditable_sysevents>dm_mark</auditable_sysevents>
+          <auditable_sysevents>dm_archive</auditable_sysevents>
+          <auditable_sysevents>dm_archive_done</auditable_sysevents>
+          <auditable_sysevents>dm_restore</auditable_sysevents>
+          <auditable_sysevents>dm_restore_done</auditable_sysevents>
+          <auditable_sysevents>dm_link</auditable_sysevents>
+          <auditable_sysevents>dm_unlink</auditable_sysevents>
+          <auditable_sysevents>dm_status</auditable_sysevents>
+          <auditable_sysevents>dm_setfile</auditable_sysevents>
+          <auditable_sysevents>dm_freeze</auditable_sysevents>
+          <auditable_sysevents>dm_unfreeze</auditable_sysevents>
+          <auditable_sysevents>dm_bp_promote</auditable_sysevents>
+          <auditable_sysevents>dm_bp_demote</auditable_sysevents>
+          <auditable_sysevents>dm_bp_attach</auditable_sysevents>
+          <auditable_sysevents>dm_bp_suspend</auditable_sysevents>
+          <auditable_sysevents>dm_bp_resume</auditable_sysevents>
+          <auditable_sysevents>dm_addnote</auditable_sysevents>
+          <auditable_sysevents>dm_removenote</auditable_sysevents>
+          <auditable_sysevents>dm_assemble</auditable_sysevents>
+          <auditable_sysevents>dm_jobstart</auditable_sysevents>
+          <auditable_sysevents>dm_unmark</auditable_sysevents>
+          <auditable_sysevents>dm_saveasnew</auditable_sysevents>
+          <auditable_sysevents>dm_getfile</auditable_sysevents>
+          <auditable_sysevents>dm_removecontent</auditable_sysevents>
+          <auditable_sysevents>dm_addrendition</auditable_sysevents>
+          <auditable_sysevents>dm_removerendition</auditable_sysevents>
+          <auditable_sysevents>dm_appendpart</auditable_sysevents>
+          <auditable_sysevents>dm_insertpart</auditable_sysevents>
+          <auditable_sysevents>dm_removepart</auditable_sysevents>
+          <auditable_sysevents>dm_updatepart</auditable_sysevents>
+          <auditable_sysevents>dm_checkout_ref</auditable_sysevents>
+          <auditable_sysevents>dm_checkin_ref</auditable_sysevents>
+          <auditable_sysevents>dm_checkcan_ref</auditable_sysevents>
+          <auditable_sysevents>dm_disassemble</auditable_sysevents>
+          <auditable_sysevents>dm_adddigsignature</auditable_sysevents>
+          <auditable_sysevents>dm_audit</auditable_sysevents>
+          <auditable_sysevents>dm_unaudit</auditable_sysevents>
+          <auditable_sysevents>dm_addesignature</auditable_sysevents>
+          <auditable_sysevents>dm_move_content</auditable_sysevents>
+          <auditable_sysevents>dm_addretention</auditable_sysevents>
+          <auditable_sysevents>dm_removeretention</auditable_sysevents>
+          <auditable_sysevents>dm_addesignature_failed</auditable_sysevents>
+          <auditable_sysevents>dm_security_check_failed</auditable_sysevents>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>webtop</scope_value>
+            <display_config object_name="dm_info">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>r_policy_id</attribute_name>
+              <attribute_name>r_current_state</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_creator_name</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>r_modifier</attribute_name>
+              <attribute_name>a_storage_type</attribute_name>
+              <attribute_name>i_retain_until</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+            </display_config>
+          </scopes>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>DcDesktopClient</scope_value>
+            <display_config object_name="dm_general">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>r_object_type</attribute_name>
+              <attribute_name>i_folder_id</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_summary">
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_security" fixed_source="true"/>
+            <display_config object_name="dm_advanced">
+              <attribute_name>r_policy_id</attribute_name>
+              <attribute_name>r_current_state</attribute_name>
+              <attribute_name>a_storage_type</attribute_name>
+              <attribute_name>r_object_id</attribute_name>
+              <attribute_name>a_is_hidden</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+          </scopes>
+        </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="Sysobject" help_text="" comment_text="" nls_key="en">
+            <value_mappings map_data_string="dm_info" map_display_string="Info"/>
+            <value_mappings map_data_string="dm_general" map_display_string="General"/>
+            <value_mappings map_data_string="dm_summary" map_display_string="Summary"/>
+            <value_mappings map_data_string="dm_version" map_display_string="Version"/>
+            <value_mappings map_data_string="dm_security" map_display_string="Security"/>
+            <value_mappings map_data_string="dm_advanced" map_display_string="Advanced"/>
+          </locales>
+        </typeAnnotations>
+      </primaryElement>
+      <default_storage xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://search.services.fs.documentum.emc.com/" xmlns:tns="http://search.services.fs.documentum.emc.com/" xmlns:ns1="http://query.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://query.core.datamodel.fs.documentum.emc.com/" schemaLocation="SearchService_schema4.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="SearchService_schema7.xsd"/>
+
+  <xs:element name="execute" type="tns:execute"/>
+
+  <xs:element name="executeResponse" type="tns:executeResponse"/>
+
+  <xs:element name="getClusters" type="tns:getClusters"/>
+
+  <xs:element name="getClustersResponse" type="tns:getClustersResponse"/>
+
+  <xs:element name="getFacets" type="tns:getFacets"/>
+
+  <xs:element name="getFacetsResponse" type="tns:getFacetsResponse"/>
+
+  <xs:element name="getRepositoryList" type="tns:getRepositoryList"/>
+
+  <xs:element name="getRepositoryListResponse" type="tns:getRepositoryListResponse"/>
+
+  <xs:element name="getResultsProperties" type="tns:getResultsProperties"/>
+
+  <xs:element name="getResultsPropertiesResponse" type="tns:getResultsPropertiesResponse"/>
+
+  <xs:element name="getSubclusters" type="tns:getSubclusters"/>
+
+  <xs:element name="getSubclustersResponse" type="tns:getSubclustersResponse"/>
+
+  <xs:element name="stopSearch" type="tns:stopSearch"/>
+
+  <xs:element name="stopSearchResponse" type="tns:stopSearchResponse"/>
+
+  <xs:complexType name="getClusters">
+    <xs:sequence>
+      <xs:element name="query" type="ns1:Query" minOccurs="0"/>
+      <xs:element name="execution" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getClustersResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:QueryCluster" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryList">
+    <xs:sequence>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRepositoryListResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:Repository" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFacets">
+    <xs:sequence>
+      <xs:element name="query" type="ns1:Query" minOccurs="0"/>
+      <xs:element name="execution" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFacetsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:QueryFacet" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSubclusters">
+    <xs:sequence>
+      <xs:element name="objectsToClusterize" type="ns2:ObjectIdentitySet" minOccurs="0"/>
+      <xs:element name="query" type="ns1:Query" minOccurs="0"/>
+      <xs:element name="execution" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSubclustersResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:QueryCluster" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element name="query" type="ns1:Query" minOccurs="0"/>
+      <xs:element name="execution" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="executeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:QueryResult" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getResultsProperties">
+    <xs:sequence>
+      <xs:element name="forClustersObjects" type="ns2:ObjectIdentitySet" minOccurs="0"/>
+      <xs:element name="query" type="ns1:Query" minOccurs="0"/>
+      <xs:element name="execution" type="ns1:QueryExecution" minOccurs="0"/>
+      <xs:element name="options" type="ns2:OperationOptions" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getResultsPropertiesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:DataPackage" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stopSearch">
+    <xs:sequence>
+      <xs:element name="query" type="ns1:Query" minOccurs="0"/>
+      <xs:element name="execution" type="ns1:QueryExecution" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stopSearchResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:QueryStatus" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

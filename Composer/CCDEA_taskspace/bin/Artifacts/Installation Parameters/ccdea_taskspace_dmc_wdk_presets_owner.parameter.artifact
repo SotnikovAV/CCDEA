@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter" categoryId="com.emc.ide.principalparameter" implicitlyCreated="true">
+  <dataModel xsi:type="installparameter:PrincipalParameter" name="CCDEA_taskspace_dmc_wdk_presets_owner" description="" defaultValue="dmc_wdk_presets_owner"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

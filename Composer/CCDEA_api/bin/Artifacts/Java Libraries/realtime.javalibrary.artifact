@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urnd:com.emc.ide.artifact.jardef.javalibrary/RealTime?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService&amp;name=RealTime&amp;type=dmc_java_library" categoryId="com.emc.ide.artifact.jardef.javalibrary" implicitlyCreated="true">
+  <dataModel xsi:type="jardef:JavaLibrary" objectName="RealTime" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dmc_java_library?name=dmc_java_library#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-codec-1.3.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-codec-1.3.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-fileupload-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-fileupload-1.0.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-httpclient-3.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-httpclient-3.0.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-io-1.2.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-io-1.2.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-jxpath-1.2.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-jxpath-1.2.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-lang-2.4.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-lang-2.4.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-logging.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-logging.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/loadbalancer.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=loadbalancer.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/realtime.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=realtime.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-cli-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-cli-1.0.jar&amp;type=dmc_jar#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

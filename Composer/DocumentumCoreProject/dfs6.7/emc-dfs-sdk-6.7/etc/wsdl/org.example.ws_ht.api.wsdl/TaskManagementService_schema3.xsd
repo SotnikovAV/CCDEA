@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.example.org/WS-HT/api" xmlns:tns="http://www.example.org/WS-HT/api" xmlns:ns1="http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.example.org/WS-HT">
+
+  <xs:import namespace="http://taskmanagement.bpm.core.datamodel.fs.documentum.emc.com/" schemaLocation="TaskManagementService_schema5.xsd"/>
+
+  <xs:import namespace="http://www.example.org/WS-HT" schemaLocation="TaskManagementService_schema4.xsd"/>
+
+  <xs:complexType name="tComment">
+    <xs:sequence>
+      <xs:element name="addedAt" type="xs:dateTime"/>
+      <xs:element name="addedBy" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="metaData" type="ns1:tCommentMetaData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tAttachmentInfo">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="accessType" type="xs:string"/>
+      <xs:element name="contentType" type="xs:string"/>
+      <xs:element name="attachedAt" type="xs:dateTime"/>
+      <xs:element name="attachedBy" type="xs:string"/>
+      <xs:element name="metaData" type="ns1:tAttachmentMetaData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tAttachment">
+    <xs:sequence>
+      <xs:element name="attachmentInfo" type="tns:tAttachmentInfo"/>
+      <xs:element name="value" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tTask">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="taskType" type="xs:string"/>
+      <xs:element name="name" type="xs:QName"/>
+      <xs:element name="status" type="tns:tStatus"/>
+      <xs:element name="priority" type="xs:integer" minOccurs="0"/>
+      <xs:element name="taskInitiator" type="xs:string" minOccurs="0"/>
+      <xs:element name="taskStakeholders" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="potentialOwners" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="businessAdministrators" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="actualOwner" type="xs:string" minOccurs="0"/>
+      <xs:element name="notificationRecipients" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="createdOn" type="xs:anySimpleType"/>
+      <xs:element name="createdBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="activationTime" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="expirationTime" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="isSkipable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasPotentialOwners" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="startByExists" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="completeByExists" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="presentationName" type="xs:string" minOccurs="0"/>
+      <xs:element name="presentationSubject" type="xs:string" minOccurs="0"/>
+      <xs:element name="renderingMethodExists" type="xs:boolean"/>
+      <xs:element name="hasOutput" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasFault" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasAttachments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasComments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="escalated" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="primarySearchBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="metaData" type="ns1:tTaskMetaData" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tTaskAbstract">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="taskType" type="xs:string"/>
+      <xs:element name="name" type="xs:QName"/>
+      <xs:element name="status" type="tns:tStatus"/>
+      <xs:element name="priority" type="xs:integer" minOccurs="0"/>
+      <xs:element name="createdOn" type="xs:anySimpleType"/>
+      <xs:element name="activationTime" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="expirationTime" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="isSkipable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasPotentialOwners" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="startByExists" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="completeByExists" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="presentationName" type="xs:string" minOccurs="0"/>
+      <xs:element name="presentationSubject" type="xs:string" minOccurs="0"/>
+      <xs:element name="renderingMethodExists" type="xs:boolean"/>
+      <xs:element name="hasOutput" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasFault" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasAttachments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasComments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="escalated" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="metaData" type="ns1:tTaskMetaData" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tTaskQueryResultSet">
+    <xs:sequence>
+      <xs:element name="row" type="tns:tTaskQueryResultRow" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tTaskQueryResultRow">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="taskType" type="xs:string"/>
+      <xs:element name="name" type="xs:QName"/>
+      <xs:element name="status" type="tns:tStatus"/>
+      <xs:element name="priority" type="xs:integer" minOccurs="0"/>
+      <xs:element name="taskInitiator" type="xs:string" minOccurs="0"/>
+      <xs:element name="taskStakeholders" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="potentialOwners" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="businessAdministrators" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="actualOwner" type="xs:string" minOccurs="0"/>
+      <xs:element name="notificationRecipients" type="ns2:tOrganizationalEntity" minOccurs="0"/>
+      <xs:element name="createdOn" type="xs:anySimpleType"/>
+      <xs:element name="createdBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="activationTime" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="expirationTime" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="isSkipable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasPotentialOwners" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="startByExists" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="completeByExists" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="presentationName" type="xs:string" minOccurs="0"/>
+      <xs:element name="presentationSubject" type="xs:string" minOccurs="0"/>
+      <xs:element name="presentationDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="renderingMethodExists" type="xs:boolean"/>
+      <xs:element name="hasOutput" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasFault" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasAttachments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="hasComments" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="escalated" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="primarySearchBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="metaData" type="ns1:tTaskMetaData" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="tStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="READY"/>
+      <xs:enumeration value="RESERVED"/>
+      <xs:enumeration value="IN_PROGRESS"/>
+      <xs:enumeration value="SUSPENDED"/>
+      <xs:enumeration value="COMPLETED"/>
+      <xs:enumeration value="FAILED"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="EXITED"/>
+      <xs:enumeration value="OBSOLETE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

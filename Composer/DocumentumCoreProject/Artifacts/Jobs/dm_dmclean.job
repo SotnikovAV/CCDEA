@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_DMClean?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_DMClean" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_DMClean" title="Content" subject="Executes dmclean on a schedule" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runInterval="3" runMode="Week(s)" isInactive="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_DMClean?name=dm_DMClean#//@dataModel"/>
+    <methodArguments>-window_interval 120</methodArguments>
+    <methodArguments>-queueperson</methodArguments>
+    <methodArguments>-clean_content TRUE</methodArguments>
+    <methodArguments>-clean_note TRUE</methodArguments>
+    <methodArguments>-clean_acl TRUE</methodArguments>
+    <methodArguments>-clean_wf_template TRUE</methodArguments>
+    <methodArguments>-clean_now TRUE</methodArguments>
+    <methodArguments>-clean_castore FALSE</methodArguments>
+    <methodArguments>-clean_aborted_wf FALSE</methodArguments>
+    <methodArguments>-clean_deleted_lwso TRUE</methodArguments>
+    <methodArguments>-clean_content_in_parallel FALSE</methodArguments>
+    <methodArguments>-parallel_degree 5</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

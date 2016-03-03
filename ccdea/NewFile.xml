@@ -1,0 +1,33 @@
+<NS1:MCDocInfoModifyPD xmlns:NS1="pr">
+	<NS1:OriginIdentification>
+		<NS1:SourceSystem>DVK</NS1:SourceSystem>
+		<NS1:SourceId>3580661</NS1:SourceId>
+	</NS1:OriginIdentification>
+	<NS1:Customer>
+		<NS1:CustomerNumber>00605684</NS1:CustomerNumber>
+		<NS1:CustomerName>Общество с ограниченной ответственностью &quot;Бюлер
+			Сервис&quot;</NS1:CustomerName>
+	</NS1:Customer>
+	<NS1:PDDetails>
+		<NS1:StatusName>Загружено в ТБСВК</NS1:StatusName>
+		<NS1:SystemSource>JetDocer</NS1:SystemSource>
+		<NS1:SystemRefId>4904694</NS1:SystemRefId>
+		<NS1:URLScan>\\ntd1\dfs\LN2_2JD\20150622\0CF767D8331DA3BC43257E6C004AB6F3
+		</NS1:URLScan>
+		<NS1:StatusComment>Документ передан успешно</NS1:StatusComment>
+		<NS1:DocAmount>5527.20</NS1:DocAmount>
+		<NS1:DocCurrency>756</NS1:DocCurrency>
+		<NS1:DocNumber>344</NS1:DocNumber>
+		<NS1:DocDate>2015-05-20</NS1:DocDate>
+		<NS1:Kvalp>756</NS1:Kvalp>
+		<NS1:Summap>5527.20</NS1:Summap>
+		<NS1:Srok_wait>2015-08-13</NS1:Srok_wait>
+		<NS1:DealPassport>09047004/0001/0000/3/0</NS1:DealPassport>
+		<NS1:DocTypeCode>04_3</NS1:DocTypeCode>
+		<NS1:DocType>Акт</NS1:DocType>
+	</NS1:PDDetails>
+	<NS1:UserId>NTD1\RBDDKhly</NS1:UserId>
+	<NS1:UserDep>&lt;Unknown&gt;</NS1:UserDep>
+	<NS1:ModificationDateTime>2015-06-22T17:10:50.110
+	</NS1:ModificationDateTime>
+</NS1:MCDocInfoModifyPD>

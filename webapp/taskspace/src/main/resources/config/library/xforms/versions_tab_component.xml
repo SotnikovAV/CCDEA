@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+    <scope>
+
+        <component id="versions_tab" extends="ccdea_vk_search_results:ccdea/config/library/search/vk_search_results_component.xml">
+            <params>
+                <param name="objectId" required="true"/>
+            </params>
+            <pages>
+                <start>/ccdea/library/xforms/versions_tab.jsp</start>
+            </pages>
+            <class>ru.rb.ccdea.xforms.VersionsTabComponent</class>
+            <nlsbundle>ru.rb.ccdea.xforms.VersionsTabNlsProp</nlsbundle>
+            <columns>
+                <column>
+                    <attribute>timestamp</attribute>
+                    <label><nlsid>MSG_TIMESTAMP</nlsid></label>
+                    <visible>true</visible>
+                </column>
+                <column>
+                    <attribute>system_code</attribute>
+                    <label><nlsid>MSG_SYSTEM_CODE</nlsid></label>
+                    <visible>true</visible>
+                </column>
+                <column>
+                    <attribute>change_author</attribute>
+                    <label><nlsid>MSG_CHANGE_AUTHOR</nlsid></label>
+                    <visible>true</visible>
+                </column>
+                <column>
+                    <attribute>attr_description</attribute>
+                    <label><nlsid>MSG_ATTR_DESCRIPTION</nlsid></label>
+                    <visible>true</visible>
+                </column>
+                <column>
+                    <attribute>current_value</attribute>
+                    <label><nlsid>MSG_CURRENT_VALUE</nlsid></label>
+                    <visible>true</visible>
+                </column>
+                <column>
+                    <attribute>old_value</attribute>
+                    <label><nlsid>MSG_OLD_VALUE</nlsid></label>
+                    <visible>true</visible>
+                </column>
+            </columns>
+
+            <query>select aud.string_4 as timestamp, aud.string_5 as change_author, aud.string_3 as obj_id, aud.string_2 as system_code, hist.s_attr_name as attr_name,
+                hist.s_attr_description as attr_description, hist.s_value as current_value, hist.s_old_value as old_value from dm_audittrail aud,
+                ccdea_attr_history hist where hist.id_audittrail=aud.r_object_id and aud.audited_obj_id = '#objectId' and aud.event_name
+                in ('ccdea_update_by_metadata_save','ccdea_update_by_dossier_set') order by 1
+            </query>
+        </component>
+
+    </scope>
+</config>

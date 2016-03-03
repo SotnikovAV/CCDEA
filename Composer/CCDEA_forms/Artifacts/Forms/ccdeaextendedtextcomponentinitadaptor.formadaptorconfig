@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:forms="http://documentum.emc.com/artifact/12012007/forms" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.formadaptorconfig/CCDEAExtendedTextComponentInitAdaptor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAExtendedTextComponentInitAdaptor&amp;type=dmc_xfm_adaptor_config" categoryId="com.emc.ide.artifact.formadaptorconfig" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="forms:FormAdaptorConfiguration" objectName="CCDEAExtendedTextComponentInitAdaptor" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="xsd" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" adaptorType="item_datasource" isAdaptorPublic="true" outputType="root" implClass="ru.rb.ccdea.formadaptors.ExtendedTextComponentInitAdaptor" implType="sbo" formAdaptorConfigContent="//@contentStore/@contentEntries.0/@value">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_xfm_adaptor_config?name=dmc_xfm_adaptor_config#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/xsd?name=xsd#//@dataModel"/>
+    <adaptorInput inputName="objectId" inputType="string" inputRequired="true"/>
+    <adaptorInput inputName="componentName" inputType="string" inputRequired="true"/>
+    <adaptorInput inputName="containerStyle" inputType="string"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="formAdaptorConfigContent.xsd">
+      <value filePath="content/60/-516691360/formAdaptorConfigContent.xsd"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

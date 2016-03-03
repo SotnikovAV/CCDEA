@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:ide="http://documentum.emc.com/artifact/12012007/typeextension" xmlns:installparameter="installparameter" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_app?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_app&amp;type=dmc_preset_package" categoryId="com.emc.ide.artifact.sysobjectsubtype" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="sysobject:SysobjectSubtype" objectName="CCDEA_taskspace_preset_package_app" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="text" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" rootObject="false" sysobjectContent="//@contentStore/@contentEntries.0/@value">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_preset_package?name=dmc_preset_package#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/text?name=text#//@dataModel"/>
+    <typeExtension>
+      <attributes xsi:type="ide:StringAttribute" name="last_modifier">
+        <stringValue>dmadmin</stringValue>
+      </attributes>
+      <attributes xsi:type="ide:StringAttribute" name="last_modifier_repository">
+        <stringValue>UCB</stringValue>
+      </attributes>
+      <attributes xsi:type="ide:StringAttribute" name="locked_by">
+        <stringValue></stringValue>
+      </attributes>
+      <attributes xsi:type="ide:StringAttribute" name="scope_key">
+        <stringValue>6F768BF635D67D88C2FF6E38626CD183</stringValue>
+      </attributes>
+    </typeExtension>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="sysobjectContent.text">
+      <value filePath="content/96/-1325004796/sysobjectContent.text"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

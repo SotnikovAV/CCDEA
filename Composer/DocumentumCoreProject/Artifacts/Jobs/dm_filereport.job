@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_FileReport?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_FileReport" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_FileReport" title="Docbase" subject="Generates a report showing content filesystem paths for all docs" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runMode="Week(s)" isInactive="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_FileReport?name=dm_FileReport#//@dataModel"/>
+    <methodArguments>-window_interval 120</methodArguments>
+    <methodArguments>-queueperson</methodArguments>
+    <methodArguments>-incremental_report False</methodArguments>
+    <methodArguments>-report_renditions True</methodArguments>
+    <methodArguments>-sort_results True</methodArguments>
+    <methodArguments>-storage_area NULL</methodArguments>
+    <methodArguments>-output_device NULL</methodArguments>
+    <methodArguments>-folder_name NULL</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

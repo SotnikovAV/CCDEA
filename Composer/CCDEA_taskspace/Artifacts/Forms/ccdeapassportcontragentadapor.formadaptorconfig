@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:forms="http://documentum.emc.com/artifact/12012007/forms" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.formadaptorconfig/CCDEAPassportContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAPassportContragentAdapor&amp;type=dmc_xfm_adaptor_config" categoryId="com.emc.ide.artifact.formadaptorconfig" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="forms:FormAdaptorConfiguration" objectName="CCDEAPassportContragentAdapor" title="&#x410;&#x434;&#x430;&#x43f;&#x442;&#x435;&#x440;, &#x43f;&#x43e;&#x43b;&#x443;&#x447;&#x430;&#x44e;&#x449;&#x438;&#x439; &#x441;&#x432;&#x43e;&#x439;&#x441;&#x442;&#x432;&#x430; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x430; &#x434;&#x43b;&#x44f; &#x43f;&#x440;&#x435;&#x434;&#x441;&#x442;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432; &#x43e;&#x434;&#x43d;&#x43e;&#x439; &#x442;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x435;" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="xsd" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" adaptorType="item_datasource" isAdaptorPublic="true" outputType="root" implClass="ru.rb.ccdea.formadaptors.PassportContragentAdaptor" implType="sbo" formAdaptorConfigContent="//@contentStore/@contentEntries.0/@value">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_xfm_adaptor_config?name=dmc_xfm_adaptor_config#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/xsd?name=xsd#//@dataModel"/>
+    <adaptorInput inputName="r_object_id" inputType="string" inputRequired="true"/>
+    <adaptorInput inputName="from_type" inputType="string" inputRequired="true"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="formAdaptorConfigContent.xsd">
+      <value filePath="content/36/1973635836/formAdaptorConfigContent[1].xsd"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

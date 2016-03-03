@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?dctm original_encoding="UTF-8" has_bom="false" config_locator="0900028c80000425"?>
+<plain-actions>
+<!-- Attributes -->
+	<plain-action id="attributes" desc="ATT_ACTION_LABEL"/>
+	<plain-action id="permissions" desc="PERM_ACT_LABEL"/>
+	<plain-action id="properties" desc="PROPS_ACT_LABEL"/>
+
+	<!-- Content Operations -->
+	<plain-action id="cancelcheckout" desc="CANCEL_ACT_LABEL"/>
+	<plain-action id="editfile" desc="EDIT_ACT_LABEL"/>
+	<plain-action id="checkin" desc="CHECK_IN_ACT_LABEL"/>
+	<plain-action id="checkout" desc="CHECK_OUT_ACT_LABEL"/>
+	<plain-action id="delete" desc="DEL_ACT_LABEL"/>
+        <plain-action id="view" desc="VIEW_ACT_LABEL"/>
+        <plain-action id="taskspaceview" desc="TS_VIEW_ACT_LABEL"/>
+	<plain-action id="editafternew" desc="EDIT_NEW_ACT_LABEL"/>
+	<plain-action id="uploadfile" desc="UPLOAD_ACT_LABEL"/>
+	<plain-action id="export" desc="EXPORT_ACT_LABEL"/>
+	<plain-action id="import" desc="IMPORT_ACT_LABEL"/>
+	<plain-action id="importrendition" desc="IMPORT_REND_ACT_LABEL"/>
+	<plain-action id="viewversions" desc="VIEW_VERS_ACT_LABEL"/>
+	<plain-action id="exporttocsv" desc="EXPORT_CSV_ACT_LABEL"/>
+	<plain-action id="exportrendition" desc="EXPORT_REND_ACT_LABEL"/>
+	<plain-action id="createpdfrendition" desc="PDF_REND_ACT_LABEL"/>
+	<plain-action id="createhtmlrendition" desc="HTML_REND_ACT_LABEL"/>
+	<plain-action id="rendition_transformation" desc="REND_TRANS_ACT_LABEL"/>
+	<plain-action id="renditions" desc="RENDITIONS_ACT_LABEL"/>
+        <plain-action id="viewrelationships" desc="VIEW_RELATIONS_ACT_LABEL"/>   
+        <plain-action id="newrelation" desc="RELATE_ACT_LABEL"/>
+        <plain-action id="deleterelation" desc="DELETE_RELATE_ACT_LABEL"/>
+
+        <!-- Emailing Links to Objects -->
+	<plain-action id="sendlocator" desc="SEND_LOC_ACT_LABEL"/>
+	<plain-action id="sendtodistributionlist" desc="SEND_DIST_ACT_LABEL"/>
+
+	<!-- Lifecycles -->
+	<plain-action id="applylifecycle" desc="APPLY_LIFE_ACT_LABEL"/>
+	<plain-action id="demote" desc="DEMOTE_LIFE_ACT_LABEL"/>
+	<plain-action id="detachlifecycle" desc="DETACH_LIFE_ACT_LABEL"/>
+	<plain-action id="promote" desc="PROMOTE_LIFE_ACT_LABEL"/>
+	<plain-action id="restorelifecycle" desc="RESTORE_LIFE_ACT_LABEL"/>
+	<plain-action id="suspendlifecycle" desc="SUSPEND_LIFE_ACT_LABEL"/>
+
+	<!-- Workflow -->
+	<plain-action id="abortworkflow" desc="ABORT_WF_ACT_LABEL"/>
+	<plain-action id="haltworkflow" desc="HALT_WF_ACT_LABEL"/>
+	<plain-action id="resumeworkflow" desc="RESUME_WF_ACT_LABEL"/>
+	<plain-action id="changesupervisor" desc="CHANGE_SUPER_ACT_LABEL"/>
+	<plain-action id="instanceview" desc="WF_INSTANCE_VIEW"/>
+	<plain-action id="emailsupervisor" desc="EMAIL_SUPER_ACT_LABEL"/>
+	<plain-action id="emailperformers" desc="EMAIL_PERFORMER_ACT_LABEL"/>
+	<plain-action id="acceptworkflowtask" desc="ACCEPT_WF_TASK_ACT_LABEL"/>
+	<plain-action id="halttask" desc="HALT_WF_TASK_ACT_LABEL"/>
+	<plain-action id="resumetask" desc="RESUME_WF_TASK_ACT_LABEL"/>
+
+
+	<!-- Work Queue Management -->
+	<plain-action id="assign_queued_task" desc="ASSIGN_TASK_ACT_LABEL"/>
+	<plain-action id="changeperformer" desc="CHANGE_PERFORMER_ACT_LABEL"/>
+	<plain-action id="deletenotification" desc="DEL_NOTIFICATION_ACT_LABEL"/>
+	<plain-action id="get_work" desc="GET_WORK_ACT_LABEL"/>
+	<plain-action id="managequeueinbox" desc="MANAGE_QUEUE_ACT_LABEL"/>
+	<plain-action id="move_queued_task" desc="MOVE_TASK_ACT_LABEL"/>
+	<plain-action id="processorworkloadinbox" desc="PROC_WORKLOAD_ACT_LABEL"/>
+	<plain-action id="pull_queued_task" desc="PULL_TASK_ACT_LABEL"/>
+	<plain-action id="queuelist" desc="QUEUE_LIST_ACT_LABEL"/>
+	<plain-action id="reassign_queued_task" desc="REASSIGN_TASK_ACT_LABEL"/>
+	<plain-action id="suspend_queued_task" desc="SUSPEND_TASK_ACT_LABEL"/>
+	<plain-action id="unassign_queued_task" desc="UNASSIGN_TASK_ACT_LABEL"/>
+	<plain-action id="unsuspend_queued_task" desc="UNSUSPEND_TASK_ACT_LABEL"/>
+	<!-- plain-action id="view" desc="(dm_queued)"/ -->
+	<plain-action id="popupview" desc="POPUP_VIEW_ACT_LABEL"/>
+	<plain-action id="getnexttask" desc="GET_NEXT_TASK_LABEL"/>
+
+	<!-- Document/Page Modification -->
+	<plain-action id="pagemodification" desc="PAGE_MOD_ACT_LABEL"/>
+	<plain-action id="mergedocuments" desc="MERGE_DOCS_ACT_LABEL"/>
+
+	<!-- Clipboard Operations -->
+	<plain-action id="addtoclipboard" desc="ADD_CLIP_ACT_LABEL"/>
+	<plain-action id="copy" desc="COPY_ACT_LABEL"/>
+	<plain-action id="copyhere" desc="COPY_HERE_ACT_LABEL"/>
+	<plain-action id="link" desc="LINK_ACT_LABEL"/>
+	<plain-action id="linkhere" desc="LINK_HERE_ACT_LABEL"/>
+	<plain-action id="move" desc="MOVE_ACT_LABEL"/>
+	<plain-action id="movehere" desc="MOVE_HERE_ACT_LABEL"/>
+	<plain-action id="viewclipboard" desc="VIEW_CLIP_ACT_LABEL"/>
+
+	<!-- Folder Operations -->
+	<plain-action id="viewfolder" desc="TS_FOLDER_VIEW_ACT_LABEL" callbackmethod="onOpenItem"/>
+
+        <!-- Open Item Actions -->
+        <plain-action id="viewopenitem" desc="TS_OPEN_VIEW_ACT_LABEL" callbackmethod="onOpenItem"/>   
+</plain-actions>

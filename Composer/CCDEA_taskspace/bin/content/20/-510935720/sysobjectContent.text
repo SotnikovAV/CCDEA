@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.documentum.services.preset.definition:PresetPackageDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.documentum.services.preset.definition="http:///com/documentum/services/preset/definition.ecore" name="TaskSpace_App">
+   <configTargetDefinitions id="taskspace_tab_types" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="preset_item[id=tab_types]"/>
+   <configTargetDefinitions id="taskspace_tabs" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="preset_item[id=tabs]"/>
+   <configTargetDefinitions id="taskspace_app_format-viewer-mapping" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="imageviewer.preset_item[id=format-viewer-mapping]"/>
+   <configTargetDefinitions id="taskspace_app_topbardata" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="topbarsection.preset_item[id=topbardata]"/>
+   <configTargetDefinitions id="taskspace_app_excluded-items" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="exclusions.preset_item[id=excluded-items]"/>
+   <configTargetDefinitions id="taskspace_app_rescan" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="preset_item[id=rescan]"/>
+   <configTargetDefinitions id="taskspace_app_reuse-popupwindow" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="imageviewer.preset_item[id=reuse-popupwindow]"/>
+   <configTargetDefinitions id="taskspace_actions" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="preset_item[id=actions]"/>
+   <configTargetDefinitions id="taskspace_menus" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="preset_item[id=menus]"/>
+   <configTargetDefinitions id="taskspace_app_form_msg_position" name="appconfig" inputSource="taskspace_app:taskspace\config\library\configuration\taskspace_app_config.xml" pathExpression="preset_item[id=form_msg_position]"/>
+
+   <itemDefinitions id="tab_types">
+   </itemDefinitions>
+
+   <itemDefinitions id="tabs">
+   </itemDefinitions>
+
+   <itemDefinitions id="format-viewer-mapping">
+   </itemDefinitions>
+
+   <itemDefinitions id="topbardata">
+   </itemDefinitions>
+
+   <itemDefinitions id="excluded-items">
+   </itemDefinitions>
+
+   <itemDefinitions id="rescan">
+   </itemDefinitions>
+
+   <itemDefinitions id="reuse-popupwindow">
+   </itemDefinitions>
+
+   <itemDefinitions id="actions">
+   </itemDefinitions>
+
+   <itemDefinitions id="menus">
+   </itemDefinitions>
+
+   <itemDefinitions id="form_msg_position">
+   </itemDefinitions>
+
+  <scopeDefinitions name="taskspaceapp"/>
+</com.documentum.services.preset.definition:PresetPackageDefinition>

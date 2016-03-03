@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+    <scope>
+
+        <component id="manage_multivalue_component">
+
+            <desc>
+                Компонент для управления списком значений
+            </desc>
+
+            <params>
+                <param name="valueType" required="true"/>
+                <param name="multivalue" required="false"/>
+            </params>
+
+            <pages>
+                <start>/ccdea/library/dialog/manage_multivalue_dialog.jsp</start>
+            </pages>
+
+            <class>ru.rb.ccdea.dialog.ManageMultivalueComponent</class>
+            <nlsbundle>ru.rb.ccdea.dialog.ManageMultivalueNlsProp</nlsbundle>
+        </component>
+
+    </scope>
+</config>
+

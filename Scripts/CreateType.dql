@@ -1,0 +1,394 @@
+-----------------------------
+-- Скритп на создание типов Documentum --
+-- Модель CCD_E-Archive v0.5 --
+-- Дата генерации 05.08.2015 10:32:10 --
+-----------------------------
+-----------------------------
+-- create type ccdea_base_doc
+-----------------------------
+create type ccdea_base_doc
+(
+"s_customer_number" string(16) (set label_text='Номер клиента', not null),
+"s_customer_name" string(1000) (set label_text='Наименование клиента'),
+"s_passport_number" string(44) (set label_text='Номер ПС'),
+"s_contract_number" string(255) (set label_text='Номер контракта'),
+"t_contract_date" date (set label_text='Дата контракта'),
+"s_reg_branch_code" string(4) (set label_text='Код филиала'),
+"t_last_change_date" date (set label_text='Время последнего изменения'),
+"s_last_change_author" string(128) (set label_text='Автор последнего изменения'),
+"s_doc_source_code" string(32) (set label_text='Код системы-источника', not null),
+"s_doc_source_id" string(255) (set label_text='Идентификатор в системе-источнике', not null),
+"id_dossier" ID (set label_text='Идентификатор досье', not null),
+"s_passport_type_code" string(2) (set label_text='Код типа ПС'),
+"s_author_department_code" string(128) (set label_text='Код отделения обслуживания'),
+"s_doc_channel_name" string(255) (set label_text='Наименование канала'),
+"s_doc_channel_ref_id" string(255) (set label_text='Идентификатор документа в канале'),
+"s_content_url" string(512) (set label_text='URL электронного образа'),
+"id_document_copy" ID (set label_text='Идентификатор копии')
+)
+with supertype dm_document
+set label_text='Документ валютного контроля'
+go
+
+-----------------------------
+-- create type ccdea_contract
+-----------------------------
+create type ccdea_contract
+(
+"s_doc_type" string(255) (set label_text='Тип документа'),
+"t_receive_date" date (set label_text='Дата представления в банк'),
+"s_state" string(255) (set label_text='Статус'),
+"s_state_comment" string(512) (set label_text='Комментарий к статусу'),
+"d_amount" double (set label_text='Сумма'),
+"s_currency_code" string(3) (set label_text='Код валюты'),
+"b_is_urgent" bool (set label_text='Признак срочности'),
+"b_is_vip" bool (set label_text='Признак VIP'),
+"b_is_aml" bool (set label_text='Признак AML'),
+"b_is_payment_advance" bool (set label_text='Признак аванса'),
+"b_is_payment_delay" bool (set label_text='Признак отсрочки платежа'),
+"b_is_closed" bool (set label_text='Признак закрытия контракта'),
+"t_expire_date" date (set label_text='Срок действия'),
+"t_close_date" date (set label_text='Дата фактического закрытия'),
+"s_archive_dossier_number" string(512) (set label_text='Номер архивного досье'),
+"b_is_third_party" bool (set label_text='Признак третьего лица'),
+"b_report402" bool (set label_text='Признак отчетности по ф402'),
+"b_report405" bool (set label_text='Признак отчетности по ф405'),
+"b_report406" bool (set label_text='Признак отчетности по ф406'),
+"b_no_general_amount" bool (set label_text='Признак отсутствия общей суммы'),
+"d_general_amount" double (set label_text='Общая сумма'),
+"d_general_payment_amount" double (set label_text='Общая сумма платежей'),
+"s_general_currency_code" string(3) (set label_text='Код валюты контракта ЦБР'),
+"b_is_reorganization" bool (set label_text='Признак реорганизации'),
+"s_reorganization_info" string(1000) (set label_text='Информация по реорганизации'),
+"d_customer_capital" double (set label_text='Уставной капитал'),
+"t_customer_reg_date" date (set label_text='Дата регистрации клиента'),
+"s_shipping_country_code" string(3) (set label_text='Код страны отгрузки/поставки'),
+"s_shipper_country_code" string(3) (set label_text='Код страны грузоотправителя/грузополучателя'),
+"s_port_country_code" string(3) (set label_text='Код страны порта'),
+"s_ship_name" string(400) (set label_text='Наименование судна'),
+"s_third_country_code" string(3) (set label_text='Страна третьего лица плательщика/получателя'),
+"s_third_bank_country_code" string(3) (set label_text='Страна банка третьего лица плательщика/получателя'),
+"s_comment" string(1000) (set label_text='Примечание'),
+"n_sums_order_num_r" integer repeating (set label_text='Суммы - порядковый номер'),
+"d_sums_amount_r" double repeating (set label_text='Суммы - значение'),
+"s_sums_currency_code_r" string(3) repeating (set label_text='Суммы - валюта'),
+"n_contr_order_num_r" integer repeating (set label_text='Контрагенты - порядковый номер'),
+"s_contr_name_r" string(255) repeating (set label_text='Контрагенты - наименование'),
+"s_contr_country_code_r" string(3) repeating (set label_text='Контрагенты - код страны'),
+"s_contr_bank_country_code_r" string(3) repeating (set label_text='Контрагенты - код страны банка'),
+"s_402_service_code_r" string(100) repeating (set label_text='Ф402 - код услуги'),
+"s_402_service_name_r" string(1000) repeating (set label_text='Ф402 - наименование услуги'),
+"s_contract_type_code_r" string(255) repeating (set label_text='Виды контрактов - код вида контракта'),
+"s_contractor_column" string(2000) (set label_text='Колонка Контрагент'),
+"t_signing_date" date (set label_text='Дата подписания')
+)
+with supertype ccdea_base_doc
+set label_text='Контракт'
+go
+
+-----------------------------
+-- create type ccdea_passport
+-----------------------------
+create type ccdea_passport
+(
+"t_passport_date" date (set label_text='Дата ПС'),
+"t_close_date" date (set label_text='Дата закрытия ПС'),
+"s_close_reason" string(2000) (set label_text='Основание закрытия ПС'),
+"s_contractor_column" string(2000) (set label_text='Колонка Контрагент'),
+"s_contractor_name_r" string(255) repeating (set label_text='Наименование контрагента'),
+"s_contractor_country_code_r" string(3) repeating (set label_text='Код страны контрагента'),
+"b_no_amount" bool (set label_text='Признак отсутствия суммы'),
+"d_amount" double (set label_text='Сумма'),
+"t_contract_end_date" date (set label_text='Дата окончания исполнения обязательств по контракту'),
+"s_contract_currency_code" string(3) (set label_text='Код валюты контракта'),
+"t_receive_date" date (set label_text='Дата представления в банк'),
+"t_accept_date" date (set label_text='Дата принятия')
+)
+with supertype ccdea_base_doc
+set label_text='Паспорт сделки'
+go
+
+-----------------------------
+-- create type ccdea_content
+-----------------------------
+create type ccdea_content
+(
+"s_content_source_code" string(32) (set label_text='Код системы-источника', not null),
+"s_content_source_id" string(1000) (set label_text='Идентификатор в системе-источнике', not null),
+"b_is_parts_exist" bool (set label_text='Признак наличия частей', not null),
+"id_content_copy" ID (set label_text='Идентификатор копии'),
+"b_is_original" bool (set label_text='Признак оригинального контента'),
+"id_cts_result_content" ID (set label_text='Идентификатор результата преобразования')
+)
+with supertype dm_sysobject
+set label_text='Контент'
+go
+
+-----------------------------
+-- create type ccdea_svo_detail
+-----------------------------
+create type ccdea_svo_detail
+(
+"s_doc_number" string(100) (set label_text='Номер СВО'),
+"t_doc_date" date (set label_text='Дата СВО'),
+"s_state_code" string(32) (set label_text='Код статуса СВО'),
+"s_state" string(255) (set label_text='Статус СВО'),
+"s_state_comment" string(512) (set label_text='Комментарий к статусу СВО'),
+"t_accept_date" date (set label_text='Дата принятия СВО'),
+"t_reject_date" date (set label_text='Дата возврата СВО'),
+"t_receive_date" date (set label_text='Дата представления в банк СВО'),
+"b_is_changed" bool (set label_text='Признак корректировки СВО'),
+"s_bank_name" string(255) (set label_text='Наименование банка СВО'),
+"s_bank_country_code" string(255) (set label_text='Код страны банка-нерезидента СВО'),
+"s_account" string(20) (set label_text='Номер счета в формате ЦБ СВО'),
+"b_is_urgent" bool (set label_text='Признак срочности СВО'),
+"b_is_vip" bool (set label_text='Признак VIP СВО'),
+"n_detail_index" integer (set label_text='Порядковый номер записи'),
+"t_detail_date" date (set label_text='Дата записи'),
+"s_vo_code" string(5) (set label_text='Код валютной операции'),
+"s_payment_number" string(255) (set label_text='Номер платежа'),
+"t_payment_date" date (set label_text='Дата платежа'),
+"d_payment_amount" double (set label_text='Сумма платежа'),
+"s_payment_currency_code" string(3) (set label_text='Валюта платежа'),
+"b_is_payment" bool (set label_text='Признак платежа'),
+"t_valid_date" date (set label_text='Ожидаемый срок'),
+"s_remarks" string(2000) (set label_text='Примечания'),
+"t_accept_reject_column" date (set label_text='Колонка Дата принятия-возврата')
+)
+with supertype ccdea_base_doc
+set label_text='Запись в СВО'
+go
+
+-----------------------------
+-- create type ccdea_spd
+-----------------------------
+create type ccdea_spd
+(
+"s_doc_number" string(100) (set label_text='Номер документа'),
+"t_doc_date" date (set label_text='Дата документа'),
+"s_doc_type" string(255) (set label_text='Тип документа'),
+"s_state_code" string(32) (set label_text='Код статуса'),
+"s_state" string(255) (set label_text='Статус'),
+"s_state_comment" string(512) (set label_text='Комментарий к статусу'),
+"d_amount" double (set label_text='Сумма документа'),
+"s_currency_code" string(3) (set label_text='Код валюты документа'),
+"t_accept_date" date (set label_text='Дата принятия'),
+"t_reject_date" date (set label_text='Дата возврата'),
+"t_receive_date" date (set label_text='Дата представления в банк'),
+"b_is_changed" bool (set label_text='Признак корректировки'),
+"s_bank_name" string(255) (set label_text='Наименование банка'),
+"b_is_urgent" bool (set label_text='Признак срочности'),
+"b_is_vip" bool (set label_text='Признак VIP'),
+"n_pd_index_r" integer repeating (set label_text='ПД - порядковый номер'),
+"s_pd_doc_number_r" string(100) repeating (set label_text='ПД - номер документа'),
+"t_pd_doc_date_r" date repeating (set label_text='ПД - дата документа'),
+"s_pd_doc_kind_code_r" string(4) repeating (set label_text='ПД - код вида ПД'),
+"s_pd_kvalp_r" string(3) repeating (set label_text='ПД - код валюты документа'),
+"d_pd_summap_r" double repeating (set label_text='ПД - сумма в валюте документа'),
+"d_pd_summap2_r" double repeating (set label_text='ПД - сумма в валюте документа 2'),
+"s_pd_kvalk_r" string(3) repeating (set label_text='ПД - код валюты контракта'),
+"d_pd_summak_r" double repeating (set label_text='ПД - сумма в валюте контракта'),
+"d_pd_summak2_r" double repeating (set label_text='ПД - сумма в валюте контракта 2'),
+"b_pd_priz_post_r" bool repeating (set label_text='ПД - признак поставки'),
+"t_pd_srok_wait_r" date repeating (set label_text='ПД - ожидаемый срок'),
+"s_pd_kstrana_r" string(3) repeating (set label_text='ПД - код страны грузоотправителя'),
+"s_pd_primesh_r" string(500) repeating (set label_text='ПД - примечание'),
+"s_pd_doc_type_r" string(255) repeating (set label_text='ПД - тип ПД'),
+"s_pd_channel_name_r" string(100) repeating (set label_text='ПД - наименование канала'),
+"s_pd_channel_ref_id_r" string(100) repeating (set label_text='ПД - идентификатор в канале'),
+"t_accept_reject_column" date (set label_text='Колонка Дата принятия-возврата')
+)
+with supertype ccdea_base_doc
+set label_text='СПД'
+go
+
+-----------------------------
+-- create type ccdea_dossier
+-----------------------------
+create type ccdea_dossier
+(
+"s_state" string(64) (set label_text='Статус досье', not null),
+"t_creation_date" date (set label_text='Дата создания', not null),
+"t_close_date" date (set label_text='Дата закрытия'),
+"t_archive_date" date (set label_text='Дата передачи в архив'),
+"s_archive_number" string(255) (set label_text='Номер в архиве'),
+"s_dossier_type" string(32) (set label_text='Тип досье', not null),
+"s_customer_number" string(16) (set label_text='Номер клиента', not null),
+"s_passport_number" string(44) (set label_text='Номер ПС'),
+"s_contract_number" string(255) (set label_text='Номер контракта'),
+"t_contract_date" date (set label_text='Дата контракта'),
+"s_reg_branch_code" string(4) (set label_text='Код филиала', not null),
+"id_dossier_type_doc" ID (set label_text='Идентификатор базового документа'),
+"n_archive_year" integer (set label_text='Год перевода в архив'),
+"n_archive_number" integer (set label_text='Порядковый номер перевода в архив')
+)
+with supertype null
+set label_text='Досье'
+go
+
+-----------------------------
+-- create type ccdea_pd
+-----------------------------
+create type ccdea_pd
+(
+"s_doc_number" string(100) (set label_text='Номер документа'),
+"t_doc_date" date (set label_text='Дата документа'),
+"d_amount" double (set label_text='Сумма документа'),
+"s_currency_code" string(3) (set label_text='Код валюты документа'),
+"s_state" string(255) (set label_text='Статус'),
+"s_state_comment" string(512) (set label_text='Комментарий к статусу'),
+"s_doc_kind_code" string(4) (set label_text='Код вида ПД'),
+"s_doc_type" string(255) (set label_text='Тип ПД'),
+"s_kvalp" string(3) (set label_text='Код валюты документа p'),
+"d_summap" double (set label_text='Сумма в валюте документа p'),
+"s_kvalk" string(3) (set label_text='Код валюты контракта'),
+"d_summak" double (set label_text='Сумма в валюте контракта'),
+"b_priz_post" bool (set label_text='Признак поставки'),
+"t_srok_wait" date (set label_text='Ожидаемый срок'),
+"s_kstrana" string(3) (set label_text='Код страны грузополучателя'),
+"s_primesh" string(500) (set label_text='Примечание')
+)
+with supertype ccdea_base_doc
+set label_text='ПД'
+go
+
+-----------------------------
+-- create type ccdea_request
+-----------------------------
+create type ccdea_request
+(
+"t_origin_date" date (set label_text='Оригинальная дата создания'),
+"t_receive_date" date (set label_text='Дата представления в банк'),
+"t_accept_date" date (set label_text='Дата принятия'),
+"t_reject_date" date (set label_text='Дата возврата'),
+"s_state" string(255) (set label_text='Статус'),
+"s_state_comment" string(2000) (set label_text='Комментарий к статусу'),
+"t_accept_reject_column" date (set label_text='Колонка Дата принятия-возврата')
+)
+with supertype ccdea_base_doc
+set label_text='Заявление'
+go
+
+-----------------------------
+-- create type ccdea_vbk
+-----------------------------
+create type ccdea_vbk
+(
+"t_passport_date" date (set label_text='Дата ПС'),
+"t_close_date" date (set label_text='Дата закрытия ПС'),
+"s_close_reason" string(2000) (set label_text='Основание закрытия ПС'),
+"s_contractor_column" string(2000) (set label_text='Колонка Контрагент'),
+"s_contractor_name_r" string(255) repeating (set label_text='Наименование контрагента'),
+"s_contractor_country_code_r" string(3) repeating (set label_text='Код страны контрагента'),
+"b_no_amount" bool (set label_text='Признак отсутствия суммы'),
+"d_amount" double (set label_text='Сумма'),
+"t_contract_end_date" date (set label_text='Дата окончания исполнения обязательств по контракту'),
+"s_contract_currency_code" string(3) (set label_text='Код валюты контракта')
+)
+with supertype ccdea_base_doc
+set label_text='ВБК'
+go
+
+-----------------------------
+-- create type ccdea_currency
+-----------------------------
+create type ccdea_currency
+(
+"s_code" string(3) (set label_text='Код', not null),
+"s_name" string(255) (set label_text='Наименование', not null)
+)
+with supertype null
+set label_text='Валюта'
+go
+
+-----------------------------
+-- create type ccdea_customer
+-----------------------------
+create type ccdea_customer
+(
+"s_number" string(16) (set label_text='Номер', not null),
+"s_name" string(255) (set label_text='Наименование', not null),
+"s_branch_code" string(4) (set label_text='Код филиала', not null)
+)
+with supertype null
+set label_text='Клиент'
+go
+
+-----------------------------
+-- create type ccdea_attr_history
+-----------------------------
+create type ccdea_attr_history
+(
+"id_audittrail" ID (set label_text='Запись в аудите', not null),
+"s_attr_name" string(64) (set label_text='Имя атрибута'),
+"s_value" string(2000) (set label_text='Текущее значение'),
+"s_old_value" string(2000) (set label_text='Предыдущее значение'),
+"s_attr_description" string(255) (set label_text='Описание атрибута')
+)
+with supertype null
+set label_text='Версия атрибута'
+go
+
+-----------------------------
+-- create type ccdea_external_message
+-----------------------------
+create type ccdea_external_message
+(
+"s_message_id" string(255) (set label_text='Идентификатор сообщения ESB', not null),
+"s_source_key" string(255) (set label_text='Ключ в системе-источнике'),
+"s_message_type" string(255) (set label_text='Тип сообщения', not null),
+"t_modification_time" date (set label_text='Время последнего изменения', not null),
+"s_modification_verb" string(1) (set label_text='Управляющий флаг'),
+"n_current_state" integer (set label_text='Статус обработки'),
+"s_content_source_code" string(32) (set label_text='Код системы-источника контента'),
+"s_content_source_id" string(1000) (set label_text='Идентификатор контента в системе-источнике'),
+"s_doc_source_code" string(32) (set label_text='Код системы-источника документа'),
+"s_doc_source_id" string(255) (set label_text='Идентификатор документа в системе-источнике'),
+"id_document_r" ID repeating (set label_text='Идентификаторы документов'),
+"id_content_r" ID repeating (set label_text='Идентификаторы контентов'),
+"t_reply_time" date (set label_text='Время ответа'),
+"s_reply_error_code" string(64) (set label_text='Код ошибки ответа'),
+"s_reply_error_description" string(1000) (set label_text='Описание ошибки ответа'),
+"id_cts_request" ID (set label_text='Идентификатор задания на преобразование')
+)
+with supertype dm_sysobject
+set label_text='Сообщение из внешней системы'
+go
+
+-----------------------------
+-- create type ccdea_content_part
+-----------------------------
+create type ccdea_content_part
+(
+"id_content" ID (set label_text='Идентификатор контента', not null),
+"n_index" integer (set label_text='Порядкоывй номер части', not null),
+"s_part_source_id" string(1000) (set label_text='Идентификатор части в системе-источнике')
+)
+with supertype dm_sysobject
+set label_text='Часть контента'
+go
+
+-----------------------------
+-- create type ccdea_dossier_numerator
+-----------------------------
+create type ccdea_dossier_numerator
+(
+"n_year" integer (set label_text='Год', not null),
+"n_last_number" integer (set label_text='Последний выданный номер', not null)
+)
+with supertype null
+set label_text='Нумератор досье'
+go
+
+-----------------------------
+-- create type ccdea_branch
+-----------------------------
+create type ccdea_branch
+(
+"s_code" string(4) (set label_text='Код', not null),
+"s_name" string(255) (set label_text='Наименование', not null)
+)
+with supertype null
+set label_text='Филиал'
+go
+

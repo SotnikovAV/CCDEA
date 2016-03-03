@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_DMArchive?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_DMArchive" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_DMArchive" title="Content" subject="Archive / Restore objects from Docbase operator's inbox" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runInterval="12" runMode="Hour(s)" isInactive="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_DMArchive?name=dm_DMArchive#//@dataModel"/>
+    <methodArguments>-window_interval 720</methodArguments>
+    <methodArguments>-queueperson</methodArguments>
+    <methodArguments>-username</methodArguments>
+    <methodArguments>-password</methodArguments>
+    <methodArguments>-archive_dir</methodArguments>
+    <methodArguments>-queue_name</methodArguments>
+    <methodArguments>-queue_event</methodArguments>
+    <methodArguments>-do_archive_event</methodArguments>
+    <methodArguments>-do_restore_event</methodArguments>
+    <methodArguments>-verbose</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

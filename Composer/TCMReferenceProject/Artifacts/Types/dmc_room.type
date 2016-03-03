@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dmc_room?name=dmc_room" categoryId="com.emc.ide.artifact.dclass">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dmc_room">
+      <primaryElement>
+        <attributes attr_name="builtin_groups" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="true" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Built-In Groups" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="is_public">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_searchable="TRUE" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="true" not_null="inherit" default_search_arg="">
+            <default_value expressionName="" expressionText="false">
+              <objectType href="urn:com.emc.ide.artifact.dclass/dm_literal_expr?name=dm_literal_expr#//@dataModel"/>
+            </default_value>
+          </attrAnnotations>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Public?" help_text="" comment_text="Not currently used" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="only_owners_ungovern">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg="">
+            <default_value expressionName="" expressionText="false">
+              <objectType href="urn:com.emc.ide.artifact.dclass/dm_literal_expr?name=dm_literal_expr#//@dataModel"/>
+            </default_value>
+          </attrAnnotations>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Only Owners Ungovern" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="default_owner_permit">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="true" not_null="inherit" default_search_arg="">
+            <default_value expressionName="" expressionText="0" expressionType="INTEGER">
+              <objectType href="urn:com.emc.ide.artifact.dclass/dm_literal_expr?name=dm_literal_expr#//@dataModel"/>
+            </default_value>
+          </attrAnnotations>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Owner Permission" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="default_owner_xpermit" attr_length="256">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="true" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Owner Extended Permission" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="default_contrib_permit">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="true" not_null="inherit" default_search_arg="">
+            <default_value expressionName="" expressionText="0" expressionType="INTEGER">
+              <objectType href="urn:com.emc.ide.artifact.dclass/dm_literal_expr?name=dm_literal_expr#//@dataModel"/>
+            </default_value>
+          </attrAnnotations>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Contributor Permission" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="default_contrib_xpermit" attr_length="256">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="true" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Contributor Extended Permission" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="status_value">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_searchable="TRUE" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg="">
+            <default_value expressionName="" expressionText="0" expressionType="INTEGER">
+              <objectType href="urn:com.emc.ide.artifact.dclass/dm_literal_expr?name=dm_literal_expr#//@dataModel"/>
+            </default_value>
+          </attrAnnotations>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Room Status" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="-1" map_display_string="Green"/>
+              <value_mappings map_data_string="-2" map_display_string="Yellow"/>
+              <value_mappings map_data_string="-3" map_display_string="Red"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="status_text" attr_length="2000">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Status" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <proxyAttributes proxy_attr_name="i_ancestor_id">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Ancestor ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+        </proxyAttributes>
+        <proxyAttributes proxy_attr_name="r_folder_path">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Folder Path" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+        </proxyAttributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="IGNORE" is_searchable="INHERIT">
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>DcDesktopClient</scope_value>
+            <display_config object_name="dm_general" inherited="true">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>r_object_type</attribute_name>
+              <attribute_name>i_folder_id</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_summary" inherited="true">
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_name>keywords</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_security" fixed_source="true" inherited="true"/>
+          </scopes>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>webtop</scope_value>
+            <display_config object_name="dm_info" inherited="true">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_name>keywords</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_creator_name</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>r_modifier</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+            </display_config>
+          </scopes>
+        </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="Room" help_text="" comment_text="" nls_key="en">
+            <value_mappings map_data_string="dm_info_0" map_display_string="Info"/>
+          </locales>
+        </typeAnnotations>
+        <domain>
+          <locale_info nls_key="en"/>
+          <attrDomains attr_name="builtin_groups">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="is_public">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="only_owners_ungovern">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="default_owner_permit">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="default_owner_xpermit">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="default_contrib_permit">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="default_contrib_xpermit">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="status_value">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="status_text">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="i_ancestor_id">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+          <attrDomains attr_name="r_folder_path">
+            <attrDomain>
+              <locale_info nls_key="en"/>
+            </attrDomain>
+          </attrDomains>
+        </domain>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

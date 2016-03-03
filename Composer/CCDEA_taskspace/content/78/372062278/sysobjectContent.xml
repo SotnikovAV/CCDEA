@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?dctm original_encoding="UTF-8" has_bom="false" config_locator="0900028c80000425"?>
+<selection-methods>
+   <selection-method id="processsearch">
+      <label><nlsid>PROC_SEARCH_LABEL</nlsid></label>
+      <tooltip><nlsid>PROC_SEARCH_TIP</nlsid></tooltip>
+      <type>SEARCH</type>
+      <componentId>actionparamsearchcontainer</componentId>
+      <data>
+         <searchform>ProcessSearch</searchform>
+         <type-mappings>
+            <type-mapping>
+               <map-name>r_object_type</map-name>
+               <map-value>dm_process</map-value>
+            </type-mapping>
+         </type-mappings>
+      </data>
+   </selection-method>
+   <selection-method id="searchForFolder">
+      <label><nlsid>FOLDER_SEARCH_LABEL</nlsid></label>
+      <tooltip><nlsid>FOLDER_SEARCH_TIP</nlsid></tooltip>
+      <type>SEARCH</type>
+      <componentId>actionparamfolderlocatorcontainer</componentId>
+      <data>
+         <searchform>DefaultFolderSearch</searchform>
+         <type-mappings>
+            <type-mapping>
+               <map-name>r_object_type</map-name>
+               <map-value>dm_folder</map-value>
+            </type-mapping>
+         </type-mappings>
+      </data>
+   </selection-method>
+   <selection-method id="searchForForm">
+      <label><nlsid>FORM_SEARCH_LABEL</nlsid></label>
+      <tooltip><nlsid>FORM_SEARCH_TIP</nlsid></tooltip>
+      <type>SEARCH</type>
+      <componentId>actionparamsearchcontainer</componentId>
+      <data>
+         <searchform>FormSearch</searchform>
+         <type-mappings>
+            <type-mapping>
+               <map-name>r_object_type</map-name>
+               <map-value>dm_xfm_form</map-value>
+            </type-mapping>
+         </type-mappings>
+      </data>
+   </selection-method>
+   <selection-method id="folderContext">
+      <label><nlsid>FOLDER_ID_MAP_LABEL</nlsid></label>
+      <tooltip><nlsid>FOLDER_ID_MAP_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId>actionparamlistmapcontainer</componentId>
+      <data>
+         <type>CONTEXT</type>
+         <list>
+            <value>
+               <desc><nlsid>FOLDER_ID_MAP_CUR_DESC</nlsid></desc>
+               <value>parentFolderId</value>
+               <label><nlsid>FOLDER_ID_MAP_CUR_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>FOLDER_ID_MAP_SEL_DESC</nlsid></desc>
+               <value>objectId</value>
+	       <label><nlsid>FOLDER_ID_MAP_SEL_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+   <selection-method id="attachmentlist">
+      <label><nlsid>ATTACH_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>ATTACH_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>PLAIN</type>
+         <list>
+            <value>
+               <desc><nlsid>ATTACH_LIST_TRUE_DESC</nlsid></desc>
+               <value>true</value>
+               <label><nlsid>ATTACH_LIST_TRUE_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>ATTACH_LIST_FALSE_DESC</nlsid></desc>
+               <value>false</value>
+               <label><nlsid>ATTACH_LIST_FALSE_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+   <selection-method id="uniqprocesslist">
+      <label><nlsid>UNIQUE_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>UNIQUE_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>PLAIN</type>
+         <list>
+            <value>
+               <desc><nlsid>UNIQUE_LIST_TRUE_DESC</nlsid></desc>
+               <value>true</value>
+            </value>
+            <value>
+               <desc><nlsid>UNIQUE_LIST_FALSE_DESC</nlsid></desc>
+               <value>false</value>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+   <selection-method id="selectionconfiglist">
+      <label><nlsid>SELECT_CONFIG_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>SELECT_CONFIG_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>select object_name from dmc_ts_selector</dql>
+         <select>object_name</select>
+         <desc>List all available selector configurations.</desc>
+      </data>
+   </selection-method>
+   <selection-method id="importconfiglist">
+      <label><nlsid>IMPORT_CONFIG_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>IMPORT_CONFIG_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>select object_name from dmc_ts_importer</dql>
+         <select>object_name</select>
+         <desc>List all available importer configurations.</desc>
+      </data>
+   </selection-method>
+   <selection-method id="inputSelection">
+      <label><nlsid>INPUT_SEL_LABEL</nlsid></label>
+      <tooltip><nlsid>INPUT_SEL_TIP</nlsid></tooltip>
+      <type>INPUT</type>
+      <componentId>actionparaminputcontainer</componentId>
+      <data/>
+   </selection-method>
+   <selection-method id="foldertypelist">
+      <label><nlsid>FOLDER_TYPE_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>FOLDER_TYPE_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>
+            select b.type_name, b.label_text from dmi_type_info a, dmi_dd_type_info b where any a.r_supertype = 'dm_folder' and
+            (not any a.r_supertype = 'dm_cabinet') and (not any a.r_supertype = 'dmc_rm_formal_rec_folder')  and (a.r_type_name
+            != 'dm_cabinet') and (a.r_type_name != 'dmc_rm_formal_rec_folder') and (a.r_type_name = b.type_name) and (b.nls_key = 'en') and (b.business_policy_id = '0000000000000000') and not (b.life_cycle = 3) order by 2,1
+         </dql>
+         <select>type_name</select>
+         <desc>Select a type of dm_folder object</desc>
+      </data>
+   </selection-method>
+   <selection-method id="formobjectmap">
+      <label><nlsid>FORM_ID_MAP_LABEL</nlsid></label>
+      <tooltip><nlsid>FORM_ID_MAP_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId>actionparamlistmapcontainer</componentId>
+      <data>
+         <type>CONTEXT</type>
+         <list>
+            <value>
+               <desc><nlsid>FORM_ID_MAP_CUR_DESC</nlsid></desc>
+               <value>parentFolderId</value>
+	       <label><nlsid>FORM_ID_MAP_CUR_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>FORM_ID_MAP_SEL_DESC</nlsid></desc>
+               <value>objectId</value>
+	       <label><nlsid>FORM_ID_MAP_SEL_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+   <selection-method id="objecttypelist">
+      <label><nlsid>OBJ_TYPE_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>OBJ_TYPE_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>
+            select b.type_name, b.label_text from dmi_type_info a, dmi_dd_type_info b where (any a.r_supertype='dm_document'
+            and not any r_supertype='dm_folder' and not any r_supertype = 'dmc_rm_formal_record' and not any r_supertype =
+            'dmc_rm_formal_rec_structure') and (a.r_type_name = b.type_name) and (b.nls_key = 'en') and (b.business_policy_id = '0000000000000000') and not (b.life_cycle = 3) order by 1,2
+         </dql>
+         <select>type_name</select>
+         <desc>Select a type of dm_document object</desc>
+      </data>
+   </selection-method>
+   <selection-method id="formatlist">
+      <label><nlsid>FMT_TYPE_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>FMT_TYPE_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>
+         SELECT name, description FROM dm_format WHERE name IN (SELECT a_content_type FROM dm_sysobject
+         WHERE FOLDER('/Templates', DESCEND) AND r_object_type = '$type$') AND is_hidden=0 ORDER BY name
+         </dql>
+         <select>name</select>
+         <desc>Select a format for the new object</desc>
+      </data>
+   </selection-method>
+   <selection-method id="templatelist">
+      <label><nlsid>TEMPL_TYPE_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>TEMPL_TYPE_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>
+         SELECT r_object_id, object_name FROM dm_sysobject WHERE FOLDER('/Templates',DESCEND) AND r_object_type = '$type$' AND a_content_type = '$format$'
+         </dql>
+         <select>object_name</select>
+         <desc>Select a format for the new object</desc>
+      </data>
+   </selection-method>
+   <selection-method id="printformlist">
+      <label><nlsid>PFORM_TYPE_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>PFORM_TYPE_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>
+         select object_name from dm_xfm_form where definition_state = 2 and template_type='print_form_profile'
+         </dql>
+         <select>object_name</select>
+         <desc>Select a print form template</desc>
+      </data>
+   </selection-method>
+   <selection-method id="booleanlist">
+      <label><nlsid>BOOL_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>BOOL_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>PLAIN</type>
+         <list>
+            <value>
+               <desc><nlsid>BOOL_LIST_TRUE_DESC</nlsid></desc>
+               <value>true</value>
+               <label><nlsid>BOOL_LIST_TRUE_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>BOOL_LIST_FALSE_DESC</nlsid></desc>
+               <value>false</value>
+               <label><nlsid>BOOL_LIST_FALSE_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+      <selection-method id="calendarContext">
+      <label><nlsid>CAL_ID_MAP_LABEL</nlsid></label>
+      <tooltip><nlsid>CAL_ID_MAP_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId>actionparamlistmapcontainer</componentId>
+      <data>
+         <type>CONTEXT</type>
+         <list>
+            <value>
+               <desc><nlsid>CAL_ID_MAP_CUR_DESC</nlsid></desc>
+               <value>parentFolderId</value>
+	         <label><nlsid>CAL_ID_MAP_CUR_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>CAL_ID_MAP_SEL_DESC</nlsid></desc>
+               <value>objectId</value>
+	         <label><nlsid>CAL_ID_MAP_SEL_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+   <selection-method id="searchForCalendar">
+      <label><nlsid>CALENDAR_SEARCH_LABEL</nlsid></label>
+      <tooltip><nlsid>CALENDAR_SEARCH_TIP</nlsid></tooltip>
+      <type>SEARCH</type>
+      <componentId>actionparamfolderlocatorcontainer</componentId>
+      <data>
+         <searchform>DefaultFolderSearch</searchform>
+         <type-mappings>
+            <type-mapping>
+               <map-name>r_object_type</map-name>
+               <map-value>dmc_calendar</map-value>
+            </type-mapping>
+         </type-mappings>
+      </data>
+   </selection-method>
+   <selection-method id="topicContext">
+      <label><nlsid>STATUS_ID_MAP_LABEL</nlsid></label>
+      <tooltip><nlsid>STATUS_ID_MAP_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId>actionparamlistmapcontainer</componentId>
+      <data>
+         <type>CONTEXT</type>
+         <list>
+            <value>
+               <desc><nlsid>STATUS_ID_MAP_CUR_DESC</nlsid></desc>
+               <value>currentObjectId</value>
+               <label><nlsid>STATUS_ID_MAP_CUR_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>STATUS_ID_MAP_SEL_DESC</nlsid></desc>
+               <value>objectId</value>
+	         <label><nlsid>STATUS_ID_MAP_SEL_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>
+   <selection-method id="objectContext">
+      <label><nlsid>OBJ_MAP_LABEL</nlsid></label>
+      <tooltip><nlsid>OBJ_MAP_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId>actionparamlistmapcontainer</componentId>
+      <data>
+         <type>CONTEXT</type>
+         <list>
+            <value>
+               <desc><nlsid>OBJ_MAP_CUR_DESC</nlsid></desc>
+               <value>currentObjectId</value>
+               <label><nlsid>OBJ_MAP_CUR_LABEL</nlsid></label>
+            </value>
+            <value>
+               <desc><nlsid>OBJ_MAP_SEL_DESC</nlsid></desc>
+               <value>objectId</value>
+	       <label><nlsid>OBJ_MAP_SEL_LABEL</nlsid></label>
+            </value>
+         </list>
+      </data>
+   </selection-method>   
+   <selection-method id="searchformlist">
+      <label><nlsid>SEARCH_FORM_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>SEARCH_FORM_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>DQL</type>
+         <dql>
+         select object_name from dm_xfm_form where definition_state = 2 and template_type='search_view_profile'
+         </dql>
+         <select>object_name</select>
+         <desc>Select a print form template</desc>
+      </data>
+   </selection-method>
+   <selection-method id="searchfieldlist">
+      <label><nlsid>FORM_SEARCH_FIELD_LIST_LABEL</nlsid></label>
+      <tooltip><nlsid>FORM_SEARCH_FIELD_LIST_TIP</nlsid></tooltip>
+      <type>LIST</type>
+      <componentId/>
+      <data>
+         <type>SEARCHFORMFIELD</type>
+         <list/>
+      </data>
+   </selection-method>   
+</selection-methods>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  version="3.1"
+  metadata-complete="true">
+
+    <description>
+      Servlet for transferring documentum content from server to client. PDF only so far.
+    </description>
+    <display-name>Content Servlet</display-name>
+
+    <servlet>
+		<display-name>Content Servlet</display-name>
+        <servlet-name>GetContent</servlet-name>
+        <servlet-class>ru.rb.ccdea.servlet.PrintAppletServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetContent</servlet-name>
+        <url-pattern>/getcontent</url-pattern>
+    </servlet-mapping>
+
+</web-app>

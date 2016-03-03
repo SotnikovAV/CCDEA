@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://bpm.services.fs.documentum.emc.com/" xmlns:tns="http://bpm.services.fs.documentum.emc.com/" xmlns:ns1="http://bpm.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://bpm.core.datamodel.fs.documentum.emc.com/" schemaLocation="WorkflowService_schema6.xsd"/>
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="WorkflowService_schema3.xsd"/>
+
+  <xs:element name="getProcessInfo" type="tns:getProcessInfo"/>
+
+  <xs:element name="getProcessInfoResponse" type="tns:getProcessInfoResponse"/>
+
+  <xs:element name="getProcessTemplates" type="tns:getProcessTemplates"/>
+
+  <xs:element name="getProcessTemplatesResponse" type="tns:getProcessTemplatesResponse"/>
+
+  <xs:element name="startProcess" type="tns:startProcess"/>
+
+  <xs:element name="startProcessResponse" type="tns:startProcessResponse"/>
+
+  <xs:complexType name="startProcess">
+    <xs:sequence>
+      <xs:element name="info" type="ns1:ProcessInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="startProcessResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessInfo">
+    <xs:sequence>
+      <xs:element name="process" type="ns2:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessInfoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns1:ProcessInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessTemplates">
+    <xs:sequence>
+      <xs:element name="repositoryName" type="xs:string" minOccurs="0"/>
+      <xs:element name="folderPath" type="xs:string" minOccurs="0"/>
+      <xs:element name="additionalAttrs" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProcessTemplatesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="ns2:DataPackage" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

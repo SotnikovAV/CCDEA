@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.documentum.services.preset.instance:PresetPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.documentum.services.preset.instance="http:///com/documentum/services/preset/instance.ecore" name="CCDEA_taskspace_preset_package_app" lastModifier="dmadmin" lastAuthenticationRepository="UCB" lockedBy="">
+  <configScope>
+    <scopes>
+      <values>CCDEA_taskspace</values>
+      <scopeDefinition href="../TaskSpace_App.definition#//@scopeDefinitions.0"/>
+    </scopes>
+  </configScope>
+  <items itemDefinitionId="tabs" packageDefinitionName="TaskSpace_App">
+    <itemData configData="&lt;tabs>                                                           &lt;tab>             &lt;name>ccdea_vk_search_tab&lt;/name>             &lt;label>ccdea_vk_search_tab.label&lt;/label>             &lt;type>genericform&lt;/type>             &lt;tooltip>ccdea_vk_search_tab.tooltip&lt;/tooltip>             &lt;descr>ccdea_vk_search_tab.descr&lt;/descr>             &lt;data>                 &lt;comptype>wdkcomp&lt;/comptype>                 &lt;formname/>                 &lt;wdkcomp>ccdea_vk_search&lt;/wdkcomp>             &lt;/data>         &lt;actions/>&lt;action-display>STANDARD_ACTIONS&lt;/action-display>&lt;/tab>                                     &lt;/tabs>" modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_tabs">
+      <configTargetDefinitions href="../TaskSpace_App.definition#//@configTargetDefinitions.1"/>
+    </itemData>
+  </items>
+  <items itemDefinitionId="actions" packageDefinitionName="TaskSpace_App">
+    <itemData configData="&lt;actions>&lt;action>&lt;name>properties&lt;/name>&lt;landing>null&lt;/landing>&lt;callback>&lt;/callback>&lt;target-action>properties&lt;/target-action>&lt;replacement-action>&lt;/replacement-action>&lt;scope>&lt;/scope>&lt;inline-action>false&lt;/inline-action>&lt;hotkey>&lt;/hotkey>&lt;show-disabled>false&lt;/show-disabled>&lt;show-invalid>false&lt;/show-invalid>&lt;dynamic>1&lt;/dynamic>&lt;configure-params>false&lt;/configure-params>&lt;is-configurable>false&lt;/is-configurable>&lt;is-folder>false&lt;/is-folder>&lt;params>&lt;/params>&lt;return-values>&lt;/return-values>&lt;data>&lt;/data>&lt;/action>&lt;/actions>" modifyOperation="3" version="6.7" bindingDefinitionId="taskspace_actions">
+      <configTargetDefinitions href="../TaskSpace_App.definition#//@configTargetDefinitions.7"/>
+    </itemData>
+  </items>
+</com.documentum.services.preset.instance:PresetPackage>

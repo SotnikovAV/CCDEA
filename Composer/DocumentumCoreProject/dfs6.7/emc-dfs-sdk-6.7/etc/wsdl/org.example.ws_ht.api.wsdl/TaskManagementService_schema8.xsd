@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-content="http://content.core.datamodel.fs.documentum.emc.com/" xmlns:tns="http://core.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dfs-dm-core-context="http://context.core.datamodel.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dfs-dm-core-properties="http://properties.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-profiles="http://profiles.core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://properties.core.datamodel.fs.documentum.emc.com/" schemaLocation="TaskManagementService_schema7.xsd"/>
+
+  <xs:import namespace="http://content.core.datamodel.fs.documentum.emc.com/" schemaLocation="TaskManagementService_schema9.xsd"/>
+
+  <xs:complexType name="ObjectIdentity">
+    <xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:element name="ObjectId" type="tns:ObjectId"/>
+        <xs:element name="ObjectKey" type="tns:ObjectKey"/>
+        <xs:element name="ObjectPath" type="tns:ObjectPath"/>
+        <xs:element name="Qualification" type="tns:Qualification"/>
+        <xs:element name="CompositeObjectId" type="tns:CompositeObjectId"/>
+        <xs:element name="StringUri" type="xs:string"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="valueType" type="tns:ObjectIdentityType"/>
+    <xs:attribute name="repositoryName" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectId">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectKey">
+    <xs:sequence>
+      <xs:element name="PropertySet" type="dfs-dm-core-properties:PropertySet" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="objectType" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="RichText">
+    <xs:sequence>
+      <xs:element name="Body" type="dfs-dm-core-content:Content" minOccurs="0"/>
+      <xs:element name="Contents" type="dfs-dm-core-content:Content" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="format" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectPath">
+    <xs:sequence/>
+    <xs:attribute name="path" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="Qualification">
+    <xs:sequence>
+      <xs:element name="String" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="qualificationValueType" type="tns:QualificationValueType"/>
+    <xs:attribute name="objectType" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="CompositeObjectId">
+    <xs:sequence>
+      <xs:element name="PropertySet" type="dfs-dm-core-properties:PropertySet" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="objectType" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="ObjectIdentityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNDEFINED"/>
+      <xs:enumeration value="OBJECT_ID"/>
+      <xs:enumeration value="OBJECT_KEY"/>
+      <xs:enumeration value="OBJECT_PATH"/>
+      <xs:enumeration value="QUALIFICATION"/>
+      <xs:enumeration value="COMPOSITE_OBJECT_ID"/>
+      <xs:enumeration value="STRING_URI"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="QualificationValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNDEFINED"/>
+      <xs:enumeration value="STRING"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:job="http://documentum.emc.com/artifact/12012007/job" urn="urn:com.emc.ide.artifact.job/dm_RenditionMgt?location=%2FSystem%2FSysadmin%2FJobs&amp;name=dm_RenditionMgt" categoryId="com.emc.ide.artifact.job" modifiedByUser="false">
+  <dataModel xsi:type="job:Job" objectName="dm_RenditionMgt" title="Content" subject="Removes outdated/unwanted renditions from docbase documents" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" passStandardArguments="true" runMode="Day(s)" isInactive="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_job?name=dm_job#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <methodName href="urn:com.emc.ide.artifact.method/dm_RenditionMgt?name=dm_RenditionMgt#//@dataModel"/>
+    <methodArguments>-window_interval 120</methodArguments>
+    <methodArguments>-queueperson</methodArguments>
+    <methodArguments>-cutoff_days 180</methodArguments>
+    <methodArguments>-keep_slabels TRUE</methodArguments>
+    <methodArguments>-keep_current TRUE</methodArguments>
+    <methodArguments>-keep_esignature TRUE</methodArguments>
+    <methodArguments>-keep_keep_flag TRUE</methodArguments>
+    <methodArguments>-report_only TRUE</methodArguments>
+    <methodArguments>-client_renditions none</methodArguments>
+    <methodArguments>-server_renditions all</methodArguments>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

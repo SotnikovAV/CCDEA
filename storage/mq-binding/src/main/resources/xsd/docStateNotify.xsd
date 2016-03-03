@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="pr" xmlns:pr="pr">
+
+    <xsd:element name="docStateNotify" type="pr:DocStateNotifyType"/>
+
+    <xsd:complexType name="DocStateNotifyType">
+        <xsd:sequence>
+            <xsd:element name="originDocIdentification" type="pr:OldObjectIdentifiersType"/>
+            <xsd:element name="docState" type="pr:DocStateType"/>
+            <xsd:element name="docReference" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="barCode" type="pr:BarCodeType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OldObjectIdentifiersType">
+        <xsd:sequence>
+            <xsd:element name="sourceSystem">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="TBSVK"/>
+                        <xsd:enumeration value="JETDOCER"/>
+                        <xsd:enumeration value="DVK"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="sourceId" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="BarCodeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="128"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DocStateType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Загружен в архив"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

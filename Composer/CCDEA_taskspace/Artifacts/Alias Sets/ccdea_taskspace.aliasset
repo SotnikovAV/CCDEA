@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:aliasset="http://documentum.emc.com/artifact/12012007/aliasset" xmlns:installparameter="installparameter" urn="urn:com.emc.ide.artifact.aliasset/CCDEA_taskspace?name=CCDEA_taskspace" categoryId="com.emc.ide.artifact.aliasset" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="aliasset:AliasSet" objectName="CCDEA_taskspace" objectDescription="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_alias_set?name=dm_alias_set#//@dataModel"/>
+    <aliases id="dmc_wdk_presets_owner" name="dmc_wdk_presets_owner" description="" category="User or Group" usrCategory="1">
+      <valueRef xsi:type="aliasset:ParameterAliasValue">
+        <value xsi:type="installparameter:PrincipalParameter" href="urn:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+      </valueRef>
+    </aliases>
+    <aliases id="ts_designer" name="ts_designer" description="" category="User or Group" usrCategory="1">
+      <valueRef xsi:type="aliasset:ParameterAliasValue">
+        <value xsi:type="installparameter:PrincipalParameter" href="urn:com.emc.ide.principalparameter/CCDEA_taskspace_ts_designer?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_ts_designer.parameter#//@dataModel"/>
+      </valueRef>
+    </aliases>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

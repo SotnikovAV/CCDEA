@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ns0:docStateNotify xmlns:ns0="pr">
+    <ns0:originDocIdentification>
+        <ns0:sourceSystem>CRMSBL</ns0:sourceSystem>
+        <ns0:sourceId>1-143X278</ns0:sourceId>
+    </ns0:originDocIdentification>
+    <ns0:docState>Отправлен в бэк-офис</ns0:docState>
+    <ns0:docReference>http://172.17.164.114:7300/bitaskspace/?appname=BI_taskspace&amp;docbase=UCB&amp;objectId=095bbc6a815b03c6</ns0:docReference>
+    <ns0:barCode>787888</ns0:barCode>
+</ns0:docStateNotify>

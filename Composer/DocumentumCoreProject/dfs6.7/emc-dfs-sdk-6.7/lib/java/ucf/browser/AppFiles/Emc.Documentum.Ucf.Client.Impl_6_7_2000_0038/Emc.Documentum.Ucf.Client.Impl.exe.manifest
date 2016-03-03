@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly manifestVersion="1.0" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity version="6.7.2000.0038" name="Emc.Documentum.Ucf.Client.Impl.exe" publicKeyToken="08a53cc9dd7bf896" language="neutral" processorArchitecture="x86" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Emc.Documentum.Ucf.Client.Impl" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="x86" />
+    <commandLine file="Emc.Documentum.Ucf.Client.Impl.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet class="System.Security.PermissionSet" version="1" Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- UAC Manifest Options
+            If you want to change the Windows User Account Control level replace the 
+            requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            If you want to utilize File and Registry Virtualization for backward 
+            compatibility then delete the requestedExecutionLevel node.
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="4" minorVersion="10" buildNumber="0" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Emc.Documentum.Ucf.Client.Api.dll" size="120832">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>LGQpU7e75Qdr5444toNlt3qufZk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\Emc.Documentum.Ucf.Client.Api.resources.dll" size="28672" group="de-DE">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="de-DE" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>nyYYHcftz1JHdla5aRm4iY/PiFo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es-ES\Emc.Documentum.Ucf.Client.Api.resources.dll" size="16896" group="es-ES">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="es-ES" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>d4MeI8hZpMtGAjhkhftVTmQTd9s=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr-FR\Emc.Documentum.Ucf.Client.Api.resources.dll" size="28672" group="fr-FR">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="fr-FR" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>63hBm41kelc9zBTLGbw0v6j+zxo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="it-IT\Emc.Documentum.Ucf.Client.Api.resources.dll" size="16384" group="it-IT">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="it-IT" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>YgK60JoWBfGGXSWREGysFLneOAo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ja-JP\Emc.Documentum.Ucf.Client.Api.resources.dll" size="28672" group="ja-JP">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="ja-JP" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>35bdHfgMsccC/aaTF5XNUwcfMK0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\Emc.Documentum.Ucf.Client.Api.resources.dll" size="28672" group="ko-KR">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="ko-KR" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>gLz1GdjQs4La+BeJMBbeAokES9I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl-NL\Emc.Documentum.Ucf.Client.Api.resources.dll" size="15872">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="nl-NL" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>opvfA39nFsM05+6iAHbf9KlbEAs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pt-BR\Emc.Documentum.Ucf.Client.Api.resources.dll" size="16384">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="pt-BR" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>PpLhUHEYZ9XmIFS6cprHcY33Jv8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ru-RU\Emc.Documentum.Ucf.Client.Api.resources.dll" size="19968">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="ru-RU" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>MSa0+h52XG8tLnp58YsEwAR3nB4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="sv-SE\Emc.Documentum.Ucf.Client.Api.resources.dll" size="16384" group="sv-SE">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="sv-SE" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>cvOc3PKV2rvWHxj53Ln7Skycv+c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="zh-CN\Emc.Documentum.Ucf.Client.Api.resources.dll" size="15360" group="zh-CN">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Api.resources" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="zh-CN" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>BbNBqvdI1iEhh8wvZrPeLrnV8Fk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Emc.Documentum.Ucf.Client.Impl.exe" size="435712">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.Impl" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>OFdRtn+gtf8o20RTtDruvAaxVDU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Emc.Documentum.Ucf.Client.MessageConverter.dll" size="9216" group="MessageConverter">
+      <assemblyIdentity name="Emc.Documentum.Ucf.Client.MessageConverter" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>Ol4i+hVWrLRBXpehmPXKmWQ0xCE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Emc.Documentum.Ucf.ContentAnalysis.Client.OfficeAuto.dll" size="23552" group="OfficeAuto">
+      <assemblyIdentity name="Emc.Documentum.Ucf.ContentAnalysis.Client.OfficeAuto" version="6.70.2000.38" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>1EDeV0kJbwPQCKqQB9U++cJxa1E=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExBaseLib.dll" size="4096" group="MessageConverter">
+      <assemblyIdentity name="ExBaseLib" version="1.0.0.0" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>LDjaxFpGbBiiT50k4b3bDbpbOGE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExExchMsgLib.dll" size="9728" group="MessageConverter">
+      <assemblyIdentity name="ExExchMsgLib" version="1.0.0.0" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>nKZ4JeIrbQND+X6B0HXNtG6WOik=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExMsgLib.dll" size="12800" group="MessageConverter">
+      <assemblyIdentity name="ExMsgLib" version="1.0.0.0" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>LYa4xIuwNvwpU5761jJnY4KEscM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExSTLContainersLib.dll" size="6656" group="MessageConverter">
+      <assemblyIdentity name="ExSTLContainersLib" version="1.0.0.0" publicKeyToken="D39CE23F875665D8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>k0NiQjn097/H/7rzZg3YTb+nEa4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Interop.Excel.dll" size="1100392" group="OfficeInterop">
+      <assemblyIdentity name="Microsoft.Office.Interop.Excel" version="11.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>F9KcWGdatx3NMdBih72kWn9Kyzk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Interop.PowerPoint.dll" size="223856" group="OfficeInterop">
+      <assemblyIdentity name="Microsoft.Office.Interop.PowerPoint" version="11.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>7Xfo637w7rwriaUz/pzHQt4aa4Y=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Interop.Word.dll" size="662120" group="OfficeInterop">
+      <assemblyIdentity name="Microsoft.Office.Interop.Word" version="11.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>HzVG6xdU9ZLGv1y6C8IKrWtlhAY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Vbe.Interop.dll" size="64088" group="OfficeInterop">
+      <assemblyIdentity name="Microsoft.Vbe.Interop" version="11.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>TYuB9hyuoYvM3Fgsjd+TSTdMLbY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="office.dll" size="223800" group="OfficeInterop">
+      <assemblyIdentity name="office" version="11.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>qLZAFskrUjHV/TFbvevZR7hSGP4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="true">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="16384" group="OfficeInterop">
+      <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>umKzfUIzuIlI/cL/7QjzyC6GJ/E=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Emc.Documentum.Ucf.Client.Impl.exe.config" size="1673">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>J8SmqA3NJ8clYDdZGFFv5YZl+cw=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=EMC Corporation, OU=EMC DCTM, O=EMC Corporation, L=Hopkinton, S=Massachusetts, C=US" issuerKeyHash="d40d653f7abd34c6fe47e74c0dc0bdf2de15ab71" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>0kOORWTWycffaqmULwpYOwYxJDQ=</DigestValue></Reference></SignedInfo><SignatureValue>TtuPN9yDnamIg9cNdeaZ3RnWrC4pH54oMdhs8TlL0NJ+u7WsSBnGCsN4mk1/FJwUFZ+74fwTzZOE5jZK0ErbnQvSnn7Q8b6JfgJSlSpjb7Gbi1USY0oj2+LiWfLGznEMRQL5xdwgQi5O76QUBQG9/gdckOS22C+/TXUtqsIq0gOiKVctZEENuKaId16OVcRDb2Vh8F/8oIlwZ7Vufe3FhmfGyo7mi+XZ+hDhH0+WtIi4reZlFqUK/HQxGFzxQopnIzsnkZKsBen/DezTWMNitqasozMiKrxdL9lGTP3viU09bxh4itb4XGxa2b/Vn8ataMimBg1/Kyg5vSlGTgaqyQ==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>uyRPVSky4Lp8g1RIaYEtIuNLjFEGafjTJ0Zu+2pP3B7lUuKaq2yfOX9rtPA9wE7v6JApW8bxYGxpJg8iaXX7xa+fVvULLtc8bMm11r/d704R3268Wy1u4Q9hkrNBn26T3RqFlzT6K3pKsRkrpF3tt1/1YgFmpedSSH9VKDVXVfle/agLB6r3e5ERyZ5c9LdPs4GlisQoaO666EUWuSri7YnKrVjnkc/DMD03qmseKH4magyl1LIYOwg4us23ipl9F5L2mUHAmqTdYT6mKl/O1th+eWotiaSIGtXsCYmp44wtklA4KS16T34sx8hNAVxtH2lKe945Mza/HB3QMuA7pw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="342431063b580a2f94a96adfc7c9d664458e43d2" Description="" Url=""><as:assemblyIdentity version="6.7.2000.0038" name="Emc.Documentum.Ucf.Client.Impl.exe" publicKeyToken="08a53cc9dd7bf896" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=EMC Corporation, OU=EMC DCTM, O=EMC Corporation, L=Hopkinton, S=Massachusetts, C=US</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>MVhFdd/GLJ1S4wHv2CWxqf1vgFI=</DigestValue></Reference></SignedInfo><SignatureValue>DSe+7Ac3lbEvwl+HQB/o7Y42SZYAfbP5mB1z00duPAUGDoPfybqWZR9tq1l3zLLmNdEI5WamKWIEP+RPOrGckcpuidraPrDgiJARc7KNaF2RIncm0UOu2KP1NMTSystp2JQo5AtXWUYLSt/8Mdpfjbtz3T7My6R3PwGTy/5kuBXEAb2rsdlrwtnHMckAc1Xg84u+kF/BQ8bUKxczW4kEHMSQYP4WOnCMfl7+1ViUO/w/M8DU/f1TTk4zE7ZUnjraeOy1cIVlY2ctEIt0VNhaQl6ea8Omnrba2sHGR0GpPiPSykqKvJjedzllXJ0l67WK7RoK6khp0oPI+QTfP9C6FQ==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>uyRPVSky4Lp8g1RIaYEtIuNLjFEGafjTJ0Zu+2pP3B7lUuKaq2yfOX9rtPA9wE7v6JApW8bxYGxpJg8iaXX7xa+fVvULLtc8bMm11r/d704R3268Wy1u4Q9hkrNBn26T3RqFlzT6K3pKsRkrpF3tt1/1YgFmpedSSH9VKDVXVfle/agLB6r3e5ERyZ5c9LdPs4GlisQoaO666EUWuSri7YnKrVjnkc/DMD03qmseKH4magyl1LIYOwg4us23ipl9F5L2mUHAmqTdYT6mKl/O1th+eWotiaSIGtXsCYmp44wtklA4KS16T34sx8hNAVxtH2lKe945Mza/HB3QMuA7pw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIEKzCCAxOgAwIBAgIQMUGqYjg30ghcKNOcODOcfDANBgkqhkiG9w0BAQUFADBKMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMVGhhd3RlLCBJbmMuMSQwIgYDVQQDExtUaGF3dGUgQ29kZSBTaWduaW5nIENBIC0gRzIwHhcNMTExMTA3MDAwMDAwWhcNMTIxMTA1MjM1OTU5WjCBgDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDU1hc3NhY2h1c2V0dHMxEjAQBgNVBAcTCUhvcGtpbnRvbjEYMBYGA1UEChQPRU1DIENvcnBvcmF0aW9uMREwDwYDVQQLFAhFTUMgRENUTTEYMBYGA1UEAxQPRU1DIENvcnBvcmF0aW9uMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuyRPVSky4Lp8g1RIaYEtIuNLjFEGafjTJ0Zu+2pP3B7lUuKaq2yfOX9rtPA9wE7v6JApW8bxYGxpJg8iaXX7xa+fVvULLtc8bMm11r/d704R3268Wy1u4Q9hkrNBn26T3RqFlzT6K3pKsRkrpF3tt1/1YgFmpedSSH9VKDVXVfle/agLB6r3e5ERyZ5c9LdPs4GlisQoaO666EUWuSri7YnKrVjnkc/DMD03qmseKH4magyl1LIYOwg4us23ipl9F5L2mUHAmqTdYT6mKl/O1th+eWotiaSIGtXsCYmp44wtklA4KS16T34sx8hNAVxtH2lKe945Mza/HB3QMuA7pwIDAQABo4HVMIHSMAwGA1UdEwEB/wQCMAAwOwYDVR0fBDQwMjAwoC6gLIYqaHR0cDovL2NzLWcyLWNybC50aGF3dGUuY29tL1RoYXd0ZUNTRzIuY3JsMB8GA1UdJQQYMBYGCCsGAQUFBwMDBgorBgEEAYI3AgEWMB0GA1UdBAQWMBQwDjAMBgorBgEEAYI3AgEWAwIHgDAyBggrBgEFBQcBAQQmMCQwIgYIKwYBBQUHMAGGFmh0dHA6Ly9vY3NwLnRoYXd0ZS5jb20wEQYJYIZIAYb4QgEBBAQDAgQQMA0GCSqGSIb3DQEBBQUAA4IBAQCptThA9Hs4rMHgRoboggawJJXeLoCN1fCrCSpCsh/knm63wSeO32ePHFjGjafDDL7IPHTPlAIV60Oj/9obLMh1kLyZOc0yLF9UGBsBgHNNmcdf2Gdnvf5KM0oUg9qrc3eZi14gUxilYejertap9gazOZglCyRjJ3MjNfiyh0rEnTNt5wgrthDie3542k+KeMPoXP7XeCgGYjdtdxVDKWtEmI8JaO6gwgZb+mFqbeDGjgoeDg9Q+YqxfZryIUm8axYhrdGjP1eyIDl1gljy/wxOLuiGo7fBhghaJnihSRD+GarK7GI8jB1L6RHYOA/DSCrjlmrw2Q0wj/1lJsv5bTH1</X509Certificate><X509Certificate>MIIEnDCCA4SgAwIBAgIQR5dNeHOlvKsNL7NwGS/OXjANBgkqhkiG9w0BAQUFADCBqTELMAkGA1UEBhMCVVMxFTATBgNVBAoTDHRoYXd0ZSwgSW5jLjEoMCYGA1UECxMfQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBEaXZpc2lvbjE4MDYGA1UECxMvKGMpIDIwMDYgdGhhd3RlLCBJbmMuIC0gRm9yIGF1dGhvcml6ZWQgdXNlIG9ubHkxHzAdBgNVBAMTFnRoYXd0ZSBQcmltYXJ5IFJvb3QgQ0EwHhcNMTAwMjA4MDAwMDAwWhcNMjAwMjA3MjM1OTU5WjBKMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMVGhhd3RlLCBJbmMuMSQwIgYDVQQDExtUaGF3dGUgQ29kZSBTaWduaW5nIENBIC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC3i891W58l2n45sJPbONOpI9CC+ukkflwLjoP45npZ5qPFmKeZ0kT/AKalOQSK2imI6tui8xyZFSbCsfT84QxHqQkRBgogkrnHoASMXJQZq1slLB1ifnANzmFs3SuCyc5dSF/3wr68QSMeTyld10+89MUq/GPmfCZOmad5QZ4QSnp5ycaG94aV0ibOPBgq1nzOr82tu/eCLHAmN0XlD0cixgEovS6DXGqkR8Hn0NhrgUY/IRf1B8VDWqZnLLh7YBG1g+71dApycUQ9WP7oGqs4w1nbf244fXbHcmmYNpZX02Yc0lSRBC5UGbDcPbUiXobVKn4g313merFl/sUCTjEtAgMBAAGjggEcMIIBGDASBgNVHRMBAf8ECDAGAQH/AgEAMDQGA1UdHwQtMCswKaAnoCWGI2h0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQQ0EuY3JsMA4GA1UdDwEB/wQEAwIBBjAyBggrBgEFBQcBAQQmMCQwIgYIKwYBBQUHMAGGFmh0dHA6Ly9vY3NwLnRoYXd0ZS5jb20wHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMDMCkGA1UdEQQiMCCkHjAcMRowGAYDVQQDExFWZXJpU2lnbk1QS0ktMi0xMDAdBgNVHQ4EFgQU1A1lP3q9NMb+R+dMDcC98t4Vq3EwHwYDVR0jBBgwFoAUe1tFz6/Oy3r9MZIaarbzRutXSFAwDQYJKoZIhvcNAQEFBQADggEBAFb+U1zhx568p+1+U21qFEtRjEBegF+qpOgv7zjIBMnKPs/fOlhOsNS2Y8UpV/oCBZpFTWjbKhvUND2fAMNay5VJpW7hsMX8QU1BSm/Td8jXOI3kGd4Y8x8VZYNtRQxT+QqaLqVdv28ygRiSGWpVAK1jHFIGflXZKWiuSnwYmnmIayMj2Cc4KimHdsr7x7ZiIx/telZM3ZwyW/U9DEYYlTsqI2iDZEHZAG0PGSQVaHK9xXFnbqxM25DrUaUaYgfQvmoARzxyL+xPYT5zhc5aCre6wBwTdeMiOSjdbR0JRp1PuuhAgZHGpM6UchsBzypuFWeVia59t7fN+Qo9dbZrPCU=</X509Certificate></X509Data></KeyInfo><Object><as:Timestamp>MIIMagYJKoZIhvcNAQcCoIIMWzCCDFcCAQExCzAJBgUrDgMCGgUAMIIBEwYJKoZI
+hvcNAQcBoIIBBASCAQANJ77sBzeVsS/CX4dAH+jtjjZJlgB9s/mYHXPTR248BQYO
+g9/JupZlH22rWXfMsuY10QjlZqYpYgQ/5E86sZyRym6J2to+sOCIkBFzso1oXZEi
+dybRQ67Yo/U0xNLKy2nYlCjkC1dZRgtK3/wx2l+Nu3PdPszLpHc/AZPL/mS4FcQB
+vaux2WvC2ccxyQBzVeDzi76QX8FDxtQrFzNbiQQcxJBg/hY6cIx+Xv7VWJQ7/D8z
+wNT9/VNOTjMTtlSeOtp47LVwhWVjZy0Qi3RU2FpCXp5rw6aettrawcZHQak+I9LK
+Soq8mN53OWVcnSXrtYrtGgrqSGnSg8j5BN8/0LoVoIIJMDCCBIUwggNtoAMCAQIC
+AwI6ZDANBgkqhkiG9w0BAQUFADBCMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNR2Vv
+VHJ1c3QgSW5jLjEbMBkGA1UEAxMSR2VvVHJ1c3QgR2xvYmFsIENBMB4XDTEyMTAx
+ODE0MzgzNVoXDTIyMDUyMDE0MzgzNVowXjELMAkGA1UEBhMCVVMxHTAbBgNVBAoT
+FFN5bWFudGVjIENvcnBvcmF0aW9uMTAwLgYDVQQDEydTeW1hbnRlYyBUaW1lIFN0
+YW1waW5nIFNlcnZpY2VzIENBIC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQCxrLNJVEuXHBIK2CV5kSJXKm/cuCbEQ3Nrwr8uUFr7FMJ2jkMBJUO0
+oeJF9Oi3e8N0zCLXtJQAAvdN7b+0t0Qka81fRTvRRM5DEnMXgotptCvLmR6schsm
+TXEfsTHd+1FhAlOmqvVJLAV4RaUvic7nmef+jOJXPz3GktxK+Hsz5HkK+/B1iEGc
+/8UDUZmq12yfk2mHZSmDhcJgFMTIyTsU2sCB8B8NdN6SIqvK9/t0fCfm90obf6fD
+ni2uiuqm5qonFn1h95hxEbziUKFL5V365Q6nLJ+qZSDT2JboyHylTkhE/xniRAeS
+C9dohIBdanhkRc1gRn5UwRN8xXnxycFxAgMBAAGjggFmMIIBYjAfBgNVHSMEGDAW
+gBTAephojYn7qwVkDBF9qn1luMrMTjAdBgNVHQ4EFgQUX5r1blzMzHSa1N197z/b
+7EyALt0wEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAQYwOgYDVR0f
+BDMwMTAvoC2gK4YpaHR0cDovL2NybC5nZW90cnVzdC5jb20vY3Jscy9ndGdsb2Jh
+bC5jcmwwNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5n
+ZW90cnVzdC5jb20wSwYDVR0gBEQwQjBABgkrBgEEAfAiAQcwMzAxBggrBgEFBQcC
+ARYlaHR0cDovL3d3dy5nZW90cnVzdC5jb20vcmVzb3VyY2VzL2NwczAoBgNVHREE
+ITAfpB0wGzEZMBcGA1UEAxMQVGltZVN0YW1wLTIwNDgtMTATBgNVHSUEDDAKBggr
+BgEFBQcDCDANBgkqhkiG9w0BAQUFAAOCAQEAqj4/A0EvNRN/jD8SXBDP7mdVeVZg
+DwFSDyOHekEoR+XTZnK7As/JDCQpQcLaLpngI5HvsTNHPMIIOgaVc6IbDrw/t+JZ
+8Wm+8NPhGI9zLeijnCFAQPPNOrcBjdxNlLR6EAVQfxthxYIViuQsTe00EetbaolZ
+x973LITAs706mOFFKIohlYA/yQeX8P9CwR5ChOeyx+CiapnU8dTG/lfAuTrn9idw
+Dange0oTlcLJuatpB9lNzGZHQkp0p6dts6c16H5Lqs69vJOffcZApfyqH6jV0fB+
+f9LjTFb9QGTwR0xRBDDq6pQvJMrpCMV4W6FiyR1Ih5cZ+k2leO3sBHkONjCCBKMw
+ggOLoAMCAQICEH4f33KZ6NJFoV0LqOWxWbowDQYJKoZIhvcNAQEFBQAwXjELMAkG
+A1UEBhMCVVMxHTAbBgNVBAoTFFN5bWFudGVjIENvcnBvcmF0aW9uMTAwLgYDVQQD
+EydTeW1hbnRlYyBUaW1lIFN0YW1waW5nIFNlcnZpY2VzIENBIC0gRzIwHhcNMTIx
+MDE4MDAwMDAwWhcNMjIwNTE5MjM1OTU5WjBiMQswCQYDVQQGEwJVUzEdMBsGA1UE
+ChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xNDAyBgNVBAMTK1N5bWFudGVjIFRpbWUg
+U3RhbXBpbmcgU2VydmljZXMgU2lnbmVyIC0gRzQwggEiMA0GCSqGSIb3DQEBAQUA
+A4IBDwAwggEKAoIBAQCiYws5RLi7I6dESbsO/6HwYQpTk7CY260sD0rFbv+GPFNV
+DxXOBD8r/amWltm+YXkLW8lMhnbl4ENLIpXuwitDwZ/YaLSOQE/uhTi5EcUj8mRY
+8BUyb05Xoa6IpALXKh7NS+HdY9UXiTJbsF6ZWqidKFAOF+6W22E7RVEdzxJWC5JH
+/Kuu9mY9R6xwcueS51/NELnEg2SUGb0lgOHo0iKl0LoCeqF3k1tlw+4XdLxBhirc
+CEyMkoyRLZ53RB9o1qh0d9sOWzKLVoszvdljyEmdOsXF6jML0vGjG/SLvtmzV4s7
+3gSneiKyJK4ux3DFvk6DJgj7C72pT5kI4RAocqrNAgMBAAGjggFXMIIBUzAMBgNV
+HRMBAf8EAjAAMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMIMA4GA1UdDwEB/wQEAwIH
+gDBzBggrBgEFBQcBAQRnMGUwKgYIKwYBBQUHMAGGHmh0dHA6Ly90cy1vY3NwLndz
+LnN5bWFudGVjLmNvbTA3BggrBgEFBQcwAoYraHR0cDovL3RzLWFpYS53cy5zeW1h
+bnRlYy5jb20vdHNzLWNhLWcyLmNlcjA8BgNVHR8ENTAzMDGgL6AthitodHRwOi8v
+dHMtY3JsLndzLnN5bWFudGVjLmNvbS90c3MtY2EtZzIuY3JsMCgGA1UdEQQhMB+k
+HTAbMRkwFwYDVQQDExBUaW1lU3RhbXAtMjA0OC0yMB0GA1UdDgQWBBRGxmmjDkoU
+HtVM2lJjFz9eNrwN5jAfBgNVHSMEGDAWgBRfmvVuXMzMdJrU3X3vP9vsTIAu3TAN
+BgkqhkiG9w0BAQUFAAOCAQEAYwAyjRcfKNwEecknGYS4NmindRkYsk9JrF1hK4Yy
+0A1NurV8XrbSN+jtW4gs0ilhvh9QKUoi+ReGvYchW9E8Tb9kwLoum6YQofHEhFOw
+jVjyjq8SGXcfrfe+voEtjoJ+cPg5ljNlWahPf4siyRh+XmTiuTBtBrS3EYxmuiwm
+RLmK3LGHkbXcvxSh3IOjYK8pXmaKKw3tndA5Bbm4bx65unHMaN6yeToD1ojhHSmz
+NOch2KMPK3IaQrWeRfrfpyud1/LNHchWEi+NnU3OMskmYWTQmnjlLxJqSkQCJNhX
+hTJ/zVmMa3MzAKVeq8PwIsDLCMPg97i4BBTsSu85+c/KJTGCAfgwggH0AgEBMHIw
+XjELMAkGA1UEBhMCVVMxHTAbBgNVBAoTFFN5bWFudGVjIENvcnBvcmF0aW9uMTAw
+LgYDVQQDEydTeW1hbnRlYyBUaW1lIFN0YW1waW5nIFNlcnZpY2VzIENBIC0gRzIC
+EH4f33KZ6NJFoV0LqOWxWbowCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkq
+hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTEzMDEwNTA3NDUxMlowIwYJKoZIhvcN
+AQkEMRYEFN2ft3wAh2WHV5w1bWeQknS9VGDxMA0GCSqGSIb3DQEBAQUABIIBACcN
+NcTAx6eiQ53ziKpaApafdi5GDOnRDGahr/NYchJL6lE+lp6dmHp0prbvZN8EklOh
+yJ9in5tyWrCeJ2+Au0/kxx5qFhls+2Iwr9zW5TXyNXe8TqxbBu5fCLB2IRQxvc46
+gakHJlASichLw0k0bwZlLjxdFWnvsKhpnYHgTFw3N+/7qzykB38vGgp/MBHCjqgx
+2O3eusFD+wc/w6OlmTi9OfEnjZA4KO0djpgpvORZ4zeKOExkam0sDB+OGnWpfNo7
+WlYMzNdF2E7RJ8r/qQkkDQ048QoCxVl7f/aGdVJf7RJ1PWGSy5rpyIM2tePAzIec
+MD2iWEyFF4ZmA51yVEo=
+</as:Timestamp></Object></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:forms="http://documentum.emc.com/artifact/12012007/forms" xmlns:installparameter="installparameter" urn="urnd:com.emc.ide.artifact.formtemplate/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_form" categoryId="com.emc.ide.artifact.formtemplate">
+  <dataModel xsi:type="forms:FormTemplate" objectName="ccdea_spd_view" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="xfm" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" relationshipToBase="1" description="" templateType="document_view_profile" isSchemaValidated="true" formTemplateContent="//@contentStore/@contentEntries.2/@value">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dm_xfm_form?name=dm_xfm_form#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urnd:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urnd:com.emc.ide.artifact.format/xfm?name=xfm#//@dataModel"/>
+    <formLayout objectName="ccdea_spd_view" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="xml" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" formLayoutContent="//@contentStore/@contentEntries.0/@value">
+      <objectType href="urnd:com.emc.ide.artifact.dclass/dmc_xfm_layout?name=dmc_xfm_layout#//@dataModel"/>
+      <versionLabel>1.0</versionLabel>
+      <versionLabel>CURRENT</versionLabel>
+      <storageType xsi:type="installparameter:StorageParameter" href="urnd:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+      <contentTypeFormat href="urnd:com.emc.ide.artifact.format/xml?name=xml#//@dataModel"/>
+    </formLayout>
+    <formInstance href="urnd:com.emc.ide.artifact.forminstance/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_instance#//@dataModel"/>
+    <formResource objectName="ccdea_spd_view_en_US" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="property" specialApp="" languageCode="en_US" category="" controllingApp="" fullText="true" status="" isDefault="true" formResourceConfig="//@contentStore/@contentEntries.1/@value">
+      <objectType href="urnd:com.emc.ide.artifact.dclass/dm_xfm_resource?name=dm_xfm_resource#//@dataModel"/>
+      <versionLabel>1.0</versionLabel>
+      <versionLabel>CURRENT</versionLabel>
+      <storageType xsi:type="installparameter:StorageParameter" href="urnd:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+      <contentTypeFormat href="urnd:com.emc.ide.artifact.format/property?name=property#//@dataModel"/>
+    </formResource>
+    <formSchema href="urnd:com.emc.ide.artifact.formschema/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_schema#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="formLayoutContent.xml">
+      <value filePath="content/50/781296850/formLayoutContent[1].xml"/>
+    </contentEntries>
+    <contentEntries key="formResourceConfig.property">
+      <value filePath="content/50/781296850/formResourceConfig[1].property"/>
+    </contentEntries>
+    <contentEntries key="formTemplateContent.xfm">
+      <value filePath="content/50/781296850/formTemplateContent[1].xfm"/>
+    </contentEntries>
+  </contentStore>
+  <derivedDataModel xsi:type="Artifact:InstallableProxy" proxiedObject="//@dataModel/@formLayout"/>
+  <derivedDataModel xsi:type="Artifact:InstallableProxy" proxiedObject="//@dataModel/@formResource.0"/>
+</Artifact:Artifact>

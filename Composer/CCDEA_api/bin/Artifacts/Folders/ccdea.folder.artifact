@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urnd:com.emc.ide.artifact.foldersubtype/ccdea?language_code=&amp;location=%2Fucb&amp;name=ccdea&amp;type=dm_folder" categoryId="com.emc.ide.artifact.foldersubtype" implicitlyCreated="true">
+  <dataModel xsi:type="sysobject:FolderSubtype" objectName="ccdea" title="CCDEA Contents" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" rootObject="false">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/request?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=request&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/content?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=content&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/contract?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=contract&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/passport?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=passport&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/message?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=message&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/vbk?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=vbk&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/pd?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=pd&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/spd?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=spd&amp;type=dm_folder#//@dataModel"/>
+    <sysobjects href="urnd:com.emc.ide.artifact.foldersubtype/svodetail?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=svodetail&amp;type=dm_folder#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

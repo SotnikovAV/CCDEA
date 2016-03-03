@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:moduledef="http://documentum.emc.com/artifact/12012007/moduledef" urn="urn:com.emc.ide.artifact.aspectmoduledef/dm_metamodel_600?name=dm_metamodel_600" categoryId="com.emc.ide.artifact.aspectmoduledef" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="moduledef:AspectModuleDef" objectName="dm_metamodel_600" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="" min_dfc_version="6.0" implementation_technology="Java" contact_info="" a_bof_version="" a_module_type="Aspect" module_description="">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_aspect_type?name=dmc_aspect_type#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/materialized-placeholder.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_materialized_placeholder&amp;name=materialized-placeholder.jar&amp;type=dmc_jar#//@dataModel"/>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/metamodel-600.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=metamodel-600.jar&amp;type=dmc_jar#//@dataModel"/>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/metamodel.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=metamodel.jar&amp;type=dmc_jar#//@dataModel"/>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/model-designer-600.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=model-designer-600.jar&amp;type=dmc_jar#//@dataModel"/>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/model-factory-600.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=model-factory-600.jar&amp;type=dmc_jar#//@dataModel"/>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/model-factory.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=model-factory.jar&amp;type=dmc_jar#//@dataModel"/>
+    <interfaceJars href="urn:com.emc.ide.artifact.jardef.jardef/dmc_class.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=dmc_class.jar&amp;type=dmc_jar#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/metamodel-600-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=metamodel-600-impl.jar&amp;type=dmc_jar#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/metamodel-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=metamodel-impl.jar&amp;type=dmc_jar#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/model-designer-600-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=model-designer-600-impl.jar&amp;type=dmc_jar#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/model-factory-600-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=model-factory-600-impl.jar&amp;type=dmc_jar#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/smartcontainer-common-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_annotatable&amp;name=smartcontainer-common-impl.jar&amp;type=dmc_jar#//@dataModel"/>
+    <runtimeEnvironmentXML objectName="RuntimeEnvironment.xml" contentType="xml" rootObject="false" minDFCVersion="6.0" minVmVersion="1.5">
+      <objectType href="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
+      <log message="" level="NONE"/>
+    </runtimeEnvironmentXML>
+    <primaryElement primary_class="com.documentum.smart.impl.metamodel600.aspect.MetamodelAspect">
+      <a_interfaces>com.documentum.smart.metamodel600.IModelArtifactFactory</a_interfaces>
+      <a_interfaces>com.documentum.smart.ISmartObjectFactory</a_interfaces>
+      <a_interfaces>com.documentum.smart.IModelSerializer</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.impl.ISysObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.impl.IPersistentObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.impl.ITypedObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.internal.ITypedObjectInternal</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfTypedObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.tracing.IUserIdentifyingObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.internal.IPersistentObjectInternal</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfPersistentObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.internal.ISysObjectInternal</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfSysObject</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.impl.IAliasResolution</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfSysObjectInternal</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfPersistentObjectInternal</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfSysObjectRetention</a_interfaces>
+      <a_interfaces>com.documentum.fc.impl.util.reflection.proxy.IProxyTarget</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.relationship.IDfRelatable</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.aspect.IDfAspects</a_interfaces>
+      <a_interfaces>java.lang.Cloneable</a_interfaces>
+      <a_interfaces>com.documentum.fc.client.IDfTypedObjectInternal</a_interfaces>
+    </primaryElement>
+    <thirdPartyLibraries href="urn:com.emc.ide.artifact.jardef.javalibrary/eclipse-core-runtime-3.2.0?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=eclipse-core-runtime-3.2.0&amp;type=dmc_java_library#//@dataModel"/>
+    <thirdPartyLibraries href="urn:com.emc.ide.artifact.jardef.javalibrary/emf-2.2.0?language_code=&amp;location=%2FSystem%2FModules%2FAspect%2Fdm_metamodel_600&amp;name=emf-2.2.0&amp;type=dmc_java_library#//@dataModel"/>
+    <miscellaneous objectName="Miscellaneous" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="" rootObject="false">
+      <objectType href="urn:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+      <versionLabel>1.0</versionLabel>
+      <versionLabel>CURRENT</versionLabel>
+    </miscellaneous>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:forms="http://documentum.emc.com/artifact/12012007/forms" xmlns:ide="http://documentum.emc.com/artifact/12012007/typeextension" xmlns:installparameter="installparameter" urn="urnd:com.emc.ide.artifact.forminstance/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_instance" categoryId="com.emc.ide.artifact.forminstance" implicitlyCreated="true">
+  <dataModel xsi:type="forms:FormInstance" objectName="ccdea_svo_detail_view" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="form" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" isDefault="true" formInstanceContent="//@contentStore/@contentEntries.0/@value" formTemplate="ccdea_svo_detail_view">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dm_xfm_instance?name=dm_xfm_instance#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urnd:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urnd:com.emc.ide.artifact.format/form?name=form#//@dataModel"/>
+    <typeExtension>
+      <attributes xsi:type="ide:BooleanAttribute" name="is_default">
+        <booleanValue>true</booleanValue>
+      </attributes>
+    </typeExtension>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="formInstanceContent.form">
+      <value filePath="content/55/242995855/formInstanceContent.form"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

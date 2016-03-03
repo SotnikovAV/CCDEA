@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dm_cabinet?name=dm_cabinet" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_cabinet">
+      <primaryElement>
+        <attributes attr_name="is_private">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Private" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <proxyAttributes proxy_attr_name="i_ancestor_id">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Ancestor ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+        </proxyAttributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT" is_searchable="TRUE">
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>webtop</scope_value>
+            <display_config object_name="dm_info" inherited="true">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_name>keywords</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_creator_name</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>r_modifier</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+            </display_config>
+          </scopes>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>DcDesktopClient</scope_value>
+            <display_config object_name="dm_general">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>r_object_type</attribute_name>
+              <attribute_name>i_folder_id</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>is_private</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_summary" inherited="true">
+              <attribute_name>title</attribute_name>
+              <attribute_name>subject</attribute_name>
+              <attribute_name>keywords</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+            <display_config object_name="dm_security" fixed_source="true" inherited="true"/>
+          </scopes>
+        </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="Cabinet" help_text="" comment_text="" nls_key="en"/>
+        </typeAnnotations>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dm_folder?name=dm_folder#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

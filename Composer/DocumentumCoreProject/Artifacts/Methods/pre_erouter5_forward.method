@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:method="http://documentum.emc.com/artifact/12012007/method" urn="urn:com.emc.ide.artifact.method/pre_erouter5_forward?name=pre_erouter5_forward" categoryId="com.emc.ide.artifact.method" modifiedByUser="false">
+  <dataModel xsi:type="method:Method" objectName="pre_erouter5_forward" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="text" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" methodVerb="dmawk32.exe" timeoutMin="30" timeoutDefault="60" traceLaunch="true" runAsServer="true" useMethodContent="true" methodType="dmawk" successStatus="" contentFile="//@contentStore/@contentEntries.0/@value">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_method?name=dm_method#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
+    <contentTypeFormat href="urn:com.emc.ide.artifact.format/text?name=text#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+  <contentStore>
+    <contentEntries key="contentFile.text">
+      <value filePath="content/16/688065316/contentFile.text"/>
+    </contentEntries>
+  </contentStore>
+</Artifact:Artifact>

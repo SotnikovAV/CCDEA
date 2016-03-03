@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:group="http://documentum.emc.com/artifact/12012007/group" urn="urn:com.emc.ide.artifact.role/dmc_wdk_presets_coordinator?name=dmc_wdk_presets_coordinator" categoryId="com.emc.ide.artifact.role" modifiedByUser="false">
+  <dataModel xsi:type="group:Role" groupName="dmc_wdk_presets_coordinator" groupAddress="" description="WDK Presets Coordinator" groupClass="role" groupDisplayName="dmc_wdk_presets_coordinator">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_group?name=dm_group#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:relationtype="http://documentum.emc.com/artifact/12012007/relationtype" urn="urn:com.emc.ide.artifact.relationtype/dm_xfm_resource_form?name=dm_xfm_resource_form" categoryId="com.emc.ide.artifact.relationtype">
+  <dataModel xsi:type="relationtype:RelationType" relationName="dm_xfm_resource_form" description="Relationship between form resource and form template" directionKind="From Child to Parent" integrityKind="Cascade delete" permanentLink="false">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dm_relation_type?name=dm_relation_type#//@dataModel"/>
+    <parentType href="urn:com.emc.ide.artifact.dclass/dm_xfm_resource?name=dm_xfm_resource#//@dataModel"/>
+    <childType href="urn:com.emc.ide.artifact.dclass/dm_xfm_form?name=dm_xfm_form#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

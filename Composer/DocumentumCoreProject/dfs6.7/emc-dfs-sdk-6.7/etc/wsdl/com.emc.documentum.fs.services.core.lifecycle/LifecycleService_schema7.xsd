@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://lifecycle.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core-content="http://content.core.datamodel.fs.documentum.emc.com/" xmlns:tns="http://lifecycle.core.datamodel.fs.documentum.emc.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dfs-dm-core-context="http://context.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-rt="http://rt.fs.documentum.emc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dfs-dm-core-profiles="http://profiles.core.datamodel.fs.documentum.emc.com/" xmlns:dfs-dm-core="http://core.datamodel.fs.documentum.emc.com/">
+
+  <xs:import namespace="http://core.datamodel.fs.documentum.emc.com/" schemaLocation="LifecycleService_schema8.xsd"/>
+
+  <xs:complexType name="AttachLifecycleInfo">
+    <xs:sequence>
+      <xs:element name="policyId" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="objectId" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="stateName" type="xs:string"/>
+    <xs:attribute name="policyScope" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="LifecycleOperation">
+    <xs:sequence>
+      <xs:element name="objectId" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="label" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="LifecycleInfo">
+    <xs:sequence>
+      <xs:element name="enabledOperations" type="tns:LifecycleOperation" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="objectId" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+      <xs:element name="policyId" type="dfs-dm-core:ObjectIdentity" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="policyName" type="xs:string"/>
+    <xs:attribute name="stateName" type="xs:string"/>
+    <xs:attribute name="stateLabel" type="xs:string"/>
+  </xs:complexType>
+</xs:schema>
+

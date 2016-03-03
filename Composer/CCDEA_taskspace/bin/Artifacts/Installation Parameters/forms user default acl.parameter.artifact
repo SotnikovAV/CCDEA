@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter" categoryId="com.emc.ide.aclparameter" implicitlyCreated="true">
+  <dataModel xsi:type="installparameter:ACLParameter" name="Forms User Default ACL" description="Forms User Default ACL" defaultValue="Forms User Default ACL"/>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

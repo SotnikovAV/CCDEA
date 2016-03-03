@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:dclass="http://documentum.emc.com/artifact/12012007/dclass" urn="urn:com.emc.ide.artifact.dclass/dm_docbase_config?name=dm_docbase_config" categoryId="com.emc.ide.artifact.dclass" modifiedByUser="false">
+  <dataModel xsi:type="dclass:DClass">
+    <type name="dm_docbase_config">
+      <primaryElement>
+        <attributes attr_name="r_dbms_name" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Database Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="Oracle" map_display_string="Oracle"/>
+              <value_mappings map_data_string="Sybase" map_display_string="Sybase"/>
+              <value_mappings map_data_string="Informix" map_display_string="Informix"/>
+              <value_mappings map_data_string="SQLServer" map_display_string="SQLServer"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="mac_access_protocol" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Macintosh File Sharing Protocol" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="double" map_display_string="Double"/>
+              <value_mappings map_data_string="ushare" map_display_string="Ushare"/>
+              <value_mappings map_data_string="none" map_display_string="None"/>
+              <value_mappings map_data_string="nt" map_display_string="NT"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="security_mode" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Security Mode" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg="">
+              <value_mappings map_data_string="acl" map_display_string="ACL"/>
+              <value_mappings map_data_string="none" map_display_string="None"/>
+              <value_mappings map_data_string="document" map_display_string="Document"/>
+              <value_mappings map_data_string="cabinet" map_display_string="Cabinet"/>
+              <value_mappings map_data_string="combined" map_display_string="Combined"/>
+            </locales>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="auth_protocol" attr_length="32">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Domain Required" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="index_store" attr_length="80">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Type Indexes In" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_docbase_id">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Docbase ID" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_address_partitions">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" life_cycle="OBSOLETE" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Address Partitions" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_starting_partition">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" life_cycle="OBSOLETE" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Starting Partition" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="r_ending_partition">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" life_cycle="OBSOLETE" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Ending Partition" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="folder_security">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Folder Security" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="effective_date">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Effective Date" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="r_federation_name" attr_length="120">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Federation Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="a_bpaction_run_as" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Run BP Actions As" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="richmedia_enabled">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Rich Media Enabled" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="dd_locales" attr_repeating="true" attr_length="5">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Data Dictionary Locales" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="default_app_permit">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Default Controlled Object Permission" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="oldest_client_version" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Oldest Client Version" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="max_auth_attempt">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Allowed Authentication Attempts" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="i_crypto_key" attr_length="255">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Cryptography Key" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="client_pcaching_disabled">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Disable Persistent Client Cache" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="client_pcaching_change">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Flush Persistent Client Cache" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="fulltext_install_locs" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Fulltext Install Locations" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="offline_sync_level">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Offline Synchronization Mode" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="offline_checkin_flag">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Offline Checkin" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="wf_package_control_enabled">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Workflow Package Control Enabled" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_storage_mode">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Storage-Policy Enabled" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="macl_security_disabled">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Enforce Only Access/ExtendedPermits" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="i_ticket_crypto_key" attr_length="255">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Ticket/Token Cryptography Key" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="trust_by_default">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Trusted By Default" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="trusted_docbases" attr_repeating="true" attr_length="255">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Trusted Repositories" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="login_ticket_cutoff">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Login Ticket Cutoff" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="TIME"/>
+        </attributes>
+        <attributes attr_name="auth_failure_interval">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Authorization Failure Interval" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="auth_deactivation_interval">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="User Deactivation Interval" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="dir_user_sync_on_demand">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Synchronize on Demand" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_module_name" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Module Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="r_module_mode" attr_repeating="true">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Module Mode" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="check_client_version">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Check client Version" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_normal_tz">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Normal Time Zone" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="audit_old_values">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Audit Old Values" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="docbase_roles" attr_repeating="true" attr_length="32">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Repository Roles" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <attributes attr_name="approved_clients_only">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Approved Clients Only" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_tz_aware">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Time Zone Aware" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="r_partition_status">
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Partition Status" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType"/>
+        </attributes>
+        <attributes attr_name="minimum_owner_permit">
+          <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
+        </attributes>
+        <attributes attr_name="minimum_owner_xpermit" attr_length="255">
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
+        <proxyAttributes proxy_attr_name="object_name">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit" default_search_arg=""/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="Docbase Name" help_text="" comment_text="" nls_key="en" category_name="" format_pattern="" not_null_msg=""/>
+          </attrAnnotations>
+        </proxyAttributes>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT">
+          <auditable_sysevents>dm_all</auditable_sysevents>
+          <auditable_sysevents>dm_checkout</auditable_sysevents>
+          <auditable_sysevents>dm_checkin</auditable_sysevents>
+          <auditable_sysevents>dm_destroy</auditable_sysevents>
+          <auditable_sysevents>dm_fetch</auditable_sysevents>
+          <auditable_sysevents>dm_lock</auditable_sysevents>
+          <auditable_sysevents>dm_prune</auditable_sysevents>
+          <auditable_sysevents>dm_save</auditable_sysevents>
+          <auditable_sysevents>dm_unlock</auditable_sysevents>
+          <auditable_sysevents>dm_route</auditable_sysevents>
+          <auditable_sysevents>dm_forward</auditable_sysevents>
+          <auditable_sysevents>dm_reverse</auditable_sysevents>
+          <auditable_sysevents>dm_reassign</auditable_sysevents>
+          <auditable_sysevents>dm_halt</auditable_sysevents>
+          <auditable_sysevents>dm_end</auditable_sysevents>
+          <auditable_sysevents>dm_acquire</auditable_sysevents>
+          <auditable_sysevents>dm_force</auditable_sysevents>
+          <auditable_sysevents>dm_pause</auditable_sysevents>
+          <auditable_sysevents>dm_resume</auditable_sysevents>
+          <auditable_sysevents>dm_start</auditable_sysevents>
+          <auditable_sysevents>dm_branch</auditable_sysevents>
+          <auditable_sysevents>dm_mark</auditable_sysevents>
+          <auditable_sysevents>dm_archive</auditable_sysevents>
+          <auditable_sysevents>dm_archive_done</auditable_sysevents>
+          <auditable_sysevents>dm_restore</auditable_sysevents>
+          <auditable_sysevents>dm_restore_done</auditable_sysevents>
+          <auditable_sysevents>dm_link</auditable_sysevents>
+          <auditable_sysevents>dm_unlink</auditable_sysevents>
+          <auditable_sysevents>dm_status</auditable_sysevents>
+          <auditable_sysevents>dm_setfile</auditable_sysevents>
+          <auditable_sysevents>dm_freeze</auditable_sysevents>
+          <auditable_sysevents>dm_unfreeze</auditable_sysevents>
+          <auditable_sysevents>dm_bp_promote</auditable_sysevents>
+          <auditable_sysevents>dm_bp_demote</auditable_sysevents>
+          <auditable_sysevents>dm_bp_attach</auditable_sysevents>
+          <auditable_sysevents>dm_bp_suspend</auditable_sysevents>
+          <auditable_sysevents>dm_bp_resume</auditable_sysevents>
+          <auditable_sysevents>dm_startedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_selectedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_addattachment</auditable_sysevents>
+          <auditable_sysevents>dm_removeattachment</auditable_sysevents>
+          <auditable_sysevents>dm_pauseworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_resumeworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_completedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_pseudocompletedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_delegatedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_changepriorityworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_faultedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_unfaultedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_retryfailedworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_suspendedworkqueuetask</auditable_sysevents>
+          <auditable_sysevents>dm_unsuspendedworkqueuetask</auditable_sysevents>
+          <auditable_sysevents>dm_changedactivityinstancestate</auditable_sysevents>
+          <auditable_sysevents>dm_createworkflow</auditable_sysevents>
+          <auditable_sysevents>dm_startworkflow</auditable_sysevents>
+          <auditable_sysevents>dm_finishworkflow</auditable_sysevents>
+          <auditable_sysevents>dm_abortworkflow</auditable_sysevents>
+          <auditable_sysevents>dm_changestateworkflow</auditable_sysevents>
+          <auditable_sysevents>dm_changeworkflowsupervisor</auditable_sysevents>
+          <auditable_sysevents>dm_autotransactivity</auditable_sysevents>
+          <auditable_sysevents>dm_changestateactivity</auditable_sysevents>
+          <auditable_sysevents>dm_portselect</auditable_sysevents>
+          <auditable_sysevents>dm_changestateprocess</auditable_sysevents>
+          <auditable_sysevents>dm_wf_resolve_failure</auditable_sysevents>
+          <auditable_sysevents>dm_wf_autodelegate_failure</auditable_sysevents>
+          <auditable_sysevents>dm_addpackage</auditable_sysevents>
+          <auditable_sysevents>dm_removepackage</auditable_sysevents>
+          <auditable_sysevents>dm_repeatworkitem</auditable_sysevents>
+          <auditable_sysevents>dm_addnote</auditable_sysevents>
+          <auditable_sysevents>dm_removenote</auditable_sysevents>
+          <auditable_sysevents>dm_startedactgroupinstance</auditable_sysevents>
+          <auditable_sysevents>dm_completedactgroupinstance</auditable_sysevents>
+          <auditable_sysevents>dm_all_workflow</auditable_sysevents>
+          <auditable_sysevents>dm_signoff</auditable_sysevents>
+          <auditable_sysevents>dm_validate</auditable_sysevents>
+          <auditable_sysevents>dm_invalidate</auditable_sysevents>
+          <auditable_sysevents>dm_setoutputport</auditable_sysevents>
+          <auditable_sysevents>dm_install</auditable_sysevents>
+          <auditable_sysevents>dm_uninstall</auditable_sysevents>
+          <auditable_sysevents>dm_checkout_ref</auditable_sysevents>
+          <auditable_sysevents>dm_checkin_ref</auditable_sysevents>
+          <auditable_sysevents>dm_checkcan_ref</auditable_sysevents>
+          <auditable_sysevents>dm_assemble</auditable_sysevents>
+          <auditable_sysevents>dm_jobstart</auditable_sysevents>
+          <auditable_sysevents>dm_unmark</auditable_sysevents>
+          <auditable_sysevents>dm_saveasnew</auditable_sysevents>
+          <auditable_sysevents>dm_getfile</auditable_sysevents>
+          <auditable_sysevents>dm_removecontent</auditable_sysevents>
+          <auditable_sysevents>dm_addrendition</auditable_sysevents>
+          <auditable_sysevents>dm_removerendition</auditable_sysevents>
+          <auditable_sysevents>dm_appendpart</auditable_sysevents>
+          <auditable_sysevents>dm_insertpart</auditable_sysevents>
+          <auditable_sysevents>dm_removepart</auditable_sysevents>
+          <auditable_sysevents>dm_updatepart</auditable_sysevents>
+          <auditable_sysevents>dm_disassemble</auditable_sysevents>
+          <auditable_sysevents>dm_logon_failure</auditable_sysevents>
+          <auditable_sysevents>dm_getlogin</auditable_sysevents>
+          <auditable_sysevents>dm_assume</auditable_sysevents>
+          <auditable_sysevents>dm_authenticate</auditable_sysevents>
+          <auditable_sysevents>dm_connect</auditable_sysevents>
+          <auditable_sysevents>dm_disconnect</auditable_sysevents>
+          <auditable_sysevents>dm_kill</auditable_sysevents>
+          <auditable_sysevents>dm_adddigsignature</auditable_sysevents>
+          <auditable_sysevents>dm_audit</auditable_sysevents>
+          <auditable_sysevents>dm_unaudit</auditable_sysevents>
+          <auditable_sysevents>dm_purgeaudit</auditable_sysevents>
+          <auditable_sysevents>dm_addesignature</auditable_sysevents>
+          <auditable_sysevents>dm_default_set</auditable_sysevents>
+          <auditable_sysevents>dm_addesignature_failed</auditable_sysevents>
+          <auditable_sysevents>dm_security_check_failed</auditable_sysevents>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>webtop</scope_value>
+            <display_config object_name="dm_info" inherited="true">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_name>r_policy_id</attribute_name>
+              <attribute_name>r_current_state</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_creator_name</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>r_modifier</attribute_name>
+              <attribute_name>a_storage_type</attribute_name>
+              <attribute_name>i_retain_until</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+              <attribute_display_hint>2</attribute_display_hint>
+            </display_config>
+          </scopes>
+          <scopes>
+            <scope_class>application</scope_class>
+            <scope_value>DcDesktopClient</scope_value>
+            <display_config object_name="dm_general">
+              <attribute_name>object_name</attribute_name>
+              <attribute_name>r_object_type</attribute_name>
+              <attribute_name>i_folder_id</attribute_name>
+              <attribute_name>r_creation_date</attribute_name>
+              <attribute_name>r_modify_date</attribute_name>
+              <attribute_name>owner_name</attribute_name>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+              <attribute_display_hint>0</attribute_display_hint>
+            </display_config>
+          </scopes>
+        </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
+          <locales xsi:type="dclass:TypeNLSDDInfo" label_text="Docbase Configuration" help_text="" comment_text="" nls_key="en"/>
+        </typeAnnotations>
+      </primaryElement>
+      <super_name href="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
+    </type>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

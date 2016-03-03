@@ -4,7 +4,7 @@
     <objectType href="urn:com.emc.ide.artifact.dclass/dmc_module?name=dmc_module#//@dataModel"/>
     <versionLabel>1.0</versionLabel>
     <versionLabel>CURRENT</versionLabel>
-    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_adapter?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_mq_adapter.jardef#//@dataModel"/>
+    <implementationJars href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_adapter?language_code=&amp;location=%2FSystem%2FModules%2Fucb_ccdea_contract_receiver_mdl&amp;name=ucb_ccdea_mq_adapter&amp;type=dmc_jar#//@dataModel"/>
     <runtimeEnvironmentXML objectName="RuntimeEnvironment.xml" contentType="xml" rootObject="false" minDFCVersion="" minVmVersion="">
       <objectType href="urn:com.emc.ide.artifact.dclass/dm_sysobject?name=dm_sysobject#//@dataModel"/>
       <log message="" level="NONE"/>

@@ -9,7 +9,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="jobs-1.0-SNAPSHOT.jar">
-      <value filePath="content/23/1052154023/jobs-1.0-SNAPSHOT[6].jar"/>
+      <value filePath="content/23/1052154023/jobs-1.0-SNAPSHOT[5].jar"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

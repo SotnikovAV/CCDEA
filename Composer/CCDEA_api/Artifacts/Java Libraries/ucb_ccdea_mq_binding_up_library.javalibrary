@@ -2,7 +2,7 @@
 <Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urn:com.emc.ide.artifact.jardef.javalibrary/ucb_ccdea_mq_binding_up_library?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Java%20Libraries/ucb_ccdea_mq_binding_up_library.javalibrary" categoryId="com.emc.ide.artifact.jardef.javalibrary">
   <dataModel xsi:type="jardef:JavaLibrary" objectName="ucb_ccdea_mq_binding_up_library">
     <objectType href="urn:com.emc.ide.artifact.dclass/dmc_java_library?name=dmc_java_library#//@dataModel"/>
-    <elements href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_mq_binding.jardef#//@dataModel"/>
+    <elements href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?language_code=&amp;location=%2FSystem%2FModules%2Fucb_ccdea_contract_receiver_mdl%2Fucb_ccdea_mq_binding_library&amp;name=ucb_ccdea_mq_binding&amp;type=dmc_jar#//@dataModel"/>
   </dataModel>
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
 </Artifact:Artifact>

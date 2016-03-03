@@ -79,79 +79,79 @@
     <value>0b035f55801e07a9</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-cli-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-cli-1.0.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f30d</value>
+    <value>09035f55802404f8</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-codec-1.3.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-codec-1.3.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f30f</value>
+    <value>09035f55802404fa</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-compress-1.10.jar?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_api/Artifacts/JAR%20Definitions/commons-compress-1.10.jar.jardef#//@dataModel">
-    <value>09035f558023f311</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-compress-1.10.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=commons-compress-1.10.jar&amp;type=dmc_jar#//@dataModel">
+    <value>09035f55802404fc</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-fileupload-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-fileupload-1.0.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f313</value>
+    <value>09035f55802404fe</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-httpclient-3.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-httpclient-3.0.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f315</value>
+    <value>09035f5580240500</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-io-1.2.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-io-1.2.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f319</value>
+    <value>09035f5580240502</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-jxpath-1.2.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-jxpath-1.2.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f31b</value>
+    <value>09035f5580240504</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-lang-2.4.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-lang-2.4.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f31d</value>
+    <value>09035f5580240506</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/commons-logging.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-logging.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f31f</value>
+    <value>09035f5580240508</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ctsTransform.jar?language_code=&amp;location=%2FSystem%2FApplications%2FTransformation%2FctsTransform&amp;name=ctsTransform.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f321</value>
+    <value>09035f558024050a</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ctsTransformImpl.jar?language_code=&amp;location=%2FSystem%2FApplications%2FTransformation%2FctstransformImpl&amp;name=ctsTransformImpl.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f323</value>
+    <value>09035f558024050c</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/jaxb-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.dms.client.sbo.IDmsClient%2FDmsClientAdditionalLib&amp;name=jaxb-impl.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f325</value>
+    <value>09035f558024050e</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/jcifs?artifactURI=file:/C:/Users/BoruroevPA/Projects/CCDEA/Composer/CCDEA_api/Artifacts/JAR%20Definitions/jcifs.jardef#//@dataModel">
-    <value>09035f558023f327</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/jcifs?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=jcifs&amp;type=dmc_jar#//@dataModel">
+    <value>09035f5580240510</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/jsch?language_code=&amp;location=%2FSystem%2FModules%2FApplyRetentionsMethod%2Fucb_utils&amp;name=jsch&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f329</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/jsch?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=jsch&amp;type=dmc_jar#//@dataModel">
+    <value>09035f5580240512</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/loadbalancer.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=loadbalancer.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f32b</value>
+    <value>09035f5580240514</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/log4j.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2Flog4j&amp;name=log4j.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f32d</value>
+    <value>09035f5580240516</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/realtime.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=realtime.jar&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f32f</value>
+    <value>09035f5580240518</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_jaxb_impl?language_code=&amp;location=%2Fdmadmin%2F0b5bbc6a81686078%2Fucb_ccdea_jaxb_impl_library&amp;name=ucb_ccdea_jaxb_impl&amp;type=dmc_jar#//@dataModel">
-    <value>09035f558023f331</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_jaxb_impl?language_code=&amp;location=%2FSystem%2FModules%2Fucb_ccdea_contract_receiver_mdl%2Fucb_ccdea_jaxb_impl_library&amp;name=ucb_ccdea_jaxb_impl&amp;type=dmc_jar#//@dataModel">
+    <value>09035f558024051a</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_jobs?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_jobs.jardef#//@dataModel">
-    <value>09035f558023f333</value>
+    <value>09035f558024051c</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_junrar?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_junrar.jardef#//@dataModel">
-    <value>09035f558023f335</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_junrar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=ucb_ccdea_junrar&amp;type=dmc_jar#//@dataModel">
+    <value>09035f558024051e</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_adapter?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_mq_adapter.jardef#//@dataModel">
-    <value>09035f558023f337</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_adapter?language_code=&amp;location=%2FSystem%2FModules%2Fucb_ccdea_contract_receiver_mdl&amp;name=ucb_ccdea_mq_adapter&amp;type=dmc_jar#//@dataModel">
+    <value>09035f5580240520</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_mq_binding.jardef#//@dataModel">
-    <value>09035f558023f339</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?language_code=&amp;location=%2FSystem%2FModules%2Fucb_ccdea_contract_receiver_mdl%2Fucb_ccdea_mq_binding_library&amp;name=ucb_ccdea_mq_binding&amp;type=dmc_jar#//@dataModel">
+    <value>09035f5580240522</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_persistence?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_persistence.jardef#//@dataModel">
-    <value>09035f558023f33b</value>
+  <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_persistence?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=ucb_ccdea_persistence&amp;type=dmc_jar#//@dataModel">
+    <value>09035f5580240524</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_services_api?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_services_api.jardef#//@dataModel">
-    <value>09035f558023f33d</value>
+    <value>09035f5580240526</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_services_impl?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_services_impl.jardef#//@dataModel">
-    <value>09035f558023f33f</value>
+    <value>09035f5580240528</value>
   </entrySet>
   <entrySet key="urnd:com.emc.ide.artifact.jardef.javalibrary/jaxb-impl.jar?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Java%20Libraries/jaxb-impl.jar.javalibrary#//@dataModel">
     <value>0b035f55801e0809</value>
@@ -639,10 +639,10 @@
   <entrySet key="urnd:com.emc.ide.artifact.moduledef/ucb_ccdea_vbk_service?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Modules/ucb_ccdea_vbk_service.module#//@dataModel/@externalInterfaces">
     <value>0b035f55801e0807</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.sysobjectsubtype/doc_state_notify.xsd?language_code=&amp;location=%2FSystem%2FApplications%2FBI_UCB&amp;name=doc_state_notify.xsd&amp;type=dm_document#//@dataModel">
+  <entrySet key="urnd:com.emc.ide.artifact.sysobjectsubtype/doc_state_notify.xsd?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_bpm&amp;name=doc_state_notify.xsd&amp;type=dm_document#//@dataModel">
     <value>09035f55801e6968</value>
   </entrySet>
-  <entrySet key="urnd:com.emc.ide.artifact.sysobjectsubtype/status_details_reply.xsd?language_code=&amp;location=%2FSystem%2FApplications%2FBI_UCB&amp;name=status_details_reply.xsd&amp;type=dm_document#//@dataModel">
+  <entrySet key="urnd:com.emc.ide.artifact.sysobjectsubtype/status_details_reply.xsd?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_bpm&amp;name=status_details_reply.xsd&amp;type=dm_document#//@dataModel">
     <value>09035f55801e6969</value>
   </entrySet>
 </dardef:ResolutionMap>

@@ -41,7 +41,7 @@
 	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/commons-io/commons-io/2.2/commons-io-2.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/com/rsa/jsafe/3.6/jsafe-3.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"/>
-	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GIT/storage/mq-binding/target/mq-binding-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-binding/target/mq-binding-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>

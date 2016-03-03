@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/JAR%20Definitions/ucb_ccdea_mq_binding.jardef" categoryId="com.emc.ide.artifact.jardef.jardef" implicitlyCreated="true">
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?language_code=&amp;location=%2FSystem%2FModules%2Fucb_ccdea_contract_receiver_mdl%2Fucb_ccdea_mq_binding_library&amp;name=ucb_ccdea_mq_binding&amp;type=dmc_jar" categoryId="com.emc.ide.artifact.jardef.jardef" implicitlyCreated="true">
   <dataModel xsi:type="jardef:JarDef" objectName="ucb_ccdea_mq_binding" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="jar" specialApp="" languageCode="" category="" controllingApp="" status="" jar_type="Implementation" minimum_vm_version="">
     <objectType href="urnd:com.emc.ide.artifact.dclass/dmc_jar?name=dmc_jar#//@dataModel"/>
-    <versionLabel>1.59</versionLabel>
+    <versionLabel>1.34</versionLabel>
     <versionLabel>CURRENT</versionLabel>
     <aspectName href="urnd:com.emc.ide.artifact.aspectmoduledef/com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor?aspectname=com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor#//@dataModel"/>
     <storageType xsi:type="installparameter:StorageParameter" href="urnd:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
@@ -12,7 +12,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="mq-binding-1.0-SNAPSHOT.jar">
-      <value filePath="content/35/614287935/mq-binding-1.0-SNAPSHOT[6].jar"/>
+      <value filePath="content/33/-317636433/mq-binding-1.0-SNAPSHOT.jar"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

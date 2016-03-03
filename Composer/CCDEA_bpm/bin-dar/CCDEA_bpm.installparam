@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<installparam:InputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:installparam="installparam">
+  <parameter key="Dar Install Folder" value="" defaultValue="/System/Applications/CCDEA_bpm"/>
+  <parameter key="ucb_ccdea_request_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="filestore_01" value="" defaultValue="filestore_01"/>
+  <parameter key="dmadmin" value="" defaultValue="dmadmin"/>
+  <parameter key="ucb_ccdea_svo_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_docput_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_pd_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_vbk_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_spd_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_contract_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_docstate_notify_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+  <parameter key="ucb_ccdea_passport_receiver_wf" value="" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
+</installparam:InputFile>

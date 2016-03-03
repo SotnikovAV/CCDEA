@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urnd:com.emc.ide.artifact.jardef.javalibrary/ucb_ccdea_persistence_library?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api&amp;name=ucb_ccdea_persistence_library&amp;type=dmc_java_library" categoryId="com.emc.ide.artifact.jardef.javalibrary" implicitlyCreated="true">
+  <dataModel xsi:type="jardef:JavaLibrary" objectName="ucb_ccdea_persistence_library" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="">
+    <objectType href="urnd:com.emc.ide.artifact.dclass/dmc_java_library?name=dmc_java_library#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/jsch?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_persistence_library&amp;name=jsch&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/commons-compress-1.10.jar?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_persistence_library&amp;name=commons-compress-1.10.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/jcifs?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_persistence_library&amp;name=jcifs&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_junrar?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_persistence_library&amp;name=ucb_ccdea_junrar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_persistence?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_persistence_library&amp;name=ucb_ccdea_persistence&amp;type=dmc_jar#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

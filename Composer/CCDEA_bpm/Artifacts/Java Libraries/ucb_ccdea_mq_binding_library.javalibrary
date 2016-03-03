@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urn:com.emc.ide.artifact.jardef.javalibrary/ucb_ccdea_mq_binding_library?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api&amp;name=ucb_ccdea_mq_binding_library&amp;type=dmc_java_library" categoryId="com.emc.ide.artifact.jardef.javalibrary" implicitlyCreated="true" modifiedByUser="false">
+  <dataModel xsi:type="jardef:JavaLibrary" objectName="ucb_ccdea_mq_binding_library" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="" specialApp="" languageCode="" category="" controllingApp="" status="" sandbox_library="true">
+    <objectType href="urn:com.emc.ide.artifact.dclass/dmc_java_library?name=dmc_java_library#//@dataModel"/>
+    <versionLabel>1.0</versionLabel>
+    <versionLabel>CURRENT</versionLabel>
+    <elements href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_mq_binding?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_mq_binding_library&amp;name=ucb_ccdea_mq_binding&amp;type=dmc_jar#//@dataModel"/>
+  </dataModel>
+  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
+</Artifact:Artifact>

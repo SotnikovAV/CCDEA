@@ -226,7 +226,7 @@ public class ContentLoader {
             fileFormat = getFileFormat(docReference.getFileFormat().value());
             loadContent(contentSysObject.getSession(), docReference, buffer);
         }
-        
+        contentSysObject.setContentType(fileFormat);
         contentSysObject.setContent(buffer);
         contentSysObject.save();
 

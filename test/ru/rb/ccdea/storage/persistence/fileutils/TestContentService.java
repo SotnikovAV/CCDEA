@@ -117,7 +117,7 @@ public class TestContentService {
 			sessionManager.setIdentity("UCB", loginInfo);
 			testSession = sessionManager.getSession("UCB");
 
-			String filepath = "C:/Development/Workspaces/CCDEA_GIT/test/test.";
+			String filepath = "C:/Development/Workspaces/CCDEA_GITHUB/test/test.";
 			String[] formats = { 
 //					"doc", 
 //					"docx",

@@ -18,157 +18,157 @@
 		<link>
 			<name>formadaptors-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/formadaptors/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/formadaptors/src/main/java</location>
 		</link>
 		<link>
 			<name>formadaptors-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/formadaptors/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/formadaptors/src/main/resources</location>
 		</link>
 		<link>
 			<name>formadaptors-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/formadaptors/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/formadaptors/src/test/java</location>
 		</link>
 		<link>
 			<name>jobs-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/jobs/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/jobs/src/main/java</location>
 		</link>
 		<link>
 			<name>jobs-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/jobs/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/jobs/src/main/resources</location>
 		</link>
 		<link>
 			<name>jobs-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/jobs/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/jobs/src/test/java</location>
 		</link>
 		<link>
 			<name>mq-adapter-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/mq-adapter/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-adapter/src/main/java</location>
 		</link>
 		<link>
 			<name>mq-adapter-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/mq-adapter/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-adapter/src/main/resources</location>
 		</link>
 		<link>
 			<name>mq-adapter-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/mq-adapter/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-adapter/src/test/java</location>
 		</link>
 		<link>
 			<name>mq-binding-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/mq-binding/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-binding/src/main/java</location>
 		</link>
 		<link>
 			<name>mq-binding-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/mq-binding/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-binding/src/main/resources</location>
 		</link>
 		<link>
 			<name>mq-binding-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/mq-binding/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-binding/src/test/java</location>
 		</link>
 		<link>
 			<name>persistence-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/persistence/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/persistence/src/main/java</location>
 		</link>
 		<link>
 			<name>persistence-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/persistence/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/persistence/src/main/resources</location>
 		</link>
 		<link>
 			<name>persistence-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/persistence/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/persistence/src/test/java</location>
 		</link>
 		<link>
 			<name>print-applet-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/print-applet/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/print-applet/src/main/java</location>
 		</link>
 		<link>
 			<name>print-applet-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/print-applet/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/print-applet/src/main/resources</location>
 		</link>
 		<link>
 			<name>print-applet-servlet-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/print-applet-servlet/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/print-applet-servlet/src/main/java</location>
 		</link>
 		<link>
 			<name>print-applet-servlet-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/print-applet-servlet/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/print-applet-servlet/src/main/resources</location>
 		</link>
 		<link>
 			<name>print-applet-servlet-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/print-applet-servlet/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/print-applet-servlet/src/test/java</location>
 		</link>
 		<link>
 			<name>print-applet-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/print-applet/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/print-applet/src/test/java</location>
 		</link>
 		<link>
 			<name>services-api-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/services-api/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/services-api/src/main/java</location>
 		</link>
 		<link>
 			<name>services-api-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/services-api/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/services-api/src/main/resources</location>
 		</link>
 		<link>
 			<name>services-api-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/services-api/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/services-api/src/test/java</location>
 		</link>
 		<link>
 			<name>services-impl-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/services-impl/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/services-impl/src/main/java</location>
 		</link>
 		<link>
 			<name>services-impl-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/services-impl/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/services-impl/src/main/resources</location>
 		</link>
 		<link>
 			<name>services-impl-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/storage/services-impl/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/storage/services-impl/src/test/java</location>
 		</link>
 		<link>
 			<name>taskspace-main-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/taskspace/src/main/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/taskspace/src/main/java</location>
 		</link>
 		<link>
 			<name>taskspace-main-resources</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/taskspace/src/main/resources</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/taskspace/src/main/resources</location>
 		</link>
 		<link>
 			<name>taskspace-test-java</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/webapp/taskspace/src/test/java</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/webapp/taskspace/src/test/java</location>
 		</link>
 		<link>
 			<name>test-tst</name>
 			<type>2</type>
-			<location>C:/Development/Workspaces/CCDEA_GIT/test</location>
+			<location>C:/Development/Workspaces/CCDEA_GITHUB/test</location>
 		</link>
 	</linkedResources>
 </projectDescription>

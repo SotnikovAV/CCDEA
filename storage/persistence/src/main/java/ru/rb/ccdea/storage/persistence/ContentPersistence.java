@@ -21,7 +21,7 @@ public class ContentPersistence extends BasePersistence {
 	public static final String ATTR_IS_ORIGINAL = "b_is_original";
 	public static final String ATTR_CTS_RESULT_ID = "id_cts_result_content";
     
-    public static final String CONTENT_PART_TYPE_NAME = "ccdea_doc_content";
+    public static final String CONTENT_PART_TYPE_NAME = "ccdea_doc_content_part";
 
     public static boolean isDocTypeSupportContentVersion(String docTypeName) {
         return PassportPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName) ||

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urn:com.emc.ide.artifact.jardef.jardef/jsch?language_code=&amp;location=%2FSystem%2FModules%2FApplyRetentionsMethod%2Fucb_utils&amp;name=jsch&amp;type=dmc_jar" categoryId="com.emc.ide.artifact.jardef.jardef" implicitlyCreated="true" modifiedByUser="false">
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urn:com.emc.ide.artifact.jardef.jardef/jsch?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=jsch&amp;type=dmc_jar" categoryId="com.emc.ide.artifact.jardef.jardef" implicitlyCreated="true" modifiedByUser="false">
   <dataModel xsi:type="jardef:JarDef" objectName="jsch" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="jar" specialApp="" languageCode="" category="" controllingApp="" status="" jar_type="Interface and Implementation" minimum_vm_version="">
     <objectType href="urn:com.emc.ide.artifact.dclass/dmc_jar?name=dmc_jar#//@dataModel"/>
-    <versionLabel>1.3</versionLabel>
+    <versionLabel>1.27</versionLabel>
     <versionLabel>CURRENT</versionLabel>
     <aspectName href="urn:com.emc.ide.artifact.aspectmoduledef/com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor?aspectname=com.documentum.fc.bof.bootstrap.DfModuleItemChangeMonitor#//@dataModel"/>
     <storageType xsi:type="installparameter:StorageParameter" href="urn:com.emc.ide.storageparameter/filestore_01?name=filestore_01#//@dataModel"/>
@@ -12,7 +12,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="jarFile.jar">
-      <value filePath="content/19/-1452996419/jarFile.jar"/>
+      <value filePath="content/98/-1683909398/jarFile.jar"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

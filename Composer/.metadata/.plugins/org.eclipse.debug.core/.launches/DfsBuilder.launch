@@ -8,13 +8,13 @@
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.ui.antsupport.InternalAntRunner"/>
 <mapAttribute key="org.eclipse.ui.externaltools.ATTR_ANT_PROPERTIES">
-<mapEntry key="dfs.sdk.home" value="C:\Development\Workspaces\CCDEA_GIT\Composer\DocumentumCoreProject\dfs6.7\emc-dfs-sdk-6.7"/>
-<mapEntry key="gen.rsc" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\bin\gen-rsc"/>
-<mapEntry key="gen.build" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\bin\gen-bin"/>
-<mapEntry key="gen.src.dir" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\bin\gen-src"/>
-<mapEntry key="src.dir" value="C:\Development\Workspaces\CCDEA_GIT\Composer\CCDEA_api\Web Services\src"/>
+<mapEntry key="dfs.sdk.home" value="C:\Development\Workspaces\CCDEA_GITHUB\Composer\DocumentumCoreProject\dfs6.7\emc-dfs-sdk-6.7"/>
+<mapEntry key="gen.rsc" value="C:\Development\Workspaces\CCDEA_GITHUB\Composer\CCDEA_api\Web Services\bin\gen-rsc"/>
+<mapEntry key="gen.build" value="C:\Development\Workspaces\CCDEA_GITHUB\Composer\CCDEA_api\Web Services\bin\gen-bin"/>
+<mapEntry key="gen.src.dir" value="C:\Development\Workspaces\CCDEA_GITHUB\Composer\CCDEA_api\Web Services\bin\gen-src"/>
+<mapEntry key="src.dir" value="C:\Development\Workspaces\CCDEA_GITHUB\Composer\CCDEA_api\Web Services\src"/>
 </mapAttribute>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_ANT_TARGETS" value="clean"/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Development\Workspaces\CCDEA_GIT\Composer\DocumentumCoreProject\dfs6.7\dfs-build.xml"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Development\Workspaces\CCDEA_GITHUB\Composer\DocumentumCoreProject\dfs6.7\dfs-build.xml"/>
 <stringAttribute key="process_factory_id" value="org.eclipse.ant.ui.remoteAntProcessFactory"/>
 </launchConfiguration>

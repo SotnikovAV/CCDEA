@@ -8,7 +8,7 @@
 </perspectiveBar>
 <coolbarLayout locked="0">
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="134" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="103" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="com.emc.ide.project.ui.DmCreationActionSet" itemType="typeToolBarContribution" x="99" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="57" y="22"/>
@@ -17,11 +17,12 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="206" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.emc.ide.artifact.bpm.process.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.group.RoleEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.relationtype.RelationTypeEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.formtemplate.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.forminstance.editor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.emc.ide.artifact.jardef.editor.JarDefEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.emc.ide.artifact.jardef.editor.JarDefEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.javalib.editor.JavaLibEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.dclass.TypeEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.emc.ide.artifact.moduledef.ModuleEditor2" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -34,35 +35,10 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_jobs.jardef" partName="ucb_ccdea_jobs.jardef" path="C:/Development/Workspaces/CCDEA_GIT/Composer/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_jobs.jardef" title="ucb_ccdea_jobs.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_jobs.jardef" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_jobs.jardef"/>
-</editor>
-<editor id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_mq_adapter.jardef" partName="ucb_ccdea_mq_adapter.jardef" path="C:/Development/Workspaces/CCDEA_GIT/Composer/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_adapter.jardef" title="ucb_ccdea_mq_adapter.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_adapter.jardef" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_adapter.jardef"/>
-</editor>
-<editor id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_mq_binding.jardef" partName="ucb_ccdea_mq_binding.jardef" path="C:/Development/Workspaces/CCDEA_GIT/Composer/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_binding.jardef" title="ucb_ccdea_mq_binding.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_binding.jardef" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_binding.jardef"/>
-</editor>
-<editor id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_persistence.jardef" partName="ucb_ccdea_persistence.jardef" path="C:/Development/Workspaces/CCDEA_GIT/Composer/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_persistence.jardef" title="ucb_ccdea_persistence.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_persistence.jardef" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_persistence.jardef"/>
-</editor>
-<editor id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_services_api.jardef" partName="ucb_ccdea_services_api.jardef" path="C:/Development/Workspaces/CCDEA_GIT/Composer/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_api.jardef" title="ucb_ccdea_services_api.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_api.jardef" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_api.jardef"/>
-</editor>
-<editor focus="true" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_services_impl.jardef" partName="ucb_ccdea_services_impl.jardef" path="C:/Development/Workspaces/CCDEA_GIT/Composer/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef" title="ucb_ccdea_services_impl.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef"/>
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
@@ -70,9 +46,8 @@
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings (25 items)"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="200" org.eclipse.ui.ide.markerType="240" org.eclipse.ui.ide.pathField="280" org.eclipse.ui.ide.resourceField="240" org.eclipse.ui.ide.severityAndDescriptionField="1277"/>
+<columnWidths org.eclipse.ui.ide.locationField="204" org.eclipse.ui.ide.markerType="244" org.eclipse.ui.ide.pathField="284" org.eclipse.ui.ide.resourceField="244" org.eclipse.ui.ide.severityAndDescriptionField="1281"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -84,7 +59,7 @@
 <viewState CommonNavigator.LINKING_ENABLED="0"/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.views.ProblemView" activePerspective="com.emc.ide.project.developmentPerspective">
+<perspectives activePart="com.emc.ide.project.navigator.viewer" activePerspective="com.emc.ide.project.developmentPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.emc.ide.project.ui.perspective.DmDevelopmentPerspective" id="com.emc.ide.project.developmentPerspective" label="Documentum Artifacts"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -168,42 +143,18 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ctstransform.jar.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_jobs.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_adapter.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_binding.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_persistence.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_api.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_jobs.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_adapter.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_mq_binding.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_persistence.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_api.jardef"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef"/>
-</editors>
-<item historyLabel="ctstransform.jar.jardef" index="0"/>
-<item historyLabel="ucb_ccdea_jobs.jardef" index="1"/>
-<item historyLabel="ucb_ccdea_mq_adapter.jardef" index="2"/>
-<item historyLabel="ucb_ccdea_mq_binding.jardef" index="3"/>
-<item historyLabel="ucb_ccdea_persistence.jardef" index="4"/>
-<item historyLabel="ucb_ccdea_services_api.jardef" index="5"/>
-<item historyLabel="ucb_ccdea_services_impl.jardef" index="6"/>
-<item historyLabel="ucb_ccdea_jobs.jardef" index="7"/>
-<item historyLabel="ucb_ccdea_jobs.jardef" index="7"/>
-<item historyLabel="ucb_ccdea_mq_adapter.jardef" index="8"/>
-<item historyLabel="ucb_ccdea_mq_binding.jardef" index="9"/>
-<item historyLabel="ucb_ccdea_persistence.jardef" index="10"/>
-<item historyLabel="ucb_ccdea_services_api.jardef" index="11"/>
-<item active="true" historyLabel="ucb_ccdea_services_impl.jardef" index="12"/>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topLeft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="bottomRight"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -215,6 +166,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.bpm.process.editor" name="ucb_ccdea_contract_receiver_wf.process" tooltip="CCDEA_api/Artifacts/BPM/ucb_ccdea_contract_receiver_wf.process">
+<persistable path="/CCDEA_api/Artifacts/BPM/ucb_ccdea_contract_receiver_wf.process"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.jardef.editor.JarDefEditor" name="ucb_ccdea_services_impl.jardef" tooltip="CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef">
 <persistable path="/CCDEA_api/Artifacts/JAR Definitions/ucb_ccdea_services_impl.jardef"/>
 </file>
@@ -256,9 +210,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.moduledef.ModuleEditor2" name="ucb_ccdea_dossier_service.module" tooltip="CCDEA_api/Artifacts/Modules/ucb_ccdea_dossier_service.module">
 <persistable path="/CCDEA_api/Artifacts/Modules/ucb_ccdea_dossier_service.module"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.emc.ide.artifact.dclass.TypeEditor" name="ccdea_dossier_numerator.type" tooltip="CCDEA_taskspace/Artifacts/Types/ccdea_dossier_numerator.type">
-<persistable path="/CCDEA_taskspace/Artifacts/Types/ccdea_dossier_numerator.type"/>
 </file>
 </mruList>
 </workbench>

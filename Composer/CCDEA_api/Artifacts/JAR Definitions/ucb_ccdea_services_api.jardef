@@ -9,7 +9,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="ccdea-services-api.jar">
-      <value filePath="content/95/-1401092895/ccdea-services-api[4].jar"/>
+      <value filePath="content/95/-1401092895/ccdea-services-api[3].jar"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

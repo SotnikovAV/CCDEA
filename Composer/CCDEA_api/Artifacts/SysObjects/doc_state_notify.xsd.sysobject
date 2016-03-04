@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.sysobjectsubtype/doc_state_notify.xsd?language_code=&amp;location=%2FSystem%2FApplications%2FBI_UCB&amp;name=doc_state_notify.xsd&amp;type=dm_document" categoryId="com.emc.ide.artifact.sysobjectsubtype" implicitlyCreated="true" modifiedByUser="false">
+<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" xmlns:sysobject="http://documentum.emc.com/artifact/12012007/sysobject" urn="urn:com.emc.ide.artifact.sysobjectsubtype/doc_state_notify.xsd?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_bpm&amp;name=doc_state_notify.xsd&amp;type=dm_document" categoryId="com.emc.ide.artifact.sysobjectsubtype" implicitlyCreated="true" modifiedByUser="false">
   <dataModel xsi:type="sysobject:SysobjectSubtype" objectName="doc_state_notify.xsd" title="" subject="" applicationType="" compoundArchitecture="" resolutionLabel="" contentType="xsd" specialApp="" languageCode="" category="" controllingApp="" fullText="true" status="" sysobjectContent="//@contentStore/@contentEntries.0/@value">
     <objectType href="urn:com.emc.ide.artifact.dclass/dm_document?name=dm_document#//@dataModel"/>
     <versionLabel>1.0</versionLabel>
@@ -10,7 +10,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="sysobjectContent.xsd">
-      <value filePath="content/97/79717997/sysobjectContent.xsd"/>
+      <value filePath="content/49/459806549/sysobjectContent.xsd"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

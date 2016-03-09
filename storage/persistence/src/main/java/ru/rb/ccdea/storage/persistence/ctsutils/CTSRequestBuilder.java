@@ -65,19 +65,19 @@ public class CTSRequestBuilder {
 							String.valueOf(param.getParameterName().charAt(param.getParameterName().length() - 1)));
 				} catch (NumberFormatException e) {
 				}
-				if (contentNumber == 0 && additionalObject1 != null && additionalObject1.getContentSize() > 0) {
+				if (contentNumber == 1 && additionalObject1 != null && additionalObject1.getContentSize() > 0) {
 					param.setContentObjects(createParameterContentArray(additionalObject1.getObjectId().getId(),
 							additionalObject1.getContentType()));
-				} else if (contentNumber == 1 && additionalObject2 != null && additionalObject2.getContentSize() > 0) {
+				} else if (contentNumber == 2 && additionalObject2 != null && additionalObject2.getContentSize() > 0) {
 					param.setContentObjects(createParameterContentArray(additionalObject2.getObjectId().getId(),
-							additionalObject2.getContentType()));
+							additionalObject3.getContentType()));
 				} else if (contentNumber == 2 && additionalObject3 != null && additionalObject3.getContentSize() > 0) {
 					param.setContentObjects(createParameterContentArray(additionalObject3.getObjectId().getId(),
 							additionalObject3.getContentType()));
-				} else if (contentNumber == 3 && additionalObject4 != null && additionalObject4.getContentSize() > 0) {
+				} else if (contentNumber == 4 && additionalObject4 != null && additionalObject4.getContentSize() > 0) {
 					param.setContentObjects(createParameterContentArray(additionalObject4.getObjectId().getId(),
 							additionalObject4.getContentType()));
-				} else if (contentNumber == 4 && additionalObject5 != null && additionalObject5.getContentSize() > 0) {
+				} else if (contentNumber == 5 && additionalObject5 != null && additionalObject5.getContentSize() > 0) {
 					param.setContentObjects(createParameterContentArray(additionalObject5.getObjectId().getId(),
 							additionalObject5.getContentType()));
 				}

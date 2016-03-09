@@ -120,7 +120,7 @@ public class TestContentService {
 			String filepath = "C:/Development/Workspaces/CCDEA_GITHUB/test/test.";
 			String[] formats = { 
 //					"doc", 
-//					"docx",
+					"docx",
 					 "xls",
 //					"xlsx", "ppt", "pptx", "txt", "rtf",
 					// "odt",
@@ -132,13 +132,13 @@ public class TestContentService {
 			for (String format : formats) {
 				try {
 					IDfId dfId = testXmlContentTransform(testSession,
-							"C:/Development/Workspaces/CCDEA_GIT/test/test." + format);
+							"C:/Development/Workspaces/CCDEA_GITHUB/test/test." + format);
 					if (fullContentObj == null) {
 						fullContentObj = (IDfSysObject) testSession.getObject(dfId);
 					} else {
 						IDfSysObject currentContentObj = (IDfSysObject) testSession.getObject(dfId);
 						System.out.println("Merge pdf:");
-						String responseId = CTSRequestBuilder.mergePdfRequest(testSession, fullContentObj.getObjectId().getId(), false,
+						String responseId = CTSRequestBuilder.mergePdfRequest(testSession, fullContentObj.getObjectId().getId(), true,
 								fullContentObj, currentContentObj, false);
 						
 						System.out.println("Result: " + responseId);
@@ -163,7 +163,8 @@ public class TestContentService {
 				}
 			}
 			
-			fullContentObj = (IDfSysObject) testSession.getObject(fullContentObj.getObjectId());
+			fullContentObj = (IDfSysObject) testSession.getObjectByQualification("dm_sysobject where i_chronicle_id = '" + fullContentObj.getChronicleId() + "' order by r_modify_date desc");
+			System.out.println("Full content object: " + fullContentObj.getObjectId());
 
 			ByteArrayInputStream is = fullContentObj.getContent();
 			OutputStream os = null;

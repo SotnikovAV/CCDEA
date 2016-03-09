@@ -81,7 +81,7 @@ public class ContentService extends DfService implements IContentService {
 						}
 						if (index > 0) {
 							transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession,
-									documentContentSysObject.getObjectId().getId(), false, documentContentSysObject,
+									documentContentSysObject.getObjectId().getId(), true, documentContentSysObject,
 									documentContentPartSysObject, false);
 						}
 						index++;
@@ -177,7 +177,7 @@ public class ContentService extends DfService implements IContentService {
 						}
 						if (index > 0) {
 							transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession,
-									documentContentSysObject.getObjectId().getId(), false, documentContentSysObject,
+									documentContentSysObject.getObjectId().getId(), true, documentContentSysObject,
 									documentContentPartSysObject, false);
 						}
 						index++;
@@ -234,7 +234,7 @@ public class ContentService extends DfService implements IContentService {
 			
 			String contentType = originalContentSysObject.getContentType();
 			if (!ContentLoader.isPdfType(contentType)) {
-				transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession, contentId.getId(), false,
+				transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession, contentId.getId(), true,
 						documentContentSysObject, originalContentSysObject);
 			} else if(ContentLoader.isArchiveType(contentType)) {
 				int index = 0;
@@ -256,7 +256,7 @@ public class ContentService extends DfService implements IContentService {
 					}
 
 					transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession,
-							documentContentSysObject.getObjectId().getId(), false, documentContentSysObject,
+							documentContentSysObject.getObjectId().getId(), true, documentContentSysObject,
 							documentContentPartSysObject, false);
 					
 					index++;
@@ -266,7 +266,7 @@ public class ContentService extends DfService implements IContentService {
 						originalContentSysObject.getObjectName(), "pdf", contentId, 0);
 				transformJobId = CTSRequestBuilder.convertToPdfRequest(dfSession,
 						documentContentPartSysObject.getObjectId().getId(), false, originalContentSysObject, false);
-				transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession, contentId.getId(), false,
+				transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession, contentId.getId(), true,
 						documentContentSysObject, documentContentPartSysObject);
 			}
 

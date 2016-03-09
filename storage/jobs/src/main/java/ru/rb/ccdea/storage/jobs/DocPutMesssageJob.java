@@ -15,6 +15,7 @@ import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSessionManager;
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
@@ -32,121 +33,122 @@ public class DocPutMesssageJob extends AbstractJob {
 		process(dfSession);
 		return 0;
 	}
-	
-	private void process(IDfSession dfSession) throws DfException {
+
+	public void process(IDfSession dfSession) throws DfException {
 		List<IDfId> messageIdList = ExternalMessagePersistence.getValidFirstMessageList(dfSession,
 				ExternalMessagePersistence.MESSAGE_TYPE_DOCPUT, new Date());
 		for (IDfId messageId : messageIdList) {
-			boolean isTransAlreadyActive = dfSession.isTransactionActive();
-			try {
+			process(dfSession, messageId);
+		}
+	}
 
-				DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
+	public void process(IDfSession dfSession, IDfId messageId) throws DfException {
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		try {
 
-				if (!isTransAlreadyActive) {
-					dfSession.beginTrans();
+			DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
+
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
+
+			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
+
+			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
+			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			DocPutType docPutXmlObject = unmarshaller
+					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
+
+			IContentService contentService = (IContentService) dfSession.getClient()
+					.newService("ucb_ccdea_content_service", dfSession.getSessionManager());
+
+			boolean placedOnWaiting = ExternalMessagePersistence.checkContentMessageForWaiting(messageSysObject);
+			if (!placedOnWaiting) {
+
+				IDfSysObject docMessageObject = ExternalMessagePersistence.getProcessedDocMessage(messageSysObject);
+				if (docMessageObject == null) {
+					throw new DfException("Cant find document for content message: " + messageId);
 				}
 
-				IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
+				String docSourceCode = ExternalMessagePersistence.getDocSourceCode(docMessageObject);
+				String docSourceId = ExternalMessagePersistence.getDocSourceId(docMessageObject);
+				String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
 
-				JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
-				Unmarshaller unmarshaller = jc.createUnmarshaller();
-				DocPutType docPutXmlObject = unmarshaller
-						.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
+				List<IDfSysObject> docs = BaseDocumentPersistence.searchDocumentByExternalKey(dfSession, docSourceCode,
+						docSourceId, contentSourceCode, contentSourceId);
 
-				IContentService contentService = (IContentService) dfSession.getClient()
-						.newService("ucb_ccdea_content_service", dfSession.getSessionManager());
+				if (docs.size() == 0) {
+					throw new DfException("Cant find document for content message: " + messageId);
+				}
 
-				boolean placedOnWaiting = ExternalMessagePersistence.checkContentMessageForWaiting(messageSysObject);
-				if (!placedOnWaiting) {
-					
-					IDfSysObject docMessageObject = ExternalMessagePersistence.getProcessedDocMessage(messageSysObject);
-					if(docMessageObject == null) {
-						throw new DfException("Cant find document for content message: " + messageId);
-					}
-					
-					String docSourceCode = ExternalMessagePersistence.getDocSourceCode(docMessageObject);
-					String docSourceId = ExternalMessagePersistence.getDocSourceId(docMessageObject);
-					String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-					String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-								
+				List<IDfId> documentIds = new ArrayList<IDfId>(docs.size());
+				for (IDfSysObject doc : docs) {
+					documentIds.add(doc.getObjectId());
+				}
 
-					List<IDfSysObject> docs = BaseDocumentPersistence.searchDocumentByExternalKey(dfSession,
-							docSourceCode, docSourceId, contentSourceCode, contentSourceId);
+				IDfSysObject documentObject = docs.get(0);
 
-					if (docs.size() == 0) {
-						throw new DfException("Cant find document for content message: " + messageId);
-					}
-
-					List<IDfId> documentIds = new ArrayList<IDfId>(docs.size());
-					for (IDfSysObject doc : docs) {
-						documentIds.add(doc.getObjectId());
-					}
-
-					IDfSysObject documentObject = docs.get(0);
-
-					IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(dfSession,
-							documentObject.getObjectId().getId());
-					List<String> modifiedObjectIdList = new ArrayList<String>();
-					String ctsRequestId = null;
-					if (ContentPersistence.isDocTypeSupportContentVersion(documentObject.getTypeName())) {
-						ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
-						if (existingObject == null) {
-							ctsRequestId = contentService.createContentFromMQType(dfSession,
-									docPutXmlObject.getContent(), contentSourceCode, contentSourceId,
-									modifiedObjectIdList, documentIds);
-						} else {
-							ctsRequestId = contentService.createContentVersionFromMQType(dfSession,
-									docPutXmlObject.getContent(), contentSourceCode, contentSourceId,
-									modifiedObjectIdList, documentObject.getObjectId(), existingObject.getObjectId());
-						}
-						ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
-								ctsRequestId);
-					} else if (ContentPersistence.isDocTypeSupportContentAppending(documentObject.getTypeName())) {
-						ExternalMessagePersistence.startContentProcessing(messageSysObject, existingObject);
-						if (existingObject == null) {
-							ctsRequestId = contentService.createContentFromMQType(dfSession,
-									docPutXmlObject.getContent(), contentSourceCode, contentSourceId,
-									modifiedObjectIdList, documentIds);
-						} else {
-							ctsRequestId = contentService.appendContentFromMQType(dfSession,
-									docPutXmlObject.getContent(), contentSourceCode, contentSourceId,
-									modifiedObjectIdList, documentObject.getObjectId(), existingObject.getObjectId());
-						}
-						ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
-								ctsRequestId);
+				IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(dfSession,
+						documentObject.getObjectId().getId());
+				List<String> modifiedObjectIdList = new ArrayList<String>();
+				String ctsRequestId = null;
+				if (ContentPersistence.isDocTypeSupportContentVersion(documentObject.getTypeName())) {
+					ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
+					if (existingObject == null) {
+						ctsRequestId = contentService.createContentFromMQType(dfSession, docPutXmlObject.getContent(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
 					} else {
-						ExternalMessagePersistence.startContentProcessing(messageSysObject, existingObject);
-						if (existingObject == null) {
-							ctsRequestId = contentService.createContentFromMQType(dfSession,
-									docPutXmlObject.getContent(), contentSourceCode, contentSourceId,
-									modifiedObjectIdList, documentIds);
-						} else {
-							ctsRequestId = contentService.updateContentFromMQType(dfSession,
-									docPutXmlObject.getContent(), contentSourceCode, contentSourceId,
-									modifiedObjectIdList, documentObject.getObjectId(), existingObject.getObjectId());
-						}
-						ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
-								ctsRequestId);
+						ctsRequestId = contentService.createContentVersionFromMQType(dfSession,
+								docPutXmlObject.getContent(), contentSourceCode, contentSourceId, modifiedObjectIdList,
+								documentObject.getObjectId(), existingObject.getObjectId());
 					}
-				}
-
-				if (!isTransAlreadyActive) {
-					dfSession.commitTrans();
-				}
-
-				DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
-			} catch (DfException dfEx) {
-				DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, dfEx);
-				// throw dfEx;
-			} catch (Exception ex) {
-				DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
-				// throw new DfException(ex);
-			} finally {
-				if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
-					dfSession.abortTrans();
+					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
+							ctsRequestId);
+				} else if (ContentPersistence.isDocTypeSupportContentAppending(documentObject.getTypeName())) {
+					ExternalMessagePersistence.startContentProcessing(messageSysObject, existingObject);
+					if (existingObject == null) {
+						ctsRequestId = contentService.createContentFromMQType(dfSession, docPutXmlObject.getContent(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
+					} else {
+						ctsRequestId = contentService.appendContentFromMQType(dfSession, docPutXmlObject.getContent(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentObject.getObjectId(),
+								existingObject.getObjectId());
+					}
+					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
+							ctsRequestId);
+				} else {
+					ExternalMessagePersistence.startContentProcessing(messageSysObject, existingObject);
+					if (existingObject == null) {
+						ctsRequestId = contentService.createContentFromMQType(dfSession, docPutXmlObject.getContent(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
+					} else {
+						ctsRequestId = contentService.updateContentFromMQType(dfSession, docPutXmlObject.getContent(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentObject.getObjectId(),
+								existingObject.getObjectId());
+					}
+					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
+							ctsRequestId);
 				}
 			}
+
+			if (!isTransAlreadyActive) {
+				dfSession.commitTrans();
+			}
+
+			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
+		} catch (DfException dfEx) {
+			DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, dfEx);
+			// throw dfEx;
+		} catch (Exception ex) {
+			DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
+			// throw new DfException(ex);
+		} finally {
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.abortTrans();
+			}
 		}
+
 	}
 
 	public static void main(String[] args) {
@@ -165,9 +167,24 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			sessionManager.setIdentity("UCB", loginInfo);
 			testSession = sessionManager.getSession("UCB");
-			
-			new DocPutMesssageJob().process(testSession);
 
+			DocPutMesssageJob job = new DocPutMesssageJob();
+
+			String messageIdStr = null;
+			if (args != null && args.length > 0) {
+				messageIdStr = args[0];
+			}
+
+			IDfId messageId = null;
+			if (messageIdStr != null) {
+				messageId = new DfId(messageIdStr);
+			}
+			
+			if (messageId != null && !messageId.isNull() && messageId.isObjectId()) {
+				job.process(testSession, messageId);
+			} else {
+				job.process(testSession);
+			}
 		} catch (Exception ex) {
 			System.out.println(ex);
 		} finally {

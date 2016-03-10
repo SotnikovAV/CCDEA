@@ -4,6 +4,8 @@ import ru.rb.ccdea.concurrent.PrintDocumentRunner;
 
 import java.applet.Applet;
 import java.awt.*;
+import java.awt.print.PageFormat;
+import java.awt.print.Paper;
 import java.awt.print.PrinterJob;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -90,6 +92,7 @@ public class PrinterApplet extends Applet {
 		if (objectIds != null && objectIds.length() > 0) {
             try {
                 PrinterJob pj = PrinterJob.getPrinterJob();
+                                
                 printMessage("Выберите принтер");
                 if (pj.printDialog()) {
                     ExecutorService pool =  Executors.newCachedThreadPool();
@@ -208,4 +211,5 @@ public class PrinterApplet extends Applet {
         int yOffset = (rownum+1)*rowHeight-strOffset;
         g.drawString(str,xOffset,yOffset);
     }
+    
 }

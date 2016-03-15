@@ -44,7 +44,29 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+				  <execution>
+					<id>sign</id>
+					<goals>
+					  <goal>sign</goal>
+					</goals>
+				  </execution>
+				</executions>
+				<configuration>
+				<archiveDirectory>${project.build.directory}</archiveDirectory>
+					<includes>
+						<include>*.jar</include>
+					</includes>
+					<keystore>${project.basedir}/keystore/print-applet-keystore.jks</keystore>
+					<alias>mykey</alias>
+					<storepass>unicredit</storepass>
+					<keypass>unicredit</keypass>
+				</configuration>
+			  </plugin>
         </plugins>
     </build>
 </project>

@@ -94,9 +94,10 @@ public class PrintDocumentRunner implements Runnable {
 	}
 
 	public void execute() {
+		PDDocument document = null;
 		try {
 			status = "Загрузка документа: ";
-			PDDocument document = CPDDocument.load(documentUrl);
+			document = CPDDocument.load(documentUrl);
 
 			status = "Подготовка документа ";
 			final List<PDPage> pdfPages = document.getDocumentCatalog().getAllPages();
@@ -155,6 +156,13 @@ public class PrintDocumentRunner implements Runnable {
 			haveError = true;
 		} finally {
 			done = true;
+			if(document != null) {
+				try {
+					document.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

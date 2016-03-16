@@ -67,7 +67,7 @@ public class DocPutMesssageJob extends AbstractJob {
 
 				IDfSysObject docMessageObject = ExternalMessagePersistence.getProcessedDocMessage(messageSysObject);
 				if (docMessageObject == null) {
-					throw new DfException("Cant find document for content message: " + messageId);
+					throw new CantFindDocException("Cant find document message for content message: " + messageId);
 				}
 
 				String docSourceCode = ExternalMessagePersistence.getDocSourceCode(docMessageObject);
@@ -79,7 +79,7 @@ public class DocPutMesssageJob extends AbstractJob {
 						docSourceId, contentSourceCode, contentSourceId);
 
 				if (docs.size() == 0) {
-					throw new DfException("Cant find document for content message: " + messageId);
+					throw new CantFindDocException("Cant find document for content message: " + messageId);
 				}
 
 				List<IDfId> documentIds = new ArrayList<IDfId>(docs.size());
@@ -137,6 +137,8 @@ public class DocPutMesssageJob extends AbstractJob {
 			}
 
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
+		} catch (CantFindDocException ex) {
+			DfLogger.warn(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		} catch (DfException dfEx) {
 			DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, dfEx);
 			// throw dfEx;

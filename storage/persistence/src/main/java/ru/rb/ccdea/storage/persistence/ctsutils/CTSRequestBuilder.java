@@ -22,7 +22,7 @@ public class CTSRequestBuilder {
 
 	public static final String CONVERT_TO_PDF_PROFILE_NAME = "convert_to_pdf";
     public static final String MERGE_PDF_PROFILE_NAME = "mergePDF_adts";
-    public static final String RESPONSE_STATUS_COMPLITED = "Complited";
+    public static final String RESPONSE_STATUS_COMPLITED = "Completed";
     public static final String RESPONSE_STATUS_FAILED = "Failed";
 
     public static String convertToPdfRequest(IDfSession dfSession, String targetId, boolean createNewVersion, IDfSysObject sourceObject) throws DfException{

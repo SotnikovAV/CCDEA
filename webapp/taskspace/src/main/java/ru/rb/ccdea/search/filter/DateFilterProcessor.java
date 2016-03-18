@@ -64,10 +64,10 @@ public class DateFilterProcessor extends BasicFilterProcessor {
             result.append("DATE('").append(dateTo).append(" 23:59:59','" + DQL_DATETIME_PATTERN + "'))");
         }else{
             if(dateFrom!=null){
-                result.append(docbaseField).append(" > ");
+                result.append(docbaseField).append(" >= ");
                 result.append("DATE('").append(dateFrom).append(" 00:00:00','" + DQL_DATETIME_PATTERN + "')");
             }else if(dateTo!=null){
-                result.append(docbaseField).append(" < ");
+                result.append(docbaseField).append(" <= ");
                 result.append("DATE('").append(dateTo).append(" 23:59:59','" + DQL_DATETIME_PATTERN + "')");
             }
         }

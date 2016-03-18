@@ -43,6 +43,8 @@ public final class TypeConfigProcessor {
         final String componentName;
         final Map<String,IFilterProcessor> filterStorage= new HashMap<String, IFilterProcessor>();
         final Set<String> conditions = new HashSet<String>();
+        final String groupBy;
+		final String multiGroupBy;
 
         TypeDescription(IConfigElement el){
             name = el.getAttributeValue("name");
@@ -50,6 +52,8 @@ public final class TypeConfigProcessor {
             docbaseType = el.getChildValue("docbase_type");
             selectFields = el.getChildValue("select_fields");
             multiTypeSelectFields =el.getChildValue("multitype_select_fields");
+            groupBy = el.getChildValue("groupby");
+            multiGroupBy = el.getChildValue("multitype_groupby");
             componentName = el.getChildValue("component");
             IConfigElement filters = el.getChildElement("search_filters");
             for(Iterator filtersIt = filters.getChildElements(); filtersIt.hasNext();){
@@ -75,6 +79,14 @@ public final class TypeConfigProcessor {
                 }
             }
         }
+
+		public String getGroupBy() {
+			return groupBy;
+		}
+
+		public String getMultiGroupBy() {
+			return multiGroupBy;
+		}
     }
 
     private TypeConfigProcessor(){
@@ -95,6 +107,7 @@ public final class TypeConfigProcessor {
         }
         multitypeSelectFields = cfg.getDescendantElement("scope.multitype_select_fields").getValue();
         multitypeComponent = cfg.getDescendantElement("scope.multitype_component").getValue();
+        
         multitypeJoinTypes = new HashSet<String>();
         elem = cfg.getDescendantElement("scope.multitype_types");
         for(Iterator typeEl = elem.getChildElements(); typeEl.hasNext();){
@@ -221,6 +234,14 @@ public final class TypeConfigProcessor {
         }else{
             return types.get(selectedType).selectFields;
         }
+    }
+    
+    public String getGroupBy(String selectedType, boolean isMultiType) {
+    	if(isMultiType) {
+    		return types.get(selectedType).getMultiGroupBy();
+    	} else {
+    		return types.get(selectedType).getGroupBy();
+    	}
     }
     
     public Set<String> getFromTypes(String typeFilterName, boolean isMultiType){

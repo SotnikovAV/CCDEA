@@ -101,6 +101,7 @@ public class DossierTabComponent extends SearchResultsComponent {
         DqlQueryBuilder builder = new DqlQueryBuilder();
         builder.addSelectField(proc.getSelectFields(typeName, isSubquery));
         builder.addFromTables(proc.getFromTypes(typeName,isSubquery));
+        builder.addGroupBy(proc.getGroupBy(typeName,isSubquery));
         for(String cond:proc.getConditions(typeName,isSubquery)){
             builder.addWhereClause(cond);
         }

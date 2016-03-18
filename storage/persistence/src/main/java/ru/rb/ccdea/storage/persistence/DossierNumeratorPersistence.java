@@ -29,9 +29,11 @@ public class DossierNumeratorPersistence extends BasePersistence {
 
 	public static final int getNextNumber(IDfSession dfSession, int year, String dossierPrefix) throws DfException {
 		throwIfNotTransactionActive(dfSession);
-
+		
+		IDfSysObject locker = LockerPersistence.getLocker(dfSession, dossierPrefix + '_' + year);
+		locker.lock();
+		
 		IDfPersistentObject numeratorObject = getNumerator(dfSession, year, dossierPrefix);
-		numeratorObject.lock();
 		int lastNumber = numeratorObject.getInt(ATTR_LAST_NUMBER);
 		int nextNumber = lastNumber + 1;
 		numeratorObject.setInt(ATTR_LAST_NUMBER, nextNumber);

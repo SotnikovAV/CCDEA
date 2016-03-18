@@ -1,18 +1,21 @@
 package ru.rb.ccdea.storage.services.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import com.documentum.fc.client.DfService;
 import com.documentum.fc.client.IDfPersistentObject;
 import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.IDfId;
-import ru.rb.ccdea.storage.persistence.*;
+
+import ru.rb.ccdea.storage.persistence.AuditPersistence;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
+import ru.rb.ccdea.storage.persistence.BasePersistence;
+import ru.rb.ccdea.storage.persistence.DossierPersistence;
 import ru.rb.ccdea.storage.persistence.details.ActionRecordDetails;
 import ru.rb.ccdea.storage.persistence.details.VersionRecordDetails;
 import ru.rb.ccdea.storage.services.api.IDossierService;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class DossierService extends DfService implements IDossierService {
     @Override
@@ -25,15 +28,8 @@ public class DossierService extends DfService implements IDossierService {
 
             IDfPersistentObject dossier = dfSession.getObject(dossierId);
             DossierPersistence.checkDossierForClosing(dossier);
-
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date());
-            int year = calendar.get(Calendar.YEAR);
-       
-            String dossierPrefix = DossierPersistence.getDossierPrefix(dossier);
-            int freeNumber = DossierPersistence.searchFirstFreeNumber(dfSession, year, dossierPrefix);
                         
-            String fullArchiveNumber = DossierPersistence.closeDossierWithNumber(dossier, dossierPrefix, freeNumber, year);
+            String fullArchiveNumber = DossierPersistence.closeDossier(dossier, new Date(), dfSession.getLoginUserName());
 
             ActionRecordDetails closeDossierActionRecord = new ActionRecordDetails();
             closeDossierActionRecord.eventName = AuditPersistence.CLOSE_DOSSIER_EVENT_NAME;
@@ -78,7 +74,7 @@ public class DossierService extends DfService implements IDossierService {
             IDfPersistentObject dossier = dfSession.getObject(dossierId);
             DossierPersistence.checkDossierForReopen(dossier);
             
-            DossierPersistence.reopenDossier(dossier);
+            DossierPersistence.reopenDossier(dossier, dfSession.getLoginUserName());
 
             ActionRecordDetails reopenDossierActionRecord = new ActionRecordDetails();
             reopenDossierActionRecord.eventName = AuditPersistence.REOPEN_DOSSIER_EVENT_NAME;

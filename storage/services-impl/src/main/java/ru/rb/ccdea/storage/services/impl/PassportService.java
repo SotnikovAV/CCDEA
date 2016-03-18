@@ -1,5 +1,7 @@
 package ru.rb.ccdea.storage.services.impl;
 
+import java.util.Date;
+
 import com.documentum.fc.client.DfService;
 import com.documentum.fc.client.IDfPersistentObject;
 import com.documentum.fc.client.IDfSession;
@@ -8,7 +10,9 @@ import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
+
 import ru.rb.ccdea.adapters.mq.binding.passport.MCDocInfoModifyPSType;
+import ru.rb.ccdea.adapters.mq.binding.passport.PSDetailsType;
 import ru.rb.ccdea.storage.persistence.AuditPersistence;
 import ru.rb.ccdea.storage.persistence.DossierPersistence;
 import ru.rb.ccdea.storage.persistence.PassportPersistence;
@@ -54,6 +58,31 @@ public class PassportService extends DfService implements IPassportService{
 
             AuditPersistence.createActionRecord(dfSession, new DfId(passportObjectId), attachDocActionRecord);
             AuditPersistence.createVersionRecord(dfSession, new DfId(passportObjectId), versionRecordDetails);
+            
+            PSDetailsType psDetails = documentXmlObject.getPSDetails();
+           
+            Date closeDate = null;
+            String closeDesc = null;
+            String changeAuthor = null;
+            if(psDetails.getCloseDate() != null && psDetails.getCloseDesc() != null) {
+            	 closeDate = psDetails.getCloseDate().toGregorianCalendar().getTime();
+                 closeDesc = psDetails.getCloseDesc().trim();
+                 changeAuthor = documentXmlObject.getUserId();
+                 if(changeAuthor == null) {
+                	 changeAuthor = "";
+                 }
+            }
+            
+            if(closeDate != null && closeDesc != null && closeDesc.length() > 0) {
+            	if(DossierPersistence.isOpened(dossier)) {
+            		DossierPersistence.closeDossier(dossier, closeDate, changeAuthor);
+            	}
+            } else {
+            	if(DossierPersistence.isClosed(dossier)) {
+            		DossierPersistence.reopenDossier(dossier, changeAuthor);
+            	}
+            }
+            
 
             if (!isTransAlreadyActive) {
                 dfSession.commitTrans();
@@ -93,6 +122,7 @@ public class PassportService extends DfService implements IPassportService{
             DossierKeyDetails keyDetailsFromMQ = PassportPersistence.getKeyDetailsFromMQ(documentXmlObject);
             if (!keyDetailsFromMQ.equals(PassportPersistence.getKeyDetails(passportSysObject))) {
                 dossier = DossierPersistence.getOrCreateDossierByKeyDetails(dfSession, keyDetailsFromMQ);
+                oldDossier = dossier;
             }
             else {
                 dossier = dfSession.getObject(PassportPersistence.getDossierId(passportSysObject));
@@ -105,7 +135,7 @@ public class PassportService extends DfService implements IPassportService{
             versionRecordDetails.operationDate = documentXmlObject.getModificationDateTime().toGregorianCalendar().getTime();
 
             PassportPersistence.saveFieldsToDocument(passportSysObject, documentXmlObject, dossier.getObjectId().getId(), docSourceCode, docSourceId, versionRecordDetails);
-
+            
             if (oldDossier != null) {
                 ActionRecordDetails attachDocActionRecord = new ActionRecordDetails();
                 attachDocActionRecord.eventName = AuditPersistence.SET_DOC_DOSSIER_EVENT_NAME;
@@ -121,6 +151,30 @@ public class PassportService extends DfService implements IPassportService{
             }
 
             AuditPersistence.createVersionRecord(dfSession, documentId, versionRecordDetails);
+            
+            PSDetailsType psDetails = documentXmlObject.getPSDetails();
+            
+            Date closeDate = null;
+            String closeDesc = null;
+            String changeAuthor = null;
+            if(psDetails.getCloseDate() != null && psDetails.getCloseDesc() != null) {
+            	 closeDate = psDetails.getCloseDate().toGregorianCalendar().getTime();
+                 closeDesc = psDetails.getCloseDesc().trim();
+                 changeAuthor = documentXmlObject.getUserId();
+                 if(changeAuthor == null) {
+                	 changeAuthor = "";
+                 }
+            }
+            
+            if(closeDate != null && closeDesc != null && closeDesc.length() > 0) {
+            	if(DossierPersistence.isOpened(dossier)) {
+            		DossierPersistence.closeDossier(dossier, closeDate, changeAuthor);
+            	}
+            } else {
+            	if(DossierPersistence.isClosed(dossier)) {
+            		DossierPersistence.reopenDossier(dossier, changeAuthor);
+            	}
+            }
 
             if (!isTransAlreadyActive) {
                 dfSession.commitTrans();

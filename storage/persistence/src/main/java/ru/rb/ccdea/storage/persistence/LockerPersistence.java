@@ -3,7 +3,6 @@
  */
 package ru.rb.ccdea.storage.persistence;
 
-import com.documentum.fc.client.DfACL;
 import com.documentum.fc.client.IDfACL;
 import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSysObject;
@@ -24,7 +23,7 @@ public class LockerPersistence extends BasePersistence {
 	/**
 	 * Уникальное наименование
 	 */
-	public static final String ATTR_LAST_NUMBER = "s_unique_name";
+	public static final String ATTR_UNIQUIE_NAME = "s_unique_name";
 	/**
 	 * Наименование набора разрешений для блокировщика
 	 */
@@ -44,14 +43,26 @@ public class LockerPersistence extends BasePersistence {
 	 * @return блокировщик
 	 * @throws DfException
 	 */
-	public static IDfSysObject newLocker(IDfSession dfSession, String lockerName) throws DfException {
+	public static IDfSysObject getLocker(IDfSession dfSession, String lockerName) throws DfException {
+		throwIfNotTransactionActive(dfSession);
+		
 		IDfSysObject locker = (IDfSysObject) dfSession
-				.getObjectByQualification(TYPE_NAME + " where " + ATTR_LAST_NUMBER + " = '" + lockerName + "'");
+				.getObjectByQualification(TYPE_NAME + " where " + ATTR_UNIQUIE_NAME + " = '" + lockerName + "'");
 		if(locker == null) {
 			IDfSysObject defaultBlocker = null;
-			//if()
+			if(!DEFAULT_BLOCKER_NAME.equals(lockerName)) {
+				defaultBlocker = getLocker(dfSession, DEFAULT_BLOCKER_NAME);
+			}
+			if(defaultBlocker != null) {
+				defaultBlocker.lock();
+			}
+			locker = (IDfSysObject) dfSession.newObject(TYPE_NAME);
+			locker.setObjectName(lockerName);
+			locker.setString(ATTR_UNIQUIE_NAME, lockerName);
+			locker.setACL(getBlockerACL(dfSession));
+			locker.save();
 		}
-		return null;
+		return locker;
 	}
 
 	/**
@@ -63,6 +74,8 @@ public class LockerPersistence extends BasePersistence {
 	 * @throws DfException
 	 */
 	public static IDfACL getBlockerACL(IDfSession dfSession) throws DfException {
+		throwIfNotTransactionActive(dfSession);
+		
 		IDfACL result = dfSession.getACL(dfSession.getDocbaseOwnerName(), BLOCKER_DEFAULT_ACL_NAME);
 		if (result == null) {
 			result = (IDfACL) dfSession.newObject("dm_acl");

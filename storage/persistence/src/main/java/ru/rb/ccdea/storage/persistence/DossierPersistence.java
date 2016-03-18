@@ -29,7 +29,8 @@ public class DossierPersistence extends BasePersistence {
 	protected static final String ATTR_BRANCH_CODE = "s_reg_branch_code";
 	protected static final String ATTR_DOSSIER_TYPE_DOC = "id_dossier_type_doc";
 	protected static final String ATTR_CREATION_DATE = "t_creation_date";
-
+	public static final String ATTR_CHANGE_AUTHOR = "s_change_author";
+	
 	public static final String DOSSIER_TYPE_PASSPORT = "PASSPORT";
 	public static final String DOSSIER_TYPE_CONTRACT = "CONTRACT";
 	public static final String DOSSIER_TYPE_CONTRACT_PREFIX = "БП";
@@ -68,6 +69,7 @@ public class DossierPersistence extends BasePersistence {
 		return result;
 	}
 
+	@Deprecated
 	public static String closeDossierWithNumber(IDfPersistentObject dossier, String dossierPrefix, int number, int year) throws DfException {
 		throwIfNotTransactionActive(dossier.getSession());
 		
@@ -116,6 +118,7 @@ public class DossierPersistence extends BasePersistence {
 		return dossierPrefix;
 	}
 
+	@Deprecated
 	public static void reopenDossier(IDfPersistentObject dossier) throws DfException {
 		throwIfNotTransactionActive(dossier.getSession());
 
@@ -220,17 +223,60 @@ public class DossierPersistence extends BasePersistence {
 				dossierObject.setTime(ATTR_CONTRACT_DATE, new DfTime(keyDetails.contractDate));
 			}
 			dossierObject.save();
-
-			if (keyDetails.passportNumber != null && !keyDetails.passportNumber.trim().isEmpty()) {
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(new Date());
-				int year = calendar.get(Calendar.YEAR);
-				String dossierPrefix = DossierPersistence.getDossierPrefix(dossierObject);
-				int freeNumber = DossierPersistence.searchFirstFreeNumber(dfSession, year, dossierPrefix);
-				String fullArchiveNumber = DossierPersistence.closeDossierWithNumber(dossierObject, dossierPrefix, freeNumber, year);
-			}
 		}
 
 		return dossierObject;
+	}
+
+	public static boolean isClosed(IDfPersistentObject dossier) throws DfException {
+		String dossierState = dossier.getString(ATTR_STATE);
+		return STATE_CLOSED.equalsIgnoreCase(dossierState);
+	}
+	
+	public static boolean isOpened(IDfPersistentObject dossier) throws DfException {
+		String dossierState = dossier.getString(ATTR_STATE);
+		return STATE_OPENED.equalsIgnoreCase(dossierState);
+	}
+
+	public static String closeDossier(IDfPersistentObject dossier, Date closeDate, String changeAuthor) throws DfException {
+		throwIfNotTransactionActive(dossier.getSession());
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		int year = calendar.get(Calendar.YEAR);
+		String dossierPrefix = DossierPersistence.getDossierPrefix(dossier);
+		int freeNumber = DossierPersistence.searchFirstFreeNumber(dossier.getSession(), year, dossierPrefix);
+		return DossierPersistence.closeDossierWithNumber(dossier, dossierPrefix, freeNumber, year, closeDate, changeAuthor);
+	}
+	
+	public static String closeDossierWithNumber(IDfPersistentObject dossier, String dossierPrefix, int number, int year, Date closeDate, String changeAuthor) throws DfException {
+		throwIfNotTransactionActive(dossier.getSession());
+		
+		String fullArchiveNumber = getFullArchiveNumber(dossierPrefix, number, year);
+				
+		Date archiveDate = new Date();
+		dossier.setInt(ATTR_ARCHIVE_NUMBER, number);
+		dossier.setInt(ATTR_ARCHIVE_YEAR, year);
+		dossier.setTime(ATTR_CLOSE_DATE, new DfTime(closeDate));
+		dossier.setTime(ATTR_ARCHIVE_DATE, new DfTime(archiveDate));
+		dossier.setString(ATTR_STATE, STATE_CLOSED);
+		dossier.setString(ATTR_FULL_ARCHIVE_NUMBER, fullArchiveNumber);
+		dossier.setString(ATTR_CHANGE_AUTHOR, changeAuthor);
+		dossier.save();
+
+		return fullArchiveNumber;
+	}
+	
+	public static void reopenDossier(IDfPersistentObject dossier, String changeAuthor) throws DfException {
+		throwIfNotTransactionActive(dossier.getSession());
+
+		dossier.setInt(ATTR_ARCHIVE_NUMBER, 0);
+		dossier.setInt(ATTR_ARCHIVE_YEAR, 0);
+		dossier.setTime(ATTR_CLOSE_DATE, DfTime.DF_NULLDATE);
+		dossier.setTime(ATTR_ARCHIVE_DATE, DfTime.DF_NULLDATE);
+		dossier.setString(ATTR_STATE, STATE_OPENED);
+		dossier.setString(ATTR_FULL_ARCHIVE_NUMBER, "");
+		dossier.setString(ATTR_CHANGE_AUTHOR, changeAuthor);
+		dossier.save();
 	}
 }

@@ -33,6 +33,7 @@ import ru.rb.ccdea.adapters.mq.binding.docput.ContentType;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocReference;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocScan;
 import ru.rb.ccdea.adapters.mq.binding.docput.FileFormat;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 
 public class ContentLoader {
 
@@ -319,12 +320,12 @@ public class ContentLoader {
 							entryStream.write(zipBuffer, 0, count);
 						}
 						IDfSysObject contentPartSysObject = (IDfSysObject) contentSysObject.getSession()
-								.newObject("ccdea_doc_content_part");
+								.newObject(ContentPersistence.CONTENT_PART_TYPE_NAME);
 						contentPartSysObject.setObjectName(archiveEntryName);
 						contentPartSysObject.setContentType(getFileFormat(archiveEntryType));
 						contentPartSysObject.setContent(entryStream);
-						contentPartSysObject.setId("id_content", contentSysObject.getObjectId());
-						contentPartSysObject.setInt("n_index", entryIndex);
+						contentPartSysObject.setId(ContentPersistence.ATTR_CONTENT_FOR_PART_ID, contentSysObject.getObjectId());
+						contentPartSysObject.setInt(ContentPersistence.ATTR_PART_INDEX, entryIndex);
 						contentPartSysObject.save();
 						entryIndex++;
 					} else {

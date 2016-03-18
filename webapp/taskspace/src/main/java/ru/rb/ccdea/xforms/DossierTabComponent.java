@@ -27,36 +27,13 @@ public class DossierTabComponent extends SearchResultsComponent {
 	private static final String ARCHIVE_TYPES = "'rar','zip','arj'";
 	
 	private static final String printDossierDql =
-    		" select distinct r_object_id, object_name, r_content_size from dm_sysobject "
-    		+ " where r_object_id in ("
-    		+ " select cont.r_object_id " 
+    		" select cont.r_object_id, cont.object_name, cont.r_content_size " 
     		+ " from dm_sysobject#1 cont, dm_relation rel, ccdea_base_doc doc "
     		+ " where rel.relation_name='ccdea_content_relation' "
-    		+ " and cont.r_object_id = rel.child_id "
+    		+ " and cont.i_chronicle_id = rel.child_id "
     		+ " and rel.parent_id = doc.r_object_id "
     		+ " and doc.id_dossier = '#2'"
     		+ " and cont.a_content_type = 'pdf' and cont.r_content_size > 0 "
-    		+ " ) OR r_object_id in ( "
-    		+ " select part.r_object_id " 
-    		+ " from dm_sysobject#1 cont, dm_relation rel, ccdea_base_doc doc, ccdea_content_part#1 part "
-    		+ " where rel.relation_name='ccdea_content_relation' "
-    		+ " and cont.r_object_id = rel.child_id "
-    		+ " and rel.parent_id = doc.r_object_id "
-    		+ " and doc.id_dossier = '#2'"
-    		+ " and cont.a_content_type in (#3) "
-    	    + " and part.id_content=cont.r_object_id "
-    	    + " and part.a_content_type = 'pdf' and part.r_content_size > 0 "
-    	    + " ) OR r_object_id in ( "
-    	    + " select part.r_object_id " 
-    		+ " from dm_sysobject#1 cont, dm_relation rel, ccdea_base_doc doc, ccdea_doc_content_part#1 part "
-    		+ " where rel.relation_name='ccdea_content_relation' "
-    		+ " and cont.r_object_id = rel.child_id "
-    		+ " and rel.parent_id = doc.r_object_id "
-    		+ " and doc.id_dossier = '#2'"
-    		+ " and cont.a_content_type in (#3) "
-    	    + " and part.id_content=cont.r_object_id "
-    	    + " and part.a_content_type = 'pdf' and part.r_content_size > 0 "
-    	    + " ) "
     ;
 	
     private String objectId;
@@ -92,7 +69,7 @@ public class DossierTabComponent extends SearchResultsComponent {
                         return createSingleTypeQuery(param, true);
                     }
                 });
-        System.out.println(fullQueryStr);
+        DfLogger.debug(this, fullQueryStr, null, null);
         refreshDatagrid(fullQueryStr);
     }
 

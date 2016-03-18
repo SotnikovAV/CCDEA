@@ -54,7 +54,7 @@ public class ContentPersistence extends BasePersistence {
 		String contentId = null;
 		String dql = "select r_object_id as cont_id from ccdea_doc_content content " + " where b_is_original=false "
 				+ " and exists ( " + " select 1 from dm_relation " + " where relation_name='ccdea_content_relation' "
-				+ " and parent_id = '" + documentId + "' and child_id=content.r_object_id " + " ) and exists ( "
+				+ " and parent_id = '" + documentId + "' and child_id=content.i_chronicle_id " + " ) and exists ( "
 				+ " select 1 from ccdea_external_message msg, dm_cts_response cts "
 				+ " where content.s_content_source_id=msg.s_content_source_id "
 				+ " and content.s_content_source_code=msg.s_content_source_code "

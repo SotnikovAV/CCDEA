@@ -60,20 +60,6 @@
     <artifacts xsi:type="dclass:DClass" href="urnd:com.emc.ide.artifact.dclass/dmc_dar?artifactURI=platform:/resource/DFS2/inst/dclass/dmc_dar.type#//@dataModel"/>
     <artifacts xsi:type="dardef:DarDef" href="urnd:com.emc.ide.artifact.dardef/default?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/dar/default.dardef#//@dataModel"/>
     <installOptions>
-      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_svo_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_svo_receiver_wf#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_svo_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_svo_receiver_wf.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_pd_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_pd_receiver_wf#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_pd_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_pd_receiver_wf.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_spd_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_spd_receiver_wf#//@dataModel"/>
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_spd_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_spd_receiver_wf.parameter#//@dataModel"/>
@@ -81,30 +67,9 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_docstate_notify_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_docstate_notify_wf#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_docstate_notify_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_docstate_notify_wf.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_vbk_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_vbk_receiver_wf#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_vbk_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_vbk_receiver_wf.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_docput_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_docput_receiver_wf#//@dataModel"/>
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_docput_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_docput_receiver_wf.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_contract_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_contract_receiver_wf#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_contract_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_contract_receiver_wf.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
@@ -122,10 +87,45 @@
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_docstate_notify_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_docstate_notify_wf#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_docstate_notify_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_docstate_notify_wf.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_pd_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_pd_receiver_wf#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_pd_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_pd_receiver_wf.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_svo_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_svo_receiver_wf#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_svo_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_svo_receiver_wf.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_vbk_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_vbk_receiver_wf#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_vbk_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_vbk_receiver_wf.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
     <installOptions key="//@dataModel">
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="VERSION"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="bpm:ProcessContainer" href="urnd:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_contract_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_contract_receiver_wf#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/ucb_ccdea_contract_receiver_wf?artifactURI=file:/C:/Development/Workspaces/CCDEA/Composer/CCDEA_bpm/Artifacts/Installation%20Parameters/ucb_ccdea_contract_receiver_wf.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <darInstallOptionsSet>
@@ -133,9 +133,4 @@
       <upgradeOption xsi:type="dardef:UpgradeOption"/>
     </darInstallOptionsSet>
   </dataModel>
-  <contentStore>
-    <contentEntries key="resolutionMap">
-      <value filePath="content/61/1682517761/resolutionMap"/>
-    </contentEntries>
-  </contentStore>
 </Artifact:Artifact>

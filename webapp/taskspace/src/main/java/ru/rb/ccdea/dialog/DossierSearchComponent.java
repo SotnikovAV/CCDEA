@@ -1,5 +1,8 @@
 package ru.rb.ccdea.dialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.documentum.fc.client.*;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
@@ -9,6 +12,8 @@ import com.documentum.web.common.ArgumentList;
 import com.documentum.web.form.Control;
 import com.documentum.web.form.control.*;
 import com.documentum.web.formext.component.Component;
+
+import ru.rb.ccdea.control.ListBoxFilter;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.DossierPersistence;
 import ru.rb.ccdea.storage.services.api.IDossierService;
@@ -36,10 +41,41 @@ public class DossierSearchComponent extends Component {
                 boolean privilegedUser = grp.isUserInGroup(getDfSession().getLoginUserName());
                 getControl("reg_branch_code", Text.class).setVisible(privilegedUser);
                 getControl("reg_branch_code_lbl", Label.class).setVisible(privilegedUser);
+                ListBoxFilter branchFilter = (ListBoxFilter) getControl("processing_unit", ListBoxFilter.class);
+                branchFilter.setMutable(true);
+                branchFilter.setMultiSelect(false);
+                branchFilter.setOptions(getBranchesOpts());
+                branchFilter.setVisible(privilegedUser);
             }
         } catch (DfException e) {
-            e.printStackTrace();
+            DfLogger.error(this, "Ошибка", null, e);
         }
+    }
+    
+    private List<Option> getBranchesOpts(){
+        List<Option> result = new ArrayList<Option>();
+        IDfCollection col = null;
+        try{
+            IDfQuery query = new DfQuery("select s_code, s_name from ccdea_branch");
+            col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
+            while (col.next()){
+                Option op = new Option();
+                op.setLabel(col.getString("s_name"));
+                op.setValue(col.getString("s_code"));
+                result.add(op);
+            }
+        } catch (DfException e) {
+            DfLogger.error(this, e.getMessage(), null, e);
+        } finally {
+            if (col!=null){
+                try{
+                    col.close();
+                } catch (DfException e) {
+                    DfLogger.error(this, e.getMessage(), null, e);
+                }
+            }
+        }
+        return result;
     }
 
     private void setVisibleControls(){
@@ -102,7 +138,8 @@ public class DossierSearchComponent extends Component {
     private String getDossierSearchDql(){
         StringBuilder bld = new StringBuilder("select * from ccdea_dossier where ");
         DropDownList dossierType = (DropDownList) getControl("dossier_type");
-        Text branch = (Text) getControl("reg_branch_code");
+//        Text branch = (Text) getControl("reg_branch_code");
+        ListBoxFilter branch = (ListBoxFilter) getControl("processing_unit", ListBoxFilter.class);
         if(branch.isVisible() && branch.getValue()!=null &&branch.getValue().length()>0){
             bld.append("s_reg_branch_code='");
             bld.append(branch.getValue()).append("' and ");

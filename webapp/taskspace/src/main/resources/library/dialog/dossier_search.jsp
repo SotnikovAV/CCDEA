@@ -29,7 +29,9 @@ topmargin='0' bottommargin='0' leftmargin='0' rightmargin='0'>
 </tr>
 <tr>
     <td><dmf:label name="reg_branch_code_lbl" nlsid='MSG_REG_BRANCH_CODE'/></td>
-    <td><dmf:text name="reg_branch_code"/></td>
+    <td colspan="2" class="topLayout">
+        <ccdea:listboxfilter name="processing_unit" size='4' multiselect='true' />
+    </td>
 </tr>
 <tr>
     <td><dmf:label name="passport_number_lbl" nlsid='MSG_PASSPORT_NUMBER'/></td>

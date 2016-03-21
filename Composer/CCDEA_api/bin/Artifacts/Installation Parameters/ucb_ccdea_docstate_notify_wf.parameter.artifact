@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:installparameter="installparameter" urn="urnd:com.emc.ide.folderparameter/ucb_ccdea_docstate_notify_wf?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_docstate_notify_wf.parameter" categoryId="com.emc.ide.folderparameter" implicitlyCreated="true">
-  <dataModel xsi:type="installparameter:FolderParameter" name="ucb_ccdea_docstate_notify_wf" description="Process Install location" defaultValue="/System/Applications/CCDEA_api/ucb_ccdea_bpm"/>
-  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
-</Artifact:Artifact>

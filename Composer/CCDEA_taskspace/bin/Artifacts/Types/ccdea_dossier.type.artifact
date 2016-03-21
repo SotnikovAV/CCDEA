@@ -98,9 +98,17 @@
         <attributes attr_name="i_vstamp" ID="d294BKunQ3M9FgyDEMr8cq">
           <attr_type xsi:type="dclass:CSDefinedType" values="INTEGER"/>
         </attributes>
+        <attributes attr_name="s_change_author" attr_length="50" ID="3t1Ys*9yQ9iartLsT6ERKc">
+          <attrAnnotations xsi:type="dclass:AttrDDInfo" ignore_constraints="INHERIT" is_searchable="INHERIT" is_required="inherit" read_only="inherit" ignore_immutable="inherit" is_hidden="inherit" not_null="inherit"/>
+          <attrAnnotations xsi:type="dclass:NLSDDInfoSet">
+            <locales xsi:type="dclass:AttrNLSDDInfo" label_text="&#x410;&#x432;&#x442;&#x43e;&#x440; &#x438;&#x437;&#x43c;&#x435;&#x43d;&#x435;&#x43d;&#x438;&#x439;" nls_key="ru"/>
+          </attrAnnotations>
+          <attr_type xsi:type="dclass:CSDefinedType" values="STRING"/>
+        </attributes>
         <typeAnnotations xsi:type="dclass:NLSDDInfoSet">
           <locales xsi:type="dclass:TypeNLSDDInfo" label_text="&#x414;&#x43e;&#x441;&#x44c;&#x435;" help_text="" comment_text="" nls_key="ru"/>
         </typeAnnotations>
+        <typeAnnotations xsi:type="dclass:TypeDDInfo" ignore_constraints="INHERIT" is_searchable="INHERIT"/>
       </primaryElement>
     </type>
   </dataModel>

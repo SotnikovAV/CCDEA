@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<Artifact:Artifact xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Artifact="http://documentum.emc.com/infrastructure/12012007/artifact" xmlns:jardef="http://documentum.emc.com/artifact/12012007/jardef" urn="urnd:com.emc.ide.artifact.jardef.javalibrary/jaxb-impl.jar?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Java%20Libraries/jaxb-impl.jar.javalibrary" categoryId="com.emc.ide.artifact.jardef.javalibrary">
-  <dataModel xsi:type="jardef:JavaLibrary" objectName="jaxb-impl.jar" sandbox_library="true">
-    <objectType href="urnd:com.emc.ide.artifact.dclass/dmc_java_library?name=dmc_java_library#//@dataModel"/>
-    <elements href="urnd:com.emc.ide.artifact.jardef.jardef/jaxb-impl.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.dms.client.sbo.IDmsClient%2FDmsClientAdditionalLib&amp;name=jaxb-impl.jar&amp;type=dmc_jar#//@dataModel"/>
-  </dataModel>
-  <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
-</Artifact:Artifact>

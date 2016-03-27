@@ -68,6 +68,7 @@ public class ContentLoader {
         SUPPORTED_FORMAT.add("gif");
         SUPPORTED_FORMAT.add("bmp");
         SUPPORTED_FORMAT.add("prn");
+        SUPPORTED_FORMAT.add("7z");
     }
     
     public static final void loadContentFile(IDfSysObject contentSysObject, String filepath) throws DfException {
@@ -98,6 +99,29 @@ public class ContentLoader {
     	}
     }
     
+    public static final void loadContentFile(String filepath, OutputStream os) throws DfException {
+    	InputStream is = null;
+    	try {
+    		FileAccessProperties accessProperties = FileAccessProperties.parseUrl(filepath);
+    		
+    		is = new FileInputStream(filepath);
+			int b;
+			while ((b = is.read()) != -1) {
+			    os.write(b);
+			}
+    	} catch (IOException e) {
+			throw new DfException("Ошибка",e);
+		} finally {
+    		if(is != null) {
+    			try {
+					is.close();
+				} catch (IOException ex) {
+					DfLogger.warn(null, "Ошибка при закрытии потока", null, ex);
+				}
+    		}
+    	}
+    }
+    
     public static void loadContent(DocScan docScan, OutputStream out) throws DfException {
     	try {
     		out.write(docScan.getFileScan());
@@ -119,8 +143,10 @@ public class ContentLoader {
         FileAccessProperties accessProperties = FileAccessProperties.parseUrl(fileReference);
         if (JschSFTP.SFTP.equalsIgnoreCase(accessProperties.getProtocol())) {
         	loadContentBySftp(dfSession, accessProperties, out);
-        } else {
+        } else if(accessProperties.getUrl().startsWith("\\\\")) {
         	loadContentBySmb(dfSession, accessProperties, out);
+        } else {
+        	loadContentFile(accessProperties.getUrl(), out);
         }
     }
 
@@ -256,13 +282,11 @@ public class ContentLoader {
         	return "jpeg";
         } else if(FileFormat.TIF.value().equalsIgnoreCase(fileExt)) {
         	return "tiff";
-        }  else if(FileFormat.XML.value().equalsIgnoreCase(fileExt)) {
+        } else if(FileFormat.XML.value().equalsIgnoreCase(fileExt)) {
         	return "crtext";
-        } 
-//        else if(FileFormat.PRN.value().equalsIgnoreCase(fileExt)) {
-//        	return "crtext";
-//        } 
-        else {
+        } else if(FileFormat.SEVENZ.value().equalsIgnoreCase(fileExt) || "7z".equalsIgnoreCase(fileExt)) {
+        	return "7z";
+        } else {
         	return fileExt;
         }
     }
@@ -274,6 +298,8 @@ public class ContentLoader {
         	processArchive(contentSysObject, ArchiveStreamFactory.ARJ);
 		} else if (FileFormat.RAR.value().equalsIgnoreCase(fileFormat)) {
             processRarArchive(contentSysObject);
+        } else if (FileFormat.SEVENZ.value().equalsIgnoreCase(fileFormat) || "7z".equalsIgnoreCase(fileFormat)) {
+        	processArchive(contentSysObject, ArchiveStreamFactory.SEVEN_Z);
         }
     }
     
@@ -287,7 +313,9 @@ public class ContentLoader {
 	public static final boolean isArchiveType(String contentType) {
 		return FileFormat.ZIP.value().equalsIgnoreCase(contentType)
 				|| FileFormat.ARJ.value().equalsIgnoreCase(contentType)
-				|| FileFormat.RAR.value().equalsIgnoreCase(contentType);
+				|| FileFormat.RAR.value().equalsIgnoreCase(contentType)
+				|| FileFormat.SEVENZ.value().equalsIgnoreCase(contentType) 
+				|| "7z".equalsIgnoreCase(contentType);
 	}
 
 	/**

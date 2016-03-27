@@ -34,6 +34,7 @@
             <xsd:enumeration value="zip"/>
             <xsd:enumeration value="rar"/>
             <xsd:enumeration value="arj"/>
+            <xsd:enumeration value="sevenz" />
         </xsd:restriction>
     </xsd:simpleType>       
     

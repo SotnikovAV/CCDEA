@@ -6,6 +6,7 @@ import java.util.List;
 import com.documentum.fc.client.DfService;
 import com.documentum.fc.client.IDfPersistentObject;
 import com.documentum.fc.client.IDfSession;
+import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.IDfId;
 
@@ -119,7 +120,7 @@ public class DossierService extends DfService implements IDossierService {
             IDfPersistentObject dossier = dfSession.getObject(dossierId);
             DossierPersistence.checkDossierForAttachDoc(dossier);
 
-            IDfPersistentObject document = dfSession.getObject(docId);
+			IDfSysObject document = (IDfSysObject) dfSession.getObject(docId);
             IDfPersistentObject oldDossier = BaseDocumentPersistence.lockDocumentForAttach(document);
 
             if (oldDossier != null) {

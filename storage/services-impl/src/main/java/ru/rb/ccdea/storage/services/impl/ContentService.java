@@ -233,7 +233,7 @@ public class ContentService extends DfService implements IContentService {
 			modifiedContentIdList.add(contentId.getId());
 			
 			String contentType = originalContentSysObject.getContentType();
-			if (!ContentLoader.isPdfType(contentType)) {
+			if (ContentLoader.isPdfType(contentType)) {
 				transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession, contentId.getId(), true,
 						documentContentSysObject, originalContentSysObject);
 			} else if(ContentLoader.isArchiveType(contentType)) {

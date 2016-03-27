@@ -30,7 +30,7 @@ public class DossierPersistence extends BasePersistence {
 	protected static final String ATTR_DOSSIER_TYPE_DOC = "id_dossier_type_doc";
 	protected static final String ATTR_CREATION_DATE = "t_creation_date";
 	public static final String ATTR_CHANGE_AUTHOR = "s_change_author";
-	
+
 	public static final String DOSSIER_TYPE_PASSPORT = "PASSPORT";
 	public static final String DOSSIER_TYPE_CONTRACT = "CONTRACT";
 	public static final String DOSSIER_TYPE_CONTRACT_PREFIX = "БП";
@@ -70,11 +70,12 @@ public class DossierPersistence extends BasePersistence {
 	}
 
 	@Deprecated
-	public static String closeDossierWithNumber(IDfPersistentObject dossier, String dossierPrefix, int number, int year) throws DfException {
+	public static String closeDossierWithNumber(IDfPersistentObject dossier, String dossierPrefix, int number, int year)
+			throws DfException {
 		throwIfNotTransactionActive(dossier.getSession());
-		
+
 		String fullArchiveNumber = getFullArchiveNumber(dossierPrefix, number, year);
-				
+
 		Date closeDate = new Date();
 		dossier.setInt(ATTR_ARCHIVE_NUMBER, number);
 		dossier.setInt(ATTR_ARCHIVE_YEAR, year);
@@ -178,9 +179,19 @@ public class DossierPersistence extends BasePersistence {
 					+ ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_PASSPORT + "'";
 		} else if (keyDetails.contractNumber != null && !keyDetails.contractNumber.trim().isEmpty()
 				&& keyDetails.contractDate != null) {
-			dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = '" + keyDetails.contractNumber + "'" + " and "
-					+ ATTR_CONTRACT_DATE + " = date('" + dateFormat.format(keyDetails.contractDate) + "','dd.mm.yyyy')"
-					+ " and " + ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_CONTRACT + "'";
+			Calendar c = Calendar.getInstance();
+			c.setTime(keyDetails.contractDate);
+			int year = c.get(Calendar.YEAR);
+			if(year < 2015) {
+				dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = '" + keyDetails.contractNumber + "'" + " and "
+					+ "datetostring(" + ATTR_CONTRACT_DATE + ", 'yyyy-MM-dd') = datetostring(date('"
+					+ dateFormat.format(keyDetails.contractDate) + "','dd.MM.yyyy'),'yyyy-MM-dd')" + " and "
+					+ ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_CONTRACT + "'";
+			} else {
+				dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = '" + keyDetails.contractNumber + "'" + " and "
+						+ ATTR_CONTRACT_DATE + " = date('" + dateFormat.format(keyDetails.contractDate) + "','dd.mm.yyyy')"
+						+ " and " + ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_CONTRACT + "'";
+			}
 		} else {
 			throw new DfException("Cant get or create dossier, key fields is empty." + keyDetails);
 		}
@@ -212,11 +223,11 @@ public class DossierPersistence extends BasePersistence {
 			dossierObject.setTime(ATTR_CREATION_DATE, new DfTime(new Date()));
 			dossierObject.setString(ATTR_BRANCH_CODE, keyDetails.branchCode);
 			dossierObject.setString(ATTR_CUSTOMER_NUMBER, keyDetails.customerNumber);
-			
+
 			if (keyDetails.passportNumber != null && !keyDetails.passportNumber.trim().isEmpty()) {
 				dossierObject.setString(ATTR_DOSSIER_TYPE, DOSSIER_TYPE_PASSPORT);
 				dossierObject.setString(ATTR_PASSPORT_NUMBER, keyDetails.passportNumber);
-				
+
 			} else {
 				dossierObject.setString(ATTR_DOSSIER_TYPE, DOSSIER_TYPE_CONTRACT);
 				dossierObject.setString(ATTR_CONTRACT_NUMBER, keyDetails.contractNumber);
@@ -232,28 +243,31 @@ public class DossierPersistence extends BasePersistence {
 		String dossierState = dossier.getString(ATTR_STATE);
 		return STATE_CLOSED.equalsIgnoreCase(dossierState);
 	}
-	
+
 	public static boolean isOpened(IDfPersistentObject dossier) throws DfException {
 		String dossierState = dossier.getString(ATTR_STATE);
 		return STATE_OPENED.equalsIgnoreCase(dossierState);
 	}
 
-	public static String closeDossier(IDfPersistentObject dossier, Date closeDate, String changeAuthor) throws DfException {
+	public static String closeDossier(IDfPersistentObject dossier, Date closeDate, String changeAuthor)
+			throws DfException {
 		throwIfNotTransactionActive(dossier.getSession());
-		
+
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		int year = calendar.get(Calendar.YEAR);
 		String dossierPrefix = DossierPersistence.getDossierPrefix(dossier);
 		int freeNumber = DossierPersistence.searchFirstFreeNumber(dossier.getSession(), year, dossierPrefix);
-		return DossierPersistence.closeDossierWithNumber(dossier, dossierPrefix, freeNumber, year, closeDate, changeAuthor);
+		return DossierPersistence.closeDossierWithNumber(dossier, dossierPrefix, freeNumber, year, closeDate,
+				changeAuthor);
 	}
-	
-	public static String closeDossierWithNumber(IDfPersistentObject dossier, String dossierPrefix, int number, int year, Date closeDate, String changeAuthor) throws DfException {
+
+	public static String closeDossierWithNumber(IDfPersistentObject dossier, String dossierPrefix, int number, int year,
+			Date closeDate, String changeAuthor) throws DfException {
 		throwIfNotTransactionActive(dossier.getSession());
-		
+
 		String fullArchiveNumber = getFullArchiveNumber(dossierPrefix, number, year);
-				
+
 		Date archiveDate = new Date();
 		dossier.setInt(ATTR_ARCHIVE_NUMBER, number);
 		dossier.setInt(ATTR_ARCHIVE_YEAR, year);
@@ -266,7 +280,7 @@ public class DossierPersistence extends BasePersistence {
 
 		return fullArchiveNumber;
 	}
-	
+
 	public static void reopenDossier(IDfPersistentObject dossier, String changeAuthor) throws DfException {
 		throwIfNotTransactionActive(dossier.getSession());
 

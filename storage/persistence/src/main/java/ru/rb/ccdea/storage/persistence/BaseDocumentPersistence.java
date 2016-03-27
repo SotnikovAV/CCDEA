@@ -100,8 +100,16 @@ public class BaseDocumentPersistence extends BasePersistence{
         return result;
     }
 
-    public static void saveDossierKeysToDocument(IDfPersistentObject document, DossierKeyDetails keyDetails, VersionRecordDetails versionRecordDetails) throws DfException {
-        throwIfNotTransactionActive(document.getSession());
+    public static void saveDossierKeysToDocument(IDfSysObject document, DossierKeyDetails keyDetails, VersionRecordDetails versionRecordDetails) throws DfException {
+        IDfSession dfSession = document.getSession();
+    	throwIfNotTransactionActive(dfSession);
+        
+        document.setACL(getBranchACL(dfSession, keyDetails.branchCode));
+        
+        String oldCustomerNumber = document.getString(ATTR_CUSTOMER_NUMBER);
+        String oldDocumentName = document.getObjectName();
+        String newDocumentName = oldDocumentName.replace(oldCustomerNumber, keyDetails.customerNumber);
+        document.setObjectName(newDocumentName);
 
         versionRecordDetails.setIdWithHistory(document, ATTR_DOSSIER, new DfId(keyDetails.dossierId));
         versionRecordDetails.setStringWithHistory(document, ATTR_BRANCH_CODE, keyDetails.branchCode);

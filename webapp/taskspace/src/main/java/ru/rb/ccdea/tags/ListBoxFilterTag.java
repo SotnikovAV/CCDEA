@@ -84,7 +84,12 @@ public class ListBoxFilterTag extends ListBoxTag {
 //        bld.append("</td></tr><tr><td class=\"widget-control\">");
         bld.append("<button type=\"button\" name='");
         bld.append(controlName).append("_btnSelectNone'");
-        bld.append(" class=\"button default\" onclick='");
+        if(!getControl().isVisible()) {
+        	bld.append(" style='display: none;'");
+        } else {
+        	bld.append(" class=\"button default\" ");
+        }
+        bld.append(" onclick='");
         bld.append(controlName).append("_deselectAll();' >");
         bld.append(SafeHTMLString.escapeAttribute(noneBtnName)).append("</button>");
         bld.append("</td></tr></table>\r\n");
@@ -281,4 +286,5 @@ public class ListBoxFilterTag extends ListBoxTag {
 
         writer.append(");");
     }
+	
 }

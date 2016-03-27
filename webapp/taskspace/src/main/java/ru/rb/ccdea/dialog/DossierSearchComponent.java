@@ -28,55 +28,56 @@ public class DossierSearchComponent extends Component {
     int MIN_LIST_SIZE = 3;
     int MAX_LIST_SIZE = 8;
 
-    @Override
-    public void onInit(ArgumentList arg) {
-        super.onInit(arg);
-        setVisibleControls();
-        objectId = arg.get("objectId");
-        ListBox dossierList = (ListBox) getControl("results_list", ListBox.class);
-        dossierList.setWidth("400");
-        try {
-            IDfGroup grp = (IDfGroup) getDfSession().getObjectByQualification("dm_group where group_name ='"+ BaseDocumentPersistence.CCDEA_PRIVELEGED_USERS_GROUP_NAME+"'");
-            if (grp!=null){
-                boolean privilegedUser = grp.isUserInGroup(getDfSession().getLoginUserName());
-                getControl("reg_branch_code", Text.class).setVisible(privilegedUser);
-                getControl("reg_branch_code_lbl", Label.class).setVisible(privilegedUser);
-                ListBoxFilter branchFilter = (ListBoxFilter) getControl("processing_unit", ListBoxFilter.class);
-                branchFilter.setMutable(true);
-                branchFilter.setMultiSelect(false);
-                branchFilter.setOptions(getBranchesOpts());
-                branchFilter.setVisible(privilegedUser);
-            }
-        } catch (DfException e) {
-            DfLogger.error(this, "Ошибка", null, e);
-        }
-    }
+	@Override
+	public void onInit(ArgumentList arg) {
+		super.onInit(arg);
+		setVisibleControls();
+		objectId = arg.get("objectId");
+		ListBox dossierList = (ListBox) getControl("results_list", ListBox.class);
+		dossierList.setWidth("400");
+		try {
+			IDfGroup grp = (IDfGroup) getDfSession().getObjectByQualification(
+					"dm_group where group_name ='" + BaseDocumentPersistence.CCDEA_PRIVELEGED_USERS_GROUP_NAME + "'");
+			if (grp != null) {
+				boolean privilegedUser = grp.isUserInGroup(getDfSession().getLoginUserName());
+				getControl("reg_branch_code", Text.class).setVisible(privilegedUser);
+				getControl("reg_branch_code_lbl", Label.class).setVisible(privilegedUser);
+				ListBoxFilter branchFilter = (ListBoxFilter) getControl("processing_unit", ListBoxFilter.class);
+				branchFilter.setMutable(true);
+				branchFilter.setMultiSelect(false);
+				branchFilter.setOptions(getBranchesOpts());
+				branchFilter.setVisible(privilegedUser);
+			}
+		} catch (DfException e) {
+			DfLogger.error(this, "Ошибка", null, e);
+		}
+	}
     
-    private List<Option> getBranchesOpts(){
-        List<Option> result = new ArrayList<Option>();
-        IDfCollection col = null;
-        try{
-            IDfQuery query = new DfQuery("select s_code, s_name from ccdea_branch");
-            col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
-            while (col.next()){
-                Option op = new Option();
-                op.setLabel(col.getString("s_name"));
-                op.setValue(col.getString("s_code"));
-                result.add(op);
-            }
-        } catch (DfException e) {
-            DfLogger.error(this, e.getMessage(), null, e);
-        } finally {
-            if (col!=null){
-                try{
-                    col.close();
-                } catch (DfException e) {
-                    DfLogger.error(this, e.getMessage(), null, e);
-                }
-            }
-        }
-        return result;
-    }
+	private List<Option> getBranchesOpts() {
+		List<Option> result = new ArrayList<Option>();
+		IDfCollection col = null;
+		try {
+			IDfQuery query = new DfQuery("select s_code, s_name from ccdea_branch");
+			col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
+			while (col.next()) {
+				Option op = new Option();
+				op.setLabel(col.getString("s_name"));
+				op.setValue(col.getString("s_code"));
+				result.add(op);
+			}
+		} catch (DfException e) {
+			DfLogger.error(this, e.getMessage(), null, e);
+		} finally {
+			if (col != null) {
+				try {
+					col.close();
+				} catch (DfException e) {
+					DfLogger.error(this, e.getMessage(), null, e);
+				}
+			}
+		}
+		return result;
+	}
 
     private void setVisibleControls(){
         boolean isContract = dossierType.equals(DossierPersistence.DOSSIER_TYPE_CONTRACT);
@@ -135,39 +136,62 @@ public class DossierSearchComponent extends Component {
         }
     }
 
-    private String getDossierSearchDql(){
-        StringBuilder bld = new StringBuilder("select * from ccdea_dossier where ");
-        DropDownList dossierType = (DropDownList) getControl("dossier_type");
-//        Text branch = (Text) getControl("reg_branch_code");
-        ListBoxFilter branch = (ListBoxFilter) getControl("processing_unit", ListBoxFilter.class);
-        if(branch.isVisible() && branch.getValue()!=null &&branch.getValue().length()>0){
-            bld.append("s_reg_branch_code='");
-            bld.append(branch.getValue()).append("' and ");
-        }
-        if(dossierType.getValue().equals(DossierPersistence.DOSSIER_TYPE_CONTRACT)){
-            bld.append("s_dossier_type='");
-            bld.append(DossierPersistence.DOSSIER_TYPE_CONTRACT).append("'");
-            Text contractNumber = (Text) getControl("contract_number");
-            if(contractNumber.getValue()!=null && contractNumber.getValue().length()>0){
-                bld.append(" and lower(s_contract_number) like ");
-                bld.append( DfUtil.toQuotedString(contractNumber.getValue().toLowerCase() + '%') );
-            }
-            DateInput contrDate = (DateInput) getControl("contract_date");
-            if(!contrDate.isUndefinedDate() && contrDate.isValidDate()){
-                bld.append(" and t_contract_date = DATE('");
-                bld.append(contrDate.getValue()).append("')");
-            }
-        }else {
-            bld.append("s_dossier_type='");
-            bld.append(DossierPersistence.DOSSIER_TYPE_PASSPORT).append("'");
-            Text psNumber = (Text) getControl("passport_number");
-            if(psNumber.getValue()!=null && psNumber.getValue().length()>0){
-                bld.append(" and lower(s_passport_number) like '");
-                bld.append(DfUtil.toQuotedString(psNumber.getValue().toLowerCase() + '%') );
-            }
-        }
-        return bld.toString();
-    }
+	private String getDossierSearchDql() {
+		StringBuilder bld = new StringBuilder("select * from ccdea_dossier where ");
+		DropDownList dossierType = (DropDownList) getControl("dossier_type");
+		Text clientNumber = (Text) getControl("client_number");
+		String clientNumberStr = clientNumber.getValue();
+		if(clientNumberStr != null && clientNumberStr.trim().length() > 0) {
+			bld.append(" s_customer_number like ").append(DfUtil.toQuotedString( '%' + clientNumberStr.trim() + '%'));
+		}
+		ListBoxFilter branch = (ListBoxFilter) getControl("processing_unit", ListBoxFilter.class);
+		if (branch.isVisible() && branch.getValue() != null && branch.getValue().length() > 0) {
+			if(!bld.toString().trim().endsWith("where")) {
+				bld.append(" and ");
+			}
+			bld.append("s_reg_branch_code=");
+			bld.append(DfUtil.toQuotedString(branch.getValue()));
+		}
+		if (dossierType.getValue().equals(DossierPersistence.DOSSIER_TYPE_CONTRACT)) {
+			if(!bld.toString().trim().endsWith("where")) {
+				bld.append(" and ");
+			}
+			bld.append("s_dossier_type=");
+			bld.append(DfUtil.toQuotedString(DossierPersistence.DOSSIER_TYPE_CONTRACT));
+			Text contractNumber = (Text) getControl("contract_number");
+			if (contractNumber.getValue() != null && contractNumber.getValue().length() > 0) {
+				if(!bld.toString().trim().endsWith("where")) {
+					bld.append(" and ");
+				}
+				bld.append(" lower(s_contract_number) like ");
+				bld.append(DfUtil.toQuotedString(contractNumber.getValue().toLowerCase() + '%'));
+			}
+			DateInput contrDate = (DateInput) getControl("contract_date");
+			if (!contrDate.isUndefinedDate() && contrDate.isValidDate()) {
+				if(!bld.toString().trim().endsWith("where")) {
+					bld.append(" and ");
+				}
+				bld.append(" t_contract_date = DATE(");
+				bld.append(DfUtil.toQuotedString(contrDate.getValue())).append(')');
+			}
+		} else {
+			if(!bld.toString().trim().endsWith("where")) {
+				bld.append(" and ");
+			}
+			bld.append("s_dossier_type=");
+			bld.append(DfUtil.toQuotedString(DossierPersistence.DOSSIER_TYPE_PASSPORT));
+			Text psNumber = (Text) getControl("passport_number");
+			if (psNumber.getValue() != null && psNumber.getValue().length() > 0) {
+				if(!bld.toString().trim().endsWith("where")) {
+					bld.append(" and ");
+				}
+				bld.append(" lower(s_passport_number) like ");
+				bld.append(DfUtil.toQuotedString(psNumber.getValue().toLowerCase() + '%'));
+			}
+		}
+		bld.append(" order by s_dossier_type, s_passport_number, s_contract_number, t_contract_date, s_customer_number, s_reg_branch_code ");
+		return bld.toString();
+	}
 
     @Override
     public boolean onCommitChanges() {

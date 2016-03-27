@@ -54,8 +54,9 @@ public class ListBoxFilter extends ListBox {
         }
     }
     
-    public void clear() {
+	public void clear() {
     	selectedValues = new ArrayList<String>();
         rawValue = "";
-    }
+    }	
+	
 }

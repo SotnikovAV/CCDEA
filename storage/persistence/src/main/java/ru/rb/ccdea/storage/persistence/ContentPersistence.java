@@ -118,6 +118,13 @@ public class ContentPersistence extends BasePersistence {
 		relation.setChildId(contentId);
 		relation.setParentId(documentId);
 		relation.save();
+		
+		IDfSysObject document = (IDfSysObject)dfSession.getObject(documentId);
+		IDfACL acl = document.getACL();
+		
+		IDfSysObject content = (IDfSysObject)dfSession.getObject(contentId);
+		content.setACL(acl);
+		content.save();
 
 		return relation;
 	}

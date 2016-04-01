@@ -53,6 +53,7 @@ public class SearchResultsComponent extends Component {
         queryStr = query;
         DataProvider dataProvider = ((Datagrid)getControl(OBJECT_LIST_GRID, Datagrid.class)).getDataProvider();
         dataProvider.setDfSession(getDfSession());
+        dataProvider.clearResults();
         dataProvider.setQuery(query);
     }
 

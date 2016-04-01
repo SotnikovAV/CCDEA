@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="pr" xmlns:pr="pr">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="pr" xmlns:pr="pr" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1">
 
     <xsd:element name="docPut" type="pr:DocPutType"/>
 
@@ -11,31 +11,11 @@
 	</xsd:simpleType>
 
     <xsd:simpleType name="FileFormat">
+		
         <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="pdf"/>
-            <xsd:enumeration value="jpeg"/>
-            <xsd:enumeration value="jpg"/>
-            <xsd:enumeration value="tiff"/>
-            <xsd:enumeration value="tif"/>
-            <xsd:enumeration value="doc"/>
-            <xsd:enumeration value="docx"/>
-            <xsd:enumeration value="xls"/>
-            <xsd:enumeration value="xlsx"/>
-            <xsd:enumeration value="ppt"/>
-            <xsd:enumeration value="pptx"/>
-            <xsd:enumeration value="txt"/>
-            <xsd:enumeration value="rtf"/>
-            <xsd:enumeration value="odt"/>
-            <xsd:enumeration value="xml"/>
-            <xsd:enumeration value="png"/>
-            <xsd:enumeration value="gif"/>
-            <xsd:enumeration value="bmp"/>
-            <xsd:enumeration value="prn"/>
-            <xsd:enumeration value="zip"/>
-            <xsd:enumeration value="rar"/>
-            <xsd:enumeration value="arj"/>
-            <xsd:enumeration value="sevenz" />
+            <xsd:maxLength value="10"/>
         </xsd:restriction>
+		
     </xsd:simpleType>       
     
     <xsd:complexType name="DocPutType">

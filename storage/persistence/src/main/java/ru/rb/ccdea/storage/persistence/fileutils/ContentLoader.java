@@ -32,7 +32,6 @@ import jcifs.smb.SmbFileInputStream;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocReference;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocScan;
-import ru.rb.ccdea.adapters.mq.binding.docput.FileFormat;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 
 public class ContentLoader {
@@ -243,14 +242,14 @@ public class ContentLoader {
             if(docScan.getFileFormat() == null) {
             	throw new DfException("Не указан формат файла");
             }
-            fileFormat = getFileFormat(docScan.getFileFormat().value());
+            fileFormat = getFileFormat(docScan.getFileFormat());
             loadContent(docScan, buffer);            
         } else if (contentXmlObject.getDocReference() != null && contentXmlObject.getDocReference().size() > 0) {
             ContentType.DocReference docReference = contentXmlObject.getDocReference().get(0);
             if(docReference.getFileFormat() == null) {
             	throw new DfException("Не указан формат файла");
             }       
-            fileFormat = getFileFormat(docReference.getFileFormat().value());
+            fileFormat = getFileFormat(docReference.getFileFormat());
             loadContent(contentSysObject.getSession(), docReference, buffer);
         }
         contentSysObject.setContentType(fileFormat);
@@ -262,29 +261,29 @@ public class ContentLoader {
     
    
 	protected static String getFileFormat(String fileExt) {
-    	if(FileFormat.PPT.value().equalsIgnoreCase(fileExt)) {
+    	if("ppt".equalsIgnoreCase(fileExt)) {
         	return "ppt8";
-        } else if(FileFormat.PPTX.value().equalsIgnoreCase(fileExt)) {
+        } else if("pptx".equalsIgnoreCase(fileExt)) {
         	return "ppt12";
-        } else if(FileFormat.TXT.value().equalsIgnoreCase(fileExt)) {
+        } else if("txt".equalsIgnoreCase(fileExt)) {
         	return "crtext";
-        } else if(FileFormat.DOC.value().equalsIgnoreCase(fileExt)) {
+        } else if("doc".equalsIgnoreCase(fileExt)) {
         	return "msw8";
-        } else if(FileFormat.DOCX.value().equalsIgnoreCase(fileExt)) {
+        } else if("docx".equalsIgnoreCase(fileExt)) {
         	return "msw12";
-        } else if(FileFormat.ODT.value().equalsIgnoreCase(fileExt)) {
+        } else if("odt".equalsIgnoreCase(fileExt)) {
         	return "odt";
-        } else if(FileFormat.XLS.value().equalsIgnoreCase(fileExt)) {
+        } else if("xls".equalsIgnoreCase(fileExt)) {
         	return "excel8book";
-        } else if(FileFormat.XLSX.value().equalsIgnoreCase(fileExt)) {
+        } else if("xlsx".equalsIgnoreCase(fileExt)) {
         	return "excel12book";
-        } else if(FileFormat.JPG.value().equalsIgnoreCase(fileExt)) {
+        } else if("jpg".equalsIgnoreCase(fileExt)) {
         	return "jpeg";
-        } else if(FileFormat.TIF.value().equalsIgnoreCase(fileExt)) {
+        } else if("tif".equalsIgnoreCase(fileExt)) {
         	return "tiff";
-        } else if(FileFormat.XML.value().equalsIgnoreCase(fileExt)) {
+        } else if("xml".equalsIgnoreCase(fileExt)) {
         	return "crtext";
-        } else if(FileFormat.SEVENZ.value().equalsIgnoreCase(fileExt) || "7z".equalsIgnoreCase(fileExt)) {
+        } else if("sevenz".equalsIgnoreCase(fileExt) || "7z".equalsIgnoreCase(fileExt)) {
         	return "7z";
         } else {
         	return fileExt;
@@ -292,13 +291,13 @@ public class ContentLoader {
     }
 
     protected static void processIfArchive(IDfSysObject contentSysObject, String fileFormat) throws DfException{
-        if (FileFormat.ZIP.value().equalsIgnoreCase(fileFormat)) {
+        if ("zip".equalsIgnoreCase(fileFormat)) {
         	processArchive(contentSysObject, ArchiveStreamFactory.ZIP);
-        } else if(FileFormat.ARJ.value().equalsIgnoreCase(fileFormat)) {
+        } else if("arj".equalsIgnoreCase(fileFormat)) {
         	processArchive(contentSysObject, ArchiveStreamFactory.ARJ);
-		} else if (FileFormat.RAR.value().equalsIgnoreCase(fileFormat)) {
+		} else if ("rar".equalsIgnoreCase(fileFormat)) {
             processRarArchive(contentSysObject);
-        } else if (FileFormat.SEVENZ.value().equalsIgnoreCase(fileFormat) || "7z".equalsIgnoreCase(fileFormat)) {
+        } else if ("sevenz".equalsIgnoreCase(fileFormat) || "7z".equalsIgnoreCase(fileFormat)) {
         	processArchive(contentSysObject, ArchiveStreamFactory.SEVEN_Z);
         }
     }
@@ -311,10 +310,10 @@ public class ContentLoader {
 	 * @return true, если указанный формат - это формат архива; иначе - false
 	 */
 	public static final boolean isArchiveType(String contentType) {
-		return FileFormat.ZIP.value().equalsIgnoreCase(contentType)
-				|| FileFormat.ARJ.value().equalsIgnoreCase(contentType)
-				|| FileFormat.RAR.value().equalsIgnoreCase(contentType)
-				|| FileFormat.SEVENZ.value().equalsIgnoreCase(contentType) 
+		return "zip".equalsIgnoreCase(contentType)
+				|| "arj".equalsIgnoreCase(contentType)
+				|| "rar".equalsIgnoreCase(contentType)
+				|| "sevenz".equalsIgnoreCase(contentType) 
 				|| "7z".equalsIgnoreCase(contentType);
 	}
 
@@ -326,7 +325,7 @@ public class ContentLoader {
 	 * @return true, если указанный формат - это формат PDF; иначе - false
 	 */
 	public static final boolean isPdfType(String contentType) {
-		return FileFormat.PDF.value().equalsIgnoreCase(contentType);
+		return "pdf".equalsIgnoreCase(contentType);
 	}
 
     public static void processArchive(IDfSysObject contentSysObject, String archniveType) throws DfException {

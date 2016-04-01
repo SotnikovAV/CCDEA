@@ -14,7 +14,6 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
-import ru.rb.ccdea.adapters.mq.binding.docput.FileFormat;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
@@ -51,7 +50,7 @@ public class DocStateNotifyMessageJob extends AbstractJob{
 				IDfSysObject originalContentObject = ExternalMessagePersistence
 						.getOriginalMessageContentObject(messageObject);
 				if (originalContentObject.getContentSize() > 0
-						&& FileFormat.PDF.value().equalsIgnoreCase(originalContentObject.getContentType())) {
+						&& "pdf".equalsIgnoreCase(originalContentObject.getContentType())) {
 					ctsJobResult = CTSRequestBuilder.RESPONSE_STATUS_COMPLITED;
 				}
 			}

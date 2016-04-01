@@ -12,7 +12,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="ccdea-persistence.jar">
-      <value filePath="content/20/19531020/ccdea-persistence.jar"/>
+      <value filePath="content/20/19531020/ccdea-persistence[1].jar"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

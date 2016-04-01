@@ -3205,3 +3205,380 @@ org.eclipse.core.runtime.AssertionFailedException: assertion failed: preconditio
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-03-27 13:49:33.576 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=ru_RU
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.256
+!MESSAGE NLS unused message: PropertiesFileViewerLinkPart.12 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS unused message: PropertiesFileViewerLinkPart.13 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS unused message: PropertiesFileViewerLinkPart.14 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS unused message: PropertiesFileViewerLinkPart.15 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS unused message: PropertiesFileViewerLinkPart.16 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS unused message: PropertiesFileViewerLinkPart.17 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS missing message: PropertiesFileViewerLinkPart_12 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS missing message: PropertiesFileViewerLinkPart_13 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS missing message: PropertiesFileViewerLinkPart_14 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS missing message: PropertiesFileViewerLinkPart_15 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS missing message: PropertiesFileViewerLinkPart_16 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-03-27 13:49:42.271
+!MESSAGE NLS missing message: PropertiesFileViewerLinkPart_17 in: com.emc.ide.artifact.jardef.ui.messages
+
+!ENTRY org.eclipse.ui.workbench 2 0 2016-03-27 14:05:28.130
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2016-03-27 14:05:28.130
+!MESSAGE Conflict for 'org.eclipse.wst.sse.ui.format':
+HandlerActivation(commandId=org.eclipse.wst.sse.ui.format,
+	handler=org.eclipse.wst.sse.ui.internal.handlers.FormatHandler,
+	expression=org.eclipse.core.internal.expressions.ReferenceExpression@429a8fde,sourcePriority=1073741824)
+HandlerActivation(commandId=org.eclipse.wst.sse.ui.format,
+	handler=org.eclipse.wst.sse.ui.internal.handlers.FormatHandler,
+	expression=org.eclipse.core.internal.expressions.ReferenceExpression@2c63552c,sourcePriority=1073741824)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-03-27 14:05:44.946
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 2 75 2016-03-27 14:05:44.977
+!MESSAGE Errors during build.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:05:44.977
+!MESSAGE Errors running builder 'Documentum Artifact Builder' on project 'CCDEA_api'.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:05:44.977
+!MESSAGE assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-03-27 14:05:57.737
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 2 75 2016-03-27 14:05:57.737
+!MESSAGE Errors during build.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:05:57.737
+!MESSAGE Errors running builder 'Documentum Artifact Builder' on project 'CCDEA_api'.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:05:57.737
+!MESSAGE assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-03-27 14:06:12.455
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 2 75 2016-03-27 14:06:12.471
+!MESSAGE Errors during build.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:12.471
+!MESSAGE Errors running builder 'Documentum Artifact Builder' on project 'CCDEA_api'.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:12.471
+!MESSAGE assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-03-27 14:06:28.394
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 2 75 2016-03-27 14:06:28.409
+!MESSAGE Errors during build.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:28.409
+!MESSAGE Errors running builder 'Documentum Artifact Builder' on project 'CCDEA_api'.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:28.409
+!MESSAGE assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-03-27 14:06:43.921
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 2 75 2016-03-27 14:06:43.921
+!MESSAGE Errors during build.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:43.921
+!MESSAGE Errors running builder 'Documentum Artifact Builder' on project 'CCDEA_api'.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:43.921
+!MESSAGE assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-03-27 14:06:56.145
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.core.resources 2 75 2016-03-27 14:06:56.161
+!MESSAGE Errors during build.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:56.161
+!MESSAGE Errors running builder 'Documentum Artifact Builder' on project 'CCDEA_api'.
+!SUBENTRY 1 com.emc.ide.builder 2 75 2016-03-27 14:06:56.161
+!MESSAGE assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: assertion failed: precondition File for derived artifact must be marked as "derived" (/CCDEA_api/Artifacts/SysObjects/status_details_reply.xsd.sysobject)
+	at org.eclipse.core.runtime.Assert.isTrue(Assert.java:111)
+	at com.emc.ide.logger.dbc.DBC.preCondition(DBC.java:42)
+	at com.emc.ide.artifactmanager.factory.DmDerivedArtifact.load(DmDerivedArtifact.java:57)
+	at com.emc.ide.artifactmanager.service.impl.DmLocatorService.getDerivedArtifactByUrn(DmLocatorService.java:352)
+	at internal.com.emc.ide.builder.DarPackager.fetchArtifacts(DarPackager.java:200)
+	at internal.com.emc.ide.builder.DarPackager.execute(DarPackager.java:140)
+	at internal.com.emc.ide.builder.ArtifactBuilder.build(ArtifactBuilder.java:356)
+	at com.emc.ide.builder.DocumentumIncrementalProjectBuilder.build(DocumentumIncrementalProjectBuilder.java:108)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

@@ -139,7 +139,7 @@ public class SearchComponent extends Container {
             String fullQueryStr = StringUtils.joinStrings(documentTypes, " UNION ALL ",
                     new StringUtils.IWorker<String>() {
                         public String doWork(String param) {
-                            return createSingleTypeQuery(param, documentTypes.size() > 1);
+                            return createSingleTypeQuery(param, true);
                         }
                     });
             DfLogger.debug(this, fullQueryStr, null, null);

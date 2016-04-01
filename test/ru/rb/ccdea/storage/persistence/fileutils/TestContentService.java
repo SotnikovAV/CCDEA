@@ -117,22 +117,26 @@ public class TestContentService {
 			sessionManager.setIdentity("UCB", loginInfo);
 			testSession = sessionManager.getSession("UCB");
 
-			String filepath = "C:/Development/Workspaces/CCDEA_GITHUB/test/test.";
+			String filepath = "C:/Development/Workspaces/CCDEA_GITHUB/test/test";
 			String[] formats = { 
-//					"doc", 
-					"docx",
-					 "xls",
-//					"xlsx", "ppt", "pptx", "txt", "rtf",
-					// "odt",
-//					"xml", "tif", "tiff", "jpg", "jpeg", "png", "gif", "bmp", 
-//					"prn" 
-					 };
+					".doc", 
+					".docx",
+					 ".xls",
+					 "_2010.xls",
+					 "_2013.xls",
+					".xlsx", ".ppt", ".pptx", 
+					".txt"
+					, ".rtf",
+					 ".odt", "_2010.odt", "_2013.odt",
+					".xml", ".tif", ".tiff", ".jpg", ".jpeg", ".png", ".gif", ".bmp", 
+					".prn" 
+			};
 
 			IDfSysObject fullContentObj = null;
 			for (String format : formats) {
 				try {
 					IDfId dfId = testXmlContentTransform(testSession,
-							"C:/Development/Workspaces/CCDEA_GITHUB/test/test." + format);
+							filepath + format);
 					if (fullContentObj == null) {
 						fullContentObj = (IDfSysObject) testSession.getObject(dfId);
 					} else {

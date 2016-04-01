@@ -48,6 +48,16 @@ public class TestDossierPersistence {
 			IDfPersistentObject dossier = DossierPersistence.getDossierByKeyDetails(testSession, keyDetails);
 			Assert.assertNotNull(dossier);
 			System.out.println("Dossier id = " + dossier);
+			
+			keyDetails = new DossierKeyDetails();
+			keyDetails.setBranchCode("0000");
+			keyDetails.setCustomerNumber("00640002");
+			keyDetails.setContractNumber("08.10.2014");
+			keyDetails.setContractDate(new SimpleDateFormat("dd.MM.yyyy").parse("08.10.2015"));
+
+			dossier = DossierPersistence.getDossierByKeyDetails(testSession, keyDetails);
+			Assert.assertNotNull(dossier);
+			System.out.println("Dossier id = " + dossier);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

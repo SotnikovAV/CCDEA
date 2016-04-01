@@ -35,7 +35,7 @@ public class SVOMessageJob extends AbstractJob{
     public void process(IDfSession dfSession) throws DfException {
     	List<IDfId> messageIdList = ExternalMessagePersistence.getValidFirstMessageList(dfSession, ExternalMessagePersistence.MESSAGE_TYPE_SVO, new Date());
         for (IDfId messageId : messageIdList) {
-            
+        	process(dfSession, messageId);
         }
     }
     

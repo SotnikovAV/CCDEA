@@ -177,7 +177,7 @@ public class PropertiesComponent extends TaskSpaceXFormsComponent {
 					+ "from dm_sysobject (all) cont  where exists(select * from dm_relation rel "
 					+ " where rel.relation_name='ccdea_content_relation' and rel.parent_id = '" + objectId
 					+ "' and rel.child_id = cont.i_chronicle_id)"
-					+ " and cont.r_content_size > 0 order by cont cont.r_modify_date desc");
+					+ " and cont.r_content_size > 0 order by cont.r_modify_date desc");
 			col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
             if (col.next()){
                 content = col.getString("cont_id");

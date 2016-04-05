@@ -1,7 +1,6 @@
 package ru.rb.ccdea.storage.persistence.fileutils;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,17 +24,12 @@ import com.documentum.fc.client.IDfSessionManager;
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
-import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
-import ru.rb.ccdea.adapters.mq.receivers.BaseReceiverMethod;
-import ru.rb.ccdea.adapters.mq.receivers.MCDocInfoModifyZAReceiverMethod;
-import ru.rb.ccdea.adapters.mq.utils.UnifiedResult;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
-import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
-import ru.rb.ccdea.storage.persistence.PassportPersistence;
+import ru.rb.ccdea.storage.persistence.ContractPersistence;
 import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
 import ru.rb.ccdea.storage.services.impl.ContentService;
 
@@ -43,6 +37,10 @@ public class TestContentService {
 
 	@Test
 	public void test() {
+		System.setProperty("dfc.data.dir", "C:/Development/temp");
+
+		String documentId = null;
+		
 		IDfSession testSession = null;
 		IDfClientX clientx = new DfClientX();
 		IDfClient client = null;
@@ -60,35 +58,48 @@ public class TestContentService {
 			testSession = sessionManager.getSession("UCB");
 
 			List<IDfId> documentIds = new ArrayList<IDfId>();
+
+//			IDfSysObject doc = (IDfSysObject) testSession.newObject(ContractPersistence.DOCUMENT_TYPE_NAME);
+//			doc.setObjectName("TST000001");
+//			doc.save();
 			
+			IDfSysObject doc = (IDfSysObject) testSession.getObject(new DfId("095bbc6a81762358"));
 			
-//			try {
+			documentId = doc.getObjectId().getId();
+			
+			documentIds.add(doc.getObjectId());
+			// try {
+			IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("085bbc6a817623b9"));//7z - 085bbc6a81761627
 			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
-//			DocPutType docPutXmlObject = unmarshaller
-//					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
-//
-//			boolean isTransAlreadyActive = testSession.isTransactionActive();
-//			try {
-//		           IDfSysObject messageSysObject = ExternalMessagePersistence.createEmptyMessageObjectFromFile(testSession, filePath);
-//		           
-//				System.out.println(document.getObjectName());
-//				if (!isTransAlreadyActive) {
-//					testSession.commitTrans();
-//				}
-//				documentIds.add(document.getObjectId());
-//			} finally {
-//				if (!isTransAlreadyActive && testSession.isTransactionActive()) {
-//					testSession.abortTrans();
-//				}
-//			}
+			DocPutType docPutXmlObject = unmarshaller
+					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
 
 			List<String> modifiedContentIdList = new ArrayList<String>();
 
 			ContentService cs = new ContentService();
-			cs.createContentFromMQType(testSession, null, "TST", "000001", modifiedContentIdList, documentIds);
+//			cs.createContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+//					modifiedContentIdList, documentIds);
+//
+//			System.out.println(documentIds.toString());
+//
+			IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+					doc.getObjectId().getId());
 
-			System.out.println(documentIds.toString());
+//			cs.appendContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+//					modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
+//			
+//			existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+//					doc.getObjectId().getId());
+			
+			cs.createContentVersionFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+					modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
+//			
+//			existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+//					doc.getObjectId().getId());
+//			
+//			cs.updateContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+//					modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -97,6 +108,44 @@ public class TestContentService {
 				sessionManager.release(testSession);
 			}
 		}
+		
+//		try {
+//			client = clientx.getLocalClient();
+//			sessionManager = client.newSessionManager();
+//
+//			IDfLoginInfo loginInfo = clientx.getLoginInfo();
+//			loginInfo.setUser("dmadmin");
+//			loginInfo.setPassword("dmadmin");
+//			loginInfo.setDomain(null);
+//
+//			sessionManager.setIdentity("UCB", loginInfo);
+//			testSession = sessionManager.getSession("UCB");
+//
+//			
+//			// try {
+//			IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("085bbc6a81761627"));
+//			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
+//			Unmarshaller unmarshaller = jc.createUnmarshaller();
+//			DocPutType docPutXmlObject = unmarshaller
+//					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
+//
+//			List<String> modifiedContentIdList = new ArrayList<String>();
+//
+//			ContentService cs = new ContentService();
+//			
+//			IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+//					documentId);
+//
+//			cs.appendContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+//					modifiedContentIdList, new DfId(documentId), existingObject.getObjectId());
+//
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		} finally {
+//			if (testSession != null) {
+//				sessionManager.release(testSession);
+//			}
+//		}
 	}
 
 	@Test
@@ -118,33 +167,22 @@ public class TestContentService {
 			testSession = sessionManager.getSession("UCB");
 
 			String filepath = "C:/Development/Workspaces/CCDEA_GITHUB/test/test";
-			String[] formats = { 
-					".doc", 
-					".docx",
-					 ".xls",
-					 "_2010.xls",
-					 "_2013.xls",
-					".xlsx", ".ppt", ".pptx", 
-					".txt"
-					, ".rtf",
-					 ".odt", "_2010.odt", "_2013.odt",
-					".xml", ".tif", ".tiff", ".jpg", ".jpeg", ".png", ".gif", ".bmp", 
-					".prn" 
-			};
+			String[] formats = { ".doc", ".docx", ".xls", "_2010.xls", "_2013.xls", ".xlsx", ".ppt", ".pptx", ".txt",
+					".rtf", ".odt", "_2010.odt", "_2013.odt", ".xml", ".tif", ".tiff", ".jpg", ".jpeg", ".png", ".gif",
+					".bmp", ".prn" };
 
 			IDfSysObject fullContentObj = null;
 			for (String format : formats) {
 				try {
-					IDfId dfId = testXmlContentTransform(testSession,
-							filepath + format);
+					IDfId dfId = testXmlContentTransform(testSession, filepath + format);
 					if (fullContentObj == null) {
 						fullContentObj = (IDfSysObject) testSession.getObject(dfId);
 					} else {
 						IDfSysObject currentContentObj = (IDfSysObject) testSession.getObject(dfId);
 						System.out.println("Merge pdf:");
-						String responseId = CTSRequestBuilder.mergePdfRequest(testSession, fullContentObj.getObjectId().getId(), true,
-								fullContentObj, currentContentObj, false);
-						
+						String responseId = CTSRequestBuilder.mergePdfRequest(testSession,
+								fullContentObj.getObjectId().getId(), true, fullContentObj, currentContentObj, false);
+
 						System.out.println("Result: " + responseId);
 						String status = "";
 						while (!"Completed".equals(status) && !"Failed".equals(status)) {
@@ -159,15 +197,16 @@ public class TestContentService {
 						}
 
 						IDfPersistentObject response = testSession.getObject(new DfId(responseId));
-						System.out
-								.println("Result: " + status + " ( " + response.getString("job_error_details") + " ) -> " + responseId);
+						System.out.println("Result: " + status + " ( " + response.getString("job_error_details")
+								+ " ) -> " + responseId);
 					}
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
 			}
-			
-			fullContentObj = (IDfSysObject) testSession.getObjectByQualification("dm_sysobject where i_chronicle_id = '" + fullContentObj.getChronicleId() + "' order by r_modify_date desc");
+
+			fullContentObj = (IDfSysObject) testSession.getObjectByQualification("dm_sysobject where i_chronicle_id = '"
+					+ fullContentObj.getChronicleId() + "' order by r_modify_date desc");
 			System.out.println("Full content object: " + fullContentObj.getObjectId());
 
 			ByteArrayInputStream is = fullContentObj.getContent();
@@ -257,17 +296,7 @@ public class TestContentService {
 		String responseId = CTSRequestBuilder.convertToPdfRequest(testSession, pdfContentObj.getObjectId().getId(),
 				false, jpgContentObj, false);
 		System.out.println("Result: " + responseId);
-		String status = "";
-		while (!"Completed".equals(status) && !"Failed".equals(status)) {
-			IDfPersistentObject response = testSession.getObject(new DfId(responseId));
-			status = response.getString("job_status");
-			System.out.print(".");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+		String status = CTSRequestBuilder.waitForJobComplete(testSession, responseId);
 
 		IDfPersistentObject response = testSession.getObject(new DfId(responseId));
 		System.out

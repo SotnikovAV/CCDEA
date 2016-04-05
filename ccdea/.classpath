@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="formadaptors-main-java"/>
+	<classpathentry kind="src" path="docput"/>
 	<classpathentry kind="src" path="test-tst"/>
 	<classpathentry kind="src" path="services-impl-test-java"/>
 	<classpathentry kind="src" path="services-impl-main-resources"/>
@@ -45,5 +46,6 @@
 	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GITHUB/ccdea/lib/configservice-api.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GITHUB/ccdea/lib/configservice-impl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ER19391/.m2/repository/org/tukaani/xz/1.5/xz-1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

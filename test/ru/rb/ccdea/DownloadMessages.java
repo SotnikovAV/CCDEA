@@ -67,20 +67,20 @@ public class DownloadMessages {
 					Unmarshaller unmarshaller = jc.createUnmarshaller();
 					DocPutType docPutXmlObject = unmarshaller
 							.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
-					
+
 					ContentType ct = docPutXmlObject.getContent();
 					String type = null;
 					if (ct.getDocScan() != null && ct.getDocScan().size() > 0) {
-						type = "DocScan/" + ct.getDocScan().get(0).getFileFormat().value();
+						type = "DocScan/" + ct.getDocScan().get(0).getFileFormat();
 					} else if (ct.getDocReference() != null && ct.getDocReference().size() > 0) {
-						type = "DocReference/" + ct.getDocReference().get(0).getFileFormat().value();
+						type = "DocReference/" + ct.getDocReference().get(0).getFileFormat();
 					}
 					String folder = "C:/Development/temp/ccdea/" + type;
 					File folderFile = new File(folder);
 					if (!folderFile.exists()) {
 						folderFile.mkdirs();
 					}
-					
+
 					System.out.println(messageSysObject.getObjectId() + " : "
 							+ messageSysObject.getModifyDate().asString("dd.MM.yyyy HH:mi:ss"));
 					InputStream is = messageSysObject.getContent();
@@ -90,12 +90,97 @@ public class DownloadMessages {
 						DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 						DocumentBuilder builder = factory.newDocumentBuilder();
 						Document document = builder.parse(new InputSource(is));
-//						String type = document.getDocumentElement().getNodeName();
+						// String type =
+						// document.getDocumentElement().getNodeName();
 						int delim = type.indexOf(':');
 						if (delim > -1) {
 							type = type.substring(delim + 1);
 						}
-						
+
+						String filename = folder + '/' + messageSysObject.getObjectId() + ".xml";
+						out = new FileOutputStream(filename);
+						TransformerFactory tFactory = TransformerFactory.newInstance();
+						Transformer transformer = tFactory.newTransformer();
+
+						DOMSource source = new DOMSource(document);
+						StreamResult result = new StreamResult(out);
+						transformer.transform(source, result);
+
+						System.out.println(": " + filename);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					} finally {
+						if (out != null) {
+							out.close();
+						}
+						if (is != null) {
+							is.close();
+						}
+					}
+
+				} catch (DfException dfEx) {
+					throw dfEx;
+				} catch (Exception ex) {
+					throw new DfException(ex);
+				}
+
+			}
+		} catch (Exception ex) {
+			System.out.println(ex);
+		} finally {
+			if (testSession != null) {
+				sessionManager.release(testSession);
+			}
+		}
+	}
+
+	@Test
+	public void downloadDocsMessages() {
+
+		IDfSession testSession = null;
+		IDfClientX clientx = new DfClientX();
+		IDfClient client = null;
+		IDfSessionManager sessionManager = null;
+		try {
+			client = clientx.getLocalClient();
+			sessionManager = client.newSessionManager();
+
+			IDfLoginInfo loginInfo = clientx.getLoginInfo();
+			loginInfo.setUser("dmadmin");
+			loginInfo.setPassword("dmadmin");
+			loginInfo.setDomain(null);
+
+			sessionManager.setIdentity("UCB", loginInfo);
+			testSession = sessionManager.getSession("UCB");
+
+			IDfEnumeration messageIdList = testSession.getObjectsByQuery(
+					"select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica from ccdea_external_message where s_message_type!='DocPut'",
+					null);
+			int counter = 0;
+			while (messageIdList.hasMoreElements()) {
+				System.out.println(counter++);
+				try {
+					IDfSysObject messageSysObject = (IDfSysObject) messageIdList.nextElement();
+
+					System.out.println(messageSysObject.getObjectId() + " : "
+							+ messageSysObject.getModifyDate().asString("dd.MM.yyyy HH:mi:ss"));
+					InputStream is = messageSysObject.getContent();
+
+					OutputStream out = null;
+					try {
+						DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+						DocumentBuilder builder = factory.newDocumentBuilder();
+						Document document = builder.parse(new InputSource(is));
+						String type = document.getDocumentElement().getNodeName();
+						int delim = type.indexOf(':');
+						if (delim > -1) {
+							type = type.substring(delim + 1);
+						}
+						String folder = "C:/Development/temp/ccdea/" + type;
+						File folderFile = new File(folder);
+						if (!folderFile.exists()) {
+							folderFile.mkdirs();
+						}
 						String filename = folder + '/' + messageSysObject.getObjectId() + ".xml";
 						out = new FileOutputStream(filename);
 						TransformerFactory tFactory = TransformerFactory.newInstance();

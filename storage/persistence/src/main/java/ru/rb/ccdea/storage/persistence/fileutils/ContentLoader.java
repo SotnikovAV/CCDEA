@@ -13,6 +13,8 @@ import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveInputStream;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+import org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry;
+import org.apache.commons.compress.archivers.sevenz.SevenZFile;
 
 import com.documentum.fc.client.DfQuery;
 import com.documentum.fc.client.IDfCollection;
@@ -298,7 +300,7 @@ public class ContentLoader {
 		} else if ("rar".equalsIgnoreCase(fileFormat)) {
             processRarArchive(contentSysObject);
         } else if ("sevenz".equalsIgnoreCase(fileFormat) || "7z".equalsIgnoreCase(fileFormat)) {
-        	processArchive(contentSysObject, ArchiveStreamFactory.SEVEN_Z);
+        	process7zArchive(contentSysObject);
         }
     }
     
@@ -378,6 +380,60 @@ public class ContentLoader {
 					archiveInputStream.close();
 				} catch (IOException ex) {
 					DfLogger.warn(ContentLoader.class, "Не удалось закрыть поток чтения zip: "
+							+ contentSysObject.getObjectId().getId(), null, ex);
+				}
+			}
+		}
+    }
+    
+    public static void process7zArchive(IDfSysObject contentSysObject) throws DfException {
+    	File archiveFile = new File(contentSysObject.getFile(System.getProperty("dfc.data.dir") + "/ccdea/" + contentSysObject.getObjectId().getId() + ".7z"));
+    	SevenZFile sevenZFile = null;		
+		try {
+			sevenZFile = new SevenZFile(archiveFile);			
+			SevenZArchiveEntry archiveEntry = null;
+			int entryIndex = 0;
+			while ((archiveEntry = sevenZFile.getNextEntry()) != null) {
+				String archiveEntryName = archiveEntry.getName();
+				if (archiveEntryName.trim().length() > 3) {
+					String archiveEntryType = archiveEntryName.substring(archiveEntryName.length() - 3);
+					if (SUPPORTED_FORMAT.contains(archiveEntryType.toLowerCase())) {
+						byte[] zipBuffer = new byte[1024];
+						int count = 0;
+						ByteArrayOutputStream entryStream = new ByteArrayOutputStream();
+						while ((count = sevenZFile.read(zipBuffer, 0, zipBuffer.length)) != -1) {
+							entryStream.write(zipBuffer, 0, count);
+						}
+						IDfSysObject contentPartSysObject = (IDfSysObject) contentSysObject.getSession()
+								.newObject(ContentPersistence.CONTENT_PART_TYPE_NAME);
+						contentPartSysObject.setObjectName(archiveEntryName);
+						contentPartSysObject.setContentType(getFileFormat(archiveEntryType));
+						contentPartSysObject.setContent(entryStream);
+						contentPartSysObject.setId(ContentPersistence.ATTR_CONTENT_FOR_PART_ID, contentSysObject.getObjectId());
+						contentPartSysObject.setInt(ContentPersistence.ATTR_PART_INDEX, entryIndex);
+						contentPartSysObject.save();
+						entryIndex++;
+					} else {
+						DfLogger.warn(
+								ContentLoader.class, "Wrong format found in archive entry: "
+										+ contentSysObject.getObjectId().getId() + " - " + archiveEntryName,
+								null, null);
+					}
+				} else {
+					DfLogger.warn(ContentLoader.class, "Wrong format found in archive entry: "
+							+ contentSysObject.getObjectId().getId() + " - " + archiveEntryName, null, null);
+				}
+			}
+		} catch (IOException ioEx) {
+			throw new DfException("Cant unzip content: " + contentSysObject.getObjectId().getId(), ioEx);
+		} catch (DfException e) {
+			throw new DfException("Cant unzip content: " + contentSysObject.getObjectId().getId(), e);
+		} finally {
+			if(sevenZFile != null) {
+				try {
+					sevenZFile.close();
+				} catch (IOException ex) {
+					DfLogger.warn(ContentLoader.class, "Не удалось закрыть поток чтения 7z: "
 							+ contentSysObject.getObjectId().getId(), null, ex);
 				}
 			}

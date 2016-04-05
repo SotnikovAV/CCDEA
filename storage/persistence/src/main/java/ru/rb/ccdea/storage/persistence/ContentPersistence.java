@@ -52,14 +52,10 @@ public class ContentPersistence extends BasePersistence {
 	public static IDfSysObject searchContentObjectByDocumentId(IDfSession dfSession, String documentId)
 			throws DfException {
 		String contentId = null;
-		String dql = "select r_object_id as cont_id from ccdea_doc_content content " + " where b_is_original=false "
-				+ " and exists ( " + " select 1 from dm_relation " + " where relation_name='ccdea_content_relation' "
-				+ " and parent_id = '" + documentId + "' and child_id=content.i_chronicle_id " + " ) and exists ( "
-				+ " select 1 from ccdea_external_message msg, dm_cts_response cts "
-				+ " where content.s_content_source_id=msg.s_content_source_id "
-				+ " and content.s_content_source_code=msg.s_content_source_code "
-				+ " and msg.id_cts_request=cts.r_object_id " + " and cts.job_status='Completed' " + " ) order by r_modify_date desc";
-		DfLogger.debug(dfSession, dql, null, null);
+		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id='"
+				+ documentId + "') and a_content_type='pdf' order by r_modify_date desc";
+				
+		DfLogger.info(dfSession, dql, null, null);
 		IDfCollection rs = null;
 		try {
 			IDfQuery query = new DfQuery();
@@ -74,22 +70,7 @@ public class ContentPersistence extends BasePersistence {
 			}
 		}
 		
-		if (contentId == null) {
-			dql = "select child_id as cont_id " + " from dm_relation " + " where parent_id = '" + documentId + "'"
-					+ " and relation_name = '" + RELATION_NAME + "' ";
-			try {
-				IDfQuery query = new DfQuery();
-				query.setDQL(dql);
-				rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
-				if (rs.next()) {
-					contentId = rs.getString("cont_id");
-				}
-			} finally {
-				if (rs != null) {
-					rs.close();
-				}
-			}
-		}
+
 
 		if (contentId != null) {
 			return (IDfSysObject) dfSession
@@ -245,4 +226,36 @@ public class ContentPersistence extends BasePersistence {
 
         return result;
     }
+    
+	/**
+	 * Получить идентификаторы документов, к которым присоединен указанный
+	 * контент
+	 * 
+	 * @param dfSession
+	 *            - сессия Documentum
+	 * @param contentId
+	 *            - идентификатор контента
+	 * @return список идентификаторов документов, к которым присоединен
+	 *         указанный контент
+	 * @throws DfException
+	 */
+	public static List<IDfId> getDocIdsByContentId(IDfSession dfSession, IDfId contentId) throws DfException {
+		List<IDfId> docIds = new ArrayList<IDfId>();
+		String dql = "select parent_id from dm_relation where relation_name='" + RELATION_NAME + "' and child_id='"
+				+ contentId.getId() + "'";
+		IDfCollection rs = null;
+		try {
+			IDfQuery query = new DfQuery();
+			query.setDQL(dql);
+			rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
+			while (rs.next()) {
+				docIds.add(rs.getId("parent_id"));
+			}
+			return docIds;
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
+	}
 }

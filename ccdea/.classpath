@@ -33,16 +33,16 @@
 	<classpathentry kind="src" path="mq-binding-main-java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Documentum 6.7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/javax/javaee-api/6.0/javaee-api-6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/com/github/junrar/junrar/0.7/junrar-0.7.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/org/samba/jcifs/jcifs/1.3.14-kohsuke-1/jcifs-1.3.14-kohsuke-1.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/org/apache/pdfbox/pdfbox/1.8.9/pdfbox-1.8.9.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/commons-io/commons-io/2.2/commons-io-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/com/jcraft/jsch/0.1.49/jsch-0.1.49.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/javax/javaee-api/6.0/javaee-api-6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/com/github/junrar/junrar/0.7/junrar-0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/org/samba/jcifs/jcifs/1.3.14-kohsuke-1/jcifs-1.3.14-kohsuke-1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/org/apache/pdfbox/pdfbox/1.8.9/pdfbox-1.8.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/commons-io/commons-io/2.2/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/com/jcraft/jsch/0.1.49/jsch-0.1.49.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/org/apache/commons/commons-compress/1.10/commons-compress-1.10.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GITHUB/storage/mq-binding/target/mq-binding-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/er19391/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sotnik/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GITHUB/ccdea/lib/configservice-api.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Workspaces/CCDEA_GITHUB/ccdea/lib/configservice-impl.jar"/>
 	<classpathentry kind="output" path="bin"/>

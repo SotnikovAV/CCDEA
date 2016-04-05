@@ -6,9 +6,11 @@ import java.util.Locale;
 
 import org.w3c.dom.Node;
 
+import com.documentum.fc.client.IDfPersistentObject;
 import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.services.cts.df.transform.ICTSAddJobService;
 import com.documentum.services.cts.df.transform.ICTSGetJobService;
@@ -24,6 +26,8 @@ public class CTSRequestBuilder {
     public static final String MERGE_PDF_PROFILE_NAME = "mergePDF_adts";
     public static final String RESPONSE_STATUS_COMPLITED = "Completed";
     public static final String RESPONSE_STATUS_FAILED = "Failed";
+	public static final String RESPONSE_STATUS_TIMEOUT = "Timeout";
+	public static final long CTS_JOB_WAITING_TIMEOUT = 180;
 
     public static String convertToPdfRequest(IDfSession dfSession, String targetId, boolean createNewVersion, IDfSysObject sourceObject) throws DfException{
         return transformRequest(dfSession, CONVERT_TO_PDF_PROFILE_NAME, targetId, createNewVersion, sourceObject, null, null, null, null, null, true);
@@ -278,4 +282,26 @@ public class CTSRequestBuilder {
             return profileProperties.value;
         }
     }
+    
+	public static String waitForJobComplete(IDfSession dfSession, String transformJobId) throws DfException {
+		long counter = 0;
+		String status = "";
+		while (!CTSRequestBuilder.RESPONSE_STATUS_COMPLITED.equals(status)
+				&& !CTSRequestBuilder.RESPONSE_STATUS_FAILED.equals(status)
+				&& !CTSRequestBuilder.RESPONSE_STATUS_TIMEOUT.equals(status)) {
+			IDfPersistentObject response = dfSession.getObject(new DfId(transformJobId));
+			status = response.getString("job_status");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+			}
+			counter++;
+			if(CTS_JOB_WAITING_TIMEOUT == counter) {
+				status = CTSRequestBuilder.RESPONSE_STATUS_TIMEOUT;
+			}
+		}
+		return status;
+	}
+	
+	
 }

@@ -257,7 +257,7 @@ public class ExternalMessagePersistence extends BasePersistence {
         
         IDfSysObject docMessageObject = getProcessedDocMessage(contentMessageObject);
         if(docMessageObject == null) {
-        	throw new CantFindDocException("Cant find document message for content message: " + contentMessageObject.getObjectId().getId());
+        	return false;
         }
         String docSourceId = getDocSourceId(docMessageObject);
         String docSourceSystem = getDocSourceCode(docMessageObject);

@@ -340,7 +340,9 @@ public class ContentLoader {
 			while ((archiveEntry = archiveInputStream.getNextEntry()) != null) {
 				String archiveEntryName = archiveEntry.getName();
 				if (archiveEntryName.trim().length() > 3) {
-					String archiveEntryType = archiveEntryName.substring(archiveEntryName.length() - 3);
+					int index = archiveEntryName.lastIndexOf('.');
+					String archiveEntryType = index > -1 ? archiveEntryName.substring(index + 1)
+							: archiveEntryName.substring(archiveEntryName.length() - 3);
 					if (SUPPORTED_FORMAT.contains(archiveEntryType.toLowerCase())) {
 						byte[] zipBuffer = new byte[1024];
 						int count = 0;
@@ -395,8 +397,11 @@ public class ContentLoader {
 			int entryIndex = 0;
 			while ((archiveEntry = sevenZFile.getNextEntry()) != null) {
 				String archiveEntryName = archiveEntry.getName();
+				
 				if (archiveEntryName.trim().length() > 3) {
-					String archiveEntryType = archiveEntryName.substring(archiveEntryName.length() - 3);
+					int index = archiveEntryName.lastIndexOf('.');
+					String archiveEntryType = index > -1 ? archiveEntryName.substring(index + 1)
+							: archiveEntryName.substring(archiveEntryName.length() - 3);
 					if (SUPPORTED_FORMAT.contains(archiveEntryType.toLowerCase())) {
 						byte[] zipBuffer = new byte[1024];
 						int count = 0;
@@ -459,7 +464,9 @@ public class ContentLoader {
                         else {
                             try {
                                 if (fileNameString.trim().length() > 3) {
-                                    String entryType = fileNameString.substring(fileNameString.length() - 3);
+                                    int index = fileNameString.lastIndexOf('.');
+                					String entryType = index > -1 ? fileNameString.substring(index + 1)
+                							: fileNameString.substring(fileNameString.length() - 3);
                                     if (SUPPORTED_FORMAT.contains(entryType.toLowerCase())) {
                                         ByteArrayOutputStream entryStream = new ByteArrayOutputStream();
                                         arch.extractFile(fh, entryStream);

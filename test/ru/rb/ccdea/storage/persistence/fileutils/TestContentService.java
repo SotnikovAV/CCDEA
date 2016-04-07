@@ -13,6 +13,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.documentum.com.DfClientX;
@@ -38,9 +39,16 @@ public class TestContentService {
 	@Test
 	public void test() {
 		System.setProperty("dfc.data.dir", "C:/Development/temp");
+		String[] formats = { 
+//				"doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt",
+//				"rtf", "odt", "xml", "tif", "tiff", "jpg", "jpeg", "png", "gif",
+//				"bmp", "prn", 
+				"zip"
+//				, "arj", "rar", "7z" 
+		};
 
 		String documentId = null;
-		
+
 		IDfSession testSession = null;
 		IDfClientX clientx = new DfClientX();
 		IDfClient client = null;
@@ -57,49 +65,72 @@ public class TestContentService {
 			sessionManager.setIdentity("UCB", loginInfo);
 			testSession = sessionManager.getSession("UCB");
 
-			List<IDfId> documentIds = new ArrayList<IDfId>();
+			for (String format : formats) {
+				try {
+					List<IDfId> documentIds = new ArrayList<IDfId>();
 
-//			IDfSysObject doc = (IDfSysObject) testSession.newObject(ContractPersistence.DOCUMENT_TYPE_NAME);
-//			doc.setObjectName("TST000001");
-//			doc.save();
-			
-			IDfSysObject doc = (IDfSysObject) testSession.getObject(new DfId("095bbc6a81762358"));
-			
-			documentId = doc.getObjectId().getId();
-			
-			documentIds.add(doc.getObjectId());
-			// try {
-			IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("085bbc6a817623b9"));//7z - 085bbc6a81761627
-			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
-			Unmarshaller unmarshaller = jc.createUnmarshaller();
-			DocPutType docPutXmlObject = unmarshaller
-					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
+					IDfSysObject doc = (IDfSysObject) testSession.newObject(ContractPersistence.DOCUMENT_TYPE_NAME);
+					doc.setObjectName("TST000001");
+					doc.save();
 
-			List<String> modifiedContentIdList = new ArrayList<String>();
+					documentId = doc.getObjectId().getId();
 
-			ContentService cs = new ContentService();
-//			cs.createContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
-//					modifiedContentIdList, documentIds);
-//
-//			System.out.println(documentIds.toString());
-//
-			IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
-					doc.getObjectId().getId());
+					documentIds.add(doc.getObjectId());
+					// try {
+					IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("085bbc6a81761627"));
+					JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
+					Unmarshaller unmarshaller = jc.createUnmarshaller();
+					DocPutType docPutXmlObject = unmarshaller
+							.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
 
-//			cs.appendContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
-//					modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
-//			
-//			existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
-//					doc.getObjectId().getId());
-			
-			cs.createContentVersionFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
-					modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
-//			
-//			existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
-//					doc.getObjectId().getId());
-//			
-//			cs.updateContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
-//					modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
+					docPutXmlObject.getContent().getDocReference().get(0)
+							.setFileReference("c:/Development/Workspaces/CCDEA_GITHUB/test/test." + format);
+					docPutXmlObject.getContent().getDocReference().get(0).setFileFormat(format);
+
+					List<String> modifiedContentIdList = new ArrayList<String>();
+
+					ContentService cs = new ContentService();
+					cs.createContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+							modifiedContentIdList, documentIds);
+
+					System.out.println(documentIds.toString());
+
+					IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+							doc.getObjectId().getId());
+					String status = ContentPersistence.checkContentAvaliable(testSession, existingObject);
+					System.out.println(status);
+
+					Assert.assertNotNull(existingObject.getContent());
+					System.out.println("Content has been found");
+
+					cs.updateContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+							modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
+
+					existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+							doc.getObjectId().getId());
+					status = ContentPersistence.checkContentAvaliable(testSession, existingObject);
+					System.out.println(status);
+
+					Assert.assertNotNull(existingObject.getContent());
+
+					cs.appendContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+							modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
+
+					existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
+							doc.getObjectId().getId());
+					status = ContentPersistence.checkContentAvaliable(testSession, existingObject);
+					System.out.println(status);
+
+					Assert.assertNotNull(existingObject.getContent());
+
+					cs.createContentVersionFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
+							modifiedContentIdList, doc.getObjectId(), existingObject.getObjectId());
+					status = ContentPersistence.checkContentAvaliable(testSession, existingObject);
+					System.out.println(status);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -108,44 +139,7 @@ public class TestContentService {
 				sessionManager.release(testSession);
 			}
 		}
-		
-//		try {
-//			client = clientx.getLocalClient();
-//			sessionManager = client.newSessionManager();
-//
-//			IDfLoginInfo loginInfo = clientx.getLoginInfo();
-//			loginInfo.setUser("dmadmin");
-//			loginInfo.setPassword("dmadmin");
-//			loginInfo.setDomain(null);
-//
-//			sessionManager.setIdentity("UCB", loginInfo);
-//			testSession = sessionManager.getSession("UCB");
-//
-//			
-//			// try {
-//			IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("085bbc6a81761627"));
-//			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
-//			Unmarshaller unmarshaller = jc.createUnmarshaller();
-//			DocPutType docPutXmlObject = unmarshaller
-//					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
-//
-//			List<String> modifiedContentIdList = new ArrayList<String>();
-//
-//			ContentService cs = new ContentService();
-//			
-//			IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(testSession,
-//					documentId);
-//
-//			cs.appendContentFromMQType(testSession, docPutXmlObject.getContent(), "TST", "000001",
-//					modifiedContentIdList, new DfId(documentId), existingObject.getObjectId());
-//
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			if (testSession != null) {
-//				sessionManager.release(testSession);
-//			}
-//		}
+
 	}
 
 	@Test

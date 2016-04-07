@@ -3,7 +3,16 @@ package ru.rb.ccdea.storage.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.documentum.fc.client.*;
+import com.documentum.fc.client.DfQuery;
+import com.documentum.fc.client.DfRelationType;
+import com.documentum.fc.client.IDfACL;
+import com.documentum.fc.client.IDfCollection;
+import com.documentum.fc.client.IDfEnumeration;
+import com.documentum.fc.client.IDfQuery;
+import com.documentum.fc.client.IDfRelation;
+import com.documentum.fc.client.IDfRelationType;
+import com.documentum.fc.client.IDfSession;
+import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
@@ -20,22 +29,25 @@ public class ContentPersistence extends BasePersistence {
 	public static final String ATTR_CONTENT_COPY_ID = "id_content_copy";
 	public static final String ATTR_IS_ORIGINAL = "b_is_original";
 	public static final String ATTR_CTS_RESULT_ID = "id_cts_result_content";
-    
-    public static final String CONTENT_PART_TYPE_NAME = "ccdea_doc_content_part";
-    public static final String ATTR_CONTENT_FOR_PART_ID = "id_content";
-    public static final String ATTR_PART_INDEX = "n_index";
 
-    public static boolean isDocTypeSupportContentVersion(String docTypeName) {
-        return PassportPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName) ||
-                VBKPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName) ||
-                SPDPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName) ||
-                SVOPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName);
-    }
+	public static final String CONTENT_PART_TYPE_NAME = "ccdea_doc_content_part";
+	public static final String ATTR_CONTENT_FOR_PART_ID = "id_content";
+	public static final String ATTR_PART_INDEX = "n_index";
+	public static final String CONTENT_NOT_FOUND = "Content not found.";
+	public static final long CONTENT_CHECK_WAITING_TIMEOUT = 180;
+	public static final String CONTENT_HAS_BEEN_FOUND = "Content has been found.";
 
-    public static boolean isDocTypeSupportContentAppending(String docTypeName) {
-        return PDPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName) ||
-                ContractPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName);
-    }
+	public static boolean isDocTypeSupportContentVersion(String docTypeName) {
+		return PassportPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName)
+				|| VBKPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName)
+				|| SPDPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName)
+				|| SVOPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName);
+	}
+
+	public static boolean isDocTypeSupportContentAppending(String docTypeName) {
+		return PDPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName)
+				|| ContractPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName);
+	}
 
 	/**
 	 * Получить объект контента по идентификатору документа
@@ -54,7 +66,7 @@ public class ContentPersistence extends BasePersistence {
 		String contentId = null;
 		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id='"
 				+ documentId + "') and a_content_type='pdf' order by r_modify_date desc";
-				
+
 		DfLogger.info(dfSession, dql, null, null);
 		IDfCollection rs = null;
 		try {
@@ -69,8 +81,6 @@ public class ContentPersistence extends BasePersistence {
 				rs.close();
 			}
 		}
-		
-
 
 		if (contentId != null) {
 			return (IDfSysObject) dfSession
@@ -99,34 +109,35 @@ public class ContentPersistence extends BasePersistence {
 		relation.setChildId(contentId);
 		relation.setParentId(documentId);
 		relation.save();
-		
-		IDfSysObject document = (IDfSysObject)dfSession.getObject(documentId);
+
+		IDfSysObject document = (IDfSysObject) dfSession.getObject(documentId);
 		IDfACL acl = document.getACL();
-		
-		IDfSysObject content = (IDfSysObject)dfSession.getObject(contentId);
+
+		IDfSysObject content = (IDfSysObject) dfSession.getObject(contentId);
 		content.setACL(acl);
 		content.save();
 
 		return relation;
 	}
 
-    public static IDfSysObject createContentObject(IDfSession dfSession, String contentSourceCode, String contentSourceId, boolean isOriginal) throws DfException {
-        throwIfNotTransactionActive(dfSession);
+	public static IDfSysObject createContentObject(IDfSession dfSession, String contentSourceCode,
+			String contentSourceId, boolean isOriginal) throws DfException {
+		throwIfNotTransactionActive(dfSession);
 
-        IDfSysObject result = (IDfSysObject)dfSession.newObject(TYPE_NAME);
-        result.setObjectName(contentSourceCode + '_' + contentSourceId);
-        result.setString(ATTR_CONTENT_SOURCE_CODE, contentSourceCode);
-        result.setString(ATTR_CONTENT_SOURCE_ID, contentSourceId);
-        result.setBoolean(ATTR_IS_ORIGINAL, isOriginal);
-        if(!isOriginal) {
-        	result.setContentType("pdf");
-        }
-        result.link(CONTENT_FOLDER);
-        result.save();
+		IDfSysObject result = (IDfSysObject) dfSession.newObject(TYPE_NAME);
+		result.setObjectName(contentSourceCode + '_' + contentSourceId);
+		result.setString(ATTR_CONTENT_SOURCE_CODE, contentSourceCode);
+		result.setString(ATTR_CONTENT_SOURCE_ID, contentSourceId);
+		result.setBoolean(ATTR_IS_ORIGINAL, isOriginal);
+		if (!isOriginal) {
+			result.setContentType("pdf");
+		}
+		result.link(CONTENT_FOLDER);
+		result.save();
 
-        return result;
-    }
-    
+		return result;
+	}
+
 	/**
 	 * Создать объект для хранения части контента. Используется, если контент
 	 * приходит в виде архива.
@@ -155,78 +166,74 @@ public class ContentPersistence extends BasePersistence {
 		return contentPartSysObject;
 	}
 
-    public static void setCtsResultId(IDfSysObject contentObject, IDfId ctsResultId) throws DfException{
-        throwIfNotTransactionActive(contentObject.getSession());
+	public static void setCtsResultId(IDfSysObject contentObject, IDfId ctsResultId) throws DfException {
+		throwIfNotTransactionActive(contentObject.getSession());
 
-        contentObject.setId(ATTR_CTS_RESULT_ID, ctsResultId);
-        contentObject.save();
-    }
+		contentObject.setId(ATTR_CTS_RESULT_ID, ctsResultId);
+		contentObject.save();
+	}
 
-    public static IDfSysObject getNextContentSysObject(IDfSysObject contentSysObject) throws DfException{
-        return getNextContentSysObject(contentSysObject, false);
-    }
+	public static IDfSysObject getNextContentSysObject(IDfSysObject contentSysObject) throws DfException {
+		return getNextContentSysObject(contentSysObject, false);
+	}
 
-    public static IDfSysObject getNextContentSysObject(IDfSysObject contentSysObject, boolean checkOnlyParts) throws DfException {
-        IDfSysObject result = checkOnlyParts ? null : contentSysObject;
+	public static IDfSysObject getNextContentSysObject(IDfSysObject contentSysObject, boolean checkOnlyParts)
+			throws DfException {
+		IDfSysObject result = checkOnlyParts ? null : contentSysObject;
 
-        String dql = "select r_object_id " +
-                " from ccdea_doc_content_part " +
-                " where id_content = '" + contentSysObject.getObjectId().getId() + "'" +
-                " order by n_index";
-        IDfCollection rs = null;
-        try {
-            IDfQuery query = new DfQuery();
-            query.setDQL(dql);
-            rs = query.execute(contentSysObject.getSession(), IDfQuery.DF_READ_QUERY);
-            if (rs.next()) {
-                result = (IDfSysObject)contentSysObject.getSession().getObject(rs.getId("r_object_id"));
-            }
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-        }
+		String dql = "select r_object_id " + " from ccdea_doc_content_part " + " where id_content = '"
+				+ contentSysObject.getObjectId().getId() + "'" + " order by n_index";
+		IDfCollection rs = null;
+		try {
+			IDfQuery query = new DfQuery();
+			query.setDQL(dql);
+			rs = query.execute(contentSysObject.getSession(), IDfQuery.DF_READ_QUERY);
+			if (rs.next()) {
+				result = (IDfSysObject) contentSysObject.getSession().getObject(rs.getId("r_object_id"));
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
 
-        return result;
-    }
-    
-    public static List<IDfSysObject> getContentPartsSysObject(IDfSysObject contentSysObject) throws DfException {
-    	List<IDfSysObject> partList = new ArrayList<IDfSysObject>();
-        String dql = "select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica " +
-                " from ccdea_doc_content_part " +
-                " where id_content = '" + contentSysObject.getObjectId().getId() + "'" +
-                " order by n_index";
-        IDfEnumeration result = contentSysObject.getSession().getObjectsByQuery(dql, null);
-    	while(result.hasMoreElements()) {
-    		partList.add((IDfSysObject)result.nextElement());
-    	}
-        return partList;
-    }
+		return result;
+	}
 
-    public static boolean isDocumentRelationForContentExists(IDfSession session, String contentId) throws DfException {
-        boolean result = false;
+	public static List<IDfSysObject> getContentPartsSysObject(IDfSysObject contentSysObject) throws DfException {
+		List<IDfSysObject> partList = new ArrayList<IDfSysObject>();
+		String dql = "select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica "
+				+ " from ccdea_doc_content_part " + " where id_content = '" + contentSysObject.getObjectId().getId()
+				+ "'" + " order by n_index";
+		IDfEnumeration result = contentSysObject.getSession().getObjectsByQuery(dql, null);
+		while (result.hasMoreElements()) {
+			partList.add((IDfSysObject) result.nextElement());
+		}
+		return partList;
+	}
 
-        String dql = "select child_id " +
-                " from dm_relation " +
-                " where child_id = '" + contentId + "'" +
-                " and relation_name = '" + RELATION_NAME + "'";
-        IDfCollection rs = null;
-        try {
-            IDfQuery query = new DfQuery();
-            query.setDQL(dql);
-            rs = query.execute(session, IDfQuery.DF_READ_QUERY);
-            if (rs.next()) {
-                result = true;
-            }
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-        }
+	public static boolean isDocumentRelationForContentExists(IDfSession session, String contentId) throws DfException {
+		boolean result = false;
 
-        return result;
-    }
-    
+		String dql = "select child_id " + " from dm_relation " + " where child_id = '" + contentId + "'"
+				+ " and relation_name = '" + RELATION_NAME + "'";
+		IDfCollection rs = null;
+		try {
+			IDfQuery query = new DfQuery();
+			query.setDQL(dql);
+			rs = query.execute(session, IDfQuery.DF_READ_QUERY);
+			if (rs.next()) {
+				result = true;
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
+
+		return result;
+	}
+
 	/**
 	 * Получить идентификаторы документов, к которым присоединен указанный
 	 * контент
@@ -257,5 +264,40 @@ public class ContentPersistence extends BasePersistence {
 				rs.close();
 			}
 		}
+	}
+
+	/**
+	 * Проверка наличия контента
+	 * 
+	 * @param dfSession
+	 *            - сессия Documentum
+	 * @param contentSysObject
+	 *            - объект, содержащий контент
+	 * @return состояние
+	 * @throws DfException
+	 */
+	public static String checkContentAvaliable(IDfSession dfSession, IDfSysObject contentSysObject) throws DfException {
+		long counter = 0;
+		while (true) {
+			contentSysObject.fetch(null);
+			try {
+				if (contentSysObject.getContent() != null) {
+					return CONTENT_HAS_BEEN_FOUND;
+				}
+
+			} catch (Exception ex) {
+				DfLogger.debug(contentSysObject,
+						"Content for " + contentSysObject.getObjectId().getId() + " not avaliable yet.", null, null);
+			}
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException ex) {
+			}
+			counter++;
+			if (CONTENT_CHECK_WAITING_TIMEOUT == counter) {
+				throw new DfException("Content for " + contentSysObject.getObjectId().getId() + " not avaliable.");
+			}
+		}
+		
 	}
 }

@@ -2,6 +2,8 @@ package ru.rb.ccdea.storage.persistence;
 
 import com.documentum.fc.client.*;
 import com.documentum.fc.common.*;
+
+import ru.rb.ccdea.storage.jobs.CantFindDocException;
 import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
 
 import java.io.ByteArrayOutputStream;
@@ -254,6 +256,9 @@ public class ExternalMessagePersistence extends BasePersistence {
         boolean result = false;
         
         IDfSysObject docMessageObject = getProcessedDocMessage(contentMessageObject);
+        if(docMessageObject == null) {
+        	throw new CantFindDocException("Cant find document message for content message: " + contentMessageObject.getObjectId().getId());
+        }
         String docSourceId = getDocSourceId(docMessageObject);
         String docSourceSystem = getDocSourceCode(docMessageObject);
         
@@ -265,19 +270,6 @@ public class ExternalMessagePersistence extends BasePersistence {
 				+ docSourceSystem + "') AND doc.s_doc_source_id = '" + docSourceId
 				+ "' and con.s_doc_source_id = doc.s_content_source_id and upper(con.s_doc_source_code) = upper(doc.s_content_source_code))";
         
-//        String docSourceId = getDocSourceId(contentMessageObject);
-//        String docSourceSystem = getDocSourceCode(contentMessageObject);
-//        String dql = "select r_object_id" +
-//                " from " + TYPE_NAME +
-//                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper('" + docSourceSystem + "')" +
-//                " and " + ATTR_DOC_SOURCE_ID + " = '" + docSourceId + 
-//                "' ) OR (upper(" + ATTR_CONTENT_SOURCE_CODE + ") = upper('" + docSourceSystem + "')" +
-//                " and " + ATTR_CONTENT_SOURCE_ID + " = '" + docSourceId + "' ))"  + 
-//               
-//                " and " + ATTR_MESSAGE_TYPE + " = '" + MESSAGE_TYPE_DOCPUT + "'" +
-//                " and " + ATTR_CURRENT_STATE + " > " + MESSAGE_STATE_VALIDATION_ERROR +
-//                " and " + ATTR_CURRENT_STATE + " < " + MESSAGE_STATE_PROCESSED +
-//                " and r_object_id != '" + contentMessageObject.getObjectId().getId() + "' and r_creation_date < date('" + contentMessageObject.getCreationDate().asString("yyyy-MM-dd HH:mi:ss") + "','yyyy-MM-dd HH:mi:ss')";
         IDfCollection rs = null;
         try {
             IDfQuery query = new DfQuery();

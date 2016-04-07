@@ -1,17 +1,35 @@
 package ru.rb.ccdea.storage.persistence;
 
-import com.documentum.fc.client.*;
-import com.documentum.fc.common.*;
-
-import ru.rb.ccdea.storage.jobs.CantFindDocException;
-import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
+import com.documentum.fc.client.DfQuery;
+import com.documentum.fc.client.IDfActivity;
+import com.documentum.fc.client.IDfCollection;
+import com.documentum.fc.client.IDfEnumeration;
+import com.documentum.fc.client.IDfPersistentObject;
+import com.documentum.fc.client.IDfQuery;
+import com.documentum.fc.client.IDfSession;
+import com.documentum.fc.client.IDfSysObject;
+import com.documentum.fc.client.IDfWorkflowBuilder;
+import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfId;
+import com.documentum.fc.common.DfList;
+import com.documentum.fc.common.DfLogger;
+import com.documentum.fc.common.DfTime;
+import com.documentum.fc.common.IDfId;
+import com.documentum.fc.common.IDfList;
+
+import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
 
 public class ExternalMessagePersistence extends BasePersistence {
 

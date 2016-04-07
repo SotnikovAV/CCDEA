@@ -139,12 +139,17 @@ public class DocPutMesssageJob extends AbstractJob {
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		} catch (CantFindDocException ex) {
 			DfLogger.warn(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
-		} catch (DfException dfEx) {
-			DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, dfEx);
-			// throw dfEx;
 		} catch (Exception ex) {
 			DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
-			// throw new DfException(ex);
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.abortTrans();
+			}
+			try {
+				IDfSysObject messageObject = (IDfSysObject) dfSession.getObject(messageId);
+				ExternalMessagePersistence.setConvertationError(messageObject);
+			} catch (Exception e) {
+				DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
+			}
 		} finally {
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
 				dfSession.abortTrans();

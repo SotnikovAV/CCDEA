@@ -151,13 +151,13 @@ public class ContentService extends DfService implements IContentService {
 							documentContentSysObject.getObjectId());
 				}
 
-				for (String contentForAppendingId : contentForAppentingIds) {
-					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
-							.getObject(new DfId(contentForAppendingId));
-					documentContentPartSysObject.destroy();
-				}
+//				for (String contentForAppendingId : contentForAppentingIds) {
+//					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
+//							.getObject(new DfId(contentForAppendingId));
+//					documentContentPartSysObject.destroy();
+//				}
 				
-				oldDocumentContentSysObject.destroy();
+//				oldDocumentContentSysObject.destroy();
 			}
 
 			DfLogger.info(this, "CreateContentFromMQType: {0}/{1}, DocIDs: {2}. Finish (transform request: {3})",
@@ -304,11 +304,11 @@ public class ContentService extends DfService implements IContentService {
 
 				}
 
-				for (String contentForAppendingId : contentForAppentingIds) {
-					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
-							.getObject(new DfId(contentForAppendingId));
-					documentContentPartSysObject.destroy();
-				}
+//				for (String contentForAppendingId : contentForAppentingIds) {
+//					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
+//							.getObject(new DfId(contentForAppendingId));
+//					documentContentPartSysObject.destroy();
+//				}
 
 				if (documentContentSysObject != null) {
 					ByteArrayInputStream is = documentContentSysObject.getContent();
@@ -454,12 +454,12 @@ public class ContentService extends DfService implements IContentService {
 							documentContentSysObject.getObjectId());
 				}
 
-				for (String contentForAppendingId : contentForAppentingIds) {
-					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
-							.getObject(new DfId(contentForAppendingId));
-					documentContentPartSysObject.destroy();
-				}
-				oldDocumentContentSysObject.destroy();
+//				for (String contentForAppendingId : contentForAppentingIds) {
+//					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
+//							.getObject(new DfId(contentForAppendingId));
+//					documentContentPartSysObject.destroy();
+//				}
+//				oldDocumentContentSysObject.destroy();
 			}
 
 			DfLogger.info(this, "AppendContentFromMQType: {0}/{1}, DocID: {2}. Finish (transform request: {3})",
@@ -592,12 +592,12 @@ public class ContentService extends DfService implements IContentService {
 							documentContentSysObject.getObjectId());
 				}
 
-				for (String contentForAppendingId : contentForAppentingIds) {
-					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
-							.getObject(new DfId(contentForAppendingId));
-					documentContentPartSysObject.destroy();
-				}
-				oldDocumentContentSysObject.destroy();
+//				for (String contentForAppendingId : contentForAppentingIds) {
+//					IDfSysObject documentContentPartSysObject = (IDfSysObject) dfSession
+//							.getObject(new DfId(contentForAppendingId));
+//					documentContentPartSysObject.destroy();
+//				}
+//				oldDocumentContentSysObject.destroy();
 			}
 
 			DfLogger.info(this, "UpdateContentFromMQType: {0}/{1}, DocID: {2}. Finish (transform request: {3})",

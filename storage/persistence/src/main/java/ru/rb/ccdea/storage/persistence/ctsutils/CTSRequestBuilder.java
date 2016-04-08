@@ -298,6 +298,7 @@ public class CTSRequestBuilder {
 			counter++;
 			if(CTS_JOB_WAITING_TIMEOUT == counter) {
 				status = CTSRequestBuilder.RESPONSE_STATUS_TIMEOUT;
+				throw new DfException("Transform waiting timeout.");
 			}
 		}
 		return status;

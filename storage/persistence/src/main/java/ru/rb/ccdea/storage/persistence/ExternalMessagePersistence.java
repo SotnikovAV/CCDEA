@@ -269,7 +269,7 @@ public class ExternalMessagePersistence extends BasePersistence {
     }
 
     public static boolean checkContentMessageForWaiting(IDfSysObject contentMessageObject) throws DfException{
-        throwIfNotTransactionActive(contentMessageObject.getSession());
+//        throwIfNotTransactionActive(contentMessageObject.getSession());
 
         boolean result = false;
         
@@ -431,38 +431,69 @@ public class ExternalMessagePersistence extends BasePersistence {
         updateWaitingContents(messageObject);
     }
 
-    public static void startContentProcessing(IDfSysObject messageObject, IDfSysObject existingObject) throws DfException {
-        throwIfNotTransactionActive(messageObject.getSession());
+	public static void startContentProcessing(IDfSysObject messageObject, IDfSysObject existingObject)
+			throws DfException {
+		IDfSession dfSession = messageObject.getSession();
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		try {
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
 
-        if (MODIFICATION_VERB_CREATE.equalsIgnoreCase(messageObject.getString(ATTR_MODIFICATION_VERB))) {
-            if (existingObject != null) {
-                throw new DfException("Cant create content. Content already exists: " + existingObject.getObjectId().getId() + "ExternalMessageId: " + messageObject.getObjectId().getId());
-            }
-        } else if (MODIFICATION_VERB_UPDATE.equalsIgnoreCase(messageObject.getString(ATTR_MODIFICATION_VERB))) {
-            if (existingObject == null) {
-                throw new DfException("Cant update content. Content not found. ExternalMessageId: " + messageObject.getObjectId().getId());
-            }
-        }
-        messageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_ON_PROCESSING);
-        messageObject.save();
+			if (MODIFICATION_VERB_CREATE.equalsIgnoreCase(messageObject.getString(ATTR_MODIFICATION_VERB))) {
+				if (existingObject != null) {
+					throw new DfException(
+							"Cant create content. Content already exists: " + existingObject.getObjectId().getId()
+									+ "ExternalMessageId: " + messageObject.getObjectId().getId());
+				}
+			} else if (MODIFICATION_VERB_UPDATE.equalsIgnoreCase(messageObject.getString(ATTR_MODIFICATION_VERB))) {
+				if (existingObject == null) {
+					throw new DfException("Cant update content. Content not found. ExternalMessageId: "
+							+ messageObject.getObjectId().getId());
+				}
+			}
+			messageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_ON_PROCESSING);
+			messageObject.save();
 
-        logMessageState(messageObject, "startContentProcessing");
-    }
+			logMessageState(messageObject, "startContentProcessing");
+			if (!isTransAlreadyActive) {
+				dfSession.commitTrans();
+			}
+		} finally {
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.abortTrans();
+			}
+		}
+	}
 
-    public static void finishContentProcessing(IDfSysObject messageObject, List<String> modifiedContentIdList, String ctsRequestId) throws DfException {
-        throwIfNotTransactionActive(messageObject.getSession());
+	public static void finishContentProcessing(IDfSysObject messageObject, List<String> modifiedContentIdList,
+			String ctsRequestId) throws DfException {
+		IDfSession dfSession = messageObject.getSession();
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		try {
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
 
-        messageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_LOADED);
-        if (ctsRequestId != null) {
-            messageObject.setString(ATTR_CTS_REQUEST_ID, ctsRequestId);
-        }
-        for (String modifiedContentId : modifiedContentIdList) {
-            messageObject.appendString(ATTR_RESULT_CONTENT_IDS, modifiedContentId);
-        }
-        messageObject.save();
+			messageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_LOADED);
+			if (ctsRequestId != null) {
+				messageObject.setString(ATTR_CTS_REQUEST_ID, ctsRequestId);
+			}
+			for (String modifiedContentId : modifiedContentIdList) {
+				messageObject.appendString(ATTR_RESULT_CONTENT_IDS, modifiedContentId);
+			}
+			messageObject.save();
 
-        logMessageState(messageObject, "finishContentProcessing");
-    }
+			logMessageState(messageObject, "finishContentProcessing");
+			if (!isTransAlreadyActive) {
+				dfSession.commitTrans();
+			}
+		} finally {
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.abortTrans();
+			}
+		}
+	}
 
     public static String getContentProcessingByCTSIfFinished(IDfSysObject messageObject) throws DfException {
         String ctsJobId = messageObject.getString(ATTR_CTS_REQUEST_ID);

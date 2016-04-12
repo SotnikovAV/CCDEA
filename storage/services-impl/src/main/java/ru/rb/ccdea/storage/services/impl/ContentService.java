@@ -406,11 +406,6 @@ public class ContentService extends DfService implements IContentService {
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();
 			}
-			
-			try {
-				Thread.sleep(30000);
-			} catch (InterruptedException e) {
-			}
 
 			if (transformResponseIds.size() > 0) {
 				for (String transformResponseId : transformResponseIds) {

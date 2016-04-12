@@ -48,9 +48,9 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
 
-			if (!isTransAlreadyActive) {
-				dfSession.beginTrans();
-			}
+//			if (!isTransAlreadyActive) {
+//				dfSession.beginTrans();
+//			}
 
 			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
 
@@ -132,9 +132,9 @@ public class DocPutMesssageJob extends AbstractJob {
 				}
 			}
 
-			if (!isTransAlreadyActive) {
-				dfSession.commitTrans();
-			}
+//			if (!isTransAlreadyActive) {
+//				dfSession.commitTrans();
+//			}
 
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		} catch (CantFindDocException ex) {

@@ -10,6 +10,7 @@ import com.documentum.fc.common.IDfLoginInfo;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.rb.ccdea.storage.jobs.DocPutMesssageJob;
 
 /**
  * Created by dimaz on 14.04.2016.
@@ -37,7 +38,8 @@ public class DocPutMesssageJobTest {
 
     @Test
     public void test() throws DfException {
-
+        DocPutMesssageJob job = new DocPutMesssageJob();
+        job.process(testSession);
     }
 
 

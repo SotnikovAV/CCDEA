@@ -1,7 +1,5 @@
 package ru.rb.ccdea.storage.services.impl;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -63,14 +61,8 @@ public class ContentService extends DfService implements IContentService {
 						IDfSysObject documentContentPartSysObject = null;
 						if (index == 0) {
 							if (isAlreadyPdf) {
-								ByteArrayInputStream is = contentPartSysObject.getContent();
-								ByteArrayOutputStream os = new ByteArrayOutputStream();
-								int b;
-								while ((b = is.read()) != -1) {
-									os.write(b);
-								}
-								documentContentSysObject.setContent(os);
-								documentContentSysObject.save();
+								ContentLoader.saveContent(documentContentSysObject, "pdf",
+										contentPartSysObject.getContent(), false);
 							} else {
 								documentContentPartSysObject = documentContentSysObject;
 							}
@@ -180,7 +172,7 @@ public class ContentService extends DfService implements IContentService {
 
 	@Override
 	public String createContentVersionFromMQType(IDfSession dfSession, ContentType contentXmlObject,
-			String contentSourceCode, String contentSourceId, List<String> modifiedContentIdList, IDfId documentId,
+			String contentSourceCode, String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds,
 			IDfId contentId) throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();
@@ -188,18 +180,19 @@ public class ContentService extends DfService implements IContentService {
 		boolean isTransAlreadyActive = dfSession.isTransactionActive();
 		try {
 			DfLogger.info(this, "CreateContentVersionFromMQType: {0}/{1}, DocID: {2}. Start",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, null);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, null);
 
 			if (!isTransAlreadyActive) {
 				dfSession.beginTrans();
 			}
+			
+			IDfId documentId = documentIds.get(0);
 
 			IDfSysObject oldDocumentContentSysObject = (IDfSysObject) dfSession.getObject(contentId);
 
-			IDfSysObject originalContentSysObject = ContentPersistence.createContentObject(dfSession, contentSourceCode,
-					contentSourceId, true);
+			IDfSysObject originalContentSysObject = ContentPersistence.searchOriginalContentObjectByDocumentId(dfSession, documentId.getId());
 
-			ContentLoader.loadContentFile(originalContentSysObject, contentXmlObject);
+			ContentLoader.loadContentFile(originalContentSysObject, contentXmlObject, true);
 			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
 
 			IDfSysObject documentContentSysObject = null;
@@ -216,16 +209,9 @@ public class ContentService extends DfService implements IContentService {
 						boolean isAlreadyPdf = ContentLoader.isPdfType(contentType);
 						IDfSysObject documentContentPartSysObject = null;
 						if (index == 0) {
-							if (isAlreadyPdf) {
-								ByteArrayInputStream is = contentPartSysObject.getContent();
-								ByteArrayOutputStream os = new ByteArrayOutputStream();
-								int b;
-								while ((b = is.read()) != -1) {
-									os.write(b);
-								}
-								documentContentSysObject.setContentType("pdf");
-								documentContentSysObject.setContent(os);
-								documentContentSysObject.save();
+							if (isAlreadyPdf) {								
+								ContentLoader.saveContent(documentContentSysObject, "pdf",
+										contentPartSysObject.getContent(), false);
 							} else {
 								documentContentPartSysObject = documentContentSysObject;
 							}
@@ -256,15 +242,8 @@ public class ContentService extends DfService implements IContentService {
 							oldDocumentContentSysObject.getObjectId().getId(), true, originalContentSysObject);
 				}
 			} else {
-				ByteArrayInputStream is = originalContentSysObject.getContent();
-				ByteArrayOutputStream os = new ByteArrayOutputStream();
-				int b;
-				while ((b = is.read()) != -1) {
-					os.write(b);
-				}
-				oldDocumentContentSysObject.checkout();
-				oldDocumentContentSysObject.setContent(os);
-				oldDocumentContentSysObject.checkin(false, null);
+				ContentLoader.saveContent(oldDocumentContentSysObject, "pdf",
+						originalContentSysObject.getContent(), true);
 			}
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();
@@ -311,27 +290,20 @@ public class ContentService extends DfService implements IContentService {
 //				}
 
 				if (documentContentSysObject != null) {
-					ByteArrayInputStream is = documentContentSysObject.getContent();
-					ByteArrayOutputStream os = new ByteArrayOutputStream();
-					int b;
-					while ((b = is.read()) != -1) {
-						os.write(b);
-					}
-					oldDocumentContentSysObject.checkout();
-					oldDocumentContentSysObject.setContent(os);
-					oldDocumentContentSysObject.checkin(false, null);
+					ContentLoader.saveContent(oldDocumentContentSysObject, "pdf",
+							documentContentSysObject.getContent(), true);
 				}
 			}
 
 			DfLogger.info(this, "CreateContentVersionFromMQType: {0}/{1}, DocID: {2}. Finish (transform request: {3})",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId(), transformJobId }, null);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString(), transformJobId }, null);
 		} catch (DfException dfEx) {
 			DfLogger.error(this, "CreateContentVersionFromMQType: {0}/{1}, DocID: {2}. Error",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, dfEx);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, dfEx);
 			throw dfEx;
 		} catch (Exception ex) {
 			DfLogger.error(this, "CreateContentVersionFromMQType: {0}/{1}, DocID: {2}. Error",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, ex);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, ex);
 			throw new DfException(ex);
 		} finally {
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
@@ -343,7 +315,7 @@ public class ContentService extends DfService implements IContentService {
 
 	@Override
 	public String appendContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, IDfId documentId, IDfId contentId)
+			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds, IDfId contentId)
 					throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();
@@ -351,7 +323,7 @@ public class ContentService extends DfService implements IContentService {
 		boolean isTransAlreadyActive = dfSession.isTransactionActive();
 		try {
 			DfLogger.info(this, "AppendContentFromMQType: {0}/{1}, DocID: {2}. Start",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, null);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, null);
 
 			if (!isTransAlreadyActive) {
 				dfSession.beginTrans();
@@ -361,6 +333,11 @@ public class ContentService extends DfService implements IContentService {
 					contentSourceId, true);
 			ContentLoader.loadContentFile(originalContentSysObject, contentXmlObject);
 			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
+			
+			for (IDfId docId : documentIds) {
+				ContentPersistence.createDocumentContentRelation(dfSession, docId,
+						originalContentSysObject.getObjectId());
+			}
 
 			IDfSysObject documentContentSysObject = (IDfSysObject) dfSession.getObject(contentId);
 			modifiedContentIdList.add(contentId.getId());
@@ -443,8 +420,7 @@ public class ContentService extends DfService implements IContentService {
 
 				}
 
-				for (IDfId docId : ContentPersistence.getDocIdsByContentId(dfSession,
-						oldDocumentContentSysObject.getObjectId())) {
+				for (IDfId docId : documentIds) {
 					ContentPersistence.createDocumentContentRelation(dfSession, docId,
 							documentContentSysObject.getObjectId());
 				}
@@ -458,14 +434,14 @@ public class ContentService extends DfService implements IContentService {
 			}
 
 			DfLogger.info(this, "AppendContentFromMQType: {0}/{1}, DocID: {2}. Finish (transform request: {3})",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId(), transformJobId }, null);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString(), transformJobId }, null);
 		} catch (DfException dfEx) {
 			DfLogger.error(this, "AppendContentFromMQType: {0}/{1}, DocID: {2}. Error",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, dfEx);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, dfEx);
 			throw dfEx;
 		} catch (Exception ex) {
 			DfLogger.error(this, "AppendContentFromMQType: {0}/{1}, DocID: {2}. Error",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, ex);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, ex);
 			throw new DfException(ex);
 		} finally {
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
@@ -477,7 +453,7 @@ public class ContentService extends DfService implements IContentService {
 
 	@Override
 	public String updateContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, IDfId documentId, IDfId contentId)
+			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds, IDfId contentId)
 					throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();
@@ -485,7 +461,7 @@ public class ContentService extends DfService implements IContentService {
 		boolean isTransAlreadyActive = dfSession.isTransactionActive();
 		try {
 			DfLogger.info(this, "UpdateContentFromMQType: {0}/{1}, DocID: {2}. Start",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, null);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, null);
 
 			if (!isTransAlreadyActive) {
 				dfSession.beginTrans();
@@ -530,15 +506,8 @@ public class ContentService extends DfService implements IContentService {
 					index++;
 				}
 			} else {
-				documentContentSysObject = (IDfSysObject) dfSession.getObject(contentId);
-				ByteArrayInputStream is = originalContentSysObject.getContent();
-				ByteArrayOutputStream os = new ByteArrayOutputStream();
-				int b;
-				while ((b = is.read()) != -1) {
-					os.write(b);
-				}
-				documentContentSysObject.setContent(os);
-				documentContentSysObject.save();
+				ContentLoader.saveContent(documentContentSysObject, "pdf", originalContentSysObject.getContent(),
+						false);
 			}
 
 			if (!isTransAlreadyActive) {
@@ -581,8 +550,7 @@ public class ContentService extends DfService implements IContentService {
 
 				}
 
-				for (IDfId docId : ContentPersistence.getDocIdsByContentId(dfSession,
-						oldDocumentContentSysObject.getObjectId())) {
+				for (IDfId docId : documentIds) {
 					ContentPersistence.createDocumentContentRelation(dfSession, docId,
 							documentContentSysObject.getObjectId());
 				}
@@ -596,14 +564,14 @@ public class ContentService extends DfService implements IContentService {
 			}
 
 			DfLogger.info(this, "UpdateContentFromMQType: {0}/{1}, DocID: {2}. Finish (transform request: {3})",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId(), transformJobId }, null);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString(), transformJobId }, null);
 		} catch (DfException dfEx) {
 			DfLogger.error(this, "UpdateContentFromMQType: {0}/{1}, DocID: {2}. Error",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, dfEx);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, dfEx);
 			throw dfEx;
 		} catch (Exception ex) {
 			DfLogger.error(this, "UpdateContentFromMQType: {0}/{1}, DocID: {2}. Error",
-					new String[] { contentSourceCode, contentSourceId, documentId.getId() }, ex);
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, ex);
 			throw new DfException(ex);
 		} finally {
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {

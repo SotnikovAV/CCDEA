@@ -13,14 +13,14 @@ public interface IContentService extends IDfService {
 			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds) throws DfException;
 
 	public String createContentVersionFromMQType(IDfSession dfSession, ContentType contentXmlObject,
-			String contentSourceCode, String contentSourceId, List<String> modifiedContentIdList, IDfId documentId,
+			String contentSourceCode, String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds,
 			IDfId contentId) throws DfException;
 
 	public String appendContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, IDfId documentId, IDfId contentId)
+			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds, IDfId contentId)
 					throws DfException;
 
 	public String updateContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, IDfId documentId, IDfId contentId)
+			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds, IDfId contentId)
 					throws DfException;
 }

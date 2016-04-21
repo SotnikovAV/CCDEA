@@ -66,7 +66,24 @@
 		            </dmfx:actionmultiselectcheckbox>
 		         </dmf:datagridRowTd>
 		         
-	            <dmf:celllist >
+	            <dmf:celllist>
+	            	<dmf:celltemplate field='doc_type_state'>
+                  		<dmf:datagridRowTd nowrap="true" cssclass="doclistfilenamedatagrid">
+								<dmfx:docbaseicon formatdatafield='a_content_type'
+									typedatafield='r_object_type' linkcntdatafield='r_link_cnt'
+									isvirtualdocdatafield='r_is_virtual_doc'
+									assembledfromdatafield='r_assembled_from_id'
+									isfrozenassemblydatafield='r_has_frzn_assembly'
+									isreplicadatafield='i_is_replica'
+									isreferencedatafield='i_is_reference' size='16' />
+								<ccdea:stringlengthformatter maxlen='40'>
+	                            <dmfx:actionlink action="ucfview" datafield='CURRENT'>
+	                            	<dmf:argument name="objectId" datafield="r_object_id"/>
+	                                <dmf:argument name="type" value="ccdea_doc_content"/>
+	                            </dmfx:actionlink>
+	                        </ccdea:stringlengthformatter>
+	                    </dmf:datagridRowTd>
+	                </dmf:celltemplate>
 	                <dmf:celltemplate type='date'>
 	                    <dmf:datagridRowTd nowrap="true" cssclass="doclistfilenamedatagrid">
 	                        <dmf:datevalueformatter type="medium">

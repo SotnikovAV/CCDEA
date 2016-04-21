@@ -14,6 +14,13 @@
 
 			<columns>
 				<column>
+					<attribute>doc_type_state</attribute>
+					<label>
+						<nlsid>MSG_DOCTYPE_AND_STATE</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
 					<attribute>object_name</attribute>
 					<label>
 						<nlsid>MSG_NAME</nlsid>

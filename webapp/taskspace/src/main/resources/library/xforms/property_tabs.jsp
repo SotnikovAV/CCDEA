@@ -19,7 +19,7 @@
 <div class="modalnavbg tskMgrContainerLeftPadding" style="padding-top:6px;">
 <dmf:tabbar name="tabs" value="dossier_tab" onclick="onTabSelected" tabposition='top' align="left"/>
 </div>
-</div
+</div>
 
 <div class="contentBackground" id="tabInclude">
 <dmfx:containerinclude/>

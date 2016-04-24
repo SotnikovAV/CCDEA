@@ -89,6 +89,45 @@ public class ContentPersistence extends BasePersistence {
 			return null;
 		}
 	}
+	
+	/**
+	 * Получить объект оригинального контента по идентификатору документа
+	 * 
+	 * @param dfSession
+	 *            - сессия Documentum
+	 * @param documentId
+	 *            - идентификатор документа
+	 * @return объект с оригинальным контентом
+	 * @throws DfException
+	 */
+	public static IDfSysObject searchOriginalContentObjectByDocumentId(IDfSession dfSession, String documentId)
+			throws DfException {
+		String contentId = null;
+		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id='"
+				+ documentId + "') and b_is_original=true order by r_modify_date desc";
+
+		DfLogger.info(dfSession, dql, null, null);
+		IDfCollection rs = null;
+		try {
+			IDfQuery query = new DfQuery();
+			query.setDQL(dql);
+			rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
+			if (rs.next()) {
+				contentId = rs.getString("cont_id");
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
+
+		if (contentId != null) {
+			return (IDfSysObject) dfSession
+					.getObjectByQualification(TYPE_NAME + " where r_object_id = '" + contentId + "'");
+		} else {
+			return null;
+		}
+	}
 
 	public static IDfRelation createDocumentContentRelation(IDfSession dfSession, IDfId documentId, IDfId contentId)
 			throws DfException {

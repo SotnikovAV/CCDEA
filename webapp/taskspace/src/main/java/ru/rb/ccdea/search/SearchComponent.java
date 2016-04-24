@@ -32,7 +32,7 @@ import java.util.*;
  */
 public class SearchComponent extends Container {
 	
-	private static final String ARCHIVE_TYPES = "'rar','zip','arj'";
+	private static final String ARCHIVE_TYPES = "'rar','zip','arj','7z'";
 
     private static final String printDql= 
     	    " select cont.r_object_id, cont.object_name, cont.r_content_size "

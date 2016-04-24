@@ -18,6 +18,7 @@
             <component>dossier_tab</component>
             <component>versions_tab</component>
             <component>actions_tab</component>
+            <component>files_tab</component>
          </contains>
 
          <pages>

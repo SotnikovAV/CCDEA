@@ -200,4 +200,5 @@ public class BaseDocumentPersistence extends BasePersistence{
     public static boolean isNotnullTrue(Boolean value) {
         return value == null ? false : value.booleanValue();
     }
+
 }

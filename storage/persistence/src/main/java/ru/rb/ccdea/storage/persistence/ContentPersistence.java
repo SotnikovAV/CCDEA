@@ -46,7 +46,8 @@ public class ContentPersistence extends BasePersistence {
 
 	public static boolean isDocTypeSupportContentAppending(String docTypeName) {
 		return PDPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName)
-				|| ContractPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName);
+				|| ContractPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName)
+				|| RequestPersistence.DOCUMENT_TYPE_NAME.equalsIgnoreCase(docTypeName);
 	}
 
 	/**

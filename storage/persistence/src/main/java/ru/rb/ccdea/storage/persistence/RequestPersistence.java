@@ -19,15 +19,15 @@ public class RequestPersistence extends BaseDocumentPersistence{
     public static String DOCUMENT_TYPE_NAME = "ccdea_request";
     public static String DOCUMENT_TYPE_DISPLAY_NAME = "Заявление";
 
-    protected static final String ATTR_ORIGIN_DATE = "t_origin_date";
-    protected static final String ATTR_RECEIVE_DATE = "t_receive_date";
-    protected static final String ATTR_ACCEPT_DATE = "t_accept_date";
-    protected static final String ATTR_REJECT_DATE = "t_reject_date";
-    protected static final String ATTR_ACCEPT_REJECT_COLUMN = "t_accept_reject_column";
-    protected static final String ATTR_STATE = "s_state";
-    protected static final String ATTR_STATE_COMMENT = "s_state_comment";
+    public static final String ATTR_ORIGIN_DATE = "t_origin_date";
+    public static final String ATTR_RECEIVE_DATE = "t_receive_date";
+    public static final String ATTR_ACCEPT_DATE = "t_accept_date";
+    public static final String ATTR_REJECT_DATE = "t_reject_date";
+    public static final String ATTR_ACCEPT_REJECT_COLUMN = "t_accept_reject_column";
+    public static final String ATTR_STATE = "s_state";
+    public static final String ATTR_STATE_COMMENT = "s_state_comment";
     
-    protected static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     public static IDfSysObject createDocument(IDfSession dfSession) throws DfException {
         throwIfNotTransactionActive(dfSession);

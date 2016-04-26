@@ -14,23 +14,16 @@
 
 			<columns>
 				<column>
-					<attribute>doc_type_state</attribute>
-					<label>
-						<nlsid>MSG_DOCTYPE_AND_STATE</nlsid>
-					</label>
-					<visible>true</visible>
-				</column>
-				<column>
-					<attribute>object_name</attribute>
-					<label>
-						<nlsid>MSG_NAME</nlsid>
-					</label>
-					<visible>true</visible>
-				</column>
-				<column>
 					<attribute>s_content_source_id</attribute>
 					<label>
 						<nlsid>MSG_CONTENT_SOURCE_ID</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
+					<attribute>doc_type_state</attribute>
+					<label>
+						<nlsid>MSG_DOCTYPE_AND_STATE</nlsid>
 					</label>
 					<visible>true</visible>
 				</column>
@@ -42,13 +35,6 @@
 					<visible>true</visible>
 				</column>
 				<column>
-					<attribute>r_version_label</attribute>
-					<label>
-						<nlsid>MSG_VERSION</nlsid>
-					</label>
-					<visible>true</visible>
-				</column>
-				<column>
 					<attribute>r_creation_date</attribute>
 					<label>
 						<nlsid>MSG_CREATION_DATE</nlsid>
@@ -56,23 +42,9 @@
 					<visible>true</visible>
 				</column>
 				<column>
-					<attribute>r_modify_date</attribute>
-					<label>
-						<nlsid>MSG_MODIFY_DATE</nlsid>
-					</label>
-					<visible>true</visible>
-				</column>
-				<column>
 					<attribute>a_content_type</attribute>
 					<label>
 						<nlsid>MSG_CONTENT_TYPE</nlsid>
-					</label>
-					<visible>true</visible>
-				</column>
-				<column>
-					<attribute>r_content_size</attribute>
-					<label>
-						<nlsid>MSG_SIZE</nlsid>
 					</label>
 					<visible>true</visible>
 				</column>

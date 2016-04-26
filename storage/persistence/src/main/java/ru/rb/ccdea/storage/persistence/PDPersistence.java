@@ -14,22 +14,22 @@ public class PDPersistence extends BaseDocumentPersistence{
     public static String DOCUMENT_TYPE_NAME = "ccdea_pd";
     public static String DOCUMENT_TYPE_DISPLAY_NAME = "ПД";
 
-    protected static final String ATTR_DOC_NUMBER = "s_doc_number";
-    protected static final String ATTR_DOC_DATE = "t_doc_date";
-    protected static final String ATTR_AMOUNT = "d_amount";
-    protected static final String ATTR_CURRENCY_CODE = "s_currency_code";
-    protected static final String ATTR_STATE = "s_state";
-    protected static final String ATTR_STATE_COMMENT = "s_state_comment";
-    protected static final String ATTR_DOC_KIND_CODE = "s_doc_kind_code";
-    protected static final String ATTR_DOC_TYPE = "s_doc_type";
-    protected static final String ATTR_KVALP = "s_kvalp";
-    protected static final String ATTR_SUMMAP = "d_summap";
-    protected static final String ATTR_KVALK = "s_kvalk";
-    protected static final String ATTR_SUMMAK = "d_summak";
-    protected static final String ATTR_PRIZ_POST = "b_priz_post";
-    protected static final String ATTR_SROK_WAIT = "t_srok_wait";
-    protected static final String ATTR_KSTRANA = "s_kstrana";
-    protected static final String ATTR_PRIMESH = "s_primesh";
+    public static final String ATTR_DOC_NUMBER = "s_doc_number";
+    public static final String ATTR_DOC_DATE = "t_doc_date";
+    public static final String ATTR_AMOUNT = "d_amount";
+    public static final String ATTR_CURRENCY_CODE = "s_currency_code";
+    public static final String ATTR_STATE = "s_state";
+    public static final String ATTR_STATE_COMMENT = "s_state_comment";
+    public static final String ATTR_DOC_KIND_CODE = "s_doc_kind_code";
+    public static final String ATTR_DOC_TYPE = "s_doc_type";
+    public static final String ATTR_KVALP = "s_kvalp";
+    public static final String ATTR_SUMMAP = "d_summap";
+    public static final String ATTR_KVALK = "s_kvalk";
+    public static final String ATTR_SUMMAK = "d_summak";
+    public static final String ATTR_PRIZ_POST = "b_priz_post";
+    public static final String ATTR_SROK_WAIT = "t_srok_wait";
+    public static final String ATTR_KSTRANA = "s_kstrana";
+    public static final String ATTR_PRIMESH = "s_primesh";
 
     public static IDfSysObject createDocument(IDfSession dfSession) throws DfException {
         throwIfNotTransactionActive(dfSession);

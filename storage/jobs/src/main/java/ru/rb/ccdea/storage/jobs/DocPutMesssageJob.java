@@ -65,19 +65,23 @@ public class DocPutMesssageJob extends AbstractJob {
 			boolean placedOnWaiting = ExternalMessagePersistence.checkContentMessageForWaiting(messageSysObject);
 			if (!placedOnWaiting) {
 
-				IDfSysObject docMessageObject = ExternalMessagePersistence.getProcessedDocMessage(messageSysObject);
-				if (docMessageObject == null) {
+				List<IDfSysObject> docMessages = ExternalMessagePersistence.getProcessedDocMessage(messageSysObject);
+				if (docMessages.size() == 0) {
 					throw new CantFindDocException("Cant find document message for content message: " + messageId);
 				}
 
-				String docSourceCode = ExternalMessagePersistence.getDocSourceCode(docMessageObject);
-				String docSourceId = ExternalMessagePersistence.getDocSourceId(docMessageObject);
-				String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
+				String contentSourceCode = null;
+				String contentSourceId = null;
+				List<IDfSysObject> docs = new ArrayList<IDfSysObject>();
+				for (IDfSysObject docMessageObject : docMessages) {
+					String docSourceCode = ExternalMessagePersistence.getDocSourceCode(docMessageObject);
+					String docSourceId = ExternalMessagePersistence.getDocSourceId(docMessageObject);
+					contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+					contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
 
-				List<IDfSysObject> docs = BaseDocumentPersistence.searchDocumentByExternalKey(dfSession, docSourceCode,
-						docSourceId, contentSourceCode, contentSourceId);
-
+					docs.addAll(BaseDocumentPersistence.searchDocumentByExternalKey(dfSession, docSourceCode,
+							docSourceId, contentSourceCode, contentSourceId));
+				}
 				if (docs.size() == 0) {
 					throw new CantFindDocException("Cant find document for content message: " + messageId);
 				}
@@ -101,7 +105,7 @@ public class DocPutMesssageJob extends AbstractJob {
 					} else {
 						ctsRequestId = contentService.createContentVersionFromMQType(dfSession,
 								docPutXmlObject.getContent(), contentSourceCode, contentSourceId, modifiedObjectIdList,
-								documentObject.getObjectId(), existingObject.getObjectId());
+								documentIds, existingObject.getObjectId());
 					}
 					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
 							ctsRequestId);
@@ -112,7 +116,7 @@ public class DocPutMesssageJob extends AbstractJob {
 								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
 					} else {
 						ctsRequestId = contentService.appendContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentObject.getObjectId(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds,
 								existingObject.getObjectId());
 					}
 					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
@@ -124,7 +128,7 @@ public class DocPutMesssageJob extends AbstractJob {
 								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
 					} else {
 						ctsRequestId = contentService.updateContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentObject.getObjectId(),
+								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds,
 								existingObject.getObjectId());
 					}
 					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,

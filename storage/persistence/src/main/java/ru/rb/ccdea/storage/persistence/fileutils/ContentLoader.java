@@ -1,5 +1,6 @@
 package ru.rb.ccdea.storage.persistence.fileutils;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -69,7 +70,6 @@ public class ContentLoader {
         SUPPORTED_FORMAT.add("gif");
         SUPPORTED_FORMAT.add("bmp");
         SUPPORTED_FORMAT.add("prn");
-        SUPPORTED_FORMAT.add("7z");
     }
     
     public static final void loadContentFile(IDfSysObject contentSysObject, String filepath) throws DfException {
@@ -236,32 +236,96 @@ public class ContentLoader {
         }
 	}
 
+	/**
+	 * 
+	 * @param contentSysObject
+	 * @param contentXmlObject
+	 * @throws DfException
+	 */
 	public static void loadContentFile(IDfSysObject contentSysObject, ContentType contentXmlObject) throws DfException {
-    	String fileFormat = null;
-    	ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        if (contentXmlObject.getDocScan() != null && contentXmlObject.getDocScan().size() > 0) {
-            ContentType.DocScan docScan = contentXmlObject.getDocScan().get(0);
-            if(docScan.getFileFormat() == null) {
-            	throw new DfException("Не указан формат файла");
-            }
-            fileFormat = getFileFormat(docScan.getFileFormat());
-            loadContent(docScan, buffer);            
-        } else if (contentXmlObject.getDocReference() != null && contentXmlObject.getDocReference().size() > 0) {
-            ContentType.DocReference docReference = contentXmlObject.getDocReference().get(0);
-            if(docReference.getFileFormat() == null) {
-            	throw new DfException("Не указан формат файла");
-            }       
-            fileFormat = getFileFormat(docReference.getFileFormat());
-            loadContent(contentSysObject.getSession(), docReference, buffer);
-        }
-        contentSysObject.setContentType(fileFormat);
-        contentSysObject.setContent(buffer);
-        contentSysObject.save();
+		loadContentFile(contentSysObject, contentXmlObject, false);
+	}
 
-        processIfArchive(contentSysObject, fileFormat);
-    }
+	/**
+	 * 
+	 * @param contentSysObject
+	 * @param contentXmlObject
+	 * @param newVersion
+	 * @throws DfException
+	 */
+	public static void loadContentFile(IDfSysObject contentSysObject, ContentType contentXmlObject, boolean newVersion)
+			throws DfException {
+		String fileFormat = null;
+		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		if (contentXmlObject.getDocScan() != null && contentXmlObject.getDocScan().size() > 0) {
+			ContentType.DocScan docScan = contentXmlObject.getDocScan().get(0);
+			if (docScan.getFileFormat() == null) {
+				throw new DfException("Не указан формат файла");
+			}
+			fileFormat = getFileFormat(docScan.getFileFormat());
+			loadContent(docScan, buffer);
+		} else if (contentXmlObject.getDocReference() != null && contentXmlObject.getDocReference().size() > 0) {
+			ContentType.DocReference docReference = contentXmlObject.getDocReference().get(0);
+			if (docReference.getFileFormat() == null) {
+				throw new DfException("Не указан формат файла");
+			}
+			fileFormat = getFileFormat(docReference.getFileFormat());
+			loadContent(contentSysObject.getSession(), docReference, buffer);
+		}
+		if (newVersion) {
+			contentSysObject.checkout();
+			contentSysObject.setContentType(fileFormat);
+			contentSysObject.setContent(buffer);
+			contentSysObject.checkin(false, null);
+		} else {
+			contentSysObject.setContentType(fileFormat);
+			contentSysObject.setContent(buffer);
+			contentSysObject.save();
+		}
+
+		processIfArchive(contentSysObject, fileFormat);
+	}
+
+	/**
+	 * 
+	 * @param contentSysObject
+	 * @param contentType
+	 * @param baos
+	 * @param newVersion
+	 * @throws DfException
+	 */
+	public static void saveContent(IDfSysObject contentSysObject, String contentType, ByteArrayOutputStream baos,
+			boolean newVersion) throws DfException {
+		if (newVersion) {
+			contentSysObject.checkout();
+			contentSysObject.setContentType(contentType);
+			contentSysObject.setContent(baos);
+			contentSysObject.checkin(false, null);
+		} else {
+			contentSysObject.setContentType(contentType);
+			contentSysObject.setContent(baos);
+			contentSysObject.save();
+		}
+	}
+	
+	/**
+	 * 
+	 * @param contentSysObject
+	 * @param contentType
+	 * @param bais
+	 * @param newVersion
+	 * @throws DfException
+	 */
+	public static void saveContent(IDfSysObject contentSysObject, String contentType, ByteArrayInputStream bais,
+			boolean newVersion) throws DfException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		int b;
+		while ((b = bais.read()) != -1) {
+			baos.write(b);
+		}
+		saveContent(contentSysObject, contentType, baos, newVersion);
+	}
     
-   
 	protected static String getFileFormat(String fileExt) {
     	if("ppt".equalsIgnoreCase(fileExt)) {
         	return "ppt8";

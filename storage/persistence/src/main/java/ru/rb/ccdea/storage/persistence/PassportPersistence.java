@@ -19,6 +19,7 @@ public class PassportPersistence extends BaseDocumentPersistence {
     public static String DOCUMENT_FOLDER = HOME_FOLDER + "/passport";
     public static String DOCUMENT_TYPE_NAME = "ccdea_passport";
     public static String DOCUMENT_TYPE_DISPLAY_NAME = "ПС";
+    public static String DOCUMENT_TYPE_FULL_DISPLAY_NAME = "Паспорт сделки";
 
     protected static final String ATTR_PASSPORT_DATE = "t_passport_date";
     protected static final String ATTR_PASSPORT_CLOSE_DATE = "t_close_date";

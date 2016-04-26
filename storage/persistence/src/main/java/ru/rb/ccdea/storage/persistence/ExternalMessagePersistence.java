@@ -273,10 +273,11 @@ public class ExternalMessagePersistence extends BasePersistence {
 
         boolean result = false;
         
-        IDfSysObject docMessageObject = getProcessedDocMessage(contentMessageObject);
-        if(docMessageObject == null) {
+        List<IDfSysObject> docMessages = getProcessedDocMessage(contentMessageObject);
+        if(docMessages.size() == 0) {
         	return false;
         }
+        IDfSysObject docMessageObject = docMessages.get(0);
         String docSourceId = getDocSourceId(docMessageObject);
         String docSourceSystem = getDocSourceCode(docMessageObject);
         
@@ -309,7 +310,8 @@ public class ExternalMessagePersistence extends BasePersistence {
         return result;
     }
     
-    public static IDfSysObject getProcessedDocMessage(IDfSysObject contentMessageObject) throws DfException{
+    public static List<IDfSysObject> getProcessedDocMessage(IDfSysObject contentMessageObject) throws DfException{
+    	List<IDfSysObject> docMessages = new ArrayList<IDfSysObject>();
         String docSourceId = getDocSourceId(contentMessageObject);
         String docSourceSystem = getDocSourceCode(contentMessageObject);
         String dql = "select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica " +
@@ -322,10 +324,10 @@ public class ExternalMessagePersistence extends BasePersistence {
                 " and " + ATTR_MESSAGE_TYPE + " != '" + MESSAGE_TYPE_DOCPUT + "'" +
                 " and " + ATTR_CURRENT_STATE + " = " + MESSAGE_STATE_PROCESSED + " order by r_creation_date desc";
     	IDfEnumeration result = contentMessageObject.getSession().getObjectsByQuery(dql, null);
-    	if(result.hasMoreElements()) {
-    		return (IDfSysObject)result.nextElement();
+    	while(result.hasMoreElements()) {
+    		docMessages.add((IDfSysObject)result.nextElement());
     	}
-    	return null;
+    	return docMessages;
     }
 
     public static void updateWaitingContents(IDfSysObject docMessageObject) throws DfException {

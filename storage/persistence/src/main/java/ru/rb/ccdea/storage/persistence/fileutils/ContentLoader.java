@@ -70,7 +70,6 @@ public class ContentLoader {
         SUPPORTED_FORMAT.add("gif");
         SUPPORTED_FORMAT.add("bmp");
         SUPPORTED_FORMAT.add("prn");
-        SUPPORTED_FORMAT.add("7z");
     }
     
     public static final void loadContentFile(IDfSysObject contentSysObject, String filepath) throws DfException {

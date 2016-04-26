@@ -2,7 +2,9 @@ package ru.rb.ccdea.storage.jobs;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -86,7 +88,7 @@ public class DocPutMesssageJob extends AbstractJob {
 					throw new CantFindDocException("Cant find document for content message: " + messageId);
 				}
 
-				List<IDfId> documentIds = new ArrayList<IDfId>(docs.size());
+				Set<IDfId> documentIds = new HashSet<IDfId>(docs.size());
 				for (IDfSysObject doc : docs) {
 					documentIds.add(doc.getObjectId());
 				}

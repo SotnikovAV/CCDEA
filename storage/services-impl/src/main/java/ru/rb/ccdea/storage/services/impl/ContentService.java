@@ -21,7 +21,7 @@ import ru.rb.ccdea.storage.services.api.IContentService;
 public class ContentService extends DfService implements IContentService {
 	@Override
 	public String createContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds) throws DfException {
+			String contentSourceId, List<String> modifiedContentIdList, Set<IDfId> documentIds) throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();
 		Set<String> contentForAppentingIds = new LinkedHashSet<String>();
@@ -172,7 +172,7 @@ public class ContentService extends DfService implements IContentService {
 
 	@Override
 	public String createContentVersionFromMQType(IDfSession dfSession, ContentType contentXmlObject,
-			String contentSourceCode, String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds,
+			String contentSourceCode, String contentSourceId, List<String> modifiedContentIdList, Set<IDfId> documentIds,
 			IDfId contentId) throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();
@@ -186,7 +186,7 @@ public class ContentService extends DfService implements IContentService {
 				dfSession.beginTrans();
 			}
 			
-			IDfId documentId = documentIds.get(0);
+			IDfId documentId = documentIds.iterator().next();
 
 			IDfSysObject oldDocumentContentSysObject = (IDfSysObject) dfSession.getObject(contentId);
 
@@ -315,7 +315,7 @@ public class ContentService extends DfService implements IContentService {
 
 	@Override
 	public String appendContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds, IDfId contentId)
+			String contentSourceId, List<String> modifiedContentIdList, Set<IDfId> documentIds, IDfId contentId)
 					throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();
@@ -453,7 +453,7 @@ public class ContentService extends DfService implements IContentService {
 
 	@Override
 	public String updateContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
-			String contentSourceId, List<String> modifiedContentIdList, List<IDfId> documentIds, IDfId contentId)
+			String contentSourceId, List<String> modifiedContentIdList, Set<IDfId> documentIds, IDfId contentId)
 					throws DfException {
 		String transformJobId = null;
 		Set<String> transformResponseIds = new LinkedHashSet<String>();

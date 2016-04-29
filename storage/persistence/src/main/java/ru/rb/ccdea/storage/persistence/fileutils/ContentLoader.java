@@ -283,7 +283,7 @@ public class ContentLoader {
 			contentSysObject.save();
 		}
 
-		processIfArchive(contentSysObject, fileFormat);
+//		processIfArchive(contentSysObject, fileFormat);
 	}
 
 	/**

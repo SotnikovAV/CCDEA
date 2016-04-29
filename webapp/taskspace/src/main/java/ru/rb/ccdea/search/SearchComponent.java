@@ -13,6 +13,8 @@ import com.documentum.web.form.Control;
 import com.documentum.web.form.Form;
 import com.documentum.web.form.IReturnListener;
 import com.documentum.web.form.control.*;
+import com.documentum.web.formext.action.ActionService;
+import com.documentum.web.formext.action.IActionCompleteListener;
 import com.documentum.web.formext.component.Component;
 import com.documentum.web.formext.component.Container;
 import ru.rb.ccdea.config.TypeConfigProcessor;
@@ -21,6 +23,7 @@ import ru.rb.ccdea.control.PrintControl;
 import ru.rb.ccdea.dialog.ManageMultivalueComponent;
 import ru.rb.ccdea.dialog.SelectSingleValueComponent;
 import ru.rb.ccdea.search.filter.IFilterProcessor;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.utils.StringUtils;
 
 import java.util.*;
@@ -35,23 +38,37 @@ public class SearchComponent extends Container {
 	private static final String ARCHIVE_TYPES = "'rar','zip','arj','7z'";
 
     private static final String printDql= 
-    	    " select cont.r_object_id, cont.object_name, cont.r_content_size "
-		    + " from dm_sysobject#1 cont, dm_relation rel "
+//    	    " select cont.r_object_id, cont.object_name, cont.r_content_size "
+//		    + " from dm_sysobject#1 cont, dm_relation rel "
+//		    + " where rel.relation_name='ccdea_content_relation' "
+//		    + " and cont.i_chronicle_id = rel.child_id "
+//		    + " and rel.parent_id in ('#2') "
+//		    + " and cont.a_content_type = 'pdf' and cont.r_content_size > 0 "
+    		" select distinct cont.r_object_id "
+		    + " from ccdea_doc_content#1 cont, dm_relation rel "
 		    + " where rel.relation_name='ccdea_content_relation' "
 		    + " and cont.i_chronicle_id = rel.child_id "
 		    + " and rel.parent_id in ('#2') "
-		    + " and cont.a_content_type = 'pdf' and cont.r_content_size > 0 "
+		    + " and cont.b_is_original = true and cont.r_content_size > 0 "
     ;
     
     private static final String printDossierDql =
-    	    " select cont.r_object_id, cont.object_name, cont.r_content_size "
-    		+ " from dm_sysobject#1 cont, dm_relation rel, ccdea_base_doc doc1, ccdea_base_doc doc2 "
+//    	    " select cont.r_object_id, cont.object_name, cont.r_content_size "
+//    		+ " from dm_sysobject#1 cont, dm_relation rel, ccdea_base_doc doc1, ccdea_base_doc doc2 "
+//            + " where rel.relation_name='ccdea_content_relation' "
+//            + " and cont.i_chronicle_id = rel.child_id "
+//            + " and rel.parent_id = doc1.r_object_id "
+//            + " and doc1.id_dossier = doc2.id_dossier "
+//            + " and doc2.r_object_id in ('#2') "
+//            + " and cont.a_content_type = 'pdf' and cont.r_content_size > 0 "
+    		" select distinct cont.r_object_id "
+    		+ " from ccdea_doc_content#1 cont, dm_relation rel, ccdea_base_doc doc1, ccdea_base_doc doc2 "
             + " where rel.relation_name='ccdea_content_relation' "
             + " and cont.i_chronicle_id = rel.child_id "
             + " and rel.parent_id = doc1.r_object_id "
             + " and doc1.id_dossier = doc2.id_dossier "
             + " and doc2.r_object_id in ('#2') "
-            + " and cont.a_content_type = 'pdf' and cont.r_content_size > 0 "
+            + " and cont.b_is_original = true and cont.r_content_size > 0 "
 	;
 
     protected final static NlsResourceBundle searchNlsBundle =
@@ -204,11 +221,11 @@ public class SearchComponent extends Container {
         }
         DfLogger.debug(this, sel.toString(), null, null);
         if(sel.size()>0) {
-            PrintControl print = (PrintControl) getControl("print");
-            print.setSession(getDfSession());
-            setContentObjects(print, sel, printAllVersions,
+//            PrintControl print = (PrintControl) getControl("print");
+//            print.setSession(getDfSession());
+            setContentObjects(null, sel, printAllVersions,
                     "printDossierButton".equals(c.getName()));
-            print.setPrint(true);
+//            print.setPrint(true);
         } else {
         	Label errorLbl = (Label) getControl("error_message", Label.class);
         	errorLbl.setLabel("Не выбраны документы для отправки на печать.");
@@ -245,9 +262,9 @@ public class SearchComponent extends Container {
 
     private void setContentObjects(PrintControl control,Set<String> selectedDocuments,
                                           boolean allVersions, boolean dossier){
-        List<String> contentIds = new ArrayList<String>();
-        List<String> contentNames = new ArrayList<String>();
-        List<String> contentSizes = new ArrayList<String>();
+//        List<String> contentIds = new ArrayList<String>();
+//        List<String> contentNames = new ArrayList<String>();
+//        List<String> contentSizes = new ArrayList<String>();
 
         IDfCollection col = null;
         try {
@@ -258,11 +275,23 @@ public class SearchComponent extends Container {
             dql = dql.replace("#3", ARCHIVE_TYPES);
             query.setDQL(dql);
             col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
-            while (col.next()) {
-                contentIds.add(col.getString("r_object_id"));
-                contentNames.add(col.getString("object_name"));
-                contentSizes.add(col.getString("r_content_size"));
-            }
+			while (col.next()) {
+				final String objId = col.getString("r_object_id");
+				// contentIds.add(col.getString("r_object_id"));
+				// contentNames.add(col.getString("object_name"));
+				// contentSizes.add(col.getString("r_content_size"));
+				ArgumentList actionArgs = new ArgumentList();
+				actionArgs.add("objectId", objId);
+				actionArgs.add("type", ContentPersistence.TYPE_NAME);
+				ActionService.execute("ucfview", actionArgs, getContext(), this, new IActionCompleteListener() {
+
+					@Override
+					public void onComplete(String s, boolean b, Map m) {
+						DfLogger.debug(this, "Action 'ucfview' for content '" + objId + "' successfully done.", null,
+								null);
+					}
+				});
+			}
         } catch (DfException e) {
             DfLogger.error(this, e.getMessage(), null, e);
         } finally {
@@ -274,10 +303,10 @@ public class SearchComponent extends Container {
                 }
             }
         }
-        control.setObjectToPrint(StringUtils.joinStrings(contentIds, ","));
-        control.setContentNames(StringUtils.joinStrings(contentNames, ","));
-        control.setContentSizes(StringUtils.joinStrings(contentSizes, ","));
-        control.setContentCount(contentIds.size());
+//        control.setObjectToPrint(StringUtils.joinStrings(contentIds, ","));
+//        control.setContentNames(StringUtils.joinStrings(contentNames, ","));
+//        control.setContentSizes(StringUtils.joinStrings(contentSizes, ","));
+//        control.setContentCount(contentIds.size());
     }
 
     private final static Set<String> docNumberTypes= new HashSet<String>();

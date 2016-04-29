@@ -33,12 +33,7 @@
     <table><tr>
     <td align="right">
         <table><tr>
-        <td>
-                <dmfx:actionbutton action="ucfview" nlsid="MSG_SHOW_CONTENT">
-                    <dmfx:argument name="objectId" contextvalue="contentObjectId"/>
-                    <dmf:argument name="type" value="ccdea_doc_content"/>
-                </dmfx:actionbutton>
-        </td>
+        
         <td>
                 <dmfx:actionbutton action="changeDossier" nlsid="MSG_CHANGE_DOSSIER">
                     <dmfx:argument name="objectId" contextvalue="objectId"/>

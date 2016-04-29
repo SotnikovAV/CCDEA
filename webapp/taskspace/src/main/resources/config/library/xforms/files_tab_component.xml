@@ -42,6 +42,13 @@
 					<visible>true</visible>
 				</column>
 				<column>
+					<attribute>r_version_label</attribute>
+					<label>
+						<nlsid>MSG_VERSION</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
 					<attribute>a_content_type</attribute>
 					<label>
 						<nlsid>MSG_CONTENT_TYPE</nlsid>

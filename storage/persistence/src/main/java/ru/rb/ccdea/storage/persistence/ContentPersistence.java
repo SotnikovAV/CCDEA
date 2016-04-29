@@ -66,7 +66,7 @@ public class ContentPersistence extends BasePersistence {
 			throws DfException {
 		String contentId = null;
 		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id='"
-				+ documentId + "') and a_content_type='pdf' order by r_modify_date desc";
+				+ documentId + "') order by r_modify_date desc";
 
 		DfLogger.info(dfSession, dql, null, null);
 		IDfCollection rs = null;

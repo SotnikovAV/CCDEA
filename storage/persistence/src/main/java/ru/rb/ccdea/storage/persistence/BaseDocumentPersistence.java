@@ -12,23 +12,23 @@ public class BaseDocumentPersistence extends BasePersistence{
 
     protected static final String TYPE_NAME = "ccdea_base_doc";
 
-    protected static final String ATTR_DOSSIER = "id_dossier";
-    protected static final String ATTR_BRANCH_CODE = "s_reg_branch_code";
-    protected static final String ATTR_CUSTOMER_NUMBER = "s_customer_number";
-    protected static final String ATTR_CUSTOMER_NAME = "s_customer_name";
-    protected static final String ATTR_PASSPORT_NUMBER = "s_passport_number";
-    protected static final String ATTR_CONTRACT_NUMBER = "s_contract_number";
-    protected static final String ATTR_CONTRACT_DATE = "t_contract_date";
-    protected static final String ATTR_LAST_CHANGE_DATE = "t_last_change_date";
-    protected static final String ATTR_LAST_CHANGE_AUTHOR = "s_last_change_author";
-    protected static final String ATTR_DOC_SOURCE_CODE = "s_doc_source_code";
-    protected static final String ATTR_DOC_SOURCE_ID = "s_doc_source_id";
-    protected static final String ATTR_PASSPORT_TYPE_CODE = "s_passport_type_code";
-    protected static final String ATTR_AUTHOR_DEPARTMENT_CODE = "s_author_department_code";
-    protected static final String ATTR_DOC_CHANNEL_NAME = "s_doc_channel_name";
-    protected static final String ATTR_DOC_CHANNEL_REF_ID = "s_doc_channel_ref_id";
-    protected static final String ATTR_CONTENT_URL = "s_content_url";
-    protected static final String ATTR_DOCUMENT_COPY = "id_document_copy";
+    public static final String ATTR_DOSSIER = "id_dossier";
+    public static final String ATTR_BRANCH_CODE = "s_reg_branch_code";
+    public static final String ATTR_CUSTOMER_NUMBER = "s_customer_number";
+    public static final String ATTR_CUSTOMER_NAME = "s_customer_name";
+    public static final String ATTR_PASSPORT_NUMBER = "s_passport_number";
+    public static final String ATTR_CONTRACT_NUMBER = "s_contract_number";
+    public static final String ATTR_CONTRACT_DATE = "t_contract_date";
+    public static final String ATTR_LAST_CHANGE_DATE = "t_last_change_date";
+    public static final String ATTR_LAST_CHANGE_AUTHOR = "s_last_change_author";
+    public static final String ATTR_DOC_SOURCE_CODE = "s_doc_source_code";
+    public static final String ATTR_DOC_SOURCE_ID = "s_doc_source_id";
+    public static final String ATTR_PASSPORT_TYPE_CODE = "s_passport_type_code";
+    public static final String ATTR_AUTHOR_DEPARTMENT_CODE = "s_author_department_code";
+    public static final String ATTR_DOC_CHANNEL_NAME = "s_doc_channel_name";
+    public static final String ATTR_DOC_CHANNEL_REF_ID = "s_doc_channel_ref_id";
+    public static final String ATTR_CONTENT_URL = "s_content_url";
+    public static final String ATTR_DOCUMENT_COPY = "id_document_copy";
 
     public static final String CONTRACTOR_COLUMN_MULTI = "Мульти";
     public static final String CCDEA_PRIVELEGED_USERS_GROUP_NAME = "ccdea_privelege_users_group";

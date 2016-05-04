@@ -97,7 +97,7 @@ public class ContentService extends DfService implements IContentService {
 				dfSession.commitTrans();
 			}
 //
-//			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
+			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
 //
 //			if (transformResponseIds.size() > 0) {
 //				for (String transformResponseId : transformResponseIds) {
@@ -190,7 +190,7 @@ public class ContentService extends DfService implements IContentService {
 			IDfSysObject originalContentSysObject = ContentPersistence.searchOriginalContentObjectByDocumentId(dfSession, documentId.getId());
 
 			ContentLoader.loadContentFile(originalContentSysObject, contentXmlObject, true);
-			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
+			
 
 //			IDfSysObject documentContentSysObject = null;
 //
@@ -245,6 +245,8 @@ public class ContentService extends DfService implements IContentService {
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();
 			}
+			
+			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
 //
 //			if (transformResponseIds.size() > 0) {
 //				for (String transformResponseId : transformResponseIds) {
@@ -329,8 +331,7 @@ public class ContentService extends DfService implements IContentService {
 			IDfSysObject originalContentSysObject = ContentPersistence.createContentObject(dfSession, contentSourceCode,
 					contentSourceId, true);
 			ContentLoader.loadContentFile(originalContentSysObject, contentXmlObject);
-			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
-			
+						
 			for (IDfId docId : documentIds) {
 				ContentPersistence.createDocumentContentRelation(dfSession, docId,
 						originalContentSysObject.getObjectId());
@@ -380,6 +381,8 @@ public class ContentService extends DfService implements IContentService {
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();
 			}
+			
+			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
 //
 //			if (transformResponseIds.size() > 0) {
 //				for (String transformResponseId : transformResponseIds) {
@@ -468,10 +471,7 @@ public class ContentService extends DfService implements IContentService {
 			IDfSysObject originalContentSysObject = ContentPersistence.createContentObject(dfSession, contentSourceCode,
 					contentSourceId, true);
 			ContentLoader.loadContentFile(originalContentSysObject, contentXmlObject);
-			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
-
-			modifiedContentIdList.add(contentId.getId());
-
+			
 //			String contentType = originalContentSysObject.getContentType();
 //			if (!ContentLoader.isPdfType(contentType)) {
 //				transformJobId = CTSRequestBuilder.convertToPdfRequest(dfSession, contentId.getId(), false,
@@ -510,6 +510,8 @@ public class ContentService extends DfService implements IContentService {
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();
 			}
+			
+			modifiedContentIdList.add(originalContentSysObject.getObjectId().getId());
 
 //			if (transformResponseIds.size() > 0) {
 //				IDfSysObject oldDocumentContentSysObject = documentContentSysObject;

@@ -2,6 +2,7 @@ package ru.rb.ccdea.storage.jobs;
 
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import ru.rb.ccdea.adapters.mq.binding.pd.MCDocInfoModifyPDType;
@@ -25,6 +26,11 @@ public class PDMessageJob extends AbstractJob{
 
                 DfLogger.info(this, "Start MessageID: {0}", new String[] {messageId.getId()}, null);
 
+                if(!ExternalMessagePersistence.beginProcessDocMsg(dfSession, messageId)) {
+                	DfLogger.info(this, "Already in process MessageID: {0}", new String[]{messageId.getId()}, null);
+    				return 0;
+    			}
+                
                 if (!isTransAlreadyActive) {
                     dfSession.beginTrans();
                 }

@@ -33,24 +33,24 @@ import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
 
 public class ExternalMessagePersistence extends BasePersistence {
 
-    protected static final String TYPE_NAME = "ccdea_external_message";
+    public static final String TYPE_NAME = "ccdea_external_message";
 
-    protected static final String ATTR_MESSAGE_ESB_ID = "s_message_id";
-    protected static final String ATTR_MODIFICATION_VERB = "s_modification_verb";
-    protected static final String ATTR_MESSAGE_TYPE = "s_message_type";
-    protected static final String ATTR_SOURCE_KEY = "s_source_key";
-    protected static final String ATTR_MODIFICATION_TIME = "t_modification_time";
-    protected static final String ATTR_CURRENT_STATE = "n_current_state";
-    protected static final String ATTR_DOC_SOURCE_ID = "s_doc_source_id";
-    protected static final String ATTR_DOC_SOURCE_CODE = "s_doc_source_code";
-    protected static final String ATTR_CONTENT_SOURCE_ID = "s_content_source_id";
-    protected static final String ATTR_CONTENT_SOURCE_CODE = "s_content_source_code";
-    protected static final String ATTR_REPLY_TIME = "t_reply_time";
-    protected static final String ATTR_REPLY_ERROR_CODE = "s_reply_error_code";
-    protected static final String ATTR_REPLY_ERROR_DESCRIPTION = "s_reply_error_description";
-    protected static final String ATTR_RESULT_DOCUMENT_IDS = "id_document_r";
-    protected static final String ATTR_RESULT_CONTENT_IDS = "id_content_r";
-    protected static final String ATTR_CTS_REQUEST_ID = "id_cts_request";
+    public static final String ATTR_MESSAGE_ESB_ID = "s_message_id";
+    public static final String ATTR_MODIFICATION_VERB = "s_modification_verb";
+    public static final String ATTR_MESSAGE_TYPE = "s_message_type";
+    public static final String ATTR_SOURCE_KEY = "s_source_key";
+    public static final String ATTR_MODIFICATION_TIME = "t_modification_time";
+    public static final String ATTR_CURRENT_STATE = "n_current_state";
+    public static final String ATTR_DOC_SOURCE_ID = "s_doc_source_id";
+    public static final String ATTR_DOC_SOURCE_CODE = "s_doc_source_code";
+    public static final String ATTR_CONTENT_SOURCE_ID = "s_content_source_id";
+    public static final String ATTR_CONTENT_SOURCE_CODE = "s_content_source_code";
+    public static final String ATTR_REPLY_TIME = "t_reply_time";
+    public static final String ATTR_REPLY_ERROR_CODE = "s_reply_error_code";
+    public static final String ATTR_REPLY_ERROR_DESCRIPTION = "s_reply_error_description";
+    public static final String ATTR_RESULT_DOCUMENT_IDS = "id_document_r";
+    public static final String ATTR_RESULT_CONTENT_IDS = "id_content_r";
+    public static final String ATTR_CTS_REQUEST_ID = "id_cts_request";
 
     public static int MESSAGE_STATE_ON_VALIDATION = 0;
     public static int MESSAGE_STATE_VALIDATION_ERROR = 1;
@@ -659,4 +659,51 @@ public class ExternalMessagePersistence extends BasePersistence {
         }
         return messageObject;
     }
+    
+	public static boolean beginProcessContentMsg(IDfSession dfSession, IDfId messageId) throws DfException {
+		
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		try {
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
+			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
+			messageSysObject.lock();
+			int currentState = messageSysObject.getInt(ExternalMessagePersistence.ATTR_CURRENT_STATE);
+			if (ExternalMessagePersistence.MESSAGE_STATE_VALIDATION_PASSED == currentState) {
+				ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
+				messageSysObject.save();
+				return true;
+			} else {
+				return false;
+			}
+		} finally {
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.commitTrans();
+			}
+		}
+	}
+	
+	public static boolean beginProcessDocMsg(IDfSession dfSession, IDfId messageId) throws DfException {
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		try {
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
+			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
+			messageSysObject.lock();
+			int currentState = messageSysObject.getInt(ExternalMessagePersistence.ATTR_CURRENT_STATE);
+			if (ExternalMessagePersistence.MESSAGE_STATE_VALIDATION_PASSED == currentState) {
+				ExternalMessagePersistence.startDocProcessing(messageSysObject);
+				messageSysObject.save();
+				return true;
+			} else {
+				return false;
+			}
+		} finally {
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.commitTrans();
+			}
+		}
+	}
 }

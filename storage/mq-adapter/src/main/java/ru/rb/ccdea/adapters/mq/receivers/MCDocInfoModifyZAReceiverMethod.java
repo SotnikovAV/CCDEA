@@ -1,29 +1,33 @@
 package ru.rb.ccdea.adapters.mq.receivers;
 
-import com.documentum.fc.client.*;
-
-import ru.rb.ccdea.adapters.mq.binding.contract.ContractDetailsType;
-import ru.rb.ccdea.adapters.mq.binding.contract.MCDocInfoModifyContractType;
-import ru.rb.ccdea.adapters.mq.binding.request.ContractRecordType;
-import ru.rb.ccdea.adapters.mq.binding.request.MCDocInfoModifyZAType;
-import ru.rb.ccdea.adapters.mq.binding.request.ObjectIdentifiersType;
-import ru.rb.ccdea.adapters.mq.binding.request.ZADetailsType;
-import ru.rb.ccdea.adapters.mq.utils.*;
-import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.documentum.fc.client.IDfSession;
+import com.documentum.fc.client.IDfSysObject;
+
+import ru.rb.ccdea.adapters.mq.binding.request.ContractRecordType;
+import ru.rb.ccdea.adapters.mq.binding.request.MCDocInfoModifyZAType;
+import ru.rb.ccdea.adapters.mq.binding.request.ObjectIdentifiersType;
+import ru.rb.ccdea.adapters.mq.binding.request.ZADetailsType;
+import ru.rb.ccdea.adapters.mq.utils.BranchValidator;
+import ru.rb.ccdea.adapters.mq.utils.CustomerValidator;
+import ru.rb.ccdea.adapters.mq.utils.MessageObjectProcessor;
+import ru.rb.ccdea.adapters.mq.utils.UnifiedResult;
+import ru.rb.ccdea.adapters.mq.utils.XmlContentProcessor;
+import ru.rb.ccdea.adapters.mq.utils.XmlContentValidator;
+import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
+
 public class MCDocInfoModifyZAReceiverMethod extends BaseReceiverMethod {
 
 	@Override
-	protected Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
+	public Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
 		return new XmlContentProcessor(MCDocInfoModifyZAType.class).unmarshalSysObjectContent(messageSysObject, result);
 	}
 
 	@Override
-	protected XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
+	public XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
 		XmlContentValidator[] validators = new XmlContentValidator[3];
 		validators[0] = new XmlContentValidator(dfSession) {
 
@@ -94,7 +98,7 @@ public class MCDocInfoModifyZAReceiverMethod extends BaseReceiverMethod {
 	}
 
 	@Override
-	protected MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
+	public MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
 		MessageObjectProcessor messageObjectProcessor = new MessageObjectProcessor(messageXmlContent) {
 			@Override
 			public String getMessageType() {

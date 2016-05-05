@@ -14,12 +14,12 @@ import java.util.List;
 public class MCDocInfoModifySPDReceiverMethod extends BaseReceiverMethod{
 
     @Override
-    protected Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
+	public Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
         return new XmlContentProcessor(MCDocInfoModifySPDType.class).unmarshalSysObjectContent(messageSysObject, result);
     }
 
     @Override
-    protected XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
+	public XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
         XmlContentValidator[] validators = new XmlContentValidator[3];
         validators[0] = new CustomerValidator(dfSession) {
             @Override
@@ -51,7 +51,7 @@ public class MCDocInfoModifySPDReceiverMethod extends BaseReceiverMethod{
     }
 
     @Override
-    protected MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
+	public MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
         MessageObjectProcessor messageObjectProcessor = new MessageObjectProcessor(messageXmlContent) {
             @Override
             public String getMessageType() {

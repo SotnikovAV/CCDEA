@@ -7,6 +7,7 @@ import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSessionManager;
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
@@ -39,6 +40,11 @@ public class RequestMessageJob extends AbstractJob {
 
 				DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
 
+				if(!ExternalMessagePersistence.beginProcessDocMsg(dfSession, messageId)) {
+					DfLogger.info(this, "Already in process MessageID: {0}", new String[]{messageId.getId()}, null);
+					return;
+				}
+				
 				if (!isTransAlreadyActive) {
 					dfSession.beginTrans();
 				}

@@ -117,8 +117,11 @@ public class BaseDocumentPersistence extends BasePersistence{
         versionRecordDetails.setStringWithHistory(document, ATTR_CUSTOMER_NAME, keyDetails.customerName);
         if (keyDetails.passportNumber != null && !keyDetails.passportNumber.trim().isEmpty()) {
             versionRecordDetails.setStringWithHistory(document, ATTR_PASSPORT_NUMBER, keyDetails.passportNumber);
+            versionRecordDetails.setStringWithHistory(document, ATTR_CONTRACT_NUMBER, "");
+            versionRecordDetails.setTimeWithHistory(document, ATTR_CONTRACT_DATE, DfTime.DF_NULLDATE);
         }
         else {
+        	versionRecordDetails.setStringWithHistory(document, ATTR_PASSPORT_NUMBER, "");
             versionRecordDetails.setStringWithHistory(document, ATTR_CONTRACT_NUMBER, keyDetails.contractNumber);
             versionRecordDetails.setTimeWithHistory(document, ATTR_CONTRACT_DATE, keyDetails.contractDate != null ? new DfTime(keyDetails.contractDate) : DfTime.DF_NULLDATE);
         }

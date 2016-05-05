@@ -21,12 +21,12 @@ import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 public class MCDocInfoModifyPDReceiverMethod extends BaseReceiverMethod{
 
     @Override
-    protected Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
+	public Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
         return new XmlContentProcessor(MCDocInfoModifyPDType.class).unmarshalSysObjectContent(messageSysObject, result);
     }
 
     @Override
-    protected XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
+	public XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
         XmlContentValidator[] validators = new XmlContentValidator[3];
         validators[0] = new CustomerValidator(dfSession) {
             @Override
@@ -71,7 +71,7 @@ public class MCDocInfoModifyPDReceiverMethod extends BaseReceiverMethod{
     }
 
     @Override
-    protected MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
+	public MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
         MessageObjectProcessor messageObjectProcessor = new MessageObjectProcessor(messageXmlContent) {
             @Override
             public String getMessageType() {

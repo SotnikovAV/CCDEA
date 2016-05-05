@@ -50,12 +50,15 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
 
-//			if (!isTransAlreadyActive) {
-//				dfSession.beginTrans();
-//			}
+			
+			
+			if(!ExternalMessagePersistence.beginProcessContentMsg(dfSession, messageId)) {
+				DfLogger.info(this, "Already in process MessageID: {0}", new String[]{messageId.getId()}, null);
+				return;
+			}
 
 			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
-
+			
 			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
 			DocPutType docPutXmlObject = unmarshaller
@@ -175,11 +178,11 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			IDfLoginInfo loginInfo = clientx.getLoginInfo();
 			loginInfo.setUser("dmadmin");
-			loginInfo.setPassword("dmadmin");
+			loginInfo.setPassword("Fkut,hf15");
 			loginInfo.setDomain(null);
 
-			sessionManager.setIdentity("UCB", loginInfo);
-			testSession = sessionManager.getSession("UCB");
+			sessionManager.setIdentity("ELAR", loginInfo);
+			testSession = sessionManager.getSession("ELAR");
 
 			DocPutMesssageJob job = new DocPutMesssageJob();
 

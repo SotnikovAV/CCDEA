@@ -27,9 +27,9 @@ public abstract class BaseReceiverMethod extends WorkflowMethod implements IDfMe
 
     public static SimpleDateFormat replyDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
-    protected abstract Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result);
-    protected abstract XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) throws ValidationException;
-    protected abstract MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent);
+    public abstract Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result);
+    public abstract XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) throws ValidationException;
+    public abstract MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent);
 
     @Override
     protected int doTask(IDfWorkitem iDfWorkitem, IDfProperties iDfProperties, PrintWriter printWriter) throws Exception {
@@ -95,7 +95,7 @@ public abstract class BaseReceiverMethod extends WorkflowMethod implements IDfMe
         }
     }
 
-    protected void beforeGenearateResult(MessageObjectProcessor messageObjectProcessor, IDfSysObject messageSysObject, UnifiedResult receiverResult) {
+    public void beforeGenearateResult(MessageObjectProcessor messageObjectProcessor, IDfSysObject messageSysObject, UnifiedResult receiverResult) {
 
     }
 

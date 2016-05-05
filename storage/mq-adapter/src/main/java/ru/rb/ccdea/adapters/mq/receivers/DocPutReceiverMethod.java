@@ -14,17 +14,17 @@ import java.util.List;
 
 public class DocPutReceiverMethod extends BaseReceiverMethod{
     @Override
-    protected Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
+	public Object getXmlContent(IDfSysObject messageSysObject, UnifiedResult result) {
         return new XmlContentProcessor(DocPutType.class).unmarshalSysObjectContent(messageSysObject, result);
     }
 
     @Override
-    protected XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
+	public XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
         return new XmlContentValidator[] {new DocPutContentExistingValidator(dfSession)};
     }
 
     @Override
-    protected MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
+	public MessageObjectProcessor getMessageObjectProcessor(Object messageXmlContent) {
         MessageObjectProcessor messageObjectProcessor = new MessageObjectProcessor(messageXmlContent) {
             @Override
             public String getMessageType() {
@@ -66,7 +66,7 @@ public class DocPutReceiverMethod extends BaseReceiverMethod{
     }
 
     @Override
-    protected void beforeGenearateResult(MessageObjectProcessor processor, IDfSysObject messageSysObject, UnifiedResult receiverResult) {
+	public void beforeGenearateResult(MessageObjectProcessor processor, IDfSysObject messageSysObject, UnifiedResult receiverResult) {
         try {
             if (receiverResult.isSuccess() && !processor.isValidDocMessageExists(messageSysObject)) {
                 receiverResult.setWarning("Cant find docput doc");

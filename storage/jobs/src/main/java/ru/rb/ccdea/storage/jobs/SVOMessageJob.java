@@ -45,6 +45,11 @@ public class SVOMessageJob extends AbstractJob{
 
             DfLogger.info(this, "Start MessageID: {0}", new String[]{messageId.getId()}, null);
 
+            if(!ExternalMessagePersistence.beginProcessDocMsg(dfSession, messageId)) {
+            	DfLogger.info(this, "Already in process MessageID: {0}", new String[]{messageId.getId()}, null);
+				return;
+			}
+            
             if (!isTransAlreadyActive) {
                 dfSession.beginTrans();
             }

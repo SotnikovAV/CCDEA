@@ -275,23 +275,19 @@ public class SearchComponent extends Container {
             dql = dql.replace("#3", ARCHIVE_TYPES);
             query.setDQL(dql);
             col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
+//            final List<String> objIds = new ArrayList<String>();
 			while (col.next()) {
-				final String objId = col.getString("r_object_id");
-				// contentIds.add(col.getString("r_object_id"));
-				// contentNames.add(col.getString("object_name"));
-				// contentSizes.add(col.getString("r_content_size"));
+				String objId = col.getString("r_object_id");
 				ArgumentList actionArgs = new ArgumentList();
 				actionArgs.add("objectId", objId);
 				actionArgs.add("type", ContentPersistence.TYPE_NAME);
-				ActionService.execute("ucfview", actionArgs, getContext(), this, new IActionCompleteListener() {
-
-					@Override
-					public void onComplete(String s, boolean b, Map m) {
-						DfLogger.debug(this, "Action 'ucfview' for content '" + objId + "' successfully done.", null,
-								null);
-					}
-				});
+				ActionService.execute("ucfview", actionArgs, getContext(), this, null);
+				// contentIds.add(col.getString("r_object_id"));
+				// contentNames.add(col.getString("object_name"));
+				// contentSizes.add(col.getString("r_content_size"));
+				
 			}
+			
         } catch (DfException e) {
             DfLogger.error(this, e.getMessage(), null, e);
         } finally {

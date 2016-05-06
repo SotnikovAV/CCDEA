@@ -295,11 +295,7 @@ public class ExternalMessagePersistence extends BasePersistence {
             query.setDQL(dql);
             rs = query.execute(contentMessageObject.getSession(), IDfQuery.DF_READ_QUERY);
             if (rs.next()) {
-                contentMessageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_ON_WAITING);
-                contentMessageObject.save();
-
-                logMessageState(contentMessageObject, "contentOnWaiting");
-
+            	setMessageOnWaiting(contentMessageObject);
                 result = true;
             }
         } finally {
@@ -308,6 +304,12 @@ public class ExternalMessagePersistence extends BasePersistence {
             }
         }
         return result;
+    }
+    
+    public static void setMessageOnWaiting(IDfSysObject contentMessageObject) throws DfException {
+    	contentMessageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_ON_WAITING);
+        contentMessageObject.save();
+        logMessageState(contentMessageObject, "contentOnWaiting");
     }
     
     public static List<IDfSysObject> getProcessedDocMessage(IDfSysObject contentMessageObject) throws DfException{

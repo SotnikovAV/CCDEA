@@ -9,6 +9,7 @@
     <elements href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_junrar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=ucb_ccdea_junrar&amp;type=dmc_jar#//@dataModel"/>
     <elements href="urn:com.emc.ide.artifact.jardef.jardef/ucb_ccdea_persistence?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=ucb_ccdea_persistence&amp;type=dmc_jar#//@dataModel"/>
     <elements href="urn:com.emc.ide.artifact.jardef.jardef/commons-compress-1.10.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fucb_ccdea_content_service%2Fucb_ccdea_persistence_library&amp;name=commons-compress-1.10.jar&amp;type=dmc_jar#//@dataModel"/>
+    <elements href="urn:com.emc.ide.artifact.jardef.jardef/org.tukaani.xz-1.5.jar?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_api/Artifacts/JAR%20Definitions/org.tukaani.xz-1.5.jar.jardef#//@dataModel"/>
   </dataModel>
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
 </Artifact:Artifact>

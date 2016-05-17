@@ -264,7 +264,7 @@ public class ExternalMessagePersistence extends BasePersistence {
 		String dql = "SELECT * FROM ccdea_external_message con WHERE con.r_object_id != '"
 				+ contentMessageObject.getObjectId().getId() + "' and r_creation_date < date('"
 				+ contentMessageObject.getCreationDate().asString("yyyy-MM-dd HH:mi:ss") + "','yyyy-MM-dd HH:mi:ss') "
-				+ " and n_current_state > 1 and n_current_state < 7 and EXISTS( "
+				+ " and n_current_state > 1 and n_current_state <= 7 and EXISTS( "
 				+ " SELECT * FROM ccdea_external_message doc WHERE upper(doc.s_doc_source_code) = upper('"
 				+ docSourceSystem + "') AND doc.s_doc_source_id = '" + docSourceId
 				+ "' and con.s_doc_source_id = doc.s_content_source_id and upper(con.s_doc_source_code) = upper(doc.s_content_source_code))";

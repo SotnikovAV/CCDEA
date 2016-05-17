@@ -1,35 +1,15 @@
 package ru.rb.ccdea.storage.persistence;
 
+import com.documentum.fc.client.*;
+import com.documentum.fc.common.*;
+import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
-import com.documentum.fc.client.DfQuery;
-import com.documentum.fc.client.IDfActivity;
-import com.documentum.fc.client.IDfCollection;
-import com.documentum.fc.client.IDfEnumeration;
-import com.documentum.fc.client.IDfPersistentObject;
-import com.documentum.fc.client.IDfQuery;
-import com.documentum.fc.client.IDfSession;
-import com.documentum.fc.client.IDfSysObject;
-import com.documentum.fc.client.IDfWorkflowBuilder;
-import com.documentum.fc.common.DfException;
-import com.documentum.fc.common.DfId;
-import com.documentum.fc.common.DfList;
-import com.documentum.fc.common.DfLogger;
-import com.documentum.fc.common.DfTime;
-import com.documentum.fc.common.IDfId;
-import com.documentum.fc.common.IDfList;
-
-import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
+import java.util.*;
 
 public class ExternalMessagePersistence extends BasePersistence {
 
@@ -330,6 +310,30 @@ public class ExternalMessagePersistence extends BasePersistence {
     		docMessages.add((IDfSysObject)result.nextElement());
     	}
     	return docMessages;
+    }
+
+    /**
+     * проверка на дубликаты при обработке сообщений DocPut. Проверку производить по полям s_content_source_id и s_content_source_code.
+     * Если сообщение - дубликат, то переводить его в состояние 7. В поле s_reply_error_description записать "Дубликат".
+     * @param contentMessageObject сообщение, для которого ищем дубликаты.
+     * @throws DfException ошибка
+     */
+    public static void processDuplicateDocPutMessages(IDfSysObject contentMessageObject) throws DfException {
+        String contentSourceId = getContentSourceId(contentMessageObject);
+        String contentSourceCode = getContentSourceCode(contentMessageObject);
+        StringBuilder dql = new StringBuilder("select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica from ").append(TYPE_NAME).append(" where r_object_id !=").append(DfUtil.toQuotedString(contentMessageObject.getObjectId().getId())).
+                append(" and (upper(").append(ATTR_CONTENT_SOURCE_CODE).append(") = upper(").append(DfUtil.toQuotedString(contentSourceCode)).append("))").
+                append(" and (").append(ATTR_CONTENT_SOURCE_ID).append(" = ").append(DfUtil.toQuotedString(contentSourceId)).append(")");
+
+        IDfEnumeration result = contentMessageObject.getSession().getObjectsByQuery(dql.toString(), null);
+        while (result.hasMoreElements()) {
+            IDfSysObject docPutSysObject = (IDfSysObject) result.nextElement();
+            docPutSysObject.setString(ATTR_REPLY_ERROR_DESCRIPTION, "Дубликат");
+            docPutSysObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_PROCESSED);
+            docPutSysObject.save();
+            DfLogger.debug(ExternalMessagePersistence.class, "Duplicate found for MessageID {0} with content source id = {1} and content source code = {2}",
+                    new String[]{contentMessageObject.getObjectId().getId(), contentSourceId, contentSourceCode}, null);
+        }
     }
 
     public static void updateWaitingContents(IDfSysObject docMessageObject) throws DfException {

@@ -58,7 +58,10 @@ public class DocPutMesssageJob extends AbstractJob {
 			}
 
 			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
-			
+
+			// проверка на дубликаты
+			ExternalMessagePersistence.processDuplicateDocPutMessages(messageSysObject);
+
 			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
 			DocPutType docPutXmlObject = unmarshaller

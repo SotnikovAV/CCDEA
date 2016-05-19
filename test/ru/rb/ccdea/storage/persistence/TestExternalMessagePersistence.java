@@ -13,6 +13,9 @@ import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
 import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSessionManager;
+import com.documentum.fc.client.IDfSysObject;
+import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
@@ -45,6 +48,123 @@ public class TestExternalMessagePersistence {
 			
 //			Assert.assertNotNull(dossier);
 			System.out.println("Message ids = " + messageIds.toString());
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (testSession != null) {
+				sessionManager.release(testSession);
+			}
+		}
+	}
+	
+	IDfSession testSession = null;
+	
+	
+	public static void main(String [] args) {
+		new TestExternalMessagePersistence().testBeginProcessContentMsgMultiThread();
+	}
+	
+	public void testBeginProcessContentMsgMultiThread() {
+		
+		IDfClientX clientx = new DfClientX();
+		IDfClient client = null;
+		IDfSessionManager sessionManager = null;
+		try {
+			client = clientx.getLocalClient();
+			sessionManager = client.newSessionManager();
+
+			IDfLoginInfo loginInfo = clientx.getLoginInfo();
+			loginInfo.setUser("dmadmin");
+			loginInfo.setPassword("Fkut,hf15");
+			loginInfo.setDomain(null);
+
+			sessionManager.setIdentity("ELAR", loginInfo);
+			testSession = sessionManager.getSession("ELAR");
+			
+			for(int i=0;i<10;i++) {
+				Runnable r1 = new Runnable() {
+
+					@Override
+					public void run() {
+						try {
+							
+							boolean isTransAlreadyActive = testSession.isTransactionActive();
+							try {
+								if (!isTransAlreadyActive) {
+									testSession.beginTrans();
+								}
+								IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("08035f5580215b32"));
+								messageSysObject.lock();
+								try {
+									Thread.sleep(10000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								int currentState = messageSysObject.getInt(ExternalMessagePersistence.ATTR_CURRENT_STATE);
+								if (ExternalMessagePersistence.MESSAGE_STATE_VALIDATION_PASSED == currentState) {
+									ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
+									messageSysObject.save();
+									System.out.println(true);
+								} else {
+									System.out.println(false);
+								}
+							} finally {
+								if (!isTransAlreadyActive && testSession.isTransactionActive()) {
+									testSession.commitTrans();
+								}
+							}
+						} catch (DfException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					
+				};
+				
+				Runnable r2 = new Runnable() {
+
+					@Override
+					public void run() {
+						try {
+							
+							boolean isTransAlreadyActive = testSession.isTransactionActive();
+							try {
+								if (!isTransAlreadyActive) {
+									testSession.beginTrans();
+								}
+								IDfSysObject messageSysObject = (IDfSysObject) testSession.getObject(new DfId("08035f5580215b32"));
+								messageSysObject.lock();
+								int currentState = messageSysObject.getInt(ExternalMessagePersistence.ATTR_CURRENT_STATE);
+								if (ExternalMessagePersistence.MESSAGE_STATE_VALIDATION_PASSED == currentState) {
+									ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
+									messageSysObject.save();
+									System.out.println(true);
+								} else {
+									System.out.println(false);
+								}
+							} finally {
+								if (!isTransAlreadyActive && testSession.isTransactionActive()) {
+									testSession.commitTrans();
+								}
+							}
+						} catch (DfException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					
+				};
+				Thread t1 = new Thread(r1, "r1 - " + i);
+				t1.start();
+				Thread t2 = new Thread(r2, "r2 - " + i);
+				t2.start();
+			}
+			
+			Thread.sleep(100000);
+			
+//			Assert.assertNotNull(dossier);
+//			System.out.println("Message ids = " + messageIds.toString());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

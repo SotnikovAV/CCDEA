@@ -245,16 +245,20 @@ public class FileAccessProperties {
 		} else {
 			indexDubleSlash = indexDubleSlash + 2;
 		}
-		int indexDog = url.indexOf("@", indexDubleSlash);
-		if (indexDog > 0) {
-			int indexUser = url.indexOf(':', indexDubleSlash);
-			if (indexUser < 0 || indexUser > indexDog) {
-				indexUser = indexDog;
-			} else {
-				fp.setPassword(url.substring(indexUser + 1, indexDog));
+
+		int indexDog = -1;
+		if ("ftp".equals(fp.getProtocol()) || "smb".equals(fp.getProtocol())) {
+			indexDog = url.indexOf("@", indexDubleSlash);
+			if (indexDog > 0) {
+				int indexUser = url.indexOf(':', indexDubleSlash);
+				if (indexUser < 0 || indexUser > indexDog) {
+					indexUser = indexDog;
+				} else {
+					fp.setPassword(url.substring(indexUser + 1, indexDog));
+				}
+				fp.setUser(url.substring(indexDubleSlash, indexUser));
 			}
-			fp.setUser(url.substring(indexDubleSlash, indexUser));
-		} 
+		}
 
 		int indexHost = url.indexOf(':', indexDog < 0?indexDubleSlash:indexDog);
 		if (indexHost < 0) {
@@ -301,6 +305,16 @@ public class FileAccessProperties {
 		}
 
 		return fp;
+	}
+
+	public static void main(String[] args) {
+		String s = "\\\\ntd1\\dfs\\LN2_2JD\\20160518\\F6F0936CEA2CBFA643257FB7002670C0\\FFSRU0767324054283379928_info@italengineering.ru_20160518_064043.pdf";
+		String s2 = "C:/Development/Workspaces/CCDEA_GITHUB/test/test.zip";
+		String s3 = "ftp://links:pass@test.exavault.com/transfer.pdf";
+		FileAccessProperties fileAccessProperties = FileAccessProperties.parseUrl(s);
+		FileAccessProperties fileAccessProperties2 = FileAccessProperties.parseUrl(s2);
+		FileAccessProperties fileAccessProperties3 = FileAccessProperties.parseUrl(s3);
+		System.out.println("done without errors.");
 	}
 
 }

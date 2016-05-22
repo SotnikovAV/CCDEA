@@ -52,7 +52,7 @@ public class MCDocInfoModifySVOReceiverMethod extends BaseReceiverMethod{
                 return svoXmlContent.getSVODetails().getVODetails();
             }
         };
-        validators[3] = new VODetailsMainDocIdentifiersValidator(dfSession);
+        // validators[3] = new VODetailsMainDocIdentifiersValidator(dfSession);
         return validators;
     }
 

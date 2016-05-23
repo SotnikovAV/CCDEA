@@ -31,8 +31,16 @@ public class SVOService extends DfService implements ISVOService{
             }
 
             IDfSysObject passportSysObject = SVOPersistence.createDocument(dfSession);
-            DossierKeyDetails keyDetailsFromMQ = SVOPersistence.getKeyDetailsFromMQ(documentXmlObject, voDetailsXmlObject);
-            IDfPersistentObject dossier = DossierPersistence.getOrCreateDossierByKeyDetails(dfSession, keyDetailsFromMQ);
+            IDfPersistentObject dossier = null;
+			try {
+				DossierKeyDetails keyDetailsFromMQ = SVOPersistence.getKeyDetailsFromMQ(documentXmlObject,
+						voDetailsXmlObject);
+				dossier = DossierPersistence.getOrCreateDossierByKeyDetails(dfSession, keyDetailsFromMQ);
+			} catch (Exception ex) {
+				DfLogger.warn(this,
+						"Не удалось получить досье для документа '" + passportSysObject.getObjectId().getId() + "'",
+						null, null);
+			}
 
             VersionRecordDetails versionRecordDetails = new VersionRecordDetails();
             versionRecordDetails.eventName = AuditPersistence.UPDATE_BY_METADATA_SAVE_EVENT_NAME;
@@ -40,7 +48,7 @@ public class SVOService extends DfService implements ISVOService{
             versionRecordDetails.userName = documentXmlObject.getUserId();
             versionRecordDetails.operationDate = documentXmlObject.getModificationDateTime().toGregorianCalendar().getTime();
 
-            SVOPersistence.saveFieldsToDocument(passportSysObject, documentXmlObject, voDetailsXmlObject, dossier.getObjectId().getId(), docSourceCode, docSourceId, versionRecordDetails);
+            SVOPersistence.saveFieldsToDocument(passportSysObject, documentXmlObject, voDetailsXmlObject, (dossier == null ? DfId.DF_NULLID_STR : dossier.getObjectId().getId()), docSourceCode, docSourceId, versionRecordDetails);
             svoDetailObjectId = passportSysObject.getObjectId().getId();
 
             ActionRecordDetails attachDocActionRecord = new ActionRecordDetails();
@@ -50,7 +58,7 @@ public class SVOService extends DfService implements ISVOService{
             attachDocActionRecord.operationDate = documentXmlObject.getModificationDateTime().toGregorianCalendar().getTime();
             attachDocActionRecord.dossierState = "";
             attachDocActionRecord.dossierFullArchiveNumber = "";
-            attachDocActionRecord.dossierDescription = DossierPersistence.getDossierDescription(dossier);
+            attachDocActionRecord.dossierDescription = dossier == null ? "" : DossierPersistence.getDossierDescription(dossier);
             attachDocActionRecord.oldDossierDescription = "";
 
             AuditPersistence.createActionRecord(dfSession, new DfId(svoDetailObjectId), attachDocActionRecord);
@@ -91,13 +99,23 @@ public class SVOService extends DfService implements ISVOService{
             IDfSysObject passportSysObject = SVOPersistence.lockDocumentForUpdate(dfSession, documentId);
             IDfPersistentObject dossier = null;
             IDfPersistentObject oldDossier = null;
-            DossierKeyDetails keyDetailsFromMQ = SVOPersistence.getKeyDetailsFromMQ(documentXmlObject, voDetailsXmlObject);
-            if (!keyDetailsFromMQ.equals(SVOPersistence.getKeyDetails(passportSysObject))) {
-                dossier = DossierPersistence.getOrCreateDossierByKeyDetails(dfSession, keyDetailsFromMQ);
-            }
-            else {
-                dossier = dfSession.getObject(SVOPersistence.getDossierId(passportSysObject));
-            }
+			try {
+				DossierKeyDetails keyDetailsFromMQ = SVOPersistence.getKeyDetailsFromMQ(documentXmlObject,
+						voDetailsXmlObject);
+				if (!keyDetailsFromMQ.equals(SVOPersistence.getKeyDetails(passportSysObject))) {
+					IDfId oldDossierId = SVOPersistence.getDossierId(passportSysObject);
+					if(oldDossierId != null && !oldDossierId.isNull()) {
+						oldDossier = dfSession.getObject(oldDossierId);
+					}
+					dossier = DossierPersistence.getOrCreateDossierByKeyDetails(dfSession, keyDetailsFromMQ);
+				} else {
+					dossier = dfSession.getObject(SVOPersistence.getDossierId(passportSysObject));
+				}
+			} catch (Exception ex) {
+				DfLogger.warn(this,
+						"Не удалось получить досье для документа '" + passportSysObject.getObjectId().getId() + "'",
+						null, null);
+			}
 
             VersionRecordDetails versionRecordDetails = new VersionRecordDetails();
             versionRecordDetails.eventName = AuditPersistence.UPDATE_BY_METADATA_SAVE_EVENT_NAME;
@@ -105,7 +123,7 @@ public class SVOService extends DfService implements ISVOService{
             versionRecordDetails.userName = documentXmlObject.getUserId();
             versionRecordDetails.operationDate = documentXmlObject.getModificationDateTime().toGregorianCalendar().getTime();
 
-            SVOPersistence.saveFieldsToDocument(passportSysObject, documentXmlObject, voDetailsXmlObject, dossier.getObjectId().getId(), docSourceCode, docSourceId, versionRecordDetails);
+            SVOPersistence.saveFieldsToDocument(passportSysObject, documentXmlObject, voDetailsXmlObject, (dossier == null ? DfId.DF_NULLID_STR : dossier.getObjectId().getId()), docSourceCode, docSourceId, versionRecordDetails);
 
             if (oldDossier != null) {
                 ActionRecordDetails attachDocActionRecord = new ActionRecordDetails();
@@ -115,8 +133,8 @@ public class SVOService extends DfService implements ISVOService{
                 attachDocActionRecord.operationDate = documentXmlObject.getModificationDateTime().toGregorianCalendar().getTime();
                 attachDocActionRecord.dossierState = "";
                 attachDocActionRecord.dossierFullArchiveNumber = "";
-                attachDocActionRecord.dossierDescription = DossierPersistence.getDossierDescription(dossier);
-                attachDocActionRecord.oldDossierDescription = DossierPersistence.getDossierDescription(oldDossier);;
+                attachDocActionRecord.dossierDescription = dossier == null ? "" : DossierPersistence.getDossierDescription(dossier);
+                attachDocActionRecord.oldDossierDescription =  oldDossier == null ? "" : DossierPersistence.getDossierDescription(oldDossier);
 
                 AuditPersistence.createActionRecord(dfSession, documentId, attachDocActionRecord);
             }

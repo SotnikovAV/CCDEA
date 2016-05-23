@@ -246,10 +246,29 @@ public class FileAccessProperties {
 			indexDubleSlash = indexDubleSlash + 2;
 		}
 
-		int indexDog = -1;
-		if ("ftp".equals(fp.getProtocol()) || "smb".equals(fp.getProtocol())) {
-			indexDog = url.indexOf("@", indexDubleSlash);
-			if (indexDog > 0) {
+		int indexDog = url.indexOf("@", indexDubleSlash);
+		if (indexDog > 0) {
+			int indexOfFirstRightSlash = url.indexOf("/", indexDubleSlash);
+			int indexOfFirstLeftSlash = url.indexOf("\\", indexDubleSlash);
+			int indexOfFirstSlash = -1;
+
+			if (indexOfFirstRightSlash > -1) {
+				indexOfFirstSlash = indexOfFirstRightSlash;
+				if (indexOfFirstLeftSlash > -1) {
+					if (indexOfFirstRightSlash < indexOfFirstLeftSlash) {
+						indexOfFirstSlash = indexOfFirstRightSlash;
+					} else {
+						indexOfFirstSlash = indexOfFirstLeftSlash;
+					}
+				} else {
+					indexOfFirstSlash = indexOfFirstRightSlash;
+				}
+			} else {
+				indexOfFirstSlash = indexOfFirstLeftSlash;
+			}
+
+			if (indexOfFirstSlash < 0 || indexDog < indexOfFirstSlash) {
+
 				int indexUser = url.indexOf(':', indexDubleSlash);
 				if (indexUser < 0 || indexUser > indexDog) {
 					indexUser = indexDog;
@@ -257,6 +276,8 @@ public class FileAccessProperties {
 					fp.setPassword(url.substring(indexUser + 1, indexDog));
 				}
 				fp.setUser(url.substring(indexDubleSlash, indexUser));
+			} else {
+				indexDog = -1;
 			}
 		}
 

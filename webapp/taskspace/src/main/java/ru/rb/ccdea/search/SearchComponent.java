@@ -14,7 +14,6 @@ import com.documentum.web.form.Form;
 import com.documentum.web.form.IReturnListener;
 import com.documentum.web.form.control.*;
 import com.documentum.web.formext.action.ActionService;
-import com.documentum.web.formext.action.IActionCompleteListener;
 import com.documentum.web.formext.component.Component;
 import com.documentum.web.formext.component.Container;
 import ru.rb.ccdea.config.TypeConfigProcessor;
@@ -181,19 +180,19 @@ public class SearchComponent extends Container {
         return allowedFilters.contains(filterName);
     }
 
-    private String createSingleTypeQuery(String typeName, boolean isSubquery){
+    private String createSingleTypeQuery(String typeName, boolean isSubquery) {
         DqlQueryBuilder builder = new DqlQueryBuilder();
         builder.addSelectField(proc.getSelectFields(typeName, isSubquery));
-        builder.addFromTables(proc.getFromTypes(typeName,isSubquery));
+        builder.addJoinedTable(proc.getFromTypes(typeName, isSubquery));
         builder.addGroupBy(proc.getGroupBy(typeName, isSubquery));
-        for(String cond:proc.getConditions(typeName, isSubquery)){
-            builder.addWhereClause(cond);
+        for (String cond : proc.getConditions(typeName, isSubquery)) {
+            builder.addOnClause(cond);
         }
         Collection<IFilterProcessor> filters = proc.getFilters(typeName);
-        for(IFilterProcessor filter: filters){
+        for (IFilterProcessor filter : filters) {
             filter.addCondition(this, builder);
         }
-        return builder.getQuery();
+        return builder.getLeftJoinQuery();
     }
 
     public void onClickClearConditions(Control c, ArgumentList arg){

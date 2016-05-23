@@ -20,7 +20,7 @@ public class MCDocInfoModifySVOReceiverMethod extends BaseReceiverMethod{
 
     @Override
 	public XmlContentValidator[] getXmlContentValidators(IDfSession dfSession) {
-        XmlContentValidator[] validators = new XmlContentValidator[4];
+        XmlContentValidator[] validators = new XmlContentValidator[3];
         validators[0] = new CustomerValidator(dfSession) {
             @Override
             public String getCustomerNumber(Object messageXmlContent) {
@@ -52,7 +52,6 @@ public class MCDocInfoModifySVOReceiverMethod extends BaseReceiverMethod{
                 return svoXmlContent.getSVODetails().getVODetails();
             }
         };
-        // validators[3] = new VODetailsMainDocIdentifiersValidator(dfSession);
         return validators;
     }
 

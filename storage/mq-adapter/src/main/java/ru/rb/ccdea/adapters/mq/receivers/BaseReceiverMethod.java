@@ -48,7 +48,9 @@ public abstract class BaseReceiverMethod extends WorkflowMethod implements IDfMe
                 if (receiverResult.isSuccess() && validators != null) {
                     try {
                         for (XmlContentValidator validator : validators) {
-                            validator.validate(messageXmlContent, receiverResult);
+                        	if(validator != null) {
+                        		validator.validate(messageXmlContent, receiverResult);
+                        	}
                         }
                     } catch (Exception ex) {
                         receiverResult.setError(UnifiedResult.INTERNAL_ERROR_CODE, "Internal error during validation: " + ex.getMessage());

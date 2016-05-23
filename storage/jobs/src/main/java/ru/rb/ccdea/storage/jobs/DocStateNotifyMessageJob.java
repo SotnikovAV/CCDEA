@@ -104,18 +104,16 @@ public class DocStateNotifyMessageJob extends AbstractJob{
     }
     
     public void updateWaitingContents(IDfSession dfSession) throws DfException {
-    	List<IDfSysObject> docMessages = ExternalMessagePersistence.getWaitingForDocMessages(dfSession);
-		for (IDfSysObject docMessage : docMessages) {
-
-			String messageIdStr = docMessage.getObjectId().getId();
+    	List<IDfId> docMessageIds = ExternalMessagePersistence.getWaitingForDocMessages(dfSession);
+		for (IDfId messageId : docMessageIds) {
+			String messageIdStr = messageId.getId();
 			boolean isTransAlreadyActive = dfSession.isTransactionActive();
 			try {
-
 				DfLogger.debug(this, "Start MessageID: {0}", new String[] { messageIdStr }, null);
-
 				if (!isTransAlreadyActive) {
 					dfSession.beginTrans();
 				}
+				IDfSysObject docMessage = (IDfSysObject) dfSession.getObject(messageId);
 				ExternalMessagePersistence.updateWaitingContents(docMessage);
 				if (!isTransAlreadyActive) {
 					dfSession.commitTrans();
@@ -171,8 +169,6 @@ public class DocStateNotifyMessageJob extends AbstractJob{
 				job.process(testSession);
 	            job.updateWaitingContents(testSession);
 			}
-            
-            
             
         } catch (Exception ex) {
             ex.printStackTrace();

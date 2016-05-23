@@ -337,6 +337,7 @@ public class ExternalMessagePersistence extends BasePersistence {
     }
 
     public static void updateWaitingContents(IDfSysObject docMessageObject) throws DfException {
+    	IDfSession dfSession = docMessageObject.getSession();
         String dql = "select r_object_id" +
                 " from " + TYPE_NAME +
                 " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper('" + getDocSourceCode(docMessageObject) + "')" +
@@ -349,14 +350,16 @@ public class ExternalMessagePersistence extends BasePersistence {
         try {
             IDfQuery query = new DfQuery();
             query.setDQL(dql);
-            rs = query.execute(docMessageObject.getSession(), IDfQuery.DF_READ_QUERY);
+            rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
             while (rs.next()) {
-                IDfPersistentObject contentObject = docMessageObject.getSession().getObject(rs.getId("r_object_id"));
-                contentObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_VALIDATION_PASSED);
-                contentObject.save();
-
-                logMessageState((IDfSysObject)contentObject, "contentReturnFromWaiting");
-
+            	IDfId dfId = rs.getId("r_object_id");
+                IDfPersistentObject contentMessageObject = dfSession.getObject(dfId);
+                int currentState = contentMessageObject.getInt(ExternalMessagePersistence.ATTR_CURRENT_STATE);
+    			if (ExternalMessagePersistence.MESSAGE_STATE_ON_WAITING == currentState) {
+	                contentMessageObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_VALIDATION_PASSED);
+	                contentMessageObject.save();
+	                logMessageState((IDfSysObject)contentMessageObject, "contentReturnFromWaiting");
+    			}
             }
         } finally {
             if (rs != null) {
@@ -365,33 +368,40 @@ public class ExternalMessagePersistence extends BasePersistence {
         }
     }
     
-    /**
-     * Получить список сообщений, которые находятся в состоянии ожидания создания документа, но документ уже создан.
-     * @param dfSession
-     * @return
-     * @throws DfException
-     */
-    public static List<IDfSysObject> getWaitingForDocMessages(IDfSession dfSession) throws DfException {
-    	String dql = "select "
-    			+ " r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica "
-    			+ " from ccdea_external_message doc "
-    			+ " where s_message_type != 'DocPut' "
-    			+ " and exists ("
-    			+ " select r_object_id from ccdea_external_message docput "
-    			+ " where s_message_type = 'DocPut' and n_current_state=3 "
-    			+ " and (("
-    			+ "	docput.s_doc_source_id=doc.s_content_source_id "
-    			+ " and upper(docput.s_doc_source_code)=upper(doc.s_content_source_code) "
-    			+ " ) or ( " +
-    			" docput.s_doc_source_id=doc.s_doc_source_id " + 
-    			" and upper(docput.s_doc_source_code)=upper(doc.s_doc_source_code)))) ";
-    	List<IDfSysObject> msgList = new ArrayList<IDfSysObject>();
-    	IDfEnumeration result = dfSession.getObjectsByQuery(dql, null);
-    	while(result.hasMoreElements()) {
-    		msgList.add((IDfSysObject)result.nextElement());
-    	}
-    	return msgList;
-    }
+	/**
+	 * Получить список сообщений, которые находятся в состоянии ожидания
+	 * создания документа, но документ уже создан.
+	 * 
+	 * @param dfSession
+	 * @return
+	 * @throws DfException
+	 */
+	public static List<IDfId> getWaitingForDocMessages(IDfSession dfSession) throws DfException {
+		String dql = "select r_object_id from ccdea_external_message doc "
+				+ " where s_message_type != 'DocPut' " + " and exists ("
+				+ " select r_object_id from ccdea_external_message docput "
+				+ " where s_message_type = 'DocPut' and n_current_state=3 " + " and (("
+				+ "	docput.s_doc_source_id=doc.s_content_source_id "
+				+ " and upper(docput.s_doc_source_code)=upper(doc.s_content_source_code) " + " ) or ( "
+				+ " docput.s_doc_source_id=doc.s_doc_source_id "
+				+ " and upper(docput.s_doc_source_code)=upper(doc.s_doc_source_code)))) ";
+		List<IDfId> msgList = new ArrayList<IDfId>();
+		IDfCollection rs = null;
+		try {
+			IDfQuery query = new DfQuery();
+			query.setDQL(dql);
+			rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
+			while (rs.next()) {
+				IDfId dfId = rs.getId("r_object_id");
+				msgList.add(dfId);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
+		return msgList;
+	}
 
     public static void startDocProcessing(IDfSysObject messageObject, IDfSysObject existingObject) throws DfException {
         throwIfNotTransactionActive(messageObject.getSession());

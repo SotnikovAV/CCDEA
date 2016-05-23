@@ -25,5 +25,9 @@
             <groupId>ru.rb.ccdea</groupId>
             <artifactId>services-api</artifactId>
         </dependency>
+		<dependency>
+	        <groupId>junit</groupId>
+	        <artifactId>junit</artifactId>
+	    </dependency>
     </dependencies>
 </project>

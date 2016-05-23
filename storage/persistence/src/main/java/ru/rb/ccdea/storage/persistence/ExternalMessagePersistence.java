@@ -667,7 +667,6 @@ public class ExternalMessagePersistence extends BasePersistence {
     }
     
 	public static boolean beginProcessContentMsg(IDfSession dfSession, IDfId messageId) throws DfException {
-		
 		boolean isTransAlreadyActive = dfSession.isTransactionActive();
 		try {
 			if (!isTransAlreadyActive) {
@@ -679,13 +678,16 @@ public class ExternalMessagePersistence extends BasePersistence {
 			if (ExternalMessagePersistence.MESSAGE_STATE_VALIDATION_PASSED == currentState) {
 				ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
 				messageSysObject.save();
+				if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+					dfSession.commitTrans();
+				}
 				return true;
 			} else {
 				return false;
 			}
 		} finally {
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
-				dfSession.commitTrans();
+				dfSession.abortTrans();
 			}
 		}
 	}
@@ -702,13 +704,16 @@ public class ExternalMessagePersistence extends BasePersistence {
 			if (ExternalMessagePersistence.MESSAGE_STATE_VALIDATION_PASSED == currentState) {
 				ExternalMessagePersistence.startDocProcessing(messageSysObject);
 				messageSysObject.save();
+				if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+					dfSession.commitTrans();
+				}
 				return true;
 			} else {
 				return false;
 			}
 		} finally {
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
-				dfSession.commitTrans();
+				dfSession.abortTrans();
 			}
 		}
 	}

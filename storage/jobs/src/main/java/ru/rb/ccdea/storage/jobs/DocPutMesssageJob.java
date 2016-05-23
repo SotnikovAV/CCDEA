@@ -139,6 +139,9 @@ public class DocPutMesssageJob extends AbstractJob {
 					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
 							ctsRequestId);
 				}
+				for (IDfSysObject docMessageObject : docMessages) {
+					ExternalMessagePersistence.updateWaitingContents(docMessageObject);
+				}
 			}
 
 //			if (!isTransAlreadyActive) {

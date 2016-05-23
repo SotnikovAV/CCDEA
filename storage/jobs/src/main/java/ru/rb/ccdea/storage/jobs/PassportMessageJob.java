@@ -15,6 +15,7 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 
 import ru.rb.ccdea.adapters.mq.binding.passport.MCDocInfoModifyPSType;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.PassportPersistence;
 import ru.rb.ccdea.storage.services.api.IPassportService;
@@ -74,6 +75,19 @@ public class PassportMessageJob extends AbstractJob {
 			if (passportExistingObject == null) {
 				passportObjectId = passportService.createDocumentFromMQType(dfSession, passportXmlObject, docSourceCode,
 						docSourceId);
+				String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
+				
+				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, passportObjectId,
+						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
+					try {
+						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(passportObjectId),
+								contentId);
+					} catch (DfException ex) {
+						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
+								+ passportObjectId + "' ", null, ex);
+					}
+				}
 				ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] { passportObjectId });
 			} else {
 				passportObjectId = passportExistingObject.getObjectId().getId();

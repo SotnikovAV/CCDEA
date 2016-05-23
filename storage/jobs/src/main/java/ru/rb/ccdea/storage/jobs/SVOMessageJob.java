@@ -14,6 +14,7 @@ import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.svo.MCDocInfoModifySVOType;
 import ru.rb.ccdea.adapters.mq.binding.svo.VODetailsType;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.SVOPersistence;
 import ru.rb.ccdea.storage.services.api.ISVOService;
@@ -73,6 +74,21 @@ public class SVOMessageJob extends AbstractJob{
                 ExternalMessagePersistence.validateModificationVerbForObject(messageSysObject, svoExistingObject);
                 if (svoExistingObject == null) {
                     String svoObjectId = svoService.createDocumentFromMQType(dfSession, svoXmlObject, voDetails, docSourceCode, docSourceId);
+                    
+                    String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
+    				
+    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, svoObjectId,
+    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
+    					try {
+    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(svoObjectId),
+    								contentId);
+    					} catch (DfException ex) {
+    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
+    								+ svoObjectId + "' ", null, ex);
+    					}
+    				}
+                    
                     modifiedDocIdList.add(svoObjectId);
                 } else {
                     svoService.updateDocumentFromMQType(dfSession, svoXmlObject, voDetails, docSourceCode, docSourceId, svoExistingObject.getObjectId());

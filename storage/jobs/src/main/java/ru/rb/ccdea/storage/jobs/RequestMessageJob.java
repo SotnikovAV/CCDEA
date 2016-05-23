@@ -12,6 +12,7 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 import ru.rb.ccdea.adapters.mq.binding.request.MCDocInfoModifyZAType;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.RequestPersistence;
 import ru.rb.ccdea.storage.services.api.IRequestService;
@@ -74,6 +75,19 @@ public class RequestMessageJob extends AbstractJob {
 					if (requestExistingObject == null) {
 						String requestObjectId = requestService.createDocumentFromMQType(dfSession, requestXmlObject,
 								docSourceCode, docSourceId, passportNumber);
+						String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+	    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
+	    				
+	    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, requestObjectId,
+	    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
+	    					try {
+	    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(requestObjectId),
+	    								contentId);
+	    					} catch (DfException ex) {
+	    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
+	    								+ requestObjectId + "' ", null, ex);
+	    					}
+	    				}
 						modifiedDocIdList.add(requestObjectId);
 					} else {
 						requestService.updateDocumentFromMQType(dfSession, requestXmlObject, docSourceCode, docSourceId,

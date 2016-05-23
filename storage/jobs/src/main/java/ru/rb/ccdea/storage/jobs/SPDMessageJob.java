@@ -6,6 +6,7 @@ import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import ru.rb.ccdea.adapters.mq.binding.spd.MCDocInfoModifySPDType;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.SPDPersistence;
 import ru.rb.ccdea.storage.services.api.ISPDService;
@@ -50,6 +51,19 @@ public class SPDMessageJob extends AbstractJob{
                 ExternalMessagePersistence.startDocProcessing(messageSysObject, spdExistingObject);
                 if (spdExistingObject == null) {
                     String spdObjectId = spdService.createDocumentFromMQType(dfSession, spdXmlObject, docSourceCode, docSourceId);
+                    String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
+    				
+    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, spdObjectId,
+    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
+    					try {
+    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(spdObjectId),
+    								contentId);
+    					} catch (DfException ex) {
+    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
+    								+ spdObjectId + "' ", null, ex);
+    					}
+    				}
                     ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] {spdObjectId});
                 }
                 else {

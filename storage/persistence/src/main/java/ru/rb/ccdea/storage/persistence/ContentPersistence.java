@@ -15,6 +15,7 @@ import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.fc.common.IDfId;
 
 public class ContentPersistence extends BasePersistence {
@@ -339,5 +340,34 @@ public class ContentPersistence extends BasePersistence {
 			}
 		}
 		
+	}
+	
+	public static List<IDfId> getUnlinkedContentIds(IDfSession dfSession, String documentId, String docSourceId,
+			String docSourceSystem, String contentSourceId, String contentSourceSystem) throws DfException {
+		List<IDfId> contentIds = new ArrayList<IDfId>();
+		String dql = "select c.r_object_id from ccdea_doc_content c " + "left join ccdea_external_message m "
+				+ "on any m.id_content_r=c.r_object_id and m.s_message_type='DocPut' " + "where " + "( "
+				+ "	(m.s_doc_source_id = " + DfUtil.toQuotedString(docSourceId)
+				+ " and upper(m.s_doc_source_code) = upper(" + DfUtil.toQuotedString(docSourceSystem) + ")) "
+				+ "	or  " + "	(m.s_doc_source_id = " + DfUtil.toQuotedString(contentSourceId)
+				+ " and upper(m.s_doc_source_code) = upper(" + DfUtil.toQuotedString(contentSourceSystem) + ")) "
+				+ ")  " + "and not exists( " + "	select child_id from dm_relation where parent_id="
+				+ DfUtil.toQuotedString(documentId)
+				+ " and child_id=c.i_chronicle_id and relation_name='ccdea_content_relation' ) ";
+		IDfCollection rs = null;
+		try {
+			IDfQuery query = new DfQuery();
+			query.setDQL(dql);
+			rs = query.execute(dfSession, IDfQuery.DF_READ_QUERY);
+			while (rs.next()) {
+				IDfId dfId = rs.getId("r_object_id");
+				contentIds.add(dfId);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+		}
+		return contentIds;
 	}
 }

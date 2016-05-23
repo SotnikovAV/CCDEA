@@ -14,6 +14,7 @@ import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.contract.MCDocInfoModifyContractType;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
+import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ContractPersistence;
 import ru.rb.ccdea.storage.services.api.IContractService;
 
@@ -75,7 +76,7 @@ public class ContractMessageJob extends AbstractJob {
 
 			String docSourceCode = ExternalMessagePersistence.getDocSourceCode(messageSysObject);
 			String docSourceId = ExternalMessagePersistence.getDocSourceId(messageSysObject);
-
+			
 			IDfSysObject contractExistingObject = ContractPersistence.searchContractObject(dfSession, docSourceCode,
 					docSourceId);
 			ExternalMessagePersistence.startDocProcessing(messageSysObject, contractExistingObject);
@@ -83,6 +84,20 @@ public class ContractMessageJob extends AbstractJob {
 			if (contractExistingObject == null) {
 				contractObjectId = contractService.createDocumentFromMQType(dfSession, contractXmlObject, docSourceCode,
 						docSourceId);
+				String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
+				
+				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, contractObjectId,
+						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
+					try {
+						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(contractObjectId),
+								contentId);
+					} catch (DfException ex) {
+						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
+								+ contractObjectId + "' ", null, ex);
+					}
+				}
+				
 				ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] { contractObjectId });
 			} else {
 				contractObjectId = contractExistingObject.getObjectId().getId();
@@ -117,11 +132,11 @@ public class ContractMessageJob extends AbstractJob {
 
 			IDfLoginInfo loginInfo = clientx.getLoginInfo();
 			loginInfo.setUser("dmadmin");
-			loginInfo.setPassword("dmadmin");
+			loginInfo.setPassword("Fkut,hf15");
 			loginInfo.setDomain(null);
 
-			sessionManager.setIdentity("UCB", loginInfo);
-			testSession = sessionManager.getSession("UCB");
+			sessionManager.setIdentity("ELAR", loginInfo);
+			testSession = sessionManager.getSession("ELAR");
 
 			ContractMessageJob job = new ContractMessageJob();
 

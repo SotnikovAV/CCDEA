@@ -727,4 +727,5 @@ public class ExternalMessagePersistence extends BasePersistence {
 			}
 		}
 	}
+
 }

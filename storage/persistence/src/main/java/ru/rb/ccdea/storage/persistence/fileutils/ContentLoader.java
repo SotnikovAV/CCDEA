@@ -35,6 +35,7 @@ import jcifs.smb.SmbFileInputStream;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocReference;
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType.DocScan;
+import ru.rb.ccdea.storage.persistence.ContentLoaderException;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 
 public class ContentLoader {
@@ -111,7 +112,7 @@ public class ContentLoader {
 			    os.write(b);
 			}
     	} catch (IOException e) {
-			throw new DfException("Ошибка",e);
+			throw new ContentLoaderException("Ошибка",e);
 		} finally {
     		if(is != null) {
     			try {
@@ -195,7 +196,7 @@ public class ContentLoader {
             }
         }
         catch (Exception ex) {
-            throw new DfException("Cant download file by reference: " + accessProperties.getUrl(), ex);
+            throw new ContentLoaderException("Cant download file by reference: " + accessProperties.getUrl(), ex);
         }
 	}
 
@@ -221,7 +222,7 @@ public class ContentLoader {
 				}
 			}
         } catch (JSchException e) {
-            throw new DfException("Ошибка при работе с файлом: " + accessProperties.getUrl(), e);
+            throw new ContentLoaderException("Ошибка при работе с файлом: " + accessProperties.getUrl(), e);
         } finally {
             if (jsftp != null) {
                 try {

@@ -24,6 +24,7 @@ import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
+import ru.rb.ccdea.storage.persistence.ContentLoaderException;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.services.api.IContentService;
@@ -149,7 +150,17 @@ public class DocPutMesssageJob extends AbstractJob {
 //			}
 
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
-		} catch (CantFindDocException ex) {
+		}
+		catch (ContentLoaderException ex) {
+			DfLogger.warn(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
+			try {
+				IDfSysObject messageObject = (IDfSysObject) dfSession.getObject(messageId);
+				ExternalMessagePersistence.setConvertationError(messageObject);
+			} catch (Exception e) {
+				DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
+			}
+		}
+		catch (CantFindDocException ex) {
 			DfLogger.warn(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 			try {
 				IDfSysObject messageObject = (IDfSysObject) dfSession.getObject(messageId);

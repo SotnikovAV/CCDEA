@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.documentum.fc.common.DfUtil;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveInputStream;
@@ -582,7 +583,7 @@ public class ContentLoader {
     
     public static String getSyspropValue(IDfSession dfSession, String name) throws DfException {
         String value = null;
-        String dql = "SELECT \"value\" FROM ucb_sysprop WHERE name='" + name + "'";
+        String dql = "SELECT \"value\" FROM ucb_sysprop WHERE name=" + DfUtil.toQuotedString(name);
         IDfCollection rs = null;
         try {
             IDfQuery query = new DfQuery();

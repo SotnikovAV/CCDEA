@@ -66,8 +66,8 @@ public class ContentPersistence extends BasePersistence {
 	public static IDfSysObject searchContentObjectByDocumentId(IDfSession dfSession, String documentId)
 			throws DfException {
 		String contentId = null;
-		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id='"
-				+ documentId + "') order by r_modify_date desc";
+		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id="
+				+ DfUtil.toQuotedString(documentId) + ") order by r_modify_date desc";
 
 		DfLogger.info(dfSession, dql, null, null);
 		IDfCollection rs = null;
@@ -105,8 +105,8 @@ public class ContentPersistence extends BasePersistence {
 	public static IDfSysObject searchOriginalContentObjectByDocumentId(IDfSession dfSession, String documentId)
 			throws DfException {
 		String contentId = null;
-		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id='"
-				+ documentId + "') and b_is_original=true order by r_modify_date desc";
+		String dql = "select r_object_id as cont_id from ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where parent_id="
+				+ DfUtil.toQuotedString(documentId) + ") and b_is_original=true order by r_modify_date desc";
 
 		DfLogger.info(dfSession, dql, null, null);
 		IDfCollection rs = null;
@@ -222,8 +222,8 @@ public class ContentPersistence extends BasePersistence {
 			throws DfException {
 		IDfSysObject result = checkOnlyParts ? null : contentSysObject;
 
-		String dql = "select r_object_id " + " from ccdea_doc_content_part " + " where id_content = '"
-				+ contentSysObject.getObjectId().getId() + "'" + " order by n_index";
+		String dql = "select r_object_id " + " from ccdea_doc_content_part " + " where id_content = "
+				+ DfUtil.toQuotedString(contentSysObject.getObjectId().getId()) + " order by n_index";
 		IDfCollection rs = null;
 		try {
 			IDfQuery query = new DfQuery();
@@ -244,8 +244,8 @@ public class ContentPersistence extends BasePersistence {
 	public static List<IDfSysObject> getContentPartsSysObject(IDfSysObject contentSysObject) throws DfException {
 		List<IDfSysObject> partList = new ArrayList<IDfSysObject>();
 		String dql = "select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica "
-				+ " from ccdea_doc_content_part " + " where id_content = '" + contentSysObject.getObjectId().getId()
-				+ "'" + " order by n_index";
+				+ " from ccdea_doc_content_part " + " where id_content = " + DfUtil.toQuotedString(contentSysObject.getObjectId().getId())
+				+ " order by n_index";
 		IDfEnumeration result = contentSysObject.getSession().getObjectsByQuery(dql, null);
 		while (result.hasMoreElements()) {
 			partList.add((IDfSysObject) result.nextElement());
@@ -256,8 +256,8 @@ public class ContentPersistence extends BasePersistence {
 	public static boolean isDocumentRelationForContentExists(IDfSession session, String contentId) throws DfException {
 		boolean result = false;
 
-		String dql = "select child_id " + " from dm_relation " + " where child_id = '" + contentId + "'"
-				+ " and relation_name = '" + RELATION_NAME + "'";
+		String dql = "select child_id " + " from dm_relation " + " where child_id = " + DfUtil.toQuotedString(contentId)
+				+ " and relation_name = " + DfUtil.toQuotedString(RELATION_NAME);
 		IDfCollection rs = null;
 		try {
 			IDfQuery query = new DfQuery();
@@ -289,8 +289,8 @@ public class ContentPersistence extends BasePersistence {
 	 */
 	public static List<IDfId> getDocIdsByContentId(IDfSession dfSession, IDfId contentId) throws DfException {
 		List<IDfId> docIds = new ArrayList<IDfId>();
-		String dql = "select parent_id from dm_relation where relation_name='" + RELATION_NAME + "' and child_id='"
-				+ contentId.getId() + "'";
+		String dql = "select parent_id from dm_relation where relation_name=" + DfUtil.toQuotedString(RELATION_NAME) + " and child_id="
+				+ DfUtil.toQuotedString(contentId.getId());
 		IDfCollection rs = null;
 		try {
 			IDfQuery query = new DfQuery();

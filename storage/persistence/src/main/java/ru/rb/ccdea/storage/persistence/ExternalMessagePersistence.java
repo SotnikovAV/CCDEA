@@ -99,7 +99,7 @@ public class ExternalMessagePersistence extends BasePersistence {
                 " where " + ATTR_SOURCE_KEY + " = '" + sourceKey + "'" +
                 " and " + ATTR_MESSAGE_TYPE + " = '" + messageType + "'" +
                 " and " + ATTR_CURRENT_STATE + " > " + MESSAGE_STATE_VALIDATION_ERROR +
-                " and r_object_id != '" + messageSysObject.getObjectId().getId() + "'";
+                " and r_object_id != " + DfUtil.toQuotedString(messageSysObject.getObjectId().getId());
                 //" and " + ATTR_MODIFICATION_TIME + " < date('" + dqlDateFormat.format(sourceTime) + "','" + dqlDateFormatString + "')";
         IDfCollection rs = null;
         try {
@@ -122,11 +122,11 @@ public class ExternalMessagePersistence extends BasePersistence {
         //TODO здесь должно проверяться произвольное количество идентификаторов. Для этого необходимо вынести идентификаторы в репитинг атрибуты
         String dql = "select r_object_id" +
                 " from " + TYPE_NAME +
-                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper('" + docSourceSystem + "')" +
-                " and " + ATTR_DOC_SOURCE_ID + " = '" + docSourceId + 
-                "' ) OR (upper(" + ATTR_CONTENT_SOURCE_CODE + ") = upper('" + docSourceSystem + "')" +
-                " and " + ATTR_CONTENT_SOURCE_ID + " = '" + docSourceId + "' ))"  +            
-                " and " + ATTR_MESSAGE_TYPE + " != '" + MESSAGE_TYPE_DOCPUT + "'" +
+                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper(" + DfUtil.toQuotedString(docSourceSystem) + ")" +
+                " and " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) +
+                " ) OR (upper(" + ATTR_CONTENT_SOURCE_CODE + ") = upper(" + DfUtil.toQuotedString(docSourceSystem) + ")" +
+                " and " + ATTR_CONTENT_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) + " ))"  +
+                " and " + ATTR_MESSAGE_TYPE + " != " + DfUtil.toQuotedString(MESSAGE_TYPE_DOCPUT) +
                 " and " + ATTR_CURRENT_STATE + " > " + MESSAGE_STATE_VALIDATION_ERROR;
         IDfCollection rs = null;
         try {
@@ -153,7 +153,7 @@ public class ExternalMessagePersistence extends BasePersistence {
                 ", " + ATTR_MODIFICATION_TIME +
                 ", " + ATTR_CURRENT_STATE +
                 " from " + TYPE_NAME +
-                " where " + ATTR_MESSAGE_TYPE + " = '" + messageType + "'" +
+                " where " + ATTR_MESSAGE_TYPE + " = " + DfUtil.toQuotedString(messageType) +
                 " and " + ATTR_MODIFICATION_TIME + " < date('" + dqlDateFormat.format(sourceTime) + "','" + dqlDateFormatString + "')" +
                 " and " + ATTR_CURRENT_STATE + " > " + MESSAGE_STATE_VALIDATION_ERROR +
                 " and " + ATTR_CURRENT_STATE + " < " + MESSAGE_STATE_PROCESSED + 
@@ -202,7 +202,7 @@ public class ExternalMessagePersistence extends BasePersistence {
                 ", " + ATTR_MODIFICATION_TIME +
                 ", " + ATTR_CURRENT_STATE +
                 " from " + TYPE_NAME +
-                " where " + ATTR_MESSAGE_TYPE + " = '" + MESSAGE_TYPE_DOCPUT + "'" +
+                " where " + ATTR_MESSAGE_TYPE + " = " + DfUtil.toQuotedString(MESSAGE_TYPE_DOCPUT)+
                 " and " + ATTR_CURRENT_STATE + " = " + MESSAGE_STATE_LOADED +  
                 " order by " + ATTR_MODIFICATION_TIME + " asc";
         IDfCollection rs = null;
@@ -265,9 +265,9 @@ public class ExternalMessagePersistence extends BasePersistence {
 				+ contentMessageObject.getObjectId().getId() + "' and r_creation_date < date('"
 				+ contentMessageObject.getCreationDate().asString("yyyy-MM-dd HH:mi:ss") + "','yyyy-MM-dd HH:mi:ss') "
 				+ " and n_current_state > 1 and n_current_state < 7 and EXISTS( "
-				+ " SELECT * FROM ccdea_external_message doc WHERE upper(doc.s_doc_source_code) = upper('"
-				+ docSourceSystem + "') AND doc.s_doc_source_id = '" + docSourceId
-				+ "' and con.s_doc_source_id = doc.s_content_source_id and upper(con.s_doc_source_code) = upper(doc.s_content_source_code))";
+				+ " SELECT * FROM ccdea_external_message doc WHERE upper(doc.s_doc_source_code) = upper("
+				+ DfUtil.toQuotedString(docSourceSystem) + ") AND doc.s_doc_source_id = " + DfUtil.toQuotedString(docSourceId)
+				+ " and con.s_doc_source_id = doc.s_content_source_id and upper(con.s_doc_source_code) = upper(doc.s_content_source_code))";
         
         IDfCollection rs = null;
         try {
@@ -298,10 +298,10 @@ public class ExternalMessagePersistence extends BasePersistence {
         String docSourceSystem = getDocSourceCode(contentMessageObject);
         String dql = "select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica " +
                 " from " + TYPE_NAME +
-                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper('" + docSourceSystem + "')" +
-                " and " + ATTR_DOC_SOURCE_ID + " = '" + docSourceId + 
-                "' ) OR (upper(" + ATTR_CONTENT_SOURCE_CODE + ") = upper('" + docSourceSystem + "')" +
-                " and " + ATTR_CONTENT_SOURCE_ID + " = '" + docSourceId + "' ))"  + 
+                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper(" + DfUtil.toQuotedString(docSourceSystem) + ")" +
+                " and " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) +
+                " ) OR (upper(" + ATTR_CONTENT_SOURCE_CODE + ") = upper(" + DfUtil.toQuotedString(docSourceSystem) + ")" +
+                " and " + ATTR_CONTENT_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) + " ))"  +
                
                 " and " + ATTR_MESSAGE_TYPE + " != '" + MESSAGE_TYPE_DOCPUT + "'" +
                 " and " + ATTR_CURRENT_STATE + " = " + MESSAGE_STATE_PROCESSED + " order by r_creation_date desc";
@@ -340,11 +340,11 @@ public class ExternalMessagePersistence extends BasePersistence {
     	IDfSession dfSession = docMessageObject.getSession();
         String dql = "select r_object_id" +
                 " from " + TYPE_NAME +
-                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper('" + getDocSourceCode(docMessageObject) + "')" +
-                " and " + ATTR_DOC_SOURCE_ID + " = '" + getDocSourceId(docMessageObject) + 
-                "') OR (upper(" + ATTR_DOC_SOURCE_CODE + ") = upper('" + getContentSourceCode(docMessageObject) + "')" +
-                " and " + ATTR_DOC_SOURCE_ID + " = '" + getContentSourceId(docMessageObject) + "'))" +
-                " and " + ATTR_MESSAGE_TYPE + " = '" + MESSAGE_TYPE_DOCPUT + "'" +
+                " where ((upper(" + ATTR_DOC_SOURCE_CODE + ") = upper(" + DfUtil.toQuotedString(getDocSourceCode(docMessageObject)) + ")" +
+                " and " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(getDocSourceId(docMessageObject)) +
+                ") OR (upper(" + ATTR_DOC_SOURCE_CODE + ") = upper(" + DfUtil.toQuotedString(getContentSourceCode(docMessageObject)) + ")" +
+                " and " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(getContentSourceId(docMessageObject)) + "))" +
+                " and " + ATTR_MESSAGE_TYPE + " = " + DfUtil.toQuotedString(MESSAGE_TYPE_DOCPUT) +
                 " and " + ATTR_CURRENT_STATE + " = " + MESSAGE_STATE_ON_WAITING;
         IDfCollection rs = null;
         try {

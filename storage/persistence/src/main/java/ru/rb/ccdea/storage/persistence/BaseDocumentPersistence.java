@@ -37,7 +37,7 @@ public class BaseDocumentPersistence extends BasePersistence{
         List<IDfId> result = new ArrayList<IDfId>();
         String dql = "select r_object_id "  +
                 " from " + TYPE_NAME +
-                " where " + ATTR_DOSSIER + " = '" + dossierId + "'";
+                " where " + ATTR_DOSSIER + " = " + DfUtil.toQuotedString(dossierId);
         IDfCollection rs = null;
         try {
             IDfQuery query = new DfQuery();
@@ -74,9 +74,9 @@ public class BaseDocumentPersistence extends BasePersistence{
 			String docSourceId, String contentSourceCode, String contentSourceId) throws DfException {
 		List<IDfSysObject> objs = new ArrayList<IDfSysObject>();
 		String dql ="SELECT r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica FROM "
-				+ TYPE_NAME + " WHERE (" + ATTR_DOC_SOURCE_CODE + " = '" + docSourceCode + "' AND "
-				+ ATTR_DOC_SOURCE_ID + " = '" + docSourceId + "') OR (" + ATTR_DOC_SOURCE_CODE + " = '"
-				+ contentSourceCode + "' AND " + ATTR_DOC_SOURCE_ID + " = '" + contentSourceId + "')";
+				+ TYPE_NAME + " WHERE (" + ATTR_DOC_SOURCE_CODE + " = " + DfUtil.toQuotedString(docSourceCode) + " AND "
+				+ ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) + ") OR (" + ATTR_DOC_SOURCE_CODE + " = "
+				+ DfUtil.toQuotedString(contentSourceCode) + " AND " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(contentSourceId) + ")";
 		DfLogger.debug(null, dql, null, null);
 		IDfEnumeration en = dfSession
 				.getObjectsByQuery(

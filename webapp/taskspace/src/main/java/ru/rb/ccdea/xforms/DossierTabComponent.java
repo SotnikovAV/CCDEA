@@ -7,6 +7,7 @@ import com.documentum.fc.client.IDfCollection;
 import com.documentum.fc.client.IDfQuery;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.web.common.ArgumentList;
 import com.documentum.web.form.Control;
 import com.documentum.web.form.control.Checkbox;
@@ -55,7 +56,7 @@ public class DossierTabComponent extends SearchResultsComponent {
         IDfCollection col = null;
         try{
             IDfQuery query = new DfQuery();
-            query.setDQL("select id_dossier from ccdea_base_doc where r_object_id='"+ objectId +"'");
+            query.setDQL("select id_dossier from ccdea_base_doc where r_object_id="+ DfUtil.toQuotedString(objectId));
             col= query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
             if (col.next()){
                 dossierId = col.getString("id_dossier");

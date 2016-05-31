@@ -2,6 +2,7 @@ package ru.rb.ccdea.formadaptors;
 
 import com.documentum.fc.client.IDfCollection;
 import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.tools.util.XMLUtility;
 import org.w3c.dom.Element;
 
@@ -25,8 +26,8 @@ public class SumAdaptor extends ContragentAdaptor {
         bld.append(" from ");
         bld.append(fromType);
         bld.append(" where ");
-        bld.append(InputParams.r_object_id).append(" = '");
-        bld.append(value).append("'");
+        bld.append(InputParams.r_object_id).append(" = ");
+        bld.append(DfUtil.toQuotedString(value));
         bld.append(" and ").append(OutputParams.d_sums_amount_r);
         bld.append(" is not null ");
         bld.append(" order by i_position desc ");

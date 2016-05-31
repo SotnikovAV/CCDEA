@@ -1,5 +1,6 @@
 package ru.rb.ccdea.adapters.mq.utils;
 
+import com.documentum.fc.common.DfUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -38,7 +39,7 @@ public abstract class BranchValidator extends XmlContentValidator{
         else {
             String dql = "select r_object_id" +
                     " from ccdea_branch" +
-                    " where s_code = '" + branchCode.trim() + "'";
+                    " where s_code = " + DfUtil.toQuotedString(branchCode.trim());
             IDfCollection rs = null;
             try {
                 IDfQuery query = new DfQuery();

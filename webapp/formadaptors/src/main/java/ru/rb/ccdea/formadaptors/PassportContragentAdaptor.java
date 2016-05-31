@@ -2,6 +2,7 @@ package ru.rb.ccdea.formadaptors;
 
 import com.documentum.fc.client.*;
 import com.documentum.fc.common.DfException;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.tools.adaptor.AdaptorException;
 import com.documentum.tools.adaptor.IAdaptorParameter;
 import com.documentum.tools.util.XMLUtility;
@@ -72,8 +73,8 @@ public class PassportContragentAdaptor extends ContractAdaptor {
         bld.append(" from ");
         bld.append(fromType);
         bld.append(" where ");
-        bld.append(InputParams.r_object_id).append(" = '");
-        bld.append(objectId).append("'");
+        bld.append(InputParams.r_object_id).append(" = ");
+        bld.append(DfUtil.toQuotedString(objectId));
         bld.append(" and ").append(OutputParams.s_contractor_name_r);
         bld.append(" is not null ");
         bld.append(" order by i_position desc ");

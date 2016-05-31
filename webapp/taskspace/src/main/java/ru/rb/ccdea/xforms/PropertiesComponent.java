@@ -71,8 +71,8 @@ public class PropertiesComponent extends TaskSpaceXFormsComponent {
         try{
             IDfQuery query = new DfQuery("select dos.r_object_id as r_object_id, " +
                     "s_dossier_type, dos.s_state as s_state from ccdea_base_doc doc, " +
-                    "ccdea_dossier dos where doc.r_object_id = '" + objectId +
-                    "' and doc.id_dossier = dos.r_object_id");
+                    "ccdea_dossier dos where doc.r_object_id = " + DfUtil.toQuotedString(objectId) +
+                    " and doc.id_dossier = dos.r_object_id");
             col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
             if(col.next()){
                 dossierId = col.getString("r_object_id");
@@ -175,8 +175,8 @@ public class PropertiesComponent extends TaskSpaceXFormsComponent {
         try{
 			IDfQuery query = new DfQuery("select cont.r_object_id as cont_id "
 					+ "from dm_sysobject (all) cont  where exists(select * from dm_relation rel "
-					+ " where rel.relation_name='ccdea_content_relation' and rel.parent_id = '" + objectId
-					+ "' and rel.child_id = cont.i_chronicle_id)"
+					+ " where rel.relation_name='ccdea_content_relation' and rel.parent_id = " + DfUtil.toQuotedString(objectId)
+					+ " and rel.child_id = cont.i_chronicle_id)"
 					+ " and cont.r_content_size > 0 order by cont.r_modify_date desc");
 			col = query.execute(getDfSession(), IDfQuery.DF_READ_QUERY);
             if (col.next()){

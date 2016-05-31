@@ -3,6 +3,7 @@ package ru.rb.ccdea.action;
 import com.documentum.fc.client.*;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.web.common.ArgumentList;
 import com.documentum.web.formext.action.IActionExecution;
 import com.documentum.web.formext.action.IInlineCapableAction;
@@ -31,24 +32,24 @@ public class RetrieveSingleValue implements IActionExecution, IInlineCapableActi
         String dql = null;
         if (valueType.equalsIgnoreCase("contract_currency") ||
                 valueType.equalsIgnoreCase("document_currency")) {
-            dql = "select s_code as s_value from ccdea_currency where s_code like '" + valueStart + "%'";
+            dql = "select s_code as s_value from ccdea_currency where s_code like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("customer_name")) {
-            dql = "select s_name as s_value from ccdea_customer where s_name like '" + valueStart + "%'";
+            dql = "select s_name as s_value from ccdea_customer where s_name like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("customer_number")) {
-            dql = "select s_number as s_value from ccdea_customer where s_number like '" + valueStart + "%'";
+            dql = "select s_number as s_value from ccdea_customer where s_number like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("document_number")) {
-            dql = "select distinct s_doc_number as s_value from ccdea_pd where s_doc_number like '" + valueStart + "%' UNION ALL " +
-                    "select distinct s_doc_number as s_value from ccdea_spd where s_doc_number like '" + valueStart + "%' UNION ALL " +
-                    "select distinct s_doc_number as s_value from ccdea_svo_detail where s_doc_number like '" + valueStart + "%'";
+            dql = "select distinct s_doc_number as s_value from ccdea_pd where s_doc_number like " + DfUtil.toQuotedString(valueStart + '%') + " UNION ALL " +
+                    "select distinct s_doc_number as s_value from ccdea_spd where s_doc_number like " + DfUtil.toQuotedString(valueStart + '%') + " UNION ALL " +
+                    "select distinct s_doc_number as s_value from ccdea_svo_detail where s_doc_number like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("contract_number")) {
-            dql = "select distinct s_contract_number as s_value from ccdea_base_doc where s_contract_number like '" + valueStart + "%'";
+            dql = "select distinct s_contract_number as s_value from ccdea_base_doc where s_contract_number like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("passport_number")) {
-            dql = "select distinct s_passport_number as s_value from ccdea_base_doc where s_passport_number like '" + valueStart + "%'";
+            dql = "select distinct s_passport_number as s_value from ccdea_base_doc where s_passport_number like " + DfUtil.toQuotedString(valueStart + '%');
         }
         return dql;
     }

@@ -7,6 +7,7 @@ import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.web.common.ArgumentList;
 import com.documentum.web.common.WrapperRuntimeException;
 
@@ -51,8 +52,8 @@ public class FilesTabComponent extends SearchResultsComponent {
 					+ " content.r_version_label, content.r_creation_date, content.r_modify_date, content.a_content_type, content.r_content_size "
 					+ " , content.r_object_type, content.r_link_cnt, content.r_is_virtual_doc, content.r_assembled_from_id, content.r_has_frzn_assembly, content.i_is_replica, i_is_reference "
 					+ " from " + " ccdea_doc_content (all) content where i_chronicle_id in ("
-					+ " select child_id from dm_relation where relation_name='ccdea_content_relation' and parent_id='"
-					+ objectId + "') and content.b_is_original=true ";
+					+ " select child_id from dm_relation where relation_name='ccdea_content_relation' and parent_id="
+					+ DfUtil.toQuotedString(objectId) + ") and content.b_is_original=true ";
 
 			DfLogger.debug(this, filesQueryStr, null, null);
 			refreshDatagrid(filesQueryStr);

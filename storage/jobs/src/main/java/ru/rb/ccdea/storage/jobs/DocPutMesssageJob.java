@@ -152,16 +152,16 @@ public class DocPutMesssageJob extends AbstractJob {
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		}
 		catch (ContentLoaderException ex) {
-			DfLogger.warn(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
+			DfLogger.warn(this, "Finish MessageID: {0} with " + ex.toString(), new String[] { messageId.getId() }, null);
 			try {
 				IDfSysObject messageObject = (IDfSysObject) dfSession.getObject(messageId);
-				ExternalMessagePersistence.setConvertationError(messageObject);
+				ExternalMessagePersistence.setMessageOnWaiting(messageObject);
 			} catch (Exception e) {
 				DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
 			}
 		}
 		catch (CantFindDocException ex) {
-			DfLogger.warn(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
+			DfLogger.warn(this, "Finish MessageID: {0} " + ex.toString(), new String[] { messageId.getId() }, null);
 			try {
 				IDfSysObject messageObject = (IDfSysObject) dfSession.getObject(messageId);
 				ExternalMessagePersistence.setMessageOnWaiting(messageObject);

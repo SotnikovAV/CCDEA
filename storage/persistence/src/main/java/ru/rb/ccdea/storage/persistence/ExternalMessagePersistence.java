@@ -377,14 +377,23 @@ public class ExternalMessagePersistence extends BasePersistence {
 	 * @throws DfException
 	 */
 	public static List<IDfId> getWaitingForDocMessages(IDfSession dfSession) throws DfException {
-		String dql = "select r_object_id from ccdea_external_message doc "
-				+ " where s_message_type != 'DocPut' " + " and exists ("
-				+ " select r_object_id from ccdea_external_message docput "
-				+ " where s_message_type = 'DocPut' and n_current_state=3 " + " and (("
-				+ "	docput.s_doc_source_id=doc.s_content_source_id "
-				+ " and upper(docput.s_doc_source_code)=upper(doc.s_content_source_code) " + " ) or ( "
-				+ " docput.s_doc_source_id=doc.s_doc_source_id "
-				+ " and upper(docput.s_doc_source_code)=upper(doc.s_doc_source_code)))) ";
+		String dql = "select r_object_id from ccdea_external_message doc " +
+				"left join ccdea_external_message docput  " +
+				"on docput.s_message_type = 'DocPut' and docput.n_current_state=3   " +
+				"and ( " +
+				"(	 " +
+				"docput.s_doc_source_id=doc.s_content_source_id   " +
+				"and  " +
+				"upper(docput.s_doc_source_code)=upper(doc.s_content_source_code)   " +
+				")  " +
+				"or  " +
+				"(   " +
+				"docput.s_doc_source_id=doc.s_doc_source_id   " +
+				"and  " +
+				"upper(docput.s_doc_source_code)=upper(doc.s_doc_source_code) " +
+				") " +
+				") " +
+				"where doc.s_message_type != 'DocPut' and docput.r_object_id is not null ";
 		List<IDfId> msgList = new ArrayList<IDfId>();
 		IDfCollection rs = null;
 		try {

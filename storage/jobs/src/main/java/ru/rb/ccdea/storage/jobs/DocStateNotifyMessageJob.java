@@ -2,6 +2,10 @@ package ru.rb.ccdea.storage.jobs;
 
 import java.util.List;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
@@ -14,9 +18,11 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
+import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
+import ru.rb.ccdea.storage.persistence.fileutils.ContentLoader;
 
 public class DocStateNotifyMessageJob extends AbstractJob{
 
@@ -73,6 +79,8 @@ public class DocStateNotifyMessageJob extends AbstractJob{
 //                }
 //                else {
                     ExternalMessagePersistence.notifyExternalSystemAboutContentProcessing(messageObject);
+
+                deleteContent(messageObject);
 //                }
             }
             else if (CTSRequestBuilder.RESPONSE_STATUS_FAILED.equalsIgnoreCase(ctsJobResult)) {
@@ -102,7 +110,15 @@ public class DocStateNotifyMessageJob extends AbstractJob{
             }
         }
     }
-    
+
+    private void deleteContent(IDfSysObject messageObject) throws JAXBException, DfException {
+        JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
+        Unmarshaller unmarshaller = jc.createUnmarshaller();
+        DocPutType docPutXmlObject = unmarshaller.unmarshal(new StreamSource(messageObject.getContent()), DocPutType.class).getValue();
+
+        ContentLoader.deleteContentFile(dfSession, messageObject, docPutXmlObject.getContent());
+    }
+
     public void updateWaitingContents(IDfSession dfSession) throws DfException {
     	List<IDfId> docMessageIds = ExternalMessagePersistence.getWaitingForDocMessages(dfSession);
 		for (IDfId messageId : docMessageIds) {

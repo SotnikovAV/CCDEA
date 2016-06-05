@@ -7,9 +7,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.documentum.fc.client.*;
 import com.documentum.fc.common.DfUtil;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.ArchiveException;
@@ -18,11 +20,6 @@ import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry;
 import org.apache.commons.compress.archivers.sevenz.SevenZFile;
 
-import com.documentum.fc.client.DfQuery;
-import com.documentum.fc.client.IDfCollection;
-import com.documentum.fc.client.IDfQuery;
-import com.documentum.fc.client.IDfSession;
-import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
 import com.github.junrar.Archive;
@@ -155,21 +152,7 @@ public class ContentLoader {
 
     public static void loadContentBySmb(IDfSession dfSession, FileAccessProperties accessProperties, OutputStream out) throws DfException {
     	try {
-			String domain = "";
-			try {
-				domain = getSyspropValue(dfSession, SYSPROP_SMB_USER_DOMAIN);
-			} catch (DfException ex) {
-				DfLogger.warn(dfSession, "Ошибка при получении наименования домена для авторизации по smb", null,
-						ex);
-			}
-            String userName = getSyspropValue(dfSession, SYSPROP_SMB_USER_NAME);
-            String userPassword = getSyspropValue(dfSession, SYSPROP_SMB_USER_PASSWORD);
-            boolean deleteFile = "true".equalsIgnoreCase(getSyspropValue(dfSession, SYSPROP_SMB_NEED_DELETE));
-
-            NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(domain, userName, userPassword);
-            String fileReference = "smb:" + accessProperties.getUrl().replace('\\', '/');
-            
-            SmbFile smbFile = new SmbFile(fileReference, auth);
+            SmbFile smbFile = getSmbFile(dfSession, accessProperties);
             SmbFileInputStream smbFileOS = null;
 
             try {
@@ -184,14 +167,23 @@ public class ContentLoader {
                     smbFileOS.close();
                 }
             }
+        }
+        catch (Exception ex) {
+            throw new ContentLoaderException("Cant download file by reference: " + accessProperties.getUrl(), ex);
+        }
+	}
 
+	public static void deleteContentBySmb(IDfSession dfSession, FileAccessProperties accessProperties) throws DfException {
+    	try {
+			boolean deleteFile = "true".equalsIgnoreCase(getSyspropValue(dfSession, SYSPROP_SMB_NEED_DELETE));
+			SmbFile smbFile = getSmbFile(dfSession, accessProperties);
             if (deleteFile) {
 				if (smbFile != null) {
 					try {
+						DfLogger.info(dfSession, "Удалён smb файл " + smbFile.getCanonicalPath(), null, null);
 						smbFile.delete();
 					} catch (Exception ex) {
-						DfLogger.warn(dfSession, "Не удалось удалить файл " + smbFile.getCanonicalPath(),
-								null, ex);
+						DfLogger.warn(dfSession, "Не удалось удалить файл " + smbFile.getCanonicalPath(), null, ex);
 					}
 				}
             }
@@ -201,22 +193,54 @@ public class ContentLoader {
         }
 	}
 
+	private static SmbFile getSmbFile(IDfSession dfSession, FileAccessProperties accessProperties) throws DfException, MalformedURLException {
+		String domain = "";
+		try {
+            domain = getSyspropValue(dfSession, SYSPROP_SMB_USER_DOMAIN);
+        } catch (DfException ex) {
+            DfLogger.warn(dfSession, "Ошибка при получении наименования домена для авторизации по smb", null,
+                    ex);
+        }
+		String userName = getSyspropValue(dfSession, SYSPROP_SMB_USER_NAME);
+		String userPassword = getSyspropValue(dfSession, SYSPROP_SMB_USER_PASSWORD);
+
+
+		NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(domain, userName, userPassword);
+		String fileReference = "smb:" + accessProperties.getUrl().replace('\\', '/');
+
+		return new SmbFile(fileReference, auth);
+	}
+
 	public static void loadContentBySftp(IDfSession dfSession, FileAccessProperties accessProperties, OutputStream out) throws DfException {
-    	accessProperties.setUser(getSyspropValue(dfSession, SYSPROP_SFTP_USER_NAME));
-        accessProperties.setKeyFilePath(getSyspropValue(dfSession, SYSPROP_SFTP_KEYFILE_PATH));
+        JschSFTP jsftp = null;
+        try {
+			jsftp = getJschSFTP(dfSession, accessProperties, jsftp);
+            jsftp.get(accessProperties.getPath(), out);
+        } catch (JSchException e) {
+            throw new ContentLoaderException("Ошибка при работе с файлом: " + accessProperties.getUrl(), e);
+        } finally {
+            if (jsftp != null) {
+                try {
+                    jsftp.disconnect();
+                } catch (JSchException e) {
+                    DfLogger.error(
+                            null,
+                            "Ошибка при закрытии sftp-соединения c "
+                                    + accessProperties.getHost(), null, e);
+                }
+            }
+        }
+	}
+
+	public static void deleteContentBySftp(IDfSession dfSession, FileAccessProperties accessProperties) throws DfException {
         boolean deleteFile = "true".equalsIgnoreCase(getSyspropValue(dfSession, SYSPROP_SFTP_NEED_DELETE));
         JschSFTP jsftp = null;
         try {
-            JschSFTPBuilder builder = new JschSFTPBuilder();
-            jsftp = builder.host(accessProperties.getHost())
-                    .user(accessProperties.getUser())
-                    .password(accessProperties.getPassword())
-                    .keyFilePath(accessProperties.getKeyFilePath()).build();
-            jsftp.connect();
-            jsftp.get(accessProperties.getPath(), out);
+			jsftp = getJschSFTP(dfSession, accessProperties, jsftp);
 			if (deleteFile) {
 				try {
 					jsftp.remove(accessProperties.getPath());
+					DfLogger.info(dfSession, "Удалён sftp файл " + accessProperties.getPath(), null, null);
 				} catch (Exception ex) {
 					DfLogger.warn(dfSession, "Не удалось удалить файл " + accessProperties.getPath(),
 							null, ex);
@@ -236,6 +260,18 @@ public class ContentLoader {
                 }
             }
         }
+	}
+
+	private static JschSFTP getJschSFTP(IDfSession dfSession, FileAccessProperties accessProperties, JschSFTP jsftp) throws JSchException, DfException {
+		accessProperties.setUser(getSyspropValue(dfSession, SYSPROP_SFTP_USER_NAME));
+		accessProperties.setKeyFilePath(getSyspropValue(dfSession, SYSPROP_SFTP_KEYFILE_PATH));
+		JschSFTPBuilder builder = new JschSFTPBuilder();
+		jsftp = builder.host(accessProperties.getHost())
+                .user(accessProperties.getUser())
+                .password(accessProperties.getPassword())
+                .keyFilePath(accessProperties.getKeyFilePath()).build();
+		jsftp.connect();
+		return jsftp;
 	}
 
 	/**
@@ -605,5 +641,50 @@ public class ContentLoader {
         }
     }
 
+	/**
+	 * Удалить контент по заваршению обработки сообщения
+	 * Если сообщение самос одержит контент, удаляем его. Если нет - идём на сервер и удаляем оттуда.
+	 * @param dfSession сессия
+	 * @param messageObject DocPut сообщение
+	 * @param contentXmlObject метаданные контента.
+	 * @throws DfException ошибка обработки
+     */
+	public static void deleteContentFile(IDfSession dfSession, IDfSysObject messageObject, ContentType contentXmlObject) throws DfException {
 
+		DfLogger.info(dfSession, "Удаление файла сообщения " + messageObject.getObjectId(), null, null);
+
+		if (contentXmlObject.getDocScan() != null && contentXmlObject.getDocScan().size() > 0) {
+			ContentType.DocScan docScan = contentXmlObject.getDocScan().get(0);
+			if (docScan.getFileFormat() == null) {
+				throw new DfException("Не указан формат файла");
+			}
+
+			try {
+				DfLogger.info(dfSession, "Удалён dfc файл " + messageObject.getObjectId(), null, null);
+				messageObject.destroy(); // todo или искать контент через dm_relation? есть ли необходимость в destroyAllVersions ?
+			} catch (DfException ex) {
+				DfLogger.error(dfSession, "Не удалось удалить DocPut сообщение " + messageObject.getObjectId(), null, ex);
+			}
+
+		} else if (contentXmlObject.getDocReference() != null && contentXmlObject.getDocReference().size() > 0) {
+			ContentType.DocReference docReference = contentXmlObject.getDocReference().get(0);
+			if (docReference.getFileFormat() == null) {
+				throw new DfException("Не указан формат файла");
+			}
+			String fileReference;
+			if (docReference.getFileReference() != null && !docReference.getFileReference().trim().isEmpty()) {
+				fileReference = docReference.getFileReference();
+			} else if (docReference.getFileReferenceSMB() != null && !docReference.getFileReferenceSMB().trim().isEmpty()) {
+				fileReference = docReference.getFileReferenceSMB();
+			} else {
+				throw new CantFindFileReferenceException("Cant find file reference to load");
+			}
+			FileAccessProperties accessProperties = FileAccessProperties.parseUrl(fileReference);
+			if (JschSFTP.SFTP.equalsIgnoreCase(accessProperties.getProtocol())) {
+				deleteContentBySftp(dfSession, accessProperties);
+			} else if(accessProperties.getUrl().startsWith("\\\\")) {
+				deleteContentBySmb(dfSession, accessProperties);
+			}
+		}
+	}
 }

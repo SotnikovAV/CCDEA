@@ -6,6 +6,7 @@ import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfTime;
+import com.documentum.fc.common.DfUtil;
 import ru.rb.ccdea.adapters.mq.binding.request.MCDocInfoModifyZAType;
 import ru.rb.ccdea.storage.persistence.details.DossierKeyDetails;
 import ru.rb.ccdea.storage.persistence.details.VersionRecordDetails;
@@ -164,15 +165,15 @@ public class RequestPersistence extends BaseDocumentPersistence{
 	public static IDfSysObject searchRequestObject(IDfSession dfSession, String docSourceCode, String docSourceId,
 			String passportNumber) throws DfException {
 		return (IDfSysObject) dfSession.getObjectByQualification(DOCUMENT_TYPE_NAME + " where " + ATTR_DOC_SOURCE_CODE
-				+ " = '" + docSourceCode + "' AND " + ATTR_DOC_SOURCE_ID + " = '" + docSourceId + "' AND "
-				+ ATTR_PASSPORT_NUMBER + " = '" + passportNumber + "'");
+				+ " = " + DfUtil.toQuotedString(docSourceCode) + " AND " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) + " AND "
+				+ ATTR_PASSPORT_NUMBER + " = " + DfUtil.toQuotedString(passportNumber));
 	}
 	
 	public static IDfSysObject searchRequestObject(IDfSession dfSession, String docSourceCode, String docSourceId,
 			String contractNumber, Date contractDate) throws DfException {
 		return (IDfSysObject) dfSession.getObjectByQualification(DOCUMENT_TYPE_NAME + " where " + ATTR_DOC_SOURCE_CODE
-				+ " = '" + docSourceCode + "' AND " + ATTR_DOC_SOURCE_ID + " = '" + docSourceId + "' AND "
-				+ ATTR_CONTRACT_NUMBER + " = '" + contractNumber + "' AND "
+				+ " = " + DfUtil.toQuotedString(docSourceCode) + " AND " + ATTR_DOC_SOURCE_ID + " = " + DfUtil.toQuotedString(docSourceId) + " AND "
+				+ ATTR_CONTRACT_NUMBER + " = " + DfUtil.toQuotedString(contractNumber) + " AND "
 				+ ATTR_CONTRACT_DATE + " = date('" + dateFormat.format(contractDate) + "','dd.mm.yyyy')");
 	}
 }

@@ -89,6 +89,10 @@ public abstract class BaseReceiverMethod extends WorkflowMethod implements IDfMe
             fillReplyObject((IDfWorkitemEx) iDfWorkitem, receiverResult);
             if (receiverResult.isError()) {
                 DfLogger.error(this, "Return error " + receiverResult.getErrorCode() + " with description: " + receiverResult.getErrorDescription(), null, null);
+
+                // если произошла любая ошибка, записываем ошибочные значения напрямую в атрибуты
+                messageObjectProcessor.readValuesFromXml(receiverResult);
+                messageObjectProcessor.storeMessageObjectOnErrorAfterValidation(messageSysObject);
             }
             return 0;
         }

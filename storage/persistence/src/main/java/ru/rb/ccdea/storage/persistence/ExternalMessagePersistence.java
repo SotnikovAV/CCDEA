@@ -74,6 +74,21 @@ public class ExternalMessagePersistence extends BasePersistence {
         logMessageState(messageSysObject, "validation");
     }
 
+    public static void storeMessageObjectOnErrorAfterValidation(IDfSysObject messageSysObject, String modificationVerb, String messageType, String sourceKey, Date sourceTime, String docSourceSystem, String docSourceId, String contentSourceSystem, String contentSourceId) throws DfException {
+        messageSysObject.setString(ATTR_MODIFICATION_VERB, modificationVerb);
+        messageSysObject.setString(ATTR_MESSAGE_TYPE, messageType);
+        messageSysObject.setString(ATTR_SOURCE_KEY, sourceKey);
+        messageSysObject.setTime(ATTR_MODIFICATION_TIME, new DfTime(sourceTime));
+        messageSysObject.setInt(ATTR_CURRENT_STATE, MESSAGE_STATE_VALIDATION_ERROR);
+        messageSysObject.setString(ATTR_DOC_SOURCE_ID, docSourceId);
+        messageSysObject.setString(ATTR_DOC_SOURCE_CODE, docSourceSystem);
+        messageSysObject.setString(ATTR_CONTENT_SOURCE_ID, contentSourceId);
+        messageSysObject.setString(ATTR_CONTENT_SOURCE_CODE, contentSourceSystem);
+        messageSysObject.save();
+
+        logMessageState(messageSysObject, "validation error");
+    }
+
     public static void storeMessageObjectAfterValidation(IDfSysObject messageSysObject, boolean isError, String errorCode, String errorDescription, Date resultDate) throws DfException {
         messageSysObject.setTime(ATTR_REPLY_TIME, new DfTime(resultDate));
         messageSysObject.setString(ATTR_REPLY_ERROR_CODE, errorCode);

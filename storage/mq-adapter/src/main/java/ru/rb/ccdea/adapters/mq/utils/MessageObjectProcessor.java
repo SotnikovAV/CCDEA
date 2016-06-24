@@ -74,6 +74,10 @@ public abstract class MessageObjectProcessor {
         ExternalMessagePersistence.storeMessageObjectOnValidation(messageSysObject, modificationVerb, getMessageType(), getSourceKey(), sourceTime, docSourceSystem, docSourceId, contentSourceSystem, contentSourceId);
     }
 
+    public void storeMessageObjectOnErrorAfterValidation(IDfSysObject messageSysObject) throws DfException {
+        ExternalMessagePersistence.storeMessageObjectOnErrorAfterValidation(messageSysObject, modificationVerb, getMessageType(), getSourceKey(), sourceTime, docSourceSystem, docSourceId, contentSourceSystem, contentSourceId);
+    }
+
     public void storeMessageObjectAfterValidation(IDfSysObject messageSysObject, UnifiedResult result) throws DfException {
         ExternalMessagePersistence.storeMessageObjectAfterValidation(messageSysObject, result.isError(), result.getErrorCode(), result.getErrorDescription(), result.getResultDate());
     }

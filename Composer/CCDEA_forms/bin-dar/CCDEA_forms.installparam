@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<installparam:InputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:installparam="installparam">
-  <parameter key="Dar Install Folder" value="" defaultValue="/System/Applications/CCDEA_forms"/>
-  <parameter key="filestore_01" value="" defaultValue="filestore_01"/>
-  <parameter key="Forms User Default ACL" value="" defaultValue="Forms User Default ACL"/>
-</installparam:InputFile>

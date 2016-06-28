@@ -1,0 +1,22 @@
+<NS1:docPut xmlns:NS1="pr">
+	<NS1:originIdentification>
+		<NS1:sourceSystem>JETDOCER</NS1:sourceSystem>
+		<NS1:sourceId>5567090</NS1:sourceId>
+	</NS1:originIdentification>
+	<NS1:originDocIdentification>
+		<NS1:sourceSystem>JETDOCER</NS1:sourceSystem>
+		<NS1:sourceId>20994873</NS1:sourceId>
+	</NS1:originDocIdentification>
+	<NS1:docOriginDate>2016-04-03</NS1:docOriginDate>
+	<NS1:originalsDate>2016-04-03</NS1:originalsDate>
+	<NS1:content>
+		<NS1:docReference>
+			<NS1:position>1</NS1:position>
+			<NS1:fileReference>sftp://bravo04.imb.ru:22/oracle/u01/upload/JETDOC02/EA/5567090_20994873.file
+			</NS1:fileReference>
+			<NS1:fileFormat>7z</NS1:fileFormat>
+		</NS1:docReference>
+	</NS1:content>
+	<NS1:docTypeName>Обосновывающие док-ты (Контракт,Счет,Дополнение)
+	</NS1:docTypeName>
+</NS1:docPut> 

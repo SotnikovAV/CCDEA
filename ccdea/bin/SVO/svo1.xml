@@ -1,0 +1,66 @@
+<NS1:MCDocInfoModifySVO xmlns:NS1="pr">
+	<NS1:OriginIdentification>
+		<NS1:SourceSystem>DVK</NS1:SourceSystem>
+		<NS1:SourceId>4889141</NS1:SourceId>
+	</NS1:OriginIdentification>
+	<NS1:Customer>
+		<NS1:CustomerNumber>00682320</NS1:CustomerNumber>
+		<NS1:CustomerName>Общество с Ограниченной Ответственностью &quot;БСХ
+			Бытовые Приборы&quot;</NS1:CustomerName>
+	</NS1:Customer>
+	<NS1:SVODetails>
+		<NS1:Status>DONE</NS1:Status>
+		<NS1:StatusName>Принято ВК</NS1:StatusName>
+		<NS1:SystemSource>JetDocer</NS1:SystemSource>
+		<NS1:SystemRefId />
+		<NS1:URLScan />
+		<NS1:StatusComment />
+		<NS1:DocNumber>БН</NS1:DocNumber>
+		<NS1:DocDate>2016-02-25</NS1:DocDate>
+		<NS1:IsVIP>false</NS1:IsVIP>
+		<NS1:RegNum>0001</NS1:RegNum>
+		<NS1:BankName>Филиал Акционерного общества «ЮниКредит Банк» в г.
+			Санкт-Петербурге</NS1:BankName>
+		<NS1:IsChanged>false</NS1:IsChanged>
+		<NS1:ReceiveDate>2016-02-25</NS1:ReceiveDate>
+		<NS1:AcceptDate>2016-02-25</NS1:AcceptDate>
+		<NS1:Account />
+		<NS1:BankCountryCode>112</NS1:BankCountryCode>
+		<NS1:VODetails>
+			<NS1:Index>1</NS1:Index>
+			<NS1:Date>2016-02-25</NS1:Date>
+			<NS1:VOCode>20100</NS1:VOCode>
+			<NS1:PaymentNumber>F14082000842</NS1:PaymentNumber>
+			<NS1:PaymentDate>2014-08-20</NS1:PaymentDate>
+			<NS1:PaymentAmount>12790.14</NS1:PaymentAmount>
+			<NS1:PaymentCurrency>978</NS1:PaymentCurrency>
+			<NS1:DealPassport>06110111/0001/0001/2/0</NS1:DealPassport>
+			<NS1:OperationType>1</NS1:OperationType>
+		</NS1:VODetails>
+		<NS1:VODetails>
+			<NS1:Index>2</NS1:Index>
+			<NS1:Date>2016-02-25</NS1:Date>
+			<NS1:VOCode>10200</NS1:VOCode>
+			<NS1:PaymentNumber>AZMAT22081403566</NS1:PaymentNumber>
+			<NS1:PaymentDate>2014-08-25</NS1:PaymentDate>
+			<NS1:PaymentAmount>40896201.76</NS1:PaymentAmount>
+			<NS1:PaymentCurrency>643</NS1:PaymentCurrency>
+			<NS1:DealPassport>06110111/0001/0001/2/0</NS1:DealPassport>
+			<NS1:OperationType>1</NS1:OperationType>
+		</NS1:VODetails>
+		<NS1:VODetails>
+			<NS1:Index>3</NS1:Index>
+			<NS1:Date>2016-02-25</NS1:Date>
+			<NS1:VOCode>20200</NS1:VOCode>
+			<NS1:PaymentNumber>F15021904659</NS1:PaymentNumber>
+			<NS1:PaymentDate>2015-02-19</NS1:PaymentDate>
+			<NS1:PaymentAmount>173988.40</NS1:PaymentAmount>
+			<NS1:PaymentCurrency>978</NS1:PaymentCurrency>
+			<NS1:DealPassport>06110111/0001/0001/2/0</NS1:DealPassport>
+			<NS1:OperationType>1</NS1:OperationType>
+		</NS1:VODetails>
+	</NS1:SVODetails>
+	<NS1:UserId>NTD1\mb11783</NS1:UserId>
+	<NS1:UserDep>BPK</NS1:UserDep>
+	<NS1:ModificationDateTime>2016-02-25T12:58:00.040</NS1:ModificationDateTime>
+</NS1:MCDocInfoModifySVO>

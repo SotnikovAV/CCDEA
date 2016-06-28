@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+   <scope>
+
+      <types>
+         <type name="ccdea_passport">
+            <nls>MSG_PASSPORT_TYPE</nls>
+            <docbase_type>ccdea_passport</docbase_type>
+            <component>ccdea_vk_search_results_passport</component>
+            <search_filters>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="document_offer_date"/>
+               <search_filter filter_type="passport_date"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="accept_reject_date" field="t_accept_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="ps_close_date"/>
+               <search_filter filter_type="contract_currency" field="s_contract_currency_code"/>
+               <search_filter filter_type="contract_finish_date"/>
+               <search_filter filter_type="passport_type_code"/>
+               <search_filter filter_type="ps_close_reason"/>
+               <search_filter filter_type="processing_unit"/>
+            </search_filters>
+            <select_fields>r_object_id,'ccdea_passport_view' as view_template,s_reg_branch_code,'Паспорт сделки' as s_doc_type,s_customer_number,s_customer_name,t_accept_date as t_accept_date,s_passport_number as s_doc_number,t_passport_date as t_doc_date,s_contractor_column,d_amount,s_contract_currency_code,t_contract_end_date as t_contract_end_date,t_last_change_date as t_last_change_date,t_close_date as t_close_date,s_close_reason,s_last_change_author,r_creation_date as r_creation_date,s_doc_source_id,t_receive_date,DATE('01/02/1753') as t_accept_reject_column,'' as s_state,'' as s_state_comment,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
+            <multitype_select_fields>r_object_id,'ccdea_passport_view' as view_template,s_reg_branch_code,s_doc_source_id,'Паспорт сделки' as s_doc_type,s_customer_number,s_customer_name,s_passport_number as s_doc_number,t_passport_date as t_doc_date,t_receive_date as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,'' as s_state,'' as s_state_comment,t_close_date as t_close_date,s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
+         </type>
+         <type name="ccdea_vbk">
+            <nls>MSG_VBK_TYPE</nls>
+            <docbase_type>ccdea_vbk</docbase_type>
+            <component>ccdea_vk_search_results_vbk</component>
+            <search_filters>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="passport_date"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="ps_close_date"/>
+               <search_filter filter_type="contract_finish_date"/>
+               <search_filter filter_type="passport_type_code"/>
+               <search_filter filter_type="ps_close_reason"/>
+               <search_filter filter_type="processing_unit"/>
+            </search_filters>
+            <select_fields>r_object_id,'ccdea_vbk_view' as view_template,s_reg_branch_code,'ВБК' as s_doc_type,s_customer_number,s_customer_name,s_passport_number,t_passport_date as t_passport_date,t_last_change_date as t_last_change_date,t_close_date as t_close_date,s_close_reason,s_last_change_author,r_creation_date as r_creation_date,s_doc_source_id,'' as s_doc_number,DATE('01/02/1753') as t_doc_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,'' as s_state,'' as s_state_comment,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
+            <multitype_select_fields>r_object_id,'ccdea_vbk_view' as view_template,s_reg_branch_code,s_doc_source_id,'ВБК' as s_doc_type,s_customer_number,s_customer_name,'' as s_doc_number,DATE('01/02/1753') as t_doc_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,'' as s_state,'' as s_state_comment,t_close_date as t_close_date,s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
+         </type>
+         <type name="ccdea_contract">
+            <nls>MSG_CONTRACT_TYPE</nls>
+            <docbase_type>ccdea_contract</docbase_type>
+            <component>ccdea_vk_search_results_contract</component>
+            <search_filters>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="document_offer_date"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="contract_currency"/>
+               <search_filter filter_type="passport_type_code"/>
+               <search_filter filter_type="processing_unit"/>
+            </search_filters>
+            <select_fields>r_object_id,'ccdea_contract_view' as view_template,s_reg_branch_code,s_doc_source_id,'Контракт' as s_doc_type,s_customer_number,s_customer_name,s_contract_number as s_doc_number,t_contract_date as t_doc_date,d_general_amount,s_currency_code,s_contractor_column,s_passport_number,t_receive_date as t_receive_date,t_last_change_date as t_last_change_date,t_close_date as t_close_date,b_is_aml,s_comment,s_last_change_author,r_creation_date as r_creation_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date</select_fields>
+            <multitype_select_fields>r_object_id,'ccdea_contract_view' as view_template,s_reg_branch_code,s_doc_source_id,'Контракт' as s_doc_type,s_customer_number,s_customer_name,s_contract_number as s_doc_number,t_contract_date as t_doc_date,t_receive_date as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,t_close_date as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,b_is_aml,s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
+         </type>
+         <type name="ccdea_spd">
+            <nls>MSG_SPD_TYPE</nls>
+            <docbase_type>ccdea_spd</docbase_type>
+            <component>ccdea_vk_search_results_spd</component>
+            <search_filters>
+               <search_filter filter_type="document_status"/>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="document_number"/>
+               <search_filter filter_type="document_offer_date"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="accept_reject_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="operation_date"/>
+               <search_filter filter_type="document_date"/>
+               <search_filter filter_type="document_currency"/>
+               <!--search_filter filter_type="contract_currency"/-->
+               <search_filter filter_type="passport_type_code"/>
+               <search_filter filter_type="confirm_document_type"/>
+               <search_filter filter_type="processing_unit"/>
+               <search_filter filter_type="correction_flag"/>
+            </search_filters>
+            <select_fields>r_object_id,'ccdea_spd_view' as view_template,s_reg_branch_code,s_doc_source_id,'СПД' as s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,s_passport_number,b_is_changed,t_receive_date as t_receive_date,t_accept_reject_column as t_accept_reject_column,s_state,s_state_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date,DATE('01/02/1753') as t_close_date,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
+            <multitype_select_fields>r_object_id,'ccdea_spd_view' as view_template,s_reg_branch_code,s_doc_source_id,'СПД' as s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,t_receive_date as t_receive_date,t_accept_reject_column as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
+         </type>
+         <type name="ccdea_svo_detail">
+            <nls>MSG_SVO_DETAIL_TYPE</nls>
+            <docbase_type>ccdea_svo_detail</docbase_type>
+            <component>ccdea_vk_search_results_svo_detail</component>
+            <search_filters>
+               <search_filter filter_type="document_status"/>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="document_number"/>
+               <search_filter filter_type="document_offer_date"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="accept_reject_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="operation_date"/>
+               <search_filter filter_type="document_date"/>
+               <search_filter filter_type="document_currency" field="s_payment_currency_code"/>
+               <search_filter filter_type="contract_currency" class="ru.rb.ccdea.search.filter.SvoContractCurrencyFilterProcessor"/>
+               <search_filter filter_type="passport_type_code"/>
+               <search_filter filter_type="operation_code"/>
+               <search_filter filter_type="processing_unit"/>
+               <search_filter filter_type="payment_flag"/>
+               <search_filter filter_type="correction_flag"/>
+            </search_filters>
+            <select_fields>min(r_object_id) as r_object_id,'ccdea_svo_detail_view' as view_template,s_reg_branch_code,s_doc_source_id,'СВО' as s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,b_is_changed,t_receive_date as t_receive_date,t_accept_reject_column as t_accept_reject_column,s_state,s_state_comment,t_last_change_date as t_last_change_date,s_last_change_author,min(r_creation_date) as r_creation_date,DATE('01/02/1753') as t_close_date,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
+            <multitype_select_fields>min(r_object_id) as r_object_id,'ccdea_svo_detail_view' as view_template,s_reg_branch_code,s_doc_source_id,'СВО' as s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,t_receive_date as t_receive_date,t_accept_reject_column as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,min(r_creation_date) as r_creation_date</multitype_select_fields>
+            <groupby>s_reg_branch_code,s_doc_source_id,s_customer_number,s_customer_name,s_doc_number,t_doc_date,b_is_changed,t_receive_date,t_accept_reject_column,s_state,s_state_comment,t_last_change_date,s_last_change_author, ccdea_dossier.s_passport_number, s_contract_number, t_contract_date</groupby>
+            <multitype_groupby>s_reg_branch_code,s_doc_source_id,s_customer_number,s_customer_name,s_doc_number,t_doc_date,b_is_changed,t_receive_date,t_accept_reject_column,s_state,s_state_comment,t_last_change_date,s_last_change_author, ccdea_dossier.s_archive_number, ccdea_dossier.t_archive_date, ccdea_dossier.s_passport_number, s_contract_number, t_contract_date</multitype_groupby>
+         </type>
+         <type name="ccdea_request">
+            <nls>MSG_REQUEST_TYPE</nls>
+            <docbase_type>ccdea_request</docbase_type>
+            <component>ccdea_vk_search_results_request</component>
+            <search_filters>
+               <search_filter filter_type="document_status"/>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="document_offer_date"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="accept_reject_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="passport_type_code"/>
+               <search_filter filter_type="processing_unit"/>
+            </search_filters>
+            <select_fields>r_object_id,'ccdea_request_view' as view_template,s_reg_branch_code,s_doc_source_id,'Заявление' as s_doc_type,s_customer_number,s_customer_name,t_receive_date as t_receive_date,t_origin_date as t_origin_date,t_accept_reject_column as t_accept_reject_column,s_state,s_state_comment,s_passport_number,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date,'' as s_doc_number,DATE('01/02/1753') as t_doc_date,DATE('01/02/1753') as t_close_date,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
+            <multitype_select_fields>r_object_id,'ccdea_request_view' as view_template,s_reg_branch_code,s_doc_source_id,'Заявление' as s_doc_type,s_customer_number,s_customer_name,'' as s_doc_number,DATE('01/02/1753') as t_doc_date,t_receive_date as t_receive_date,t_accept_reject_column as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
+         </type>
+         <type name="ccdea_pd">
+            <nls>MSG_PD_TYPE</nls>
+            <docbase_type>ccdea_pd</docbase_type>
+            <component>ccdea_vk_search_results_pd</component>
+            <search_filters>
+               <search_filter filter_type="customer_number"/>
+               <search_filter filter_type="customer_name"/>
+               <search_filter filter_type="passport_number"/>
+               <search_filter filter_type="contract_number"/>
+               <search_filter filter_type="document_number"/>
+               <search_filter filter_type="contract_date"/>
+               <search_filter filter_type="change_date"/>
+               <search_filter filter_type="document_date"/>
+               <search_filter filter_type="document_currency"/>
+               <search_filter filter_type="processing_unit"/>
+            </search_filters>
+            <select_fields>r_object_id,'ccdea_pd_view' as view_template,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_type,s_doc_number,t_doc_date as t_doc_date,s_currency_code,d_amount,s_passport_number,s_contract_number,t_contract_date as t_contract_date,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
+            <multitype_select_fields>r_object_id,'ccdea_pd_view' as view_template,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
+         </type>
+      </types>
+      <filter_types>
+         <filter_type name="document_status" class="ru.rb.ccdea.search.filter.DropDownListFilterProcessor"
+                      field="s_state"/>
+         <filter_type name="customer_name" class="ru.rb.ccdea.search.filter.ClientNameFilterProcessor"
+                 field="s_customer_number"/>
+         <filter_type name="customer_number" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                 field="s_customer_number"/>
+         <filter_type name="passport_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"
+                      field="s_passport_number"/>
+         <filter_type name="contract_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"
+                      field="s_contract_number"/>
+         <filter_type name="document_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"
+                      field="s_doc_number"/>
+         <filter_type name="document_offer_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_receive_date"/>
+         <filter_type name="passport_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_passport_date"/>
+         <filter_type name="contract_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_contract_date"/>
+         <filter_type name="accept_reject_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_accept_reject_column"/>
+         <filter_type name="change_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_last_change_date"/>
+         <filter_type name="ps_close_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_close_date"/>
+         <filter_type name="contract_finish_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_contract_end_date"/>
+         <filter_type name="operation_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_detail_date"/>
+         <filter_type name="document_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
+                      field="t_doc_date"/>
+         <!--filter_type name="document_sum" class="ru.rb.ccdea.search.filter.NumberFilterProcessor"
+                      field="d_amount"/>
+         <filter_type name="operation_sum" class="ru.rb.ccdea.search.filter.NumberFilterProcessor"
+                      field="d_payment_amount"/-->
+         <filter_type name="document_currency" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                      field="s_currency_code"/>
+         <!--filter_type name="contract_sum" class="ru.rb.ccdea.search.filter.NumberFilterProcessor"
+                      field="d_amount"/-->
+         <filter_type name="contract_currency" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                      field="s_currency_code"/>
+         <!--filter_type name="ps_currency" class="ru.rb.ccdea.search.filter.SearchListFilterProcessor"
+                      field="s_contract_currency_code"/-->
+         <filter_type name="passport_type_code" class="ru.rb.ccdea.search.filter.PassportTypeCodeFilterProcessor"
+                      field="s_passport_type_code"/>
+         <filter_type name="ps_close_reason" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                      field="s_close_reason"/>
+         <filter_type name="operation_code" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                      field="s_vo_code"/>
+         <filter_type name="confirm_document_type" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                      field="s_pd_doc_kind_code_r"/>
+         <!--filter_type name="source_system" class="ru.rb.ccdea.search.filter.ListFilterProcessor"
+                      field="s_doc_source_code"/-->
+         <filter_type name="processing_unit" class="ru.rb.ccdea.search.filter.ListFilterProcessor"
+                      field="s_reg_branch_code"/>
+         <filter_type name="payment_flag" class="ru.rb.ccdea.search.filter.PaymentFlagFilterProcessor"
+                      field="n_payment_flag"/>
+         <filter_type name="correction_flag" class="ru.rb.ccdea.search.filter.DropDownListFilterProcessor"
+                      field="b_is_changed"/>
+      </filter_types>
+      <multitype_select_fields>r_object_id,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date,t_receive_date,t_accept_reject_column,s_state,s_state_comment,t_close_date,s_close_reason,s_archive_number,t_archive_date,b_is_aml,s_comment,t_last_change_date,s_last_change_author,r_creation_date</multitype_select_fields>
+      <multitype_component>ccdea_vk_search_results</multitype_component>
+      <multitype_types>
+         <type>ccdea_dossier</type>
+      </multitype_types>
+      <multitype_conditions>
+         <condition>id_dossier = ccdea_dossier.r_object_id</condition>
+      </multitype_conditions>
+   </scope>
+</config>
+
+ 

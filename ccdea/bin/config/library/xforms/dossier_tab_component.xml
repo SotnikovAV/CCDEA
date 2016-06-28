@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+    <scope>
+
+        <component id="dossier_tab" extends="ccdea_vk_search_results:ccdea/config/library/search/vk_search_results_component.xml">
+            <params>
+                <param name="objectId" required="true"/>
+            </params>
+            <pages>
+                <start>/ccdea/library/xforms/dossier_tab.jsp</start>
+            </pages>
+            <class>ru.rb.ccdea.xforms.DossierTabComponent</class>
+            <nlsbundle>ru.rb.ccdea.xforms.DossierTabNlsProp</nlsbundle>
+
+        </component>
+
+    </scope>
+</config>

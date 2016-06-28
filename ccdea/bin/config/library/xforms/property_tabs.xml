@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+   <scope>
+
+      <component id="property_tabs">
+
+         <desc>
+            Компонент, содержащий закладки для карточки документа
+         </desc>
+
+         <params>
+            <param name="objectId" required="true"/>
+         </params>
+
+         <contains>
+            <component>dossier_tab</component>
+            <component>versions_tab</component>
+            <component>actions_tab</component>
+            <component>files_tab</component>
+         </contains>
+
+         <pages>
+            <start>/ccdea/library/xforms/property_tabs.jsp</start>
+         </pages>
+
+         <class>com.documentum.web.formext.component.PropertySheetContainer</class>
+
+         <nlsbundle>ru.rb.ccdea.search.VkSearchComponentNlsProp</nlsbundle>
+      </component>
+
+   </scope>
+</config>
+
+ 

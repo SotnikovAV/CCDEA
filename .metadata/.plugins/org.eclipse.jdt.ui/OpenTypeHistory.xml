@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=ccdea/persistence-main-java&lt;ru.rb.ccdea.storage.persistence{SVOPersistence.java[SVOPersistence" modifiers="1" timestamp="1461664897521"/>
+<typeInfo handle="=ccdea/persistence-main-java&lt;ru.rb.ccdea.storage.persistence.ctsutils{CTSRequestBuilder.java[CTSRequestBuilder" modifiers="1" timestamp="1460120599718"/>
+<typeInfo handle="=ccdea/taskspace-main-java&lt;ru.rb.ccdea.dialog{DossierSearchComponent.java[DossierSearchComponent" modifiers="1" timestamp="1459075204131"/>
+<typeInfo handle="=ccdea/taskspace-main-java&lt;ru.rb.ccdea.search{SearchResultsComponent.java[SearchResultsComponent" modifiers="1" timestamp="1459516423823"/>
+<typeInfo handle="=ccdea/mq-adapter-main-java&lt;ru.rb.ccdea.adapters.mq.utils{VODetailsMainDocIdentifiersValidator.java[VODetailsMainDocIdentifiersValidator" modifiers="1" timestamp="1447852210000"/>
+<typeInfo handle="=ccdea/persistence-main-java&lt;ru.rb.ccdea.storage.persistence{BasePersistence.java[BasePersistence" modifiers="1" timestamp="1444656436000"/>
+<typeInfo handle="=ccdea/jobs-main-java&lt;ru.rb.ccdea.storage.jobs{SVOMessageJob.java[SVOMessageJob" modifiers="1" timestamp="1464013780089"/>
+<typeInfo handle="=ccdea/C:\/Users\/sotnik\/.m2\/repository\/com\/documentum\/taskspaceclasses\/6.7.0000.0259\/taskspaceclasses-6.7.0000.0259.jar&lt;com.documentum.web.util(DfcUtils.class[DfcUtils" modifiers="33" timestamp="1397366697613"/>
+<typeInfo handle="=ccdea/persistence-main-java&lt;ru.rb.ccdea.storage.persistence.fileutils{FileAccessProperties.java[FileAccessProperties" modifiers="1" timestamp="1463996956989"/>
+<typeInfo handle="=ccdea/persistence-main-java&lt;ru.rb.ccdea.storage.persistence.fileutils{ContentLoader.java[ContentLoader" modifiers="1" timestamp="1465217275258"/>
+<typeInfo handle="=ccdea/jobs-main-java&lt;ru.rb.ccdea.storage.jobs{DocStateNotifyMessageJob.java[DocStateNotifyMessageJob" modifiers="1" timestamp="1465217275254"/>
+<typeInfo handle="=ccdea/jobs-main-java&lt;ru.rb.ccdea.storage.jobs{DocPutMesssageJob.java[DocPutMesssageJob" modifiers="1" timestamp="1464702715173"/>
+<typeInfo handle="=ccdea/taskspace-main-java&lt;ru.rb.ccdea.search{SearchComponent.java[SearchComponent" modifiers="1" timestamp="1464335482521"/>
+<typeInfo handle="=ccdea/jobs-main-java&lt;ru.rb.ccdea.storage.jobs{ContractMessageJob.java[ContractMessageJob" modifiers="1" timestamp="1464014528015"/>
+</typeInfoHistroy>

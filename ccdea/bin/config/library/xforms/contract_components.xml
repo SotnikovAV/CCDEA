@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+    <scope>
+
+        <component id="contract_contragent">
+            <params>
+                <param name="objectId" required="true"/>
+            </params>
+            <pages>
+                <start>/ccdea/library/xforms/contract_contragent.jsp</start>
+            </pages>
+            <class>ru.rb.ccdea.xforms.ContractContragentComponent</class>
+            <nlsbundle>ru.rb.ccdea.xforms.ContractContragentNlsProp</nlsbundle>
+
+        </component>
+
+        <component id="contract_multisum">
+            <params>
+                <param name="objectId" required="true"/>
+            </params>
+            <pages>
+                <start>/ccdea/library/xforms/contract_multisum.jsp</start>
+            </pages>
+            <class>ru.rb.ccdea.xforms.ContractMultisumComponent</class>
+            <nlsbundle>ru.rb.ccdea.xforms.ContractMultisumNlsProp</nlsbundle>
+
+        </component>
+
+    </scope>
+</config>

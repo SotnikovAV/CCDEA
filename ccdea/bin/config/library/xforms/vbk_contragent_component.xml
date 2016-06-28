@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+
+    <scope>
+
+        <component id="vbk_contragent">
+            <params>
+                <param name="objectId" required="true"/>
+            </params>
+            <pages>
+                <start>/ccdea/library/xforms/vbk_contragent.jsp</start>
+            </pages>
+            <class>ru.rb.ccdea.xforms.VBKContragentComponent</class>
+            <nlsbundle>ru.rb.ccdea.xforms.VBKContragentNlsProp</nlsbundle>
+
+        </component>
+
+    </scope>
+</config>

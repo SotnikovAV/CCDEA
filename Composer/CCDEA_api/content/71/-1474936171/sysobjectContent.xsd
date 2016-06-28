@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="pr" xmlns:pr="pr">
+    <xsd:element name="statusDetailsReply" type="pr:StatusDetailsReplyType"/>
+
+    <xsd:simpleType name="StatusCodeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SUCCESS"/>
+            <xsd:enumeration value="WARNING"/>
+            <xsd:enumeration value="ERROR"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+	
+    <xsd:complexType name="StatusDetailsType">
+        <xsd:sequence>
+            <xsd:element name="status" type="pr:StatusCodeType"/>
+            <xsd:element name="errorCode" type="xsd:integer" minOccurs="0"/>
+            <xsd:element name="errorDescription" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="timeStamp" type="xsd:dateTime" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>	
+	
+    <xsd:complexType name="StatusDetailsReplyType">
+        <xsd:sequence>
+            <xsd:element name="statusDetails" type="pr:StatusDetailsType"/>
+        </xsd:sequence>
+        <!--<xsd:attribute name="correlationID" type="xsd:string" use="required"/>-->
+    </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config version='1.0'>
+	<scope>
+		<component id="files_tab"
+			extends="ccdea_vk_search_results:ccdea/config/library/search/vk_search_results_component.xml">
+			<params>
+				<param name="objectId" required="true" />
+			</params>
+			<pages>
+				<start>/ccdea/library/xforms/files_tab.jsp</start>
+			</pages>
+			<class>ru.rb.ccdea.xforms.FilesTabComponent</class>
+			<nlsbundle>ru.rb.ccdea.xforms.FilesTabNlsProp</nlsbundle>
+
+			<columns>
+				<column>
+					<attribute>s_content_source_id</attribute>
+					<label>
+						<nlsid>MSG_CONTENT_SOURCE_ID</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
+					<attribute>doc_type_state</attribute>
+					<label>
+						<nlsid>MSG_DOCTYPE_AND_STATE</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
+					<attribute>s_content_source_code</attribute>
+					<label>
+						<nlsid>MSG_CONTENT_SOURCE_CODE</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
+					<attribute>r_creation_date</attribute>
+					<label>
+						<nlsid>MSG_CREATION_DATE</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
+					<attribute>r_version_label</attribute>
+					<label>
+						<nlsid>MSG_VERSION</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+				<column>
+					<attribute>a_content_type</attribute>
+					<label>
+						<nlsid>MSG_CONTENT_TYPE</nlsid>
+					</label>
+					<visible>true</visible>
+				</column>
+			</columns>
+
+		</component>
+	</scope>
+</config>

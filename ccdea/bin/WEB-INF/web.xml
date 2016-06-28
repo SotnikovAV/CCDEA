@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4"
+   xmlns="http://java.sun.com/xml/ns/j2ee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+   <!--indicates that WDK is programmed appropriately to be deployed into a distributed servlet container
+       For oracle Clusters this needs to be un-commented.
+   -->
+   <!-- <distributable/>-->
+
+   <context-param>
+      <param-name>AppFolderName</param-name>
+      <param-value>ccdea</param-value>
+   </context-param>
+   <context-param>
+      <param-name>StaticPageIncludes</param-name>
+      <param-value><![CDATA[(\.bmp|\.css|\.htm|\.html|\.gif|\.jar|\.jpeg|\.jpg|\.js|\.properties|\.xml)$]]></param-value>
+   </context-param>
+   <context-param>
+      <param-name>StaticPageExcludes</param-name>
+      <param-value><![CDATA[^.*?\/formaticon\/.+?\/fileExt\/.*?\/file\.gif$]]></param-value>
+   </context-param>
+   <context-param>
+      <!-- A pattern for URLs for which WDK can not create a new HTTP Session. For e.g. if it is a UCF request, and there
+         is no existing HTTP session, WDK can not create a new session.
+      -->
+     <param-name>HTTPSessionRequired</param-name>
+     <param-value><![CDATA[com.documentum.ucf.server.*|preset]]></param-value>
+   </context-param>
+
+   <context-param>
+      <param-name>UseVirtualLinkErrorPage</param-name>
+      <param-value>true</param-value>
+   </context-param>
+
+   <context-param>
+      <param-name>crystal_image_uri</param-name>
+      <param-value>crystalreportviewers</param-value>
+   </context-param>
+
+   <context-param>
+      <param-name>crystal_image_use_relative</param-name>
+      <param-value>webapp</param-value>
+   </context-param>
+
+   <context-param>
+           <param-name>crystal_document_view</param-name>
+           <param-value>weblayout</param-value>
+   </context-param>
+
+
+   <filter>
+      <filter-name>WDKController</filter-name>
+      <filter-class>com.documentum.web.env.WDKController</filter-class>
+   </filter>
+
+   <!-- To turn on response compression, uncomment this definition
+   and the filter mappings below. This may not work on some application servers. -->
+   <filter>
+      <filter-name>CompressionFilter</filter-name>
+      <filter-class>com.documentum.web.servlet.CompressionFilter</filter-class>
+      <init-param>
+         <param-name>compressThreshold</param-name>
+         <param-value>3kb</param-value>
+      </init-param>
+      <init-param>
+         <param-name>debug</param-name>
+         <param-value>false</param-value>
+      </init-param>
+      <init-param>
+         <param-name>excludepages</param-name>
+         <param-value>
+             /wdk/container/comboautocommitex.jsp;
+             /wdk/container/comboautocommit.jsp;
+             /wdk/container/comboautocommitexSimple.jsp;
+             /webcomponent/library/progress/launchprogress.jsp;
+             /webcomponent/library/progress/realtimeprogress.jsp;
+             /webcomponent/library/progress/realtimeprogressSimple.jsp;
+             /component/getcontent;
+             /webcomponent/library/searchresultslist/search60/searchresults.jsp;
+            /component/searchmonitoring;
+         </param-value>
+      </init-param>
+
+      <!-- define the URL patterns for which compression is enabled -->
+      <init-param>
+         <param-name>includepages</param-name>
+
+         <!-- ending with ($) certain file extensions, or begining with (^) some servlet paths -->
+         <param-value><![CDATA[(\.jsp|\.htm|\.html|\.css|\.js)$|^(/component/|/action/|/virtualjs/|/portlet/)|^/portlet$]]></param-value>
+      </init-param>
+
+   </filter>
+
+   <!-- To enable client cache control, uncomment this filter definition
+   and its mappings below. The reponse headers used may not be recognized by older
+   browsers. -->
+   <filter>
+      <filter-name>ClientCacheControl</filter-name>
+      <filter-class>com.documentum.web.servlet.ResponseHeaderControlFilter</filter-class>
+      <init-param>
+         <param-name>Cache-Control</param-name>
+         <param-value>max-age=604800</param-value>
+      </init-param>
+
+     <!-- define the URL patterns for which cache control is enabled -->
+      <init-param>
+         <param-name>wdk_cache_control_includepages</param-name>
+
+         <!-- ending with ($) certain file extensions -->
+         <param-value><![CDATA[(\.gif|\.css|\.js|\.htm|\.html|\.png)$]]></param-value>
+      </init-param>
+
+      <!-- define the URL patterns for which cache control is enabled but invalidated when build changes-->
+      <!--init-param>
+         <param-name>wdk_cache_control_redirect_includepages</param-name-->
+
+         <!-- ending with ($) certain file extensions -->
+         <!--param-value><![CDATA[(\.jar)$]]></param-value>
+      </init-param-->
+   </filter>
+
+   <filter-mapping>
+      <filter-name>WDKController</filter-name>
+      <url-pattern>/*</url-pattern>
+      <dispatcher>REQUEST</dispatcher>
+   </filter-mapping>
+
+   <filter-mapping>
+      <filter-name>CompressionFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+      <dispatcher>REQUEST</dispatcher>
+   </filter-mapping>
+
+   <filter-mapping>
+      <filter-name>ClientCacheControl</filter-name>
+      <url-pattern>/*</url-pattern>
+      <dispatcher>REQUEST</dispatcher>
+   </filter-mapping>
+
+   <listener>
+      <listener-class>com.documentum.web.env.NotificationManager</listener-class>
+   </listener>
+   <listener>
+      <listener-class>com.documentum.webcomponent.library.imaging.dashboard.listener.DashboardSessionListener</listener-class>
+   </listener>
+
+     <servlet>
+       <servlet-name>CrystalReportViewerServlet</servlet-name>
+       <servlet-class>com.crystaldecisions.report.web.viewer.CrystalReportViewerServlet</servlet-class>
+     </servlet>
+
+   <servlet>
+	<servlet-name>InitServlet</servlet-name>
+   	<servlet-class>com.documentum.webcomponent.library.imaging.dashboard.servlets.InitServlet</servlet-class>
+        <init-param>
+            <param-name>DashboardProperties</param-name>
+            <param-value>taskspace/config/dashboard/dashboardProperties.xml</param-value>
+        </init-param>
+        <load-on-startup>5</load-on-startup>
+   </servlet>
+
+   <servlet>
+        <servlet-name>OnRoleSelectServlet</servlet-name>
+        <servlet-class>com.documentum.webcomponent.library.imaging.roleselector.OnRoleSelectServlet</servlet-class>
+   </servlet>
+    
+   <servlet>
+      <description>Servlet for Dashboard Reports</description>
+      <servlet-name>DashboardReportsServlet</servlet-name>
+      <servlet-class>com.documentum.webcomponent.library.imaging.dashboard.servlets.DashboardReportsServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for Dashboard Services</description>
+      <servlet-name>DashboardServicesServlet</servlet-name>
+      <servlet-class>com.documentum.webcomponent.library.imaging.dashboard.servlets.DashboardServicesServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for Dashboard SVG Process Diagram</description>
+      <servlet-name>DashboardDiagramServlet</servlet-name>
+      <servlet-class>com.documentum.webcomponent.library.imaging.dashboard.servlets.DashboardDiagramServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UcfGAIRConnector</servlet-name>
+      <servlet-class>com.documentum.ucf.server.transport.impl.GAIRConnectorServlet</servlet-class>
+   </servlet>
+   <servlet>
+      <servlet-name>UcfInitGAIRConnector</servlet-name>
+      <servlet-class>com.documentum.ucf.server.transport.impl.InitGAIRConnectorServlet</servlet-class>
+   </servlet>
+   <servlet>
+      <servlet-name>UcfNotification</servlet-name>
+      <servlet-class>com.documentum.ucf.server.notification.impl.NotificationServlet</servlet-class>
+   </servlet>
+   <servlet>
+      <servlet-name>UcfRemoteUnavailability</servlet-name>
+      <servlet-class>com.documentum.ucf.server.transport.impl.RemoteUnavailabilityServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for Web Workflow Manager 5.x</description>
+      <servlet-name>WorkflowEditorServlet</servlet-name>
+      <servlet-class>com.documentum.web.servlet.WorkflowEditorServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for generating virtual javascript</description>
+      <servlet-name>VirtualJS</servlet-name>
+      <servlet-class>com.documentum.web.env.VirtualJS</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for tracing WDK</description>
+      <servlet-name>Trace</servlet-name>
+      <servlet-class>com.documentum.web.env.TraceServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for dispatching WDK 5.x components</description>
+      <servlet-name>ComponentDispatcher</servlet-name>
+      <servlet-class>com.documentum.web.formext.component.ComponentDispatcher</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for dispatching WDK 5.x actions</description>
+      <servlet-name>ActionDispatcher</servlet-name>
+      <servlet-class>com.documentum.web.formext.action.ActionDispatcherServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>DRL dispatcher</description>
+      <servlet-name>DRLDispatcher</servlet-name>
+      <servlet-class>com.documentum.web.formext.drl.DRLDispatcher</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet used to mange session timeout</description>
+      <servlet-name>SessionTimeoutControl</servlet-name>
+      <servlet-class>com.documentum.web.servlet.SessionTimeoutControl</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for downloading a content stream from the server to the browser with WDK 5.x</description>
+      <servlet-name>wdk5-download</servlet-name>
+      <servlet-class>com.documentum.web.contentxfer.server.DownloadContentStream</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for streaming a content from the app server to a rich client such as ActiveX control or Java applet</description>
+      <servlet-name>dis-streaming</servlet-name>
+      <servlet-class>com.documentum.web.imaging.ContentStreamServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet used by applets to return results</description>
+      <servlet-name>wdk5-appletresultsink</servlet-name>
+      <servlet-class>com.documentum.web.servlet.AppletResultSink</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Sends content in http transport mode</description>
+      <servlet-name>HttpContentSender</servlet-name>
+      <servlet-class>com.documentum.web.contentxfer.http.HttpContentSender</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Returns docbase format icon for given file extension</description>
+      <servlet-name>FileFormatIconResolver</servlet-name>
+      <servlet-class>com.documentum.web.servlet.FileFormatIconResolver</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Returns the data needed for desktop dragging of an item</description>
+      <servlet-name>DesktopDragData</servlet-name>
+      <servlet-class>com.documentum.web.servlet.DesktopDragData</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>DownloadServlet</servlet-name>
+      <servlet-class>com.documentum.webcomponent.library.httpview.DownloadServlet</servlet-class>
+   </servlet>
+   <servlet>
+       <servlet-name>XFormsDownloadServlet</servlet-name>
+       <servlet-class>com.documentum.webcomponent.xforms.XFormsDownloadServlet</servlet-class>
+       <init-param>
+          <param-name>ExpirationDays</param-name>
+          <param-value>10</param-value>
+       </init-param>
+   </servlet>
+
+   <servlet>
+      <servlet-name>VirtualLinkHandler</servlet-name>
+      <servlet-class>com.documentum.web.virtuallink.WDKVirtualLinkHandler</servlet-class>
+   </servlet>
+
+   <servlet>
+     <servlet-name>PortletServlet</servlet-name>
+     <servlet-class>com.documentum.web.env.standalone.StandalonePortletDispatcher</servlet-class>
+   </servlet>
+
+   <servlet>
+     <servlet-name>TestCaseDriver</servlet-name>
+     <servlet-class>com.documentum.web.test.servlet.TestCaseDriverServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for Imaging Service 6.0 requests</description>
+      <servlet-name>ImagingServiceServlet</servlet-name>
+      <servlet-class>com.documentum.web.imaging.ImagingServiceServlet</servlet-class>
+   </servlet>
+   <servlet>
+      <description>Servlet for Document Image Services 6.5 SP1 requests</description>
+      <servlet-name>ImageServicesSaveDocument</servlet-name>
+      <servlet-class>com.documentum.web.imaging.SaveDocumentServlet</servlet-class>
+   </servlet>
+   <servlet>
+      <description>Servlet for Document Image Services 6.5 SP1 requests</description>
+      <servlet-name>ImageServicesSaveAnnotation</servlet-name>
+      <servlet-class>com.documentum.web.imaging.SaveAnnotationServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for Dashboard Configuration</description>
+      <servlet-name>DashboardConfigurationServlet</servlet-name>
+      <servlet-class>com.documentum.webcomponent.library.imaging.dashboard.servlets.DashboardConfigurationServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for rendering JSON</description>
+      <servlet-name>JsonRenderer</servlet-name>
+      <servlet-class>com.documentum.web.env.JsonRenderer</servlet-class>
+   </servlet>
+
+   <servlet>
+      <description>Servlet for retrieving presets</description>
+      <servlet-name>Preset</servlet-name>
+      <servlet-class>com.documentum.web.preset.PresetRetriever</servlet-class>
+   </servlet>
+
+  <servlet-mapping>
+          <servlet-name>CrystalReportViewerServlet</servlet-name>
+          <url-pattern>/CrystalReportViewerHandler</url-pattern>
+  </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>DashboardReportsServlet</servlet-name>
+      <url-pattern>/dashboardreports/*</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>DashboardServicesServlet</servlet-name>
+      <url-pattern>/dashboardservices/*</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>DashboardDiagramServlet</servlet-name>
+      <url-pattern>/dashboarddiagram/*</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>UcfGAIRConnector</servlet-name>
+      <url-pattern>/com/documentum/ucf/server/transport/impl/GAIRConnector</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>UcfInitGAIRConnector</servlet-name>
+      <url-pattern>/com/documentum/ucf/server/transport/impl/InitGAIRConnector</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>UcfNotification</servlet-name>
+      <url-pattern>/com/documentum/ucf/server/notification/impl/Notification</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>UcfRemoteUnavailability</servlet-name>
+      <url-pattern>/com/documentum/ucf/server/transport/impl/RemoteUnavailability</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>WorkflowEditorServlet</servlet-name>
+      <url-pattern>/workfloweditorservlet/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>DownloadServlet</servlet-name>
+      <url-pattern>/servlet/DownloadServlet</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>XFormsDownloadServlet</servlet-name>
+      <url-pattern>/servlet/XFormsDownloadServlet</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>HttpContentSender</servlet-name>
+      <url-pattern>/httpcontentsender/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>ComponentDispatcher</servlet-name>
+      <url-pattern>/component/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>VirtualJS</servlet-name>
+      <url-pattern>/virtualjs/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>Trace</servlet-name>
+      <url-pattern>/trace/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>ActionDispatcher</servlet-name>
+      <url-pattern>/action/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>DRLDispatcher</servlet-name>
+      <url-pattern>/drl/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>SessionTimeoutControl</servlet-name>
+      <url-pattern>/sessiontimeoutcontrol</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>wdk5-appletresultsink</servlet-name>
+      <url-pattern>/wdk5-appletresultsink</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>wdk5-download</servlet-name>
+      <url-pattern>/wdk5-download</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>dis-streaming</servlet-name>
+      <url-pattern>/dis-streaming</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>FileFormatIconResolver</servlet-name>
+      <url-pattern>/formaticon/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>DesktopDragData</servlet-name>
+      <url-pattern>/DesktopDragData</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>VirtualLinkHandler</servlet-name>
+      <url-pattern>/VirtualLinkHandler</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>TestCaseDriver</servlet-name>
+      <url-pattern>/testcasedriver</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>PortletServlet</servlet-name>
+      <url-pattern>/portlet/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>ImagingServiceServlet</servlet-name>
+      <url-pattern>/imagingservice/*</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>ImageServicesSaveDocument</servlet-name>
+      <url-pattern>/imageservices/savedocument</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+      <servlet-name>ImageServicesSaveAnnotation</servlet-name>
+      <url-pattern>/imageservices/saveannotation</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>DashboardConfigurationServlet</servlet-name>
+      <url-pattern>/dashboardconfig/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>JsonRenderer</servlet-name>
+      <url-pattern>/JsonRenderer</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>Preset</servlet-name>
+      <url-pattern>/preset</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>OnRoleSelectServlet</servlet-name>
+      <url-pattern>/roleSelection</url-pattern>
+   </servlet-mapping>
+    
+   <session-config>
+      <session-timeout>30</session-timeout>
+   </session-config>
+
+   <mime-mapping>
+      <extension>jar</extension>
+      <mime-type>application/java-archive</mime-type>
+   </mime-mapping>
+   
+   <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+    </mime-mapping>
+
+   <welcome-file-list>
+      <welcome-file>
+        index.jsp
+      </welcome-file>
+   </welcome-file-list>
+
+   <error-page>
+      <error-code>404</error-code>
+      <location>/VirtualLinkHandler</location>
+   </error-page>
+
+   <!-- Direct error 500 to wdk's own error handler -
+        for some web server(s) may reveal error stack trace and system info on its error page
+  -->
+   <error-page>
+      <error-code>500</error-code>
+      <location>/wdk/errorhandler.jsp</location>
+   </error-page>
+
+    <servlet>
+        <display-name>Content Servlet</display-name>
+        <servlet-name>GetContent</servlet-name>
+        <servlet-class>ru.rb.ccdea.servlet.PrintAppletServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetContent</servlet-name>
+        <url-pattern>/getcontent</url-pattern>
+    </servlet-mapping>
+
+   <!--
+     <security-constraint>
+       <web-resource-collection>
+         <web-resource-name>Webtop</web-resource-name>
+         <url-pattern>/*</url-pattern>
+         <http-method>POST</http-method>
+         <http-method>GET</http-method>
+       </web-resource-collection>
+       <auth-constraint>
+         <role-name>everyone</role-name>
+       </auth-constraint>
+     </security-constraint>
+
+     <login-config>
+       <auth-method>BASIC</auth-method>
+     </login-config>
+   -->
+
+</web-app>

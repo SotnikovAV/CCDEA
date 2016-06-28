@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;ccdea&apos;&#x0D;&#x0A;- Original project: &apos;ccdea&apos;&#x0D;&#x0A;- Original element: &apos;NO_NDFL6_9979_9979_7710030411997950001_20160406_1621-1Q4D5C9Q9O3F2Y5C3B0Q8B5Q5.xml&apos;" description="Delete element" element1="test-tst/DocPut/DocScan/NO_NDFL6_9979_9979_7710030411997950001_20160406_1621-1Q4D5C9Q9O3F2Y5C3B0Q8B5Q5.xml" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1463667728007" subPackages="false" version="1.0"/>
+</session>

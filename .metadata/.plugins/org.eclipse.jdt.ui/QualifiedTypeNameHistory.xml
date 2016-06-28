@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="ru.rb.ccdea.adapters.mq.receivers.MCDocInfoModifyContractReceiverMethod"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.jobs.ContractMessageJob"/>
+<fullyQualifiedTypeName name="com.documentum.fc.common.DfId"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.persistence.ContractPersistence"/>
+<fullyQualifiedTypeName name="javax.xml.bind.Marshaller"/>
+<fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.jobs.DocPutMesssageJob"/>
+<fullyQualifiedTypeName name="javax.xml.bind.JAXBElement"/>
+<fullyQualifiedTypeName name="javax.xml.namespace.QName"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.jobs.DocStateNotifyMessageJob"/>
+<fullyQualifiedTypeName name="com.documentum.fc.client.IDfSysObject"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.adapters.mq.receivers.MCDocInfoModifyPSReceiverMethod"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.jobs.PassportMessageJob"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.persistence.fileutils.FileAccessProperties"/>
+<fullyQualifiedTypeName name="org.junit.Assert"/>
+<fullyQualifiedTypeName name="com.documentum.fc.client.IDfSession"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.persistence.ExternalMessagePersistence"/>
+<fullyQualifiedTypeName name="ru.rb.ccdea.storage.persistence.ContentPersistence"/>
+</qualifiedTypeNameHistroy>

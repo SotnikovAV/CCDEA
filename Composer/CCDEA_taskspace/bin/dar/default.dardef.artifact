@@ -53,6 +53,7 @@
     <artifacts xsi:type="relationtype:RelationType" href="urnd:com.emc.ide.artifact.relationtype/ts_logo_rel?name=ts_logo_rel#//@dataModel"/>
     <artifacts xsi:type="relationtype:RelationType" href="urnd:com.emc.ide.artifact.relationtype/ts_alias_set_rel?name=ts_alias_set_rel#//@dataModel"/>
     <artifacts xsi:type="relationtype:RelationType" href="urnd:com.emc.ide.artifact.relationtype/ts_action_rel?name=ts_action_rel#//@dataModel"/>
+    <artifacts xsi:type="relationtype:RelationType" href="urnd:com.emc.ide.artifact.relationtype/ccdea_history_relation?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_taskspace/Artifacts/Relation%20Types/ccdea_history_relation.relationtype#//@dataModel"/>
     <artifacts xsi:type="relation:RelationSubType" href="urnd:com.emc.ide.artifact.relation/ts_type_rel?childId=035bbc6a800002c6&amp;childUrn=urn%3Acom.emc.ide.artifact.dclass%2Fccdea_pasport_close_reason%3Fname%3Dccdea_pasport_close_reason&amp;name=ts_type_rel&amp;parentId=085bbc6a815fa5bd&amp;parentUrn=urn%3Acom.emc.ide.artifact.sysobjectsubtype%2FCCDEA_taskspace%3Flanguage_code%3D%26location%3D%252FSystem%252FApplications%252FCCDEA_taskspace%26name%3DCCDEA_taskspace%26type%3Ddmc_taskspace_app#//@dataModel"/>
     <artifacts xsi:type="relation:RelationSubType" href="urnd:com.emc.ide.artifact.relation/ts_role_rel?childId=125bbc6a80014503&amp;childUrn=urn%3Acom.emc.ide.artifact.role%2Fccdea_vk_user%3Fname%3Dccdea_vk_user&amp;name=ts_role_rel&amp;parentId=085bbc6a815fa5bd&amp;parentUrn=urn%3Acom.emc.ide.artifact.sysobjectsubtype%2FCCDEA_taskspace%3Flanguage_code%3D%26location%3D%252FSystem%252FApplications%252FCCDEA_taskspace%26name%3DCCDEA_taskspace%26type%3Ddmc_taskspace_app#//@dataModel"/>
     <artifacts xsi:type="relation:RelationSubType" href="urnd:com.emc.ide.artifact.relation/ts_preset_rel?childId=0b5bbc6a815fa47b&amp;childUrn=urn%3Acom.emc.ide.artifact.foldersubtype%2FPresets%3Flanguage_code%3D%26location%3D%252FSystem%252FApplications%252FCCDEA_taskspace%26name%3DPresets%26type%3Ddm_folder&amp;name=ts_preset_rel&amp;parentId=085bbc6a815fa5bd&amp;parentUrn=urn%3Acom.emc.ide.artifact.sysobjectsubtype%2FCCDEA_taskspace%3Flanguage_code%3D%26location%3D%252FSystem%252FApplications%252FCCDEA_taskspace%26name%3DCCDEA_taskspace%26type%3Ddmc_taskspace_app#//@dataModel"/>
@@ -107,36 +108,9 @@
     <artifacts xsi:type="dclass:DClass" href="urnd:com.emc.ide.artifact.dclass/dmc_dar?artifactURI=platform:/resource/DFS2/inst/dclass/dmc_dar.type#//@dataModel"/>
     <artifacts xsi:type="dardef:DarDef" href="urnd:com.emc.ide.artifact.dardef/default?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/dar/default.dardef#//@dataModel"/>
     <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceActionProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceActionProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
       <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_plain_actions.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_plain_actions.xml&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
@@ -148,75 +122,7 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Logo?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=Logo&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/CCDEA_taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_install.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/GeneralConfig?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=GeneralConfig&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/CCDEA_taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_install.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_label_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_label_config.xml&amp;type=dmc_ts_label_config#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions key="//@dataModel">
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="VERSION"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceActionProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceActionProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace_App.definition?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=TaskSpace_App.definition&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEASumAdaptor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEASumAdaptor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_ru_RU.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_ru_RU.properties&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_schema#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
@@ -230,28 +136,60 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_label_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_label_config.xml&amp;type=dmc_ts_label_config#//@dataModel"/>
       <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Resources?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Resources&amp;type=dm_folder#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_selection_methods.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_selection_methods.xml&amp;type=dmc_ts_selection_methods#//@dataModel"/>
       <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAExtendedTextComponentInitAdaptor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAExtendedTextComponentInitAdaptor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_instance#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Label?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig&amp;name=Label&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_app?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_app&amp;type=dmc_preset_package#//@dataModel"/>
+      <value>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_role_ccdea_vk_user?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_role_ccdea_vk_user&amp;type=dmc_preset_package#//@dataModel"/>
+      <value>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/GeneralConfig?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=GeneralConfig&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/CCDEA_taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_install.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_schema#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
@@ -264,49 +202,49 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_tab_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_tab_config.xml&amp;type=dmc_ts_tab_config#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace?language_code=&amp;location=%2FSystem%2FApplications%2FTaskSpace&amp;name=TaskSpace&amp;type=dmc_taskspace_app#//@dataModel"/>
-      <value>
-        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/taskspace_install.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_action_writers.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_action_writers.xml&amp;type=dmc_ts_action_writers#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_instance#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_ru_RU.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_ru_RU.properties&amp;type=dm_document#//@dataModel"/>
+      <value>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_instance#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace_App.definition?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=TaskSpace_App.definition&amp;type=dm_document#//@dataModel"/>
+      <value>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_instance#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_plain_actions.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_plain_actions.xml&amp;type=dm_document#//@dataModel"/>
+      <value>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
@@ -318,7 +256,41 @@
       </value>
     </installOptions>
     <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
+      <value>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
       <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions key="//@dataModel">
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="VERSION"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_schema#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
@@ -332,69 +304,27 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_tab_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_tab_config.xml&amp;type=dmc_ts_tab_config#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_instance#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_role_ccdea_vk_user?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_role_ccdea_vk_user&amp;type=dmc_preset_package#//@dataModel"/>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Logo?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=Logo&amp;type=dm_folder#//@dataModel"/>
       <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Label?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig&amp;name=Label&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Presets?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=Presets&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
         <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/CCDEA_taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_install.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_selection_methods.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_selection_methods.xml&amp;type=dmc_ts_selection_methods#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
-        <upgradeOption xsi:type="dardef:UpgradeOption"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAPassportContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAPassportContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
@@ -408,9 +338,16 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_app?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_app&amp;type=dmc_preset_package#//@dataModel"/>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Resources?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Resources&amp;type=dm_folder#//@dataModel"/>
       <value>
         <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
       </value>
     </installOptions>
@@ -422,7 +359,71 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Presets?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=Presets&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <owner xsi:type="installparameter:PrincipalParameter" href="urnd:com.emc.ide.principalparameter/CCDEA_taskspace_dmc_wdk_presets_owner?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_dmc_wdk_presets_owner.parameter#//@dataModel"/>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/CCDEA_taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/ccdea_taskspace_install.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAPassportContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAPassportContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace?language_code=&amp;location=%2FSystem%2FApplications%2FTaskSpace&amp;name=TaskSpace&amp;type=dmc_taskspace_app#//@dataModel"/>
+      <value>
+        <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/taskspace_install?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/taskspace_install.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAExtendedTextComponentInitAdaptor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAExtendedTextComponentInitAdaptor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
+        <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_schema#//@dataModel"/>
       <value>
         <security xsi:type="installparameter:ACLParameter" href="urnd:com.emc.ide.aclparameter/Forms+User+Default+ACL?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/forms%20user%20default%20acl.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
@@ -433,4 +434,9 @@
       <upgradeOption xsi:type="dardef:UpgradeOption"/>
     </darInstallOptionsSet>
   </dataModel>
+  <contentStore>
+    <contentEntries key="resolutionMap">
+      <value filePath="content/45/-274936545/resolutionMap"/>
+    </contentEntries>
+  </contentStore>
 </Artifact:Artifact>

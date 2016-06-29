@@ -47,8 +47,8 @@
             </columns>
 
             <query>select aud.string_4 as timestamp, aud.string_5 as change_author, aud.string_3 as obj_id, aud.string_2 as system_code, hist.s_attr_name as attr_name,
-                hist.s_attr_description as attr_description, hist.s_value as current_value, hist.s_old_value as old_value from dm_audittrail aud,
-                ccdea_attr_history hist where hist.id_audittrail=aud.r_object_id and aud.audited_obj_id = '#objectId' and aud.event_name
+                hist.s_attr_description as attr_description, hist.s_value as current_value, hist.s_old_value as old_value from ccdea_attr_history hist
+                lieft join on dm_audittrail aud on hist.id_audittrail=aud.r_object_id where aud.audited_obj_id = '#objectId' and aud.event_name
                 in ('ccdea_update_by_metadata_save','ccdea_update_by_dossier_set') order by 1
             </query>
         </component>

@@ -29,6 +29,8 @@ public class BaseDocumentPersistence extends BasePersistence{
     public static final String ATTR_DOC_CHANNEL_REF_ID = "s_doc_channel_ref_id";
     public static final String ATTR_CONTENT_URL = "s_content_url";
     public static final String ATTR_DOCUMENT_COPY = "id_document_copy";
+    public static final String ATTR_RP_CONTENT_SOURCE_ID = "rp_content_source_id";
+    public static final String ATTR_RP_CONTENT_SOURCE_CODE = "rp_content_source_code";
 
     public static final String CONTRACTOR_COLUMN_MULTI = "Мульти";
     public static final String CCDEA_PRIVELEGED_USERS_GROUP_NAME = "ccdea_privelege_users_group";

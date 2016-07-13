@@ -126,6 +126,8 @@ public class VBKPersistence extends BaseDocumentPersistence{
             document.setString(ATTR_CONTRACTOR_COLUMN, contractorList.get(0).getContractorName());
         }
 
+        document.appendString(ATTR_RP_CONTENT_SOURCE_CODE, docSourceCode);
+        document.appendString(ATTR_RP_CONTENT_SOURCE_ID, docSourceId);
         document.setACL(getBranchACL(document.getSession(), document.getString(ATTR_BRANCH_CODE)));
         document.setObjectName(getDocumentDescription(document));
         document.save();

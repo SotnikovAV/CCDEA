@@ -96,6 +96,8 @@ public class PDPersistence extends BaseDocumentPersistence{
         versionRecordDetails.setStringWithHistory(document, ATTR_KSTRANA, documentXmlObject.getPDDetails().getKstrana());
         versionRecordDetails.setStringWithHistory(document, ATTR_PRIMESH, documentXmlObject.getPDDetails().getPrimesh());
 
+        document.appendString(ATTR_RP_CONTENT_SOURCE_CODE, docSourceCode);
+        document.appendString(ATTR_RP_CONTENT_SOURCE_ID, docSourceId);
         document.setACL(getBranchACL(document.getSession(), document.getString(ATTR_BRANCH_CODE)));
         document.setObjectName(getDocumentDescription(document));
         document.save();

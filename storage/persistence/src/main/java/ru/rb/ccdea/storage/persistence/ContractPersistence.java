@@ -324,6 +324,8 @@ public class ContractPersistence extends BaseDocumentPersistence{
             document.setString(ATTR_CONTRACTOR_COLUMN, contractPartyList.get(0).getName());
         }
 
+        document.appendString(ATTR_RP_CONTENT_SOURCE_CODE, docSourceCode);
+        document.appendString(ATTR_RP_CONTENT_SOURCE_ID, docSourceId);
         document.setACL(getBranchACL(document.getSession(), document.getString(ATTR_BRANCH_CODE)));
         document.setObjectName(getDocumentDescription(document));
         document.save();

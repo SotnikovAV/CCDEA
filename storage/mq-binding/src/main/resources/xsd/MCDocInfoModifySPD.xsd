@@ -5,7 +5,7 @@
 
 	<xsd:complexType name="MCDocInfoModifySPDType">
 		<xsd:sequence>
-			<xsd:element name="OriginIdentification" type="pr:ObjectIdentifiersType" maxOccurs="2"/>
+			<xsd:element name="OriginIdentification" type="pr:ObjectIdentifiersType" minOccurs="1" maxOccurs="unbounded"/>
 			<xsd:element name="ModificationVerb" type="pr:CRUDType" minOccurs="0"/>
 			<xsd:element name="Customer" type="pr:CustomerDetailsType"/>
 			<xsd:element name="SPDDetails" type="pr:SPDDetailsType"/>

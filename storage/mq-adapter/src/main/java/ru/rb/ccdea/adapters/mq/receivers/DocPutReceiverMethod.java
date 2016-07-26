@@ -52,12 +52,12 @@ public class DocPutReceiverMethod extends BaseReceiverMethod{
                 DocPutType docPutXmlContent = (DocPutType) messageXmlContent;
                 List<MessageObjectIdentifiers> result = new ArrayList<MessageObjectIdentifiers>();
                 MessageObjectIdentifiers docIdentifiers = new MessageObjectIdentifiers();
-                docIdentifiers.setSourceSystem(docPutXmlContent.getOriginIdentification().getSourceSystem());
-                docIdentifiers.setSourceId(docPutXmlContent.getOriginIdentification().getSourceId());
+                docIdentifiers.setSourceSystem(docPutXmlContent.getOriginIdentification().get(0).getSourceSystem());
+                docIdentifiers.setSourceId(docPutXmlContent.getOriginIdentification().get(0).getSourceId());
                 result.add(docIdentifiers);
                 MessageObjectIdentifiers contentIdentifiers = new MessageObjectIdentifiers();
-                contentIdentifiers.setSourceSystem(docPutXmlContent.getOriginDocIdentification().getSourceSystem());
-                contentIdentifiers.setSourceId(docPutXmlContent.getOriginDocIdentification().getSourceId());
+                contentIdentifiers.setSourceSystem(docPutXmlContent.getOriginDocIdentification().get(0).getSourceSystem());
+                contentIdentifiers.setSourceId(docPutXmlContent.getOriginDocIdentification().get(0).getSourceId());
                 result.add(contentIdentifiers);
                 return result;
             }

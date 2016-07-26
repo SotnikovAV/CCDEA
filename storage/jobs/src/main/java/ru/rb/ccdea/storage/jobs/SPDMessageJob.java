@@ -5,7 +5,10 @@ import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
+
 import ru.rb.ccdea.adapters.mq.binding.spd.MCDocInfoModifySPDType;
+import ru.rb.ccdea.adapters.mq.binding.spd.ObjectIdentifiersType;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.SPDPersistence;
@@ -51,25 +54,21 @@ public class SPDMessageJob extends AbstractJob{
                 ExternalMessagePersistence.startDocProcessing(messageSysObject, spdExistingObject);
                 if (spdExistingObject == null) {
                     String spdObjectId = spdService.createDocumentFromMQType(dfSession, spdXmlObject, docSourceCode, docSourceId);
-                    String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-    				
-    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, spdObjectId,
-    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
-    					try {
-    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(spdObjectId),
-    								contentId);
-    					} catch (DfException ex) {
-    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
-    								+ spdObjectId + "' ", null, ex);
-    					}
-    				}
+                    spdExistingObject = (IDfSysObject)dfSession.getObject(new DfId(spdObjectId));
                     ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] {spdObjectId});
                 }
                 else {
                     spdService.updateDocumentFromMQType(dfSession, spdXmlObject, docSourceCode, docSourceId, spdExistingObject.getObjectId());
                     ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] {spdExistingObject.getObjectId().getId()});
                 }
+                
+                int index = spdExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
+    			for(ObjectIdentifiersType identifiers: spdXmlObject.getOriginIdentification()) {
+    				spdExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
+    				spdExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
+    				index++;
+    			}
+    			spdExistingObject.save();
 
                 if (!isTransAlreadyActive) {
                     dfSession.commitTrans();

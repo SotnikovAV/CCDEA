@@ -5,7 +5,10 @@ import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
+
 import ru.rb.ccdea.adapters.mq.binding.vbk.MCDocInfoModifyVBKType;
+import ru.rb.ccdea.adapters.mq.binding.vbk.ObjectIdentifiersType;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.VBKPersistence;
@@ -52,19 +55,7 @@ public class VBKMessageJob extends AbstractJob {
                 if (vbkExistingObject == null) {
                     String vbkObjectId = vbkService.createDocumentFromMQType(dfSession, vbkXmlObject, docSourceCode, docSourceId);
                     
-                    String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-    				
-    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, vbkObjectId,
-    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
-    					try {
-    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(vbkObjectId),
-    								contentId);
-    					} catch (DfException ex) {
-    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
-    								+ vbkObjectId + "' ", null, ex);
-    					}
-    				}
+                    vbkExistingObject = (IDfSysObject)dfSession.getObject(new DfId(vbkObjectId));
                     
                     ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] {vbkObjectId});
                 }
@@ -72,6 +63,14 @@ public class VBKMessageJob extends AbstractJob {
                     vbkService.updateDocumentFromMQType(dfSession, vbkXmlObject, docSourceCode, docSourceId, vbkExistingObject.getObjectId());
                     ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] {vbkExistingObject.getObjectId().getId()});
                 }
+                
+                int index = vbkExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
+    			for(ObjectIdentifiersType identifiers: vbkXmlObject.getOriginIdentification()) {
+    				vbkExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
+    				vbkExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
+    				index++;
+    			}
+    			vbkExistingObject.save();
 
                 if (!isTransAlreadyActive) {
                     dfSession.commitTrans();

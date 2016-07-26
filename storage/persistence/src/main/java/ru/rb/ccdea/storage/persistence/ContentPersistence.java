@@ -28,7 +28,7 @@ public class ContentPersistence extends BasePersistence {
 	public static final String ATTR_IS_ORIGINAL = "b_is_original";
 	public static final String ATTR_CTS_RESULT_ID = "id_cts_result_content";
 	public static final String ATTR_RP_DOC_SOURCE_ID = "rp_doc_source_id";
-	public static final String ATTR_RP_DOC_CONTENT_ID = "r_doc_content_id";
+	public static final String ATTR_RP_DOC_SOURCE_CODE = "rp_doc_source_code";
 	public static final String ATTR_T_MSG_CREATION = "t_msg_creation";
 
 	public static final String CONTENT_PART_TYPE_NAME = "ccdea_doc_content_part";
@@ -150,8 +150,7 @@ public class ContentPersistence extends BasePersistence {
 		if (!isOriginal) {
 			result.setContentType("pdf");
 		}
-		result.appendString(ATTR_RP_DOC_SOURCE_ID, contentSourceId);
-		result.appendString(ATTR_RP_DOC_CONTENT_ID, contentSourceCode);
+		
 		result.appendTime(ATTR_T_MSG_CREATION, new DfTime());
 		result.link(CONTENT_FOLDER);
 		result.save();
@@ -319,7 +318,6 @@ public class ContentPersistence extends BasePersistence {
 				throw new DfException("Content for " + contentSysObject.getObjectId().getId() + " not avaliable.");
 			}
 		}
-		
 	}
 	
 	public static List<IDfId> getUnlinkedContentIds(IDfSession dfSession, String documentId, String docSourceId,

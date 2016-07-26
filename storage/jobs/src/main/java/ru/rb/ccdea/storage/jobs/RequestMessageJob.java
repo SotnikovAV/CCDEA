@@ -11,7 +11,11 @@ import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
+
+
 import ru.rb.ccdea.adapters.mq.binding.request.MCDocInfoModifyZAType;
+import ru.rb.ccdea.adapters.mq.binding.request.ObjectIdentifiersType;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.RequestPersistence;
@@ -75,19 +79,7 @@ public class RequestMessageJob extends AbstractJob {
 					if (requestExistingObject == null) {
 						String requestObjectId = requestService.createDocumentFromMQType(dfSession, requestXmlObject,
 								docSourceCode, docSourceId, passportNumber);
-						String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-	    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-	    				
-	    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, requestObjectId,
-	    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
-	    					try {
-	    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(requestObjectId),
-	    								contentId);
-	    					} catch (DfException ex) {
-	    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
-	    								+ requestObjectId + "' ", null, ex);
-	    					}
-	    				}
+						
 						modifiedDocIdList.add(requestObjectId);
 					} else {
 						requestService.updateDocumentFromMQType(dfSession, requestXmlObject, docSourceCode, docSourceId,
@@ -111,12 +103,21 @@ public class RequestMessageJob extends AbstractJob {
 					if (requestExistingObject == null) {
 						String requestObjectId = requestService.createDocumentFromMQType(dfSession, requestXmlObject,
 								docSourceCode, docSourceId, contractNumber, contractDate);
+						requestExistingObject = (IDfSysObject)dfSession.getObject(new DfId(requestObjectId));
 						modifiedDocIdList.add(requestObjectId);
 					} else {
 						requestService.updateDocumentFromMQType(dfSession, requestXmlObject, docSourceCode, docSourceId,
 								contractNumber, contractDate, requestExistingObject.getObjectId());
 						modifiedDocIdList.add(requestExistingObject.getObjectId().getId());
 					}
+					
+					int index = requestExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
+	    			for(ObjectIdentifiersType identifiers: requestXmlObject.getOriginIdentification()) {
+	    				requestExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
+	    				requestExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
+	    				index++;
+	    			}
+	    			requestExistingObject.save();
 				}
 
 				ExternalMessagePersistence.finishDocProcessing(messageSysObject,

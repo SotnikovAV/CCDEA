@@ -13,7 +13,10 @@ import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.contract.MCDocInfoModifyContractType;
+import ru.rb.ccdea.adapters.mq.binding.contract.ObjectIdentifiersType;
+import ru.rb.ccdea.adapters.mq.binding.docput.OldObjectIdentifiersType;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ContractPersistence;
 import ru.rb.ccdea.storage.services.api.IContractService;
@@ -84,28 +87,26 @@ public class ContractMessageJob extends AbstractJob {
 			if (contractExistingObject == null) {
 				contractObjectId = contractService.createDocumentFromMQType(dfSession, contractXmlObject, docSourceCode,
 						docSourceId);
-				String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-				
-				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, contractObjectId,
-						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
-					try {
-						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(contractObjectId),
-								contentId);
-					} catch (DfException ex) {
-						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
-								+ contractObjectId + "' ", null, ex);
-					}
-				}
+				contractExistingObject = (IDfSysObject) dfSession.getObject(new DfId(contractObjectId));
 				
 				ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] { contractObjectId });
 			} else {
 				contractObjectId = contractExistingObject.getObjectId().getId();
 				contractService.updateDocumentFromMQType(dfSession, contractXmlObject, docSourceCode, docSourceId,
 						contractExistingObject.getObjectId());
-				ExternalMessagePersistence.finishDocProcessing(messageSysObject,
-						new String[] { contractExistingObject.getObjectId().getId() });
+				
 			}
+			
+			int index = contractExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
+			for(ObjectIdentifiersType identifiers: contractXmlObject.getOriginIdentification()) {
+				contractExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
+				contractExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
+				index++;
+			}
+			contractExistingObject.save();
+			
+			ExternalMessagePersistence.finishDocProcessing(messageSysObject,
+					new String[] { contractExistingObject.getObjectId().getId() });
 
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();

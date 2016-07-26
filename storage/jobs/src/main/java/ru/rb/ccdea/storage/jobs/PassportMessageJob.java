@@ -15,6 +15,8 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 
 import ru.rb.ccdea.adapters.mq.binding.passport.MCDocInfoModifyPSType;
+import ru.rb.ccdea.adapters.mq.binding.passport.ObjectIdentifiersType;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.PassportPersistence;
@@ -75,19 +77,7 @@ public class PassportMessageJob extends AbstractJob {
 			if (passportExistingObject == null) {
 				passportObjectId = passportService.createDocumentFromMQType(dfSession, passportXmlObject, docSourceCode,
 						docSourceId);
-				String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-				
-				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, passportObjectId,
-						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
-					try {
-						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(passportObjectId),
-								contentId);
-					} catch (DfException ex) {
-						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
-								+ passportObjectId + "' ", null, ex);
-					}
-				}
+				passportExistingObject = (IDfSysObject)dfSession.getObject(new DfId(passportObjectId));
 				ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] { passportObjectId });
 			} else {
 				passportObjectId = passportExistingObject.getObjectId().getId();
@@ -96,6 +86,14 @@ public class PassportMessageJob extends AbstractJob {
 				ExternalMessagePersistence.finishDocProcessing(messageSysObject,
 						new String[] { passportExistingObject.getObjectId().getId() });
 			}
+			
+			int index = passportExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
+			for(ObjectIdentifiersType identifiers: passportXmlObject.getOriginIdentification()) {
+				passportExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
+				passportExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
+				index++;
+			}
+			passportExistingObject.save();
 
 			if (!isTransAlreadyActive) {
 				dfSession.commitTrans();

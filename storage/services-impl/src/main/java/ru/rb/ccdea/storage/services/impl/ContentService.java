@@ -1,5 +1,6 @@
 package ru.rb.ccdea.storage.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -11,11 +12,63 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 
 import ru.rb.ccdea.adapters.mq.binding.docput.ContentType;
+import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
+import ru.rb.ccdea.adapters.mq.binding.docput.OldObjectIdentifiersType;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.fileutils.ContentLoader;
 import ru.rb.ccdea.storage.services.api.IContentService;
 
 public class ContentService extends DfService implements IContentService {
+	
+	@Override
+	public String createContentFromMQType(IDfSession dfSession, String contentSourceCode, String contentSourceId, DocPutType docPutXml) throws DfException {
+		String contentId = "";
+		List<String> documentIds = new ArrayList<String>();
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		try {
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
+			
+			IDfSysObject originalContentSysObject = ContentPersistence.createContentObject(dfSession, contentSourceCode,
+					contentSourceId, true);
+			contentId = originalContentSysObject.getObjectId().getId();
+			int index = 0;
+			for(OldObjectIdentifiersType identifiers: docPutXml.getOriginIdentification()) {
+				originalContentSysObject.setRepeatingString(ContentPersistence.ATTR_RP_DOC_SOURCE_CODE, index, identifiers.getSourceSystem());
+				originalContentSysObject.setRepeatingString(ContentPersistence.ATTR_RP_DOC_SOURCE_ID, index, identifiers.getSourceId());
+				documentIds.add(identifiers.getSourceSystem() + '/' + identifiers.getSourceId());
+				index++;
+			}
+			for(OldObjectIdentifiersType identifiers: docPutXml.getOriginDocIdentification()) {
+				originalContentSysObject.setRepeatingString(ContentPersistence.ATTR_RP_DOC_SOURCE_CODE, index, identifiers.getSourceSystem());
+				originalContentSysObject.setRepeatingString(ContentPersistence.ATTR_RP_DOC_SOURCE_ID, index, identifiers.getSourceId());
+				documentIds.add(identifiers.getSourceSystem() + '/' + identifiers.getSourceId());
+				index++;
+			}
+			originalContentSysObject.save();
+
+			if (!isTransAlreadyActive) {
+				dfSession.commitTrans();
+			}
+			DfLogger.info(this, "CreateContentFromMQType: {0}/{1}, DocIDs: {2}. Finish (transform request: {3})",
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString(), contentId }, null);
+			return contentId;
+		} catch (DfException dfEx) {
+			DfLogger.error(this, "CreateContentFromMQType: {0}/{1}, DocIDs: {2}. Error",
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, dfEx);
+			throw dfEx;
+		} catch (Exception ex) {
+			DfLogger.error(this, "CreateContentFromMQType: {0}/{1}, DocIDs: {2}. Error",
+					new String[] { contentSourceCode, contentSourceId, documentIds.toString() }, ex);
+			throw new DfException(ex);
+		} finally {
+			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
+				dfSession.abortTrans();
+			}
+		}
+	}
+	
 	@Override
 	public String createContentFromMQType(IDfSession dfSession, ContentType contentXmlObject, String contentSourceCode,
 			String contentSourceId, List<String> modifiedContentIdList, Set<IDfId> documentIds) throws DfException {
@@ -579,5 +632,7 @@ public class ContentService extends DfService implements IContentService {
 		}
 		return transformJobId;
 	}
+
+	
 
 }

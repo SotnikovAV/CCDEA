@@ -20,7 +20,7 @@
     
     <xsd:complexType name="DocPutType">
         <xsd:sequence>
-            <xsd:element name="originIdentification" type="pr:OldObjectIdentifiersType"/>
+            <xsd:element name="originIdentification" type="pr:OldObjectIdentifiersType" minOccurs="1" maxOccurs="unbounded"/>
             <xsd:element name="modificationVerb" type="pr:CRUDType" minOccurs="0"/>
             <xsd:element name="barCode" type="pr:BarCodeType" minOccurs="0"/>
             <xsd:element name="docGroupName" minOccurs="0">
@@ -34,7 +34,7 @@
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element name="applicationDivision" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="originDocIdentification" type="pr:OldObjectIdentifiersType"/>
+            <xsd:element name="originDocIdentification" type="pr:OldObjectIdentifiersType" minOccurs="1" maxOccurs="unbounded"/>
             <xsd:element name="docOriginDate" type="xsd:date"/>
             <xsd:element name="docNumber" type="xsd:string" minOccurs="0"/>
             <xsd:element name="originalsDate" type="xsd:date"/>

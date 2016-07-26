@@ -1,10 +1,7 @@
 package ru.rb.ccdea.storage.jobs;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -23,9 +20,7 @@ import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
-import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentLoaderException;
-import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.services.api.IContentService;
 
@@ -50,8 +45,6 @@ public class DocPutMesssageJob extends AbstractJob {
 		try {
 
 			DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
-
-			
 			
 			if(!ExternalMessagePersistence.beginProcessContentMsg(dfSession, messageId)) {
 				DfLogger.info(this, "Already in process MessageID: {0}", new String[]{messageId.getId()}, null);
@@ -59,95 +52,19 @@ public class DocPutMesssageJob extends AbstractJob {
 			}
 
 			IDfSysObject messageSysObject = (IDfSysObject) dfSession.getObject(messageId);
+			
+			String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
+			String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
 
 			JAXBContext jc = JAXBContext.newInstance(DocPutType.class);
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
 			DocPutType docPutXmlObject = unmarshaller
 					.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
-
+			
 			IContentService contentService = (IContentService) dfSession.getClient()
 					.newService("ucb_ccdea_content_service", dfSession.getSessionManager());
-
-			boolean placedOnWaiting = ExternalMessagePersistence.checkContentMessageForWaiting(messageSysObject);
-			if (!placedOnWaiting) {
-
-				List<IDfSysObject> docMessages = ExternalMessagePersistence.getProcessedDocMessage(messageSysObject);
-				if (docMessages.size() == 0) {
-					throw new CantFindDocException("Cant find document message for content message: " + messageId);
-				}
-
-				String contentSourceCode = null;
-				String contentSourceId = null;
-				List<IDfSysObject> docs = new ArrayList<IDfSysObject>();
-				for (IDfSysObject docMessageObject : docMessages) {
-					String docSourceCode = ExternalMessagePersistence.getDocSourceCode(docMessageObject);
-					String docSourceId = ExternalMessagePersistence.getDocSourceId(docMessageObject);
-					contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-					contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-
-					docs.addAll(BaseDocumentPersistence.searchDocumentByExternalKey(dfSession, docSourceCode,
-							docSourceId, contentSourceCode, contentSourceId));
-				}
-				if (docs.size() == 0) {
-					throw new CantFindDocException("Cant find document for content message: " + messageId);
-				}
-
-				Set<IDfId> documentIds = new HashSet<IDfId>(docs.size());
-				for (IDfSysObject doc : docs) {
-					documentIds.add(doc.getObjectId());
-				}
-
-				IDfSysObject documentObject = docs.get(0);
-
-				IDfSysObject existingObject = ContentPersistence.searchContentObjectByDocumentId(dfSession,
-						documentObject.getObjectId().getId());
-				List<String> modifiedObjectIdList = new ArrayList<String>();
-				String ctsRequestId = null;
-				if (ContentPersistence.isDocTypeSupportContentVersion(documentObject.getTypeName())) {
-					ExternalMessagePersistence.startContentProcessing(messageSysObject, null);
-					if (existingObject == null) {
-						ctsRequestId = contentService.createContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
-					} else {
-						ctsRequestId = contentService.createContentVersionFromMQType(dfSession,
-								docPutXmlObject.getContent(), contentSourceCode, contentSourceId, modifiedObjectIdList,
-								documentIds, existingObject.getObjectId());
-					}
-					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
-							ctsRequestId);
-				} else if (ContentPersistence.isDocTypeSupportContentAppending(documentObject.getTypeName())) {
-					ExternalMessagePersistence.startContentProcessing(messageSysObject, existingObject);
-					if (existingObject == null) {
-						ctsRequestId = contentService.createContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
-					} else {
-						ctsRequestId = contentService.appendContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds,
-								existingObject.getObjectId());
-					}
-					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
-							ctsRequestId);
-				} else {
-					ExternalMessagePersistence.startContentProcessing(messageSysObject, existingObject);
-					if (existingObject == null) {
-						ctsRequestId = contentService.createContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds);
-					} else {
-						ctsRequestId = contentService.updateContentFromMQType(dfSession, docPutXmlObject.getContent(),
-								contentSourceCode, contentSourceId, modifiedObjectIdList, documentIds,
-								existingObject.getObjectId());
-					}
-					ExternalMessagePersistence.finishContentProcessing(messageSysObject, modifiedObjectIdList,
-							ctsRequestId);
-				}
-				for (IDfSysObject docMessageObject : docMessages) {
-					ExternalMessagePersistence.updateWaitingContents(docMessageObject);
-				}
-			}
-
-//			if (!isTransAlreadyActive) {
-//				dfSession.commitTrans();
-//			}
+			
+			contentService.createContentFromMQType(dfSession, contentSourceCode, contentSourceId, docPutXmlObject);
 
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		}

@@ -1,13 +1,18 @@
 package ru.rb.ccdea.storage.jobs;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.*;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
+import com.documentum.fc.common.DfUtil;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
+import ru.rb.ccdea.storage.persistence.fileutils.ContentLoader;
 
 public class CreateContentRelationJob extends AbstractJob {
 
@@ -48,23 +53,9 @@ public class CreateContentRelationJob extends AbstractJob {
 
     public void process(IDfSession dfSession) throws DfException {
 
-        boolean isTransAlreadyActive = dfSession.isTransactionActive();
-        String dql = "" +
-                "select cc.d_id as d_id, cc.c_id as c_id, rel.r_object_id from " +
-                "(select doc.r_id as d_id, doc.doc_code, doc.doc_id, ct.r_id as c_id, ct.cnt_code, ct.cnt_id from " +
-                "(select r_object_id  as r_id , rp_content_source_code as doc_code, rp_content_source_id as doc_id from dm_dbo.ccdea_base_doc_rp where rp_content_source_code is not nullstring and rp_content_source_id is not nullstring) doc,  " +
-                "(select r_object_id  as r_id , rp_doc_content_id as cnt_code, rp_doc_source_id as cnt_id from dm_dbo.ccdea_doc_content_rp where rp_doc_content_id is not nullstring and rp_doc_source_id is not nullstring) ct " +
-                "where doc.doc_code = ct.cnt_code and doc.doc_id = ct.cnt_id) " +
-                "cc " +
-                "left join dm_relation rel on (rel.parent_id = cc.d_id and rel.child_id = cc.c_id) where r_object_id is nullid";
-        /*
-        1. Ищем сначала все base_doc'и в которых заполнены соответствующие поля
-        2. Ищем doc_content'ы, с такими же атрибутами
-        3. заворачиваем в парент скобки результат запроса, из него вытаскиваем все поля
-        4. делаем джоин на dm_relation, с указанием r_object_id такого relation'а в is nullid, чтобы если такие записи уже связаны они не попадали в запрос.
-        5. идем в цикле и вызываем уже написанный метод ContentPersistence#createDocumentContentRelation
-        todo: в текущей реализации джоба для base_doc и doc_content может быть только один тип связи, иначе запрос вернёт неверные данные.
-         */
+		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		String dql = "select distinct d.r_object_id as d_id, d.r_object_type as d_type, c.r_object_id as c_id, c.r_creation_date from ccdea_doc_content c, ccdea_base_doc d where  c.rp_doc_source_code=d.rp_content_source_code and c.rp_doc_source_id=d.rp_content_source_id and not exists(select r_object_id from dm_relation where relation_name='ccdea_content_relation'and parent_id=d.r_object_id and child_id=c.i_chronicle_id) order by c.r_creation_date enable (ROW_BASED)";
+		
         try {
 
             DfLogger.info(this, "Start CreateContentRelationJob ", null, null);
@@ -83,10 +74,25 @@ public class CreateContentRelationJob extends AbstractJob {
             try {
                 query.setDQL(dql);
                 collection = query.execute(dfSession, IDfQuery.READ_QUERY);
-
+                Set<String> processedContentIds = new HashSet<String>();
                 while (collection != null && collection.next()) {
                     IDfId baseDocId = collection.getId("d_id");
                     IDfId docContentId = collection.getId("c_id");
+                    String baseDocType = collection.getString("d_type");
+                    if(ContentPersistence.isDocTypeSupportContentVersion(baseDocType)) {
+						IDfSysObject contentObj = (IDfSysObject) dfSession.getObjectByQualification(
+								"ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where relation_name='ccdea_content_relation' and parent_id="
+										+ DfUtil.toQuotedString(baseDocId.getId()) + ")");
+						if(contentObj != null && !processedContentIds.contains(docContentId.getId())) {
+							processedContentIds.add(docContentId.getId());
+							IDfSysObject newContentObj = (IDfSysObject) dfSession.getObject(docContentId);
+							if(newContentObj != null) {
+								ContentLoader.saveContent(contentObj, newContentObj.getContentType(), newContentObj.getContent(), true);
+								newContentObj.destroy();
+							}
+							continue;
+						} 
+                    }
                     ContentPersistence.createDocumentContentRelation(dfSession, baseDocId, docContentId);
                 }
             } catch (DfException e) {

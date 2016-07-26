@@ -13,7 +13,9 @@ import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.svo.MCDocInfoModifySVOType;
+import ru.rb.ccdea.adapters.mq.binding.svo.ObjectIdentifiersType;
 import ru.rb.ccdea.adapters.mq.binding.svo.VODetailsType;
+import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.SVOPersistence;
@@ -75,25 +77,21 @@ public class SVOMessageJob extends AbstractJob{
                 if (svoExistingObject == null) {
                     String svoObjectId = svoService.createDocumentFromMQType(dfSession, svoXmlObject, voDetails, docSourceCode, docSourceId);
                     
-                    String contentSourceCode = ExternalMessagePersistence.getContentSourceCode(messageSysObject);
-    				String contentSourceId = ExternalMessagePersistence.getContentSourceId(messageSysObject);
-    				
-    				for (IDfId contentId : ContentPersistence.getUnlinkedContentIds(dfSession, svoObjectId,
-    						docSourceId, docSourceCode, contentSourceId, contentSourceCode)) {
-    					try {
-    						ContentPersistence.createDocumentContentRelation(dfSession, new DfId(svoObjectId),
-    								contentId);
-    					} catch (DfException ex) {
-    						DfLogger.error(this, "Не удалось присоединить контент '" + contentId + "' к документу '"
-    								+ svoObjectId + "' ", null, ex);
-    					}
-    				}
+                    svoExistingObject = (IDfSysObject)dfSession.getObject(new DfId(svoObjectId));
                     
                     modifiedDocIdList.add(svoObjectId);
                 } else {
                     svoService.updateDocumentFromMQType(dfSession, svoXmlObject, voDetails, docSourceCode, docSourceId, svoExistingObject.getObjectId());
                     modifiedDocIdList.add(svoExistingObject.getObjectId().getId());
                 }
+                
+                int index = svoExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
+    			for(ObjectIdentifiersType identifiers: svoXmlObject.getOriginIdentification()) {
+    				svoExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
+    				svoExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
+    				index++;
+    			}
+    			svoExistingObject.save();
             }
             ExternalMessagePersistence.finishDocProcessing(messageSysObject, modifiedDocIdList.toArray(new String[modifiedDocIdList.size()]));
 

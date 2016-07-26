@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <installparam:InputFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:installparam="installparam">
-  <parameter key="CCDEA_taskspace Application Folders" value="" defaultValue="/System/Applications/CCDEA_taskspace"/>
   <parameter key="CCDEA_taskspace_dmc_wdk_presets_owner" value="" defaultValue="dmc_wdk_presets_owner"/>
   <parameter key="Dar Install Folder" value="" defaultValue="/System/Applications/CCDEA_taskspace"/>
   <parameter key="CCDEA_taskspace_ts_designer" value="" defaultValue="ts_designer"/>
-  <parameter key="TaskSpace application" value="" defaultValue="/System/Applications/TaskSpace"/>
   <parameter key="filestore_01" value="" defaultValue="filestore_01"/>
-  <parameter key="Forms User Default ACL" value="" defaultValue="Forms User Default ACL"/>
 </installparam:InputFile>

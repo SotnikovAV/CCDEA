@@ -68,6 +68,7 @@
     <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/ucb_ccdea_contract_rec_mdl?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Modules/ucb_ccdea_contract_rec_mdl.module#//@dataModel"/>
     <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/ucb_ccdea_contract_mthd_mdl?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Modules/ucb_ccdea_contract_mthd_mdl.module#//@dataModel"/>
     <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/ucb_ccdea_content_service?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Modules/ucb_ccdea_content_service.module#//@dataModel"/>
+    <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/ucb_ccdea_content_rel_job_mdl?name=ucb_ccdea_content_rel_job_mdl#//@dataModel"/>
     <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.dam.df.transform.IProfileService?name=com.documentum.services.dam.df.transform.IProfileService#//@dataModel"/>
     <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.dam.df.transform.ICTSService?name=com.documentum.services.dam.df.transform.ICTSService#//@dataModel"/>
     <artifacts xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.cts.df.transform.ICTSTransformService?name=com.documentum.services.cts.df.transform.ICTSTransformService#//@dataModel"/>
@@ -91,6 +92,7 @@
     <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/ucb_ccdea_docput_message_mthd?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Methods/ucb_ccdea_docput_message_mthd.method#//@dataModel"/>
     <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/ucb_ccdea_contract_receiver_mthd?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Methods/ucb_ccdea_contract_receiver_mthd.method#//@dataModel"/>
     <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/ucb_ccdea_contract_message_mthd?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Methods/ucb_ccdea_contract_message_mthd.method#//@dataModel"/>
+    <artifacts xsi:type="method:Method" href="urn:com.emc.ide.artifact.method/ucb_ccdea_content_rel_mthd?name=ucb_ccdea_content_rel_mthd#//@dataModel"/>
     <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_vbk_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_vbk_message_job.job#//@dataModel"/>
     <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_svo_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_svo_message_job.job#//@dataModel"/>
     <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_spd_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_spd_message_job.job#//@dataModel"/>
@@ -100,6 +102,7 @@
     <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_docstatenotify_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_docstatenotify_message_job.job#//@dataModel"/>
     <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_docput_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_docput_message_job.job#//@dataModel"/>
     <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_contract_message_job?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Jobs/ucb_ccdea_contract_message_job.job#//@dataModel"/>
+    <artifacts xsi:type="job:Job" href="urn:com.emc.ide.artifact.job/ucb_ccdea_content_rel_job?location=%2FSystem%2FApplications%2FCCDEA_api&amp;name=ucb_ccdea_content_rel_job#//@dataModel"/>
     <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/ucb_ccdea_vbk_receiver_wf%5B1%5D?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_vbk_receiver_wf%5B1%5D.parameter#//@dataModel"/>
     <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/ucb_ccdea_vbk_receiver_wf%5B0%5D?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_vbk_receiver_wf%5B0%5D.parameter#//@dataModel"/>
     <artifacts xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/ucb_ccdea_vbk_receiver_wf?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_vbk_receiver_wf.parameter#//@dataModel"/>
@@ -178,12 +181,6 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.cts.df.transform.ICTSGetJobService?name=com.documentum.services.cts.df.transform.ICTSGetJobService#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_pd_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_pd_receiver_wf#//@dataModel"/>
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/ucb_ccdea_pd_receiver_wf%5B1%5D?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_pd_receiver_wf%5B1%5D.parameter#//@dataModel"/>
@@ -191,7 +188,7 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-httpclient-3.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-httpclient-3.0.jar&amp;type=dmc_jar#//@dataModel"/>
+      <key xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.cts.df.transform.ICTSGetJobService?name=com.documentum.services.cts.df.transform.ICTSGetJobService#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -203,13 +200,19 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-fileupload-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-fileupload-1.0.jar&amp;type=dmc_jar#//@dataModel"/>
+      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-httpclient-3.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-httpclient-3.0.jar&amp;type=dmc_jar#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
       <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/ctsTransformImpl.jar?language_code=&amp;location=%2FSystem%2FApplications%2FTransformation%2FctstransformImpl&amp;name=ctsTransformImpl.jar&amp;type=dmc_jar#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-fileupload-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-fileupload-1.0.jar&amp;type=dmc_jar#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -246,13 +249,13 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-codec-1.3.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-codec-1.3.jar&amp;type=dmc_jar#//@dataModel"/>
+      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-jxpath-1.2.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-jxpath-1.2.jar&amp;type=dmc_jar#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-jxpath-1.2.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-jxpath-1.2.jar&amp;type=dmc_jar#//@dataModel"/>
+      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-codec-1.3.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-codec-1.3.jar&amp;type=dmc_jar#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -271,16 +274,16 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.dam.df.transform.IProfileService?name=com.documentum.services.dam.df.transform.IProfileService#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_docput_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_docput_receiver_wf#//@dataModel"/>
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/ucb_ccdea_docput_receiver_wf%5B1%5D?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_docput_receiver_wf%5B1%5D.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.dam.df.transform.IProfileService?name=com.documentum.services.dam.df.transform.IProfileService#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
@@ -296,16 +299,16 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.cts.df.transform.ICTSTransformService?name=com.documentum.services.cts.df.transform.ICTSTransformService#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="bpm:ProcessContainer" href="urn:com.emc.ide.artifact.bpm.processContainer/ucb_ccdea_vbk_receiver_wf?location=%2FSystem%2FApplications%2FCCDEA_api%2Fucb_ccdea_bpm&amp;name=ucb_ccdea_vbk_receiver_wf#//@dataModel"/>
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/ucb_ccdea_vbk_receiver_wf%5B1%5D?artifactURI=file:/C:/Development/Workspaces/CCDEA_GITHUB/Composer/CCDEA_api/Artifacts/Installation%20Parameters/ucb_ccdea_vbk_receiver_wf%5B1%5D.parameter#//@dataModel"/>
         <upgradeOption xsi:type="dardef:UpgradeOption"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="moduledef:ModuleDef" href="urn:com.emc.ide.artifact.moduledef/com.documentum.services.cts.df.transform.ICTSTransformService?name=com.documentum.services.cts.df.transform.ICTSTransformService#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
@@ -367,12 +370,6 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urn:com.emc.ide.artifact.foldersubtype/ccdea?language_code=&amp;location=%2Fucb&amp;name=ccdea&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
       <key xsi:type="jardef:JavaLibrary" href="urn:com.emc.ide.artifact.jardef.javalibrary/RealTime?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService&amp;name=RealTime&amp;type=dmc_java_library#//@dataModel"/>
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urn:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_api/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
@@ -380,7 +377,19 @@
       </value>
     </installOptions>
     <installOptions>
+      <key xsi:type="sysobject:FolderSubtype" href="urn:com.emc.ide.artifact.foldersubtype/ccdea?language_code=&amp;location=%2Fucb&amp;name=ccdea&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
       <key xsi:type="sysobject:FolderSubtype" href="urn:com.emc.ide.artifact.foldersubtype/vbk?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=vbk&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-cli-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-cli-1.0.jar&amp;type=dmc_jar#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -393,12 +402,6 @@
     </installOptions>
     <installOptions>
       <key xsi:type="sysobject:FolderSubtype" href="urn:com.emc.ide.artifact.foldersubtype/content?language_code=&amp;location=%2Fucb%2Fccdea&amp;name=content&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="jardef:JarDef" href="urn:com.emc.ide.artifact.jardef.jardef/commons-cli-1.0.jar?language_code=&amp;location=%2FSystem%2FModules%2FSBO%2Fcom.documentum.services.cts.df.transform.ICTSTransformService%2FRealTime&amp;name=commons-cli-1.0.jar&amp;type=dmc_jar#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>

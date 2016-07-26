@@ -1,9 +1,9 @@
 java.lang.NullPointerException 
-        at ru.rb.ccdea.storage.persistence.fileutils.ContentLoader.loadContentFile(ContentLoader.java:273) 
+        at ru.rb.ccdea.storage.persistence.fileutils.ContentLoader.loadContentFile(ContentLoader.java:275) 
         at ru.rb.ccdea.storage.services.impl.ContentService.createContentVersionFromMQType(ContentService.java:192) 
-        at ru.rb.ccdea.storage.jobs.DocPutMesssageJob.process(DocPutMesssageJob.java:111) 
-        at ru.rb.ccdea.storage.jobs.DocPutMesssageJob.process(DocPutMesssageJob.java:43) 
-        at ru.rb.ccdea.storage.jobs.DocPutMesssageJob.execute(DocPutMesssageJob.java:35) 
+        at ru.rb.ccdea.storage.jobs.DocPutMesssageJob.process(DocPutMesssageJob.java:112) 
+        at ru.rb.ccdea.storage.jobs.DocPutMesssageJob.process(DocPutMesssageJob.java:44) 
+        at ru.rb.ccdea.storage.jobs.DocPutMesssageJob.execute(DocPutMesssageJob.java:36) 
         at ru.rb.ccdea.storage.jobs.AbstractJob.execute(AbstractJob.java:29) 
         at com.documentum.mthdservlet.DfMethodRunner.runIt(Unknown Source) 
         at com.documentum.mthdservlet.AMethodRunner.runAndReturnStatus(Unknown Source) 

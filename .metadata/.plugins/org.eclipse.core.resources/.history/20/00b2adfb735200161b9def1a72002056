@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="pr" xmlns:pr="pr" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1">
+
+    <xsd:element name="docPut" type="pr:DocPutType"/>
+
+    <xsd:simpleType name="NotEmptyStr">
+	    <xsd:restriction base="xsd:string">
+	       <xsd:whiteSpace value="collapse"/>
+	       <xsd:minLength fixed="true" value="1" />
+	    </xsd:restriction>
+	</xsd:simpleType>
+
+    <xsd:simpleType name="FileFormat">
+		
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+        </xsd:restriction>
+		
+    </xsd:simpleType>       
+    
+    <xsd:complexType name="DocPutType">
+        <xsd:sequence>
+            <xsd:element name="originIdentification" type="pr:OldObjectIdentifiersType"/>
+            <xsd:element name="modificationVerb" type="pr:CRUDType" minOccurs="0"/>
+            <xsd:element name="barCode" type="pr:BarCodeType" minOccurs="0"/>
+            <xsd:element name="docGroupName" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                          <xsd:enumeration value="Документы на кредит"/>
+                          <xsd:enumeration value="Документы на сделку"/>
+                          <xsd:enumeration value="Документы на начисление"/>
+                          <xsd:enumeration value="Документы для учета залога"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="applicationDivision" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="originDocIdentification" type="pr:OldObjectIdentifiersType"/>
+            <xsd:element name="docOriginDate" type="xsd:date"/>
+            <xsd:element name="docNumber" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="originalsDate" type="xsd:date"/>
+            <xsd:element name="content" type="pr:ContentType"/>
+            <xsd:element name="docTypeName" type="pr:NotEmptyStr"/>
+        </xsd:sequence>
+        <!--<xsd:attribute name="correlationID" type="xsd:string" use="required"/>-->
+    </xsd:complexType>
+
+    <xsd:complexType name="ContentType">
+        <xsd:choice>
+            <xsd:element name="docReference" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="position" type="xsd:unsignedInt"/>
+                        <xsd:element name="fileFormat" type="pr:FileFormat"/>
+                        <xsd:choice>
+                            <xsd:element name="fileReference" type="xsd:string"/>
+                            <xsd:element name="fileReferenceSMB" type="xsd:string"/>
+                        </xsd:choice>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="docScan" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="position" type="xsd:unsignedInt"/>
+                        <xsd:element name="fileScan" type="xsd:base64Binary"/>
+                        <xsd:element name="fileFormat" type="pr:FileFormat"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="OldObjectIdentifiersType">
+        <xsd:sequence>
+            <xsd:element name="sourceSystem">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="TBSVK"/>
+                        <xsd:enumeration value="JETDOCER"/>
+                        <xsd:enumeration value="DVK"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="sourceId" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="BarCodeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="128"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="CRUDType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="C"/>
+            <xsd:enumeration value="U"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

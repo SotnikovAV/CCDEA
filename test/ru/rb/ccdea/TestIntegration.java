@@ -175,9 +175,9 @@ public class TestIntegration {
 
 				docPutXmlObject.getContent().getDocReference().get(0).setFileReference(contentFilePathes[i]);
 				docPutXmlObject.getContent().getDocReference().get(0).setFileFormat(formats[i]);
-				docPutXmlObject.getOriginIdentification()
+				docPutXmlObject.getOriginIdentification().get(0)
 						.setSourceId(contract.getString(ExternalMessagePersistence.ATTR_DOC_SOURCE_ID));
-				docPutXmlObject.getOriginIdentification()
+				docPutXmlObject.getOriginIdentification().get(0)
 						.setSourceSystem(contract.getString(ExternalMessagePersistence.ATTR_DOC_SOURCE_CODE));
 
 				Marshaller marshaller = jc.createMarshaller();
@@ -390,9 +390,9 @@ public class TestIntegration {
 
 				docPutXmlObject.getContent().getDocReference().get(0).setFileReference(contentFilePathes[i]);
 				docPutXmlObject.getContent().getDocReference().get(0).setFileFormat(formats[i]);
-				docPutXmlObject.getOriginIdentification()
+				docPutXmlObject.getOriginIdentification().get(0)
 						.setSourceId(doc.getString(ExternalMessagePersistence.ATTR_DOC_SOURCE_ID));
-				docPutXmlObject.getOriginIdentification()
+				docPutXmlObject.getOriginIdentification().get(0)
 						.setSourceSystem(doc.getString(ExternalMessagePersistence.ATTR_DOC_SOURCE_CODE));
 
 				Marshaller marshaller = jc.createMarshaller();
@@ -577,9 +577,9 @@ public class TestIntegration {
 
 				docPutXmlObject.getContent().getDocReference().get(0).setFileReference(contentFilePathes[i]);
 				docPutXmlObject.getContent().getDocReference().get(0).setFileFormat(formats[i]);
-				docPutXmlObject.getOriginIdentification()
+				docPutXmlObject.getOriginIdentification().get(0)
 						.setSourceId(docSourceId);
-				docPutXmlObject.getOriginIdentification()
+				docPutXmlObject.getOriginIdentification().get(0)
 						.setSourceSystem(docSourceSystem);
 
 				Marshaller marshaller = jc.createMarshaller();
@@ -843,9 +843,9 @@ public class TestIntegration {
 
 //				docPutXmlObject.getContent().getDocReference().get(0).setFileReference(contentFilePathes[i]);
 //				docPutXmlObject.getContent().getDocReference().get(0).setFileFormat(formats[i]);
-				docPutXmlObject.getOriginDocIdentification()
+				docPutXmlObject.getOriginDocIdentification().get(0)
 						.setSourceId(docSourceId);
-				docPutXmlObject.getOriginDocIdentification()
+				docPutXmlObject.getOriginDocIdentification().get(0)
 						.setSourceSystem(docSourceSystem);
 
 				Marshaller marshaller = jc.createMarshaller();

@@ -19,4 +19,5 @@
 <fullyQualifiedTypeName name="com.documentum.fc.client.IDfSession"/>
 <fullyQualifiedTypeName name="ru.rb.ccdea.storage.persistence.ExternalMessagePersistence"/>
 <fullyQualifiedTypeName name="ru.rb.ccdea.storage.persistence.ContentPersistence"/>
+<fullyQualifiedTypeName name="java.lang.Deprecated"/>
 </qualifiedTypeNameHistroy>

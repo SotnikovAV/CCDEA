@@ -54,7 +54,7 @@ public class CreateContentRelationJob extends AbstractJob {
     public void process(IDfSession dfSession) throws DfException {
 
 		boolean isTransAlreadyActive = dfSession.isTransactionActive();
-		String dql = "select distinct d.r_object_id as d_id, d.r_object_type as d_type, c.r_object_id as c_id, c.r_creation_date from ccdea_doc_content c, ccdea_base_doc d where  c.rp_doc_source_code=d.rp_content_source_code and c.rp_doc_source_id=d.rp_content_source_id and not exists(select r_object_id from dm_relation where relation_name='ccdea_content_relation'and parent_id=d.r_object_id and child_id=c.i_chronicle_id) order by c.r_creation_date enable (ROW_BASED)";
+		String dql = "select distinct d.r_object_id as d_id, d.r_object_type as d_type, c.r_object_id as c_id, c.r_creation_date from ccdea_doc_content c, ccdea_base_doc d where  upper(c.rp_doc_source_code)=upper(d.rp_content_source_code) and c.rp_doc_source_id=d.rp_content_source_id and not exists(select r_object_id from dm_relation where relation_name='ccdea_content_relation'and parent_id=d.r_object_id and child_id=c.i_chronicle_id) order by c.r_creation_date enable (ROW_BASED)";
 		
         try {
 

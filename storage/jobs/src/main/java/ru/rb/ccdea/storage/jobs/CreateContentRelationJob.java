@@ -87,8 +87,12 @@ public class CreateContentRelationJob extends AbstractJob {
 							processedContentIds.add(docContentId.getId());
 							IDfSysObject newContentObj = (IDfSysObject) dfSession.getObject(docContentId);
 							if(newContentObj != null) {
-								ContentLoader.saveContent(contentObj, newContentObj.getContentType(), newContentObj.getContent(), true);
-								newContentObj.destroy();
+                                try {
+                                    ContentLoader.saveContent(contentObj, newContentObj.getContentType(), newContentObj.getContent(), true);
+                                    newContentObj.destroy();
+                                } catch (DfException e) {
+                                    DfLogger.error(this, "error while creating content with {0} {1} ids", new String []{newContentObj.getObjectId().getId(), contentObj.getObjectId().getId()}, e);
+                                }
 							}
 							continue;
 						} 

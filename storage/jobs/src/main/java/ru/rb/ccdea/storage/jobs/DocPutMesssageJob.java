@@ -22,6 +22,7 @@ import com.documentum.fc.common.IDfLoginInfo;
 import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
 import ru.rb.ccdea.storage.persistence.ContentLoaderException;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
+import ru.rb.ccdea.storage.persistence.fileutils.ContentLoader;
 import ru.rb.ccdea.storage.services.api.IContentService;
 
 public class DocPutMesssageJob extends AbstractJob {
@@ -63,8 +64,13 @@ public class DocPutMesssageJob extends AbstractJob {
 			
 			IContentService contentService = (IContentService) dfSession.getClient()
 					.newService("ucb_ccdea_content_service", dfSession.getSessionManager());
-			
-			contentService.createContentFromMQType(dfSession, contentSourceCode, contentSourceId, docPutXmlObject);
+
+			String contentFromMQType = contentService.createContentFromMQType(dfSession, contentSourceCode, contentSourceId, docPutXmlObject);
+
+			ContentLoader.loadContentFile((IDfSysObject) dfSession.getObject(new DfId(contentFromMQType)), docPutXmlObject.getContent());
+
+			messageSysObject.setInt(ExternalMessagePersistence.ATTR_CURRENT_STATE, ExternalMessagePersistence.MESSAGE_STATE_LOADED);
+			messageSysObject.save();
 
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		}

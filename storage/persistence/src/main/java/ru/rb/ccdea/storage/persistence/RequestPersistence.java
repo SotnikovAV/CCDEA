@@ -153,8 +153,8 @@ public class RequestPersistence extends BaseDocumentPersistence{
         }
         versionRecordDetails.setTimeWithHistory(document, ATTR_ACCEPT_REJECT_COLUMN, lastDesisionDate != null ? new DfTime(lastDesisionDate) : DfTime.DF_NULLDATE);
 
-        document.appendString(ATTR_RP_CONTENT_SOURCE_CODE, docSourceCode);
-        document.appendString(ATTR_RP_CONTENT_SOURCE_ID, docSourceId);
+//        document.appendString(ATTR_RP_CONTENT_SOURCE_CODE, docSourceCode);
+//        document.appendString(ATTR_RP_CONTENT_SOURCE_ID, docSourceId);
         document.setACL(getBranchACL(document.getSession(), document.getString(ATTR_BRANCH_CODE)));
         document.setObjectName(getDocumentDescription(document));
         document.save();

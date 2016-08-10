@@ -1,10 +1,7 @@
 package ru.rb.ccdea.storage.persistence;
 
 import com.documentum.fc.client.*;
-import com.documentum.fc.common.DfException;
-import com.documentum.fc.common.DfLogger;
-import com.documentum.fc.common.DfTime;
-import com.documentum.fc.common.IDfId;
+import com.documentum.fc.common.*;
 import ru.rb.ccdea.storage.persistence.details.DossierKeyDetails;
 
 import java.text.SimpleDateFormat;
@@ -172,10 +169,10 @@ public class DossierPersistence extends BasePersistence {
 	 */
 	public static IDfPersistentObject getDossierByKeyDetails(IDfSession dfSession, DossierKeyDetails keyDetails)
 			throws DfException {
-		String dossierQualification = TYPE_NAME + " where " + ATTR_BRANCH_CODE + " = '" + keyDetails.branchCode + "'"
-				+ " and " + ATTR_CUSTOMER_NUMBER + " = '" + keyDetails.customerNumber + "'";
+		String dossierQualification = TYPE_NAME + " where " + ATTR_BRANCH_CODE + " = " + DfUtil.toQuotedString(keyDetails.branchCode)
+				+ " and " + ATTR_CUSTOMER_NUMBER + " = " + DfUtil.toQuotedString(keyDetails.customerNumber);
 		if (keyDetails.passportNumber != null && !keyDetails.passportNumber.trim().isEmpty()) {
-			dossierQualification += " and " + ATTR_PASSPORT_NUMBER + " = '" + keyDetails.passportNumber + "'" + " and "
+			dossierQualification += " and " + ATTR_PASSPORT_NUMBER + " = " + DfUtil.toQuotedString(keyDetails.passportNumber) + " and "
 					+ ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_PASSPORT + "'";
 		} else if (keyDetails.contractNumber != null && !keyDetails.contractNumber.trim().isEmpty()
 				&& keyDetails.contractDate != null) {
@@ -183,12 +180,12 @@ public class DossierPersistence extends BasePersistence {
 			c.setTime(keyDetails.contractDate);
 			int year = c.get(Calendar.YEAR);
 			if(year < 2015) {
-				dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = '" + keyDetails.contractNumber + "'" + " and "
+				dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = " + DfUtil.toQuotedString(keyDetails.contractNumber) + " and "
 					+ "datetostring(" + ATTR_CONTRACT_DATE + ", 'yyyy-MM-dd') = datetostring(date('"
 					+ dateFormat.format(keyDetails.contractDate) + "','dd.MM.yyyy'),'yyyy-MM-dd')" + " and "
 					+ ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_CONTRACT + "'";
 			} else {
-				dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = '" + keyDetails.contractNumber + "'" + " and "
+				dossierQualification += " and " + ATTR_CONTRACT_NUMBER + " = " + DfUtil.toQuotedString(keyDetails.contractNumber) + " and "
 						+ ATTR_CONTRACT_DATE + " = date('" + dateFormat.format(keyDetails.contractDate) + "','dd.mm.yyyy')"
 						+ " and " + ATTR_DOSSIER_TYPE + " = '" + DOSSIER_TYPE_CONTRACT + "'";
 			}

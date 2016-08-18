@@ -7,8 +7,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
@@ -68,9 +66,10 @@ public class VBKMessageJob extends AbstractJob {
                 
                 int index = vbkExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
     			for(ObjectIdentifiersType identifiers: vbkXmlObject.getOriginIdentification()) {
-    				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
-    				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
-    				
+    				String sourceSystem = identifiers.getSourceSystem();
+    				sourceSystem = sourceSystem == null ? "" : sourceSystem.trim();
+    				String sourceId = identifiers.getSourceId();
+    				sourceId = sourceId == null ? "" : sourceId.trim();
     				index = BaseDocumentPersistence.setSourceIdentifier(vbkExistingObject, sourceSystem, sourceId, index);
     			}
     			vbkExistingObject.save();

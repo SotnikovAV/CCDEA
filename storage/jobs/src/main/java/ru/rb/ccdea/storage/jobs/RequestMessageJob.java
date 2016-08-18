@@ -8,8 +8,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
@@ -114,9 +112,10 @@ public class RequestMessageJob extends AbstractJob {
 					
 					int index = requestExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
 	    			for(ObjectIdentifiersType identifiers: requestXmlObject.getOriginIdentification()) {
-	    				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
-	    				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
-	    				
+	    				String sourceSystem = identifiers.getSourceSystem();
+	    				sourceSystem = sourceSystem == null ? "" : sourceSystem.trim();
+	    				String sourceId = identifiers.getSourceId();
+	    				sourceId = sourceId == null ? "" : sourceId.trim();
 	    				index = BaseDocumentPersistence.setSourceIdentifier(requestExistingObject, sourceSystem, sourceId, index);
 	    			}
 	    			requestExistingObject.save();

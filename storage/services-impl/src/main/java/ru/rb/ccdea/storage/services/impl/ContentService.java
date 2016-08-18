@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.documentum.fc.client.DfService;
 import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.client.IDfSysObject;
@@ -37,14 +35,18 @@ public class ContentService extends DfService implements IContentService {
 			contentId = originalContentSysObject.getObjectId().getId();
 			int index = 0;
 			for(OldObjectIdentifiersType identifiers: docPutXml.getOriginIdentification()) {
-				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
-				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+				String sourceSystem = identifiers.getSourceSystem();
+				sourceSystem = sourceSystem == null ? "" : sourceSystem.trim();
+				String sourceId = identifiers.getSourceId();
+				sourceId = sourceId == null ? "" : sourceId.trim();
 				index = ContentPersistence.setSourceIdentifier(originalContentSysObject, sourceSystem, sourceId, index);
 				documentIds.add(identifiers.getSourceSystem() + '/' + identifiers.getSourceId());
 			}
 			for(OldObjectIdentifiersType identifiers: docPutXml.getOriginDocIdentification()) {
-				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
-				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+				String sourceSystem = identifiers.getSourceSystem();
+				sourceSystem = sourceSystem == null ? "" : sourceSystem.trim();
+				String sourceId = identifiers.getSourceId();
+				sourceId = sourceId == null ? "" : sourceId.trim();
 				index = ContentPersistence.setSourceIdentifier(originalContentSysObject, sourceSystem, sourceId, index);
 				documentIds.add(identifiers.getSourceSystem() + '/' + identifiers.getSourceId());
 			}

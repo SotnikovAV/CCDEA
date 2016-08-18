@@ -12,7 +12,7 @@
   <viewModel xsi:type="Artifact:DefaultArtifactViewModel"/>
   <contentStore>
     <contentEntries key="mq-adapter-1.0-SNAPSHOT.jar">
-      <value filePath="content/10/-311558010/mq-adapter-1.0-SNAPSHOT[1].jar"/>
+      <value filePath="content/10/-311558010/mq-adapter-1.0-SNAPSHOT.jar"/>
     </contentEntries>
   </contentStore>
 </Artifact:Artifact>

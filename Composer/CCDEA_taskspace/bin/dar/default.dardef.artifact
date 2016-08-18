@@ -107,132 +107,6 @@
     <artifacts xsi:type="aliasset:AliasSet" href="urnd:com.emc.ide.artifact.aliasset/CCDEA_taskspace?name=CCDEA_taskspace#//@dataModel"/>
     <artifacts xsi:type="dclass:DClass" href="urnd:com.emc.ide.artifact.dclass/dmc_dar?artifactURI=platform:/resource/DFS2/inst/dclass/dmc_dar.type#//@dataModel"/>
     <artifacts xsi:type="dardef:DarDef" href="urnd:com.emc.ide.artifact.dardef/default?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/dar/default.dardef#//@dataModel"/>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_role_ccdea_vk_user?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_role_ccdea_vk_user&amp;type=dmc_preset_package#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/GeneralConfig?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=GeneralConfig&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_action_definitions.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_action_definitions.xml&amp;type=dmc_ts_actions#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAPassportContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAPassportContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_label_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_label_config.xml&amp;type=dmc_ts_label_config#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_plain_actions.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_plain_actions.xml&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_tab_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_tab_config.xml&amp;type=dmc_ts_tab_config#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Preset+Packages?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Preset+Packages&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceActionProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceActionProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Resources?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Resources&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Label?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig&amp;name=Label&amp;type=dm_folder#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
     <installOptions key="//@dataModel">
       <value>
         <location xsi:type="installparameter:FolderParameter" href="urnd:com.emc.ide.folderparameter/Dar+Install+Folder?artifactURI=file:/C:/Users/ER21559/composerworkspace/CCDEA_taskspace/Artifacts/Installation%20Parameters/darinstallfolder.parameter#//@dataModel"/>
@@ -240,49 +114,7 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_ru_RU.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_ru_RU.properties&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAExtendedTextComponentInitAdaptor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAExtendedTextComponentInitAdaptor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace_App.definition?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=TaskSpace_App.definition&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_selection_methods.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_selection_methods.xml&amp;type=dmc_ts_selection_methods#//@dataModel"/>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/GeneralConfig?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=GeneralConfig&amp;type=dm_folder#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -294,7 +126,19 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace_Role.definition?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=TaskSpace_Role.definition&amp;type=dm_document#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceActionProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceActionProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_ru_RU.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_ru_RU.properties&amp;type=dm_document#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace_App.definition?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=TaskSpace_App.definition&amp;type=dm_document#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -306,31 +150,7 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_form#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_schema#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_instance#//@dataModel"/>
-      <value>
-        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
-      </value>
-    </installOptions>
-    <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_app?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_app&amp;type=dmc_preset_package#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_plain_actions.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_plain_actions.xml&amp;type=dm_document#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -342,19 +162,61 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_role_ccdea_vk_user?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_role_ccdea_vk_user&amp;type=dmc_preset_package#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_action_writers.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_action_writers.xml&amp;type=dmc_ts_action_writers#//@dataModel"/>
+      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAPassportContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAPassportContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace?language_code=&amp;location=%2FSystem%2FApplications%2FTaskSpace&amp;name=TaskSpace&amp;type=dmc_taskspace_app#//@dataModel"/>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspace_preset_package_app?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FPreset+Packages&amp;name=CCDEA_taskspace_preset_package_app&amp;type=dmc_preset_package#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Actions?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=Actions&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Label?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig&amp;name=Label&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Resources?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Resources&amp;type=dm_folder#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -366,13 +228,73 @@
       </value>
     </installOptions>
     <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/CCDEA_taskspaceProp_en_US.properties?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets%2FResources&amp;name=CCDEA_taskspaceProp_en_US.properties&amp;type=dm_document#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_label_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_label_config.xml&amp;type=dmc_ts_label_config#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace?language_code=&amp;location=%2FSystem%2FApplications%2FTaskSpace&amp;name=TaskSpace&amp;type=dmc_taskspace_app#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
       <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAContragentAdapor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAContragentAdapor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_selection_methods.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_selection_methods.xml&amp;type=dmc_ts_selection_methods#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_vbk_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_vbk_view&amp;name=ccdea_vbk_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Preset+Packages?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=Preset+Packages&amp;type=dm_folder#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/TaskSpace_Role.definition?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FPresets&amp;name=TaskSpace_Role.definition&amp;type=dm_document#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>
@@ -384,7 +306,85 @@
       </value>
     </installOptions>
     <installOptions>
-      <key xsi:type="sysobject:FolderSubtype" href="urnd:com.emc.ide.artifact.foldersubtype/Actions?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace&amp;name=Actions&amp;type=dm_folder#//@dataModel"/>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/dmc_ts_tab_config.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FGeneralConfig%2FLabel&amp;name=dmc_ts_tab_config.xml&amp;type=dmc_ts_tab_config#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_spd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_spd_view&amp;name=ccdea_spd_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormSchema" href="urnd:com.emc.ide.artifact.formschema/ccdea_passport_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_passport_view&amp;name=ccdea_passport_view&amp;type=dm_xfm_schema#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_action_writers.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_action_writers.xml&amp;type=dmc_ts_action_writers#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_svo_detail_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_svo_detail_view&amp;name=ccdea_svo_detail_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormInstance" href="urnd:com.emc.ide.artifact.forminstance/ccdea_request_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_request_view&amp;name=ccdea_request_view&amp;type=dm_xfm_instance#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_pd_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_pd_view&amp;name=ccdea_pd_view&amp;type=dm_xfm_form#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormAdaptorConfiguration" href="urnd:com.emc.ide.artifact.formadaptorconfig/CCDEAExtendedTextComponentInitAdaptor?language_code=&amp;location=%2FSystem%2FForms%2FAdaptors&amp;name=CCDEAExtendedTextComponentInitAdaptor&amp;type=dmc_xfm_adaptor_config#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="sysobject:SysobjectSubtype" href="urnd:com.emc.ide.artifact.sysobjectsubtype/ts_action_definitions.xml?language_code=&amp;location=%2FSystem%2FApplications%2FCCDEA_taskspace%2FActions&amp;name=ts_action_definitions.xml&amp;type=dmc_ts_actions#//@dataModel"/>
+      <value>
+        <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
+      </value>
+    </installOptions>
+    <installOptions>
+      <key xsi:type="forms:FormTemplate" href="urnd:com.emc.ide.artifact.formtemplate/ccdea_contract_view?language_code=&amp;location=%2FSystem%2FForms%2Fccdea_contract_view&amp;name=ccdea_contract_view&amp;type=dm_xfm_form#//@dataModel"/>
       <value>
         <upgradeOption xsi:type="dardef:UpgradeOption" optionValue="IGNORE"/>
       </value>

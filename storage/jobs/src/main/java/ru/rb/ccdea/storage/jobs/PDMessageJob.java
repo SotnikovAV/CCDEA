@@ -1,25 +1,26 @@
 package ru.rb.ccdea.storage.jobs;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 
-
 import ru.rb.ccdea.adapters.mq.binding.pd.MCDocInfoModifyPDType;
 import ru.rb.ccdea.adapters.mq.binding.pd.ObjectIdentifiersType;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
-import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.PDPersistence;
 import ru.rb.ccdea.storage.services.api.IPDService;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import java.util.Date;
-import java.util.List;
 
 public class PDMessageJob extends AbstractJob{
     @Override
@@ -62,12 +63,13 @@ public class PDMessageJob extends AbstractJob{
                     pdService.updateDocumentFromMQType(dfSession, pdXmlObject, docSourceCode, docSourceId, pdExistingObject.getObjectId());
                     ExternalMessagePersistence.finishDocProcessing(messageSysObject, new String[] {pdExistingObject.getObjectId().getId()});
                 }
-                
+                 
                 int index = pdExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
     			for(ObjectIdentifiersType identifiers: pdXmlObject.getOriginIdentification()) {
-    				pdExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
-    				pdExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
-    				index++;
+    				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
+    				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+    				
+    				index = BaseDocumentPersistence.setSourceIdentifier(pdExistingObject, sourceSystem, sourceId, index);
     			}
     			pdExistingObject.save();
 

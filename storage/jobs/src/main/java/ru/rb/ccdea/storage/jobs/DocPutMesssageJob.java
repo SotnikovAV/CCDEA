@@ -68,9 +68,8 @@ public class DocPutMesssageJob extends AbstractJob {
 			String contentFromMQType = contentService.createContentFromMQType(dfSession, contentSourceCode, contentSourceId, docPutXmlObject);
 
 			ContentLoader.loadContentFile((IDfSysObject) dfSession.getObject(new DfId(contentFromMQType)), docPutXmlObject.getContent());
-
-			messageSysObject.setInt(ExternalMessagePersistence.ATTR_CURRENT_STATE, ExternalMessagePersistence.MESSAGE_STATE_LOADED);
-			messageSysObject.save();
+			
+			ExternalMessagePersistence.setMessageLoaded(messageSysObject);
 
 			DfLogger.info(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
 		}
@@ -118,11 +117,11 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			IDfLoginInfo loginInfo = clientx.getLoginInfo();
 			loginInfo.setUser("dmadmin");
-			loginInfo.setPassword("Fkut,hf15");
+			loginInfo.setPassword("dmadmin");
 			loginInfo.setDomain(null);
 
-			sessionManager.setIdentity("ELAR", loginInfo);
-			testSession = sessionManager.getSession("ELAR");
+			sessionManager.setIdentity("UCB", loginInfo);
+			testSession = sessionManager.getSession("UCB");
 
 			DocPutMesssageJob job = new DocPutMesssageJob();
 

@@ -1,5 +1,15 @@
 package ru.rb.ccdea.storage.jobs;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
@@ -16,17 +26,9 @@ import ru.rb.ccdea.adapters.mq.binding.svo.MCDocInfoModifySVOType;
 import ru.rb.ccdea.adapters.mq.binding.svo.ObjectIdentifiersType;
 import ru.rb.ccdea.adapters.mq.binding.svo.VODetailsType;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
-import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.SVOPersistence;
 import ru.rb.ccdea.storage.services.api.ISVOService;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class SVOMessageJob extends AbstractJob{
     @Override
@@ -87,9 +89,10 @@ public class SVOMessageJob extends AbstractJob{
                 
                 int index = svoExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
     			for(ObjectIdentifiersType identifiers: svoXmlObject.getOriginIdentification()) {
-    				svoExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
-    				svoExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
-    				index++;
+    				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
+    				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+    				
+    				index = BaseDocumentPersistence.setSourceIdentifier(svoExistingObject, sourceSystem, sourceId, index);
     			}
     			svoExistingObject.save();
             }

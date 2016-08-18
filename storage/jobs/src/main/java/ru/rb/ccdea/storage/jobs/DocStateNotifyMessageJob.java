@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
+
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
@@ -21,7 +22,6 @@ import com.documentum.fc.common.IDfLoginInfo;
 import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
 import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
-import ru.rb.ccdea.storage.persistence.ctsutils.CTSRequestBuilder;
 import ru.rb.ccdea.storage.persistence.fileutils.ContentLoader;
 
 public class DocStateNotifyMessageJob extends AbstractJob{
@@ -42,64 +42,40 @@ public class DocStateNotifyMessageJob extends AbstractJob{
     
     public void process(IDfSession dfSession, IDfId messageId) throws DfException {
     	boolean isTransAlreadyActive = dfSession.isTransactionActive();
-        try {
+		try {
 
-            DfLogger.debug(this, "Start MessageID: {0}", new String[]{messageId.getId()}, null);
+			DfLogger.debug(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
 
-            if (!isTransAlreadyActive) {
-                dfSession.beginTrans();
-            }
+			if (!isTransAlreadyActive) {
+				dfSession.beginTrans();
+			}
 
-            IDfSysObject messageObject = (IDfSysObject)dfSession.getObject(messageId);
-            String ctsJobResult = null; 
-//            ExternalMessagePersistence.getContentProcessingByCTSIfFinished(messageObject);
-//			if (ctsJobResult == null) {
-				IDfSysObject originalContentObject = ExternalMessagePersistence
-						.getOriginalMessageContentObject(messageObject);
-				if (originalContentObject != null && originalContentObject.getContentSize() > 0
-//						&& "pdf".equalsIgnoreCase(originalContentObject.getContentType())
-						) {
-					ctsJobResult = CTSRequestBuilder.RESPONSE_STATUS_COMPLITED;
-				} else {
-					ctsJobResult = CTSRequestBuilder.RESPONSE_STATUS_FAILED;
-				}
-//			}
-            if (CTSRequestBuilder.RESPONSE_STATUS_COMPLITED.equalsIgnoreCase(ctsJobResult)) {
-//                IDfSysObject originalContentObject = ExternalMessagePersistence.getOriginalMessageContentObject(messageObject);
-                IDfSysObject nextContent = ContentPersistence.getNextContentSysObject(originalContentObject, true);
-//                if (nextContent != null) {
-//                    DfLogger.info(this, "Process MessageID: {0} - destroy completed content part {1}", new String[] {messageId.getId(), nextContent.getObjectId().getId()}, null);
-//                    nextContent.destroy();
-//                }
-//                nextContent = ContentPersistence.getNextContentSysObject(originalContentObject, true);
-//                if (nextContent != null) {
-//                    IDfSysObject documentContentObject = ExternalMessagePersistence.getDocumentContentObject(messageObject);
-//                    String transformJobId = CTSRequestBuilder.mergePdfRequest(dfSession, documentContentObject.getObjectId().getId(), false, documentContentObject, nextContent);
-//                    ExternalMessagePersistence.continueNextContentTransform(messageObject, transformJobId);
-//                }
-//                else {
-                    ExternalMessagePersistence.notifyExternalSystemAboutContentProcessing(messageObject);
+			IDfSysObject messageObject = (IDfSysObject) dfSession.getObject(messageId);
+			
+			IDfSysObject originalContentObject = ExternalMessagePersistence
+					.getOriginalMessageContentObject(messageObject);
+			if (originalContentObject == null
+					|| (originalContentObject != null && originalContentObject.getContentSize() > 0
+							&& ContentPersistence.isDocumentRelationForContentExists(dfSession,
+									originalContentObject.getObjectId().getId()))) {
+				ExternalMessagePersistence.notifyExternalSystemAboutContentProcessing(messageObject);
+				deleteContent(messageObject);
+			} else if (originalContentObject != null && originalContentObject.getContentSize() == 0) {
+				ExternalMessagePersistence.setConvertationError(messageObject);
+			} else {
+				DfLogger.debug(this, "Skip MessageID: {0} because content not ready or empty",
+						new String[] { messageId.getId() }, null);
+			}
 
-                deleteContent(messageObject);
-//                }
-            }
-            else if (CTSRequestBuilder.RESPONSE_STATUS_FAILED.equalsIgnoreCase(ctsJobResult)) {
-                ExternalMessagePersistence.setConvertationError(messageObject);
-            }
-            else {
-                DfLogger.debug(this, "Skip MessageID: {0} because content not ready or empty", new String[] {messageId.getId()}, null);
-            }
+			if (!isTransAlreadyActive) {
+				dfSession.commitTrans();
+			}
 
-            if (!isTransAlreadyActive) {
-                dfSession.commitTrans();
-            }
-
-            DfLogger.debug(this, "Finish MessageID: {0}", new String[] {messageId.getId()}, null);
-        }
-        catch (DfException dfEx) {
-            DfLogger.error(this, "Error MessageID: {0}", new String[] {messageId.getId()}, dfEx);
-            //throw dfEx;
-        }
+			DfLogger.debug(this, "Finish MessageID: {0}", new String[] { messageId.getId() }, null);
+		} catch (DfException dfEx) {
+			DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, dfEx);
+			// throw dfEx;
+		}
         catch (Exception ex) {
             DfLogger.error(this, "Error MessageID: {0}", new String[] {messageId.getId()}, ex);
             //throw new DfException(ex);
@@ -116,7 +92,7 @@ public class DocStateNotifyMessageJob extends AbstractJob{
         Unmarshaller unmarshaller = jc.createUnmarshaller();
         DocPutType docPutXmlObject = unmarshaller.unmarshal(new StreamSource(messageObject.getContent()), DocPutType.class).getValue();
 
-        ContentLoader.deleteContentFile(dfSession, messageObject, docPutXmlObject.getContent());
+        ContentLoader.deleteContentFile(messageObject.getSession(), messageObject, docPutXmlObject.getContent());
     }
 
     public void updateWaitingContents(IDfSession dfSession) throws DfException {
@@ -161,11 +137,11 @@ public class DocStateNotifyMessageJob extends AbstractJob{
 
             IDfLoginInfo loginInfo = clientx.getLoginInfo();
             loginInfo.setUser("dmadmin");
-            loginInfo.setPassword("Fkut,hf15");
+            loginInfo.setPassword("dmadmin");
             loginInfo.setDomain(null);
 
-            sessionManager.setIdentity("ELAR", loginInfo);
-            testSession = sessionManager.getSession("ELAR");
+            sessionManager.setIdentity("UCB", loginInfo);
+            testSession = sessionManager.getSession("UCB");
             
             DocStateNotifyMessageJob job = new DocStateNotifyMessageJob();
 

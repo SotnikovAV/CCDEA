@@ -1,5 +1,15 @@
 package ru.rb.ccdea.storage.jobs;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
@@ -12,21 +22,12 @@ import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.IDfId;
 import com.documentum.fc.common.IDfLoginInfo;
 
-
 import ru.rb.ccdea.adapters.mq.binding.request.MCDocInfoModifyZAType;
 import ru.rb.ccdea.adapters.mq.binding.request.ObjectIdentifiersType;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
-import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.RequestPersistence;
 import ru.rb.ccdea.storage.services.api.IRequestService;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class RequestMessageJob extends AbstractJob {
 	@Override
@@ -113,9 +114,10 @@ public class RequestMessageJob extends AbstractJob {
 					
 					int index = requestExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
 	    			for(ObjectIdentifiersType identifiers: requestXmlObject.getOriginIdentification()) {
-	    				requestExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
-	    				requestExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
-	    				index++;
+	    				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
+	    				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+	    				
+	    				index = BaseDocumentPersistence.setSourceIdentifier(requestExistingObject, sourceSystem, sourceId, index);
 	    			}
 	    			requestExistingObject.save();
 				}

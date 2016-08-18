@@ -1,5 +1,14 @@
 package ru.rb.ccdea.storage.jobs;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.documentum.fc.client.IDfSysObject;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfId;
@@ -9,16 +18,9 @@ import com.documentum.fc.common.IDfId;
 import ru.rb.ccdea.adapters.mq.binding.spd.MCDocInfoModifySPDType;
 import ru.rb.ccdea.adapters.mq.binding.spd.ObjectIdentifiersType;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
-import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.SPDPersistence;
 import ru.rb.ccdea.storage.services.api.ISPDService;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import java.util.Date;
-import java.util.List;
 
 public class SPDMessageJob extends AbstractJob{
     @Override
@@ -64,9 +66,11 @@ public class SPDMessageJob extends AbstractJob{
                 
                 int index = spdExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
     			for(ObjectIdentifiersType identifiers: spdXmlObject.getOriginIdentification()) {
-    				spdExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
-    				spdExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
-    				index++;
+    				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
+    				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+    				
+    				index = BaseDocumentPersistence.setSourceIdentifier(spdExistingObject, sourceSystem, sourceId, index);
+
     			}
     			spdExistingObject.save();
 

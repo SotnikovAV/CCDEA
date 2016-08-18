@@ -57,7 +57,6 @@ public class CreateContentRelationJob extends AbstractJob {
 		String dql = "select distinct d.r_object_id as d_id, d.r_object_type as d_type, c.r_object_id as c_id, c.r_creation_date from ccdea_doc_content c, ccdea_base_doc d where  upper(c.rp_doc_source_code)=upper(d.rp_content_source_code) and c.rp_doc_source_id=d.rp_content_source_id and not exists(select r_object_id from dm_relation where relation_name='ccdea_content_relation'and parent_id=d.r_object_id and child_id=c.i_chronicle_id) order by c.r_creation_date enable (ROW_BASED)";
 		
         try {
-
             DfLogger.info(this, "Start CreateContentRelationJob ", null, null);
 
             long start = System.currentTimeMillis();
@@ -68,37 +67,45 @@ public class CreateContentRelationJob extends AbstractJob {
             }
 
             // обработка результатов запроса
-            DfQuery query = new DfQuery();
+            IDfQuery query = new DfQuery();
             IDfCollection collection = null;
 
             try {
                 query.setDQL(dql);
                 collection = query.execute(dfSession, IDfQuery.READ_QUERY);
                 Set<String> processedContentIds = new HashSet<String>();
-                while (collection != null && collection.next()) {
-                    IDfId baseDocId = collection.getId("d_id");
-                    IDfId docContentId = collection.getId("c_id");
-                    String baseDocType = collection.getString("d_type");
-                    if(ContentPersistence.isDocTypeSupportContentVersion(baseDocType)) {
-						IDfSysObject contentObj = (IDfSysObject) dfSession.getObjectByQualification(
-								"ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where relation_name='ccdea_content_relation' and parent_id="
-										+ DfUtil.toQuotedString(baseDocId.getId()) + ")");
-						if(contentObj != null && !processedContentIds.contains(docContentId.getId())) {
-							processedContentIds.add(docContentId.getId());
-							IDfSysObject newContentObj = (IDfSysObject) dfSession.getObject(docContentId);
-							if(newContentObj != null) {
-                                try {
-                                    ContentLoader.saveContent(contentObj, newContentObj.getContentType(), newContentObj.getContent(), true);
-                                    newContentObj.destroy();
-                                } catch (DfException e) {
-                                    DfLogger.error(this, "error while creating content with {0} {1} ids", new String []{newContentObj.getObjectId().getId(), contentObj.getObjectId().getId()}, e);
-                                }
+				while (collection != null && collection.next()) {
+					IDfId baseDocId = collection.getId("d_id");
+					IDfId docContentId = collection.getId("c_id");
+					String baseDocType = collection.getString("d_type");
+					try {
+						if (ContentPersistence.isDocTypeSupportContentVersion(baseDocType)) {
+							IDfSysObject contentObj = (IDfSysObject) dfSession.getObjectByQualification(
+									"ccdea_doc_content where i_chronicle_id in (select child_id from dm_relation where relation_name='ccdea_content_relation' and parent_id="
+											+ DfUtil.toQuotedString(baseDocId.getId()) + ")");
+							if (contentObj != null && !processedContentIds.contains(docContentId.getId())) {
+								processedContentIds.add(docContentId.getId());
+								IDfSysObject newContentObj = (IDfSysObject) dfSession.getObject(docContentId);
+								if (newContentObj != null) {
+									try {
+										ContentLoader.saveContent(contentObj, newContentObj.getContentType(),
+												newContentObj.getContent(), true);
+										newContentObj.destroy();
+									} catch (DfException e) {
+										throw new DfException("error while creating content with new id="
+												+ newContentObj.getObjectId().getId() + " old id="
+												+ contentObj.getObjectId().getId(), e);
+									}
+								}
+								continue;
 							}
-							continue;
-						} 
-                    }
-                    ContentPersistence.createDocumentContentRelation(dfSession, baseDocId, docContentId);
-                }
+						}
+						ContentPersistence.createDocumentContentRelation(dfSession, baseDocId, docContentId);
+					} catch (DfException e) {
+						DfLogger.error(this, "Error while creating content with id=" + docContentId
+								+ " for document with id=" + baseDocId, null, e);
+					}
+				}
             } catch (DfException e) {
                 DfLogger.error(this, "Error in CreateContentRelationJob JOB {0}", new String[]{e.getMessage()}, e);
                 if (!isTransAlreadyActive && dfSession.isTransactionActive()) {

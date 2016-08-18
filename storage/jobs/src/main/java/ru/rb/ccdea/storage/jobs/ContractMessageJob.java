@@ -1,5 +1,14 @@
 package ru.rb.ccdea.storage.jobs;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
 import com.documentum.fc.client.IDfClient;
@@ -14,18 +23,10 @@ import com.documentum.fc.common.IDfLoginInfo;
 
 import ru.rb.ccdea.adapters.mq.binding.contract.MCDocInfoModifyContractType;
 import ru.rb.ccdea.adapters.mq.binding.contract.ObjectIdentifiersType;
-import ru.rb.ccdea.adapters.mq.binding.docput.OldObjectIdentifiersType;
-import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.persistence.BaseDocumentPersistence;
-import ru.rb.ccdea.storage.persistence.ContentPersistence;
 import ru.rb.ccdea.storage.persistence.ContractPersistence;
+import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
 import ru.rb.ccdea.storage.services.api.IContractService;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import java.util.Date;
-import java.util.List;
 
 public class ContractMessageJob extends AbstractJob {
 	@Override
@@ -99,9 +100,10 @@ public class ContractMessageJob extends AbstractJob {
 			
 			int index = contractExistingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID);
 			for(ObjectIdentifiersType identifiers: contractXmlObject.getOriginIdentification()) {
-				contractExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, identifiers.getSourceSystem());
-				contractExistingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, identifiers.getSourceId());
-				index++;
+				String sourceSystem = StringUtils.trimToEmpty(identifiers.getSourceSystem());
+				String sourceId = StringUtils.trimToEmpty(identifiers.getSourceId());
+				
+				index = BaseDocumentPersistence.setSourceIdentifier(contractExistingObject, sourceSystem, sourceId, index);
 			}
 			contractExistingObject.save();
 			
@@ -133,11 +135,11 @@ public class ContractMessageJob extends AbstractJob {
 
 			IDfLoginInfo loginInfo = clientx.getLoginInfo();
 			loginInfo.setUser("dmadmin");
-			loginInfo.setPassword("Fkut,hf15");
+			loginInfo.setPassword("dmadmin");
 			loginInfo.setDomain(null);
 
-			sessionManager.setIdentity("ELAR", loginInfo);
-			testSession = sessionManager.getSession("ELAR");
+			sessionManager.setIdentity("UCB", loginInfo);
+			testSession = sessionManager.getSession("UCB");
 
 			ContractMessageJob job = new ContractMessageJob();
 

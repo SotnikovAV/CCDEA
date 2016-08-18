@@ -752,4 +752,10 @@ public class ExternalMessagePersistence extends BasePersistence {
 		}
 	}
 
+	public static void setMessageLoaded(IDfSysObject messageSysObject) throws DfException {
+		messageSysObject.setInt(ExternalMessagePersistence.ATTR_CURRENT_STATE,
+				ExternalMessagePersistence.MESSAGE_STATE_LOADED);
+		messageSysObject.save();
+	}
+
 }

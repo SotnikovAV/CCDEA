@@ -205,5 +205,57 @@ public class BaseDocumentPersistence extends BasePersistence{
     public static boolean isNotnullTrue(Boolean value) {
         return value == null ? false : value.booleanValue();
     }
+    
+	/**
+	 * Объект содержит указанный идентификатор внешней системы?
+	 * 
+	 * @param existingObject
+	 *            - объект
+	 * @param sourceSystem
+	 *            - код внешней системы
+	 * @param sourceId
+	 *            - идентификатор внешней системы
+	 * @return true, если объект уже содержит указанный идентификатор внешней
+	 *         системы; иначе - false
+	 * @throws DfException
+	 */
+	public static boolean containsSourceIdentifier(IDfSysObject existingObject, String sourceSystem, String sourceId)
+			throws DfException {
+		for (int i = 0; i < existingObject.getValueCount(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID); i++) {
+			String currentSourceSystem = existingObject
+					.getRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, i);
+			String currentSourceId = existingObject
+					.getRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, i);
+			if (sourceSystem.equals(currentSourceSystem) && sourceId.equals(currentSourceId)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Добавить идентификатор внешней системы. Производится проверки на наличие
+	 * идентификатора. Если такого идентификатора нет, то добавляется.
+	 * 
+	 * @param existingObject
+	 *            - объект
+	 * @param sourceSystem
+	 *            - код внешней системы
+	 * @param sourceId
+	 *            - идентификатор внешней системы
+	 * @param index
+	 *            - номер добавляемого значения репитинг-атрибута
+	 * @return следующий номер для добавления репитинг-атрибута
+	 * @throws DfException
+	 */
+	public static int setSourceIdentifier(IDfSysObject existingObject, String sourceSystem, String sourceId, int index)
+			throws DfException {
+		if (!BaseDocumentPersistence.containsSourceIdentifier(existingObject, sourceSystem, sourceId)) {
+			existingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_CODE, index, sourceSystem);
+			existingObject.setRepeatingString(BaseDocumentPersistence.ATTR_RP_CONTENT_SOURCE_ID, index, sourceId);
+			index++;
+		}
+		return index;
+	}
 
 }

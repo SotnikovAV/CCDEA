@@ -175,9 +175,9 @@
                  field="s_customer_number"/>
          <filter_type name="passport_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"
                       field="s_passport_number"/>
-         <filter_type name="contract_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"
+         <filter_type name="contract_number" class="ru.rb.ccdea.search.filter.MultivalueIgnorecaseFilterProcessor"
                       field="s_contract_number"/>
-         <filter_type name="document_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"
+         <filter_type name="document_number" class="ru.rb.ccdea.search.filter.MultivalueIgnorecaseFilterProcessor"
                       field="s_doc_number"/>
          <filter_type name="document_offer_date" class="ru.rb.ccdea.search.filter.DateFilterProcessor"
                       field="t_receive_date"/>

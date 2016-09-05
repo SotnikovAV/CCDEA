@@ -41,12 +41,12 @@ public class RetrieveSingleValue implements IActionExecution, IInlineCapableActi
             dql = "select s_number as s_value from ccdea_customer where s_number like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("document_number")) {
-            dql = "select distinct s_doc_number as s_value from ccdea_pd where s_doc_number like " + DfUtil.toQuotedString(valueStart + '%') + " UNION ALL " +
-                    "select distinct s_doc_number as s_value from ccdea_spd where s_doc_number like " + DfUtil.toQuotedString(valueStart + '%') + " UNION ALL " +
-                    "select distinct s_doc_number as s_value from ccdea_svo_detail where s_doc_number like " + DfUtil.toQuotedString(valueStart + '%');
+            dql = "select distinct s_doc_number as s_value from ccdea_pd where upper(s_doc_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ") UNION ALL " +
+                    "select distinct s_doc_number as s_value from ccdea_spd where upper(s_doc_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ") UNION ALL " +
+                    "select distinct s_doc_number as s_value from ccdea_svo_detail where upper(s_doc_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")";
         }
         else if (valueType.equalsIgnoreCase("contract_number")) {
-            dql = "select distinct s_contract_number as s_value from ccdea_base_doc where s_contract_number like " + DfUtil.toQuotedString(valueStart + '%');
+            dql = "select distinct s_contract_number as s_value from ccdea_base_doc where upper(s_contract_number) like upper(" + DfUtil.toQuotedString(valueStart + '%' + ")");
         }
         else if (valueType.equalsIgnoreCase("passport_number")) {
             dql = "select distinct s_passport_number as s_value from ccdea_base_doc where s_passport_number like " + DfUtil.toQuotedString(valueStart + '%');

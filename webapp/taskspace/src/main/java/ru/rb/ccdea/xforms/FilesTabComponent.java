@@ -51,7 +51,7 @@ public class FilesTabComponent extends SearchResultsComponent {
 					+ " content.r_object_id, content.object_name, content.s_content_source_id, content.s_content_source_code, "
 					+ " content.r_version_label, content.r_creation_date, content.r_modify_date, content.a_content_type, content.r_content_size "
 					+ " , content.r_object_type, content.r_link_cnt, content.r_is_virtual_doc, content.r_assembled_from_id, content.r_has_frzn_assembly, content.i_is_replica, i_is_reference "
-					+ " from " + " ccdea_doc_content (all) content where i_chronicle_id in ("
+					+ " from " + " ccdea_doc_content (all) content where content.r_content_size != 0 and content.a_content_type is not nullstring and i_chronicle_id in ("
 					+ " select child_id from dm_relation where relation_name='ccdea_content_relation' and parent_id="
 					+ DfUtil.toQuotedString(objectId) + ") and content.b_is_original=true ";
 

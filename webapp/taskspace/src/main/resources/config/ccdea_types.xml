@@ -84,7 +84,7 @@
                <search_filter filter_type="contract_date"/>
                <search_filter filter_type="accept_reject_date"/>
                <search_filter filter_type="change_date"/>
-               <search_filter filter_type="operation_date"/>
+               <!--search_filter filter_type="operation_date"/-->
                <search_filter filter_type="document_date"/>
                <search_filter filter_type="document_currency"/>
                <!--search_filter filter_type="contract_currency"/-->

@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="SMB" key="selection"/>
+		<item value="IDfLoginInfo" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="IDfLoginInfo"/>
 			<item value="smb"/>
 			<item value="Assert."/>
 			<item value="onClick"/>
@@ -15,7 +16,6 @@
 			<item value="button"/>
 			<item value="unCheckAllRows"/>
 			<item value="modifiedContentIdList"/>
-			<item value="ReceiverMethod"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -119,11 +119,11 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			IDfLoginInfo loginInfo = clientx.getLoginInfo();
 			loginInfo.setUser("dmadmin");
-			loginInfo.setPassword("dmadmin");
+			loginInfo.setPassword("Fkut,hf15");
 			loginInfo.setDomain(null);
 
-			sessionManager.setIdentity("UCB", loginInfo);
-			testSession = sessionManager.getSession("UCB");
+			sessionManager.setIdentity("ELAR", loginInfo);
+			testSession = sessionManager.getSession("ELAR");
 
 			DocPutMesssageJob job = new DocPutMesssageJob();
 

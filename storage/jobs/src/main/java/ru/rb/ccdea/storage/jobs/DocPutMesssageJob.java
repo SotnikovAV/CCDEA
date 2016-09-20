@@ -2,23 +2,13 @@ package ru.rb.ccdea.storage.jobs;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
-
 import com.documentum.com.DfClientX;
 import com.documentum.com.IDfClientX;
-import com.documentum.fc.client.IDfClient;
-import com.documentum.fc.client.IDfSession;
-import com.documentum.fc.client.IDfSessionManager;
-import com.documentum.fc.client.IDfSysObject;
-import com.documentum.fc.common.DfException;
-import com.documentum.fc.common.DfId;
-import com.documentum.fc.common.DfLogger;
-import com.documentum.fc.common.IDfId;
-import com.documentum.fc.common.IDfLoginInfo;
-
+import com.documentum.fc.client.*;
+import com.documentum.fc.common.*;
 import ru.rb.ccdea.adapters.mq.binding.docput.DocPutType;
 import ru.rb.ccdea.storage.persistence.ContentLoaderException;
 import ru.rb.ccdea.storage.persistence.ExternalMessagePersistence;
@@ -43,6 +33,7 @@ public class DocPutMesssageJob extends AbstractJob {
 
 	public void process(IDfSession dfSession, IDfId messageId) throws DfException {
 		boolean isTransAlreadyActive = dfSession.isTransactionActive();
+		String contentFromMQType = null;
 		try {
 
 			DfLogger.info(this, "Start MessageID: {0}", new String[] { messageId.getId() }, null);
@@ -65,7 +56,7 @@ public class DocPutMesssageJob extends AbstractJob {
 			IContentService contentService = (IContentService) dfSession.getClient()
 					.newService("ucb_ccdea_content_service", dfSession.getSessionManager());
 
-			String contentFromMQType = contentService.createContentFromMQType(dfSession, contentSourceCode, contentSourceId, docPutXmlObject);
+			contentFromMQType = contentService.createContentFromMQType(dfSession, contentSourceCode, contentSourceId, docPutXmlObject);
 
 			ContentLoader.loadContentFile((IDfSysObject) dfSession.getObject(new DfId(contentFromMQType)), docPutXmlObject.getContent());
 			
@@ -99,6 +90,17 @@ public class DocPutMesssageJob extends AbstractJob {
 				DfLogger.error(this, "Error MessageID: {0}", new String[] { messageId.getId() }, ex);
 			}
 		} finally {
+			try {
+				if (contentFromMQType != null && DfUtil.isObjectId(contentFromMQType) && !DfId.DF_NULLID_STR.equals(contentFromMQType)) {
+					IDfDocument object = (IDfDocument) dfSession.getObject(new DfId(contentFromMQType));
+					if (object != null && (object.getContentSize() == 0 || object.getContentType().isEmpty())) {
+						DfLogger.info(this, " destroying empty ccdea_doc_content : {0}", new String[]{contentFromMQType}, null);
+						object.destroy();
+					}
+				}
+			} catch (DfException e) {
+				DfLogger.error(this, e.getMessage(), e.getArguments(), e);
+			}
 			if (!isTransAlreadyActive && dfSession.isTransactionActive()) {
 				dfSession.abortTrans();
 			}
@@ -117,11 +119,11 @@ public class DocPutMesssageJob extends AbstractJob {
 
 			IDfLoginInfo loginInfo = clientx.getLoginInfo();
 			loginInfo.setUser("dmadmin");
-			loginInfo.setPassword("dmadmin");
+			loginInfo.setPassword("Fkut,hf15");
 			loginInfo.setDomain(null);
 
-			sessionManager.setIdentity("UCB", loginInfo);
-			testSession = sessionManager.getSession("UCB");
+			sessionManager.setIdentity("ELAR", loginInfo);
+			testSession = sessionManager.getSession("ELAR");
 
 			DocPutMesssageJob job = new DocPutMesssageJob();
 

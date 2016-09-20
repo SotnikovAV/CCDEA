@@ -29,9 +29,13 @@ public class ContentService extends DfService implements IContentService {
 			if (!isTransAlreadyActive) {
 				dfSession.beginTrans();
 			}
-			
-			IDfSysObject originalContentSysObject = ContentPersistence.createContentObject(dfSession, contentSourceCode,
-					contentSourceId, true);
+
+			IDfSysObject originalContentSysObject = ContentPersistence.getContentObject(dfSession, contentSourceCode,
+					contentSourceId);
+			if (originalContentSysObject == null) {
+				originalContentSysObject = ContentPersistence.createContentObject(dfSession, contentSourceCode,
+						contentSourceId, true);
+			}
 			contentId = originalContentSysObject.getObjectId().getId();
 			int index = 0;
 			for(OldObjectIdentifiersType identifiers: docPutXml.getOriginIdentification()) {

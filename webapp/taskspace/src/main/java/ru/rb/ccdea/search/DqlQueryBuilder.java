@@ -1,8 +1,10 @@
 package ru.rb.ccdea.search;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import ru.rb.ccdea.utils.StringUtils;
-
-import java.util.*;
 
 /**
  * Простейший построитель запросов
@@ -75,9 +77,17 @@ public class DqlQueryBuilder {
         sb.append(StringUtils.joinStrings(joinTables, " LEFT JOIN "));
 
         if (onClause.size() > 0) {
-            sb.append(" ON ");
+            sb.append(" ON (");
             sb.append(StringUtils.joinStrings(onClause, " AND "));
+            sb.append(" ) ");
         }
+
+        sb.append(StringUtils.joinStrings(fromTables, " ", new StringUtils.IWorker<String>() {
+            @Override
+            public String doWork(String param) {
+                return "," + param;
+            }
+        }));
 
         if (whereClauses.size() > 0) {
             sb.append(" WHERE ");

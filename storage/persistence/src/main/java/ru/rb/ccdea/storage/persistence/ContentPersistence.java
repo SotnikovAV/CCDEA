@@ -160,6 +160,27 @@ public class ContentPersistence extends BasePersistence {
 	}
 
 	/**
+	 * Получить объект контента по идентификатору источника (idLink)
+	 * 
+	 * @param dfSession
+	 *            - сессия Documentum
+	 * @param contentSourceCode
+	 *            - код системы источника
+	 * @param contentSourceId
+	 *            - идентификатор в системе источнике
+	 * @return объект контента или null, если объект не найден
+	 * @throws DfException
+	 */
+	public static IDfSysObject getContentObject(IDfSession dfSession, String contentSourceCode, String contentSourceId)
+			throws DfException {
+		IDfSysObject contentObject = (IDfSysObject) dfSession.getObjectByQualification(
+				TYPE_NAME + " where " + ATTR_CONTENT_SOURCE_CODE + " = " + DfUtil.toQuotedString(contentSourceCode)
+						+ " and " + ATTR_CONTENT_SOURCE_ID + " = " + DfUtil.toQuotedString(contentSourceId)
+						+ " and r_content_size>0 and a_content_type is not nullstring");
+		return contentObject;
+	}
+
+	/**
 	 * Создать объект для хранения части контента. Используется, если контент
 	 * приходит в виде архива.
 	 * 

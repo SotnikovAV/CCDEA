@@ -55,7 +55,7 @@ public class DownloadMessages {
 			testSession = sessionManager.getSession("UCB");
 
 			IDfEnumeration messageIdList = testSession.getObjectsByQuery(
-					"select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica from ccdea_external_message where s_message_type='DocPut'",
+					"select r_object_id, r_object_type, r_aspect_name, i_vstamp, i_is_reference, i_is_replica from ccdea_external_message where s_content_source_id in ('5109428', '20995926', '20995928', '20995929' ) " , //r_creation_date > date('2016-08-16 00:00:00','yyyy-MM-dd HH:mi:ss')",
 					null);
 			int counter = 0;
 			while (messageIdList.hasMoreElements()) {
@@ -69,10 +69,10 @@ public class DownloadMessages {
 							.unmarshal(new StreamSource(messageSysObject.getContent()), DocPutType.class).getValue();
 
 					ContentType ct = docPutXmlObject.getContent();
-					String type = null;
-					if (ct.getDocScan() != null && ct.getDocScan().size() > 0) {
+					String type = "";
+					if (ct != null && ct.getDocScan() != null && ct.getDocScan().size() > 0) {
 						type = "DocScan/" + ct.getDocScan().get(0).getFileFormat();
-					} else if (ct.getDocReference() != null && ct.getDocReference().size() > 0) {
+					} else if (ct != null && ct.getDocReference() != null && ct.getDocReference().size() > 0) {
 						type = "DocReference/" + ct.getDocReference().get(0).getFileFormat();
 					}
 					String folder = "C:/Development/temp/ccdea/" + type;
@@ -126,7 +126,7 @@ public class DownloadMessages {
 
 			}
 		} catch (Exception ex) {
-			System.out.println(ex);
+			ex.printStackTrace();
 		} finally {
 			if (testSession != null) {
 				sessionManager.release(testSession);

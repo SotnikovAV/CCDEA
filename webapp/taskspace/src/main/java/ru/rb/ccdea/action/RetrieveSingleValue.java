@@ -46,7 +46,7 @@ public class RetrieveSingleValue implements IActionExecution, IInlineCapableActi
                     "select distinct s_doc_number as s_value from ccdea_svo_detail where upper(s_doc_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")";
         }
         else if (valueType.equalsIgnoreCase("contract_number")) {
-            dql = "select distinct s_contract_number as s_value from ccdea_base_doc where upper(s_contract_number) like upper(" + DfUtil.toQuotedString(valueStart + '%' + ")");
+            dql = "select distinct s_contract_number as s_value from ccdea_base_doc where upper(s_contract_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")";
         }
         else if (valueType.equalsIgnoreCase("passport_number")) {
             dql = "select distinct s_passport_number as s_value from ccdea_base_doc where s_passport_number like " + DfUtil.toQuotedString(valueStart + '%');

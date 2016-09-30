@@ -1,6 +1,9 @@
 package ru.rb.ccdea.action;
 
-import com.documentum.fc.client.*;
+import com.documentum.fc.client.DfQuery;
+import com.documentum.fc.client.IDfCollection;
+import com.documentum.fc.client.IDfQuery;
+import com.documentum.fc.client.IDfSession;
 import com.documentum.fc.common.DfException;
 import com.documentum.fc.common.DfLogger;
 import com.documentum.fc.common.DfUtil;
@@ -32,7 +35,7 @@ public class RetrieveSingleValue implements IActionExecution, IInlineCapableActi
         String dql = null;
         if (valueType.equalsIgnoreCase("contract_currency") ||
                 valueType.equalsIgnoreCase("document_currency")) {
-            dql = "select s_code as s_value from ccdea_currency where s_code like " + DfUtil.toQuotedString(valueStart + '%');
+            dql = "select s_code as s_value from ccdea_currency where s_code like " + DfUtil.toQuotedString(valueStart + '%') + " or s_name like " + DfUtil.toQuotedString(valueStart + '%');
         }
         else if (valueType.equalsIgnoreCase("customer_name")) {
             dql = "select s_name as s_value from ccdea_customer where s_name like " + DfUtil.toQuotedString(valueStart + '%');

@@ -68,7 +68,7 @@ public class SelectSingleValueComponent extends Component {
 
     private String getSelectValueListDql(String valueStart) {
         if (isContractCurrencyValue() || isDocumentCurrencyValue()) {
-            return "select s_code as s_value, s_code as s_label from ccdea_currency where s_code like " + DfUtil.toQuotedString(valueStart + '%') ;
+            return "select s_code as s_value, s_name as s_label from ccdea_currency where upper(s_code) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ") or upper(s_name) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")";
         }
         else if (isCustomerNumberValue()) {
             return "select s_number as s_value, s_number as s_label from ccdea_customer where s_number like " + DfUtil.toQuotedString(valueStart + '%') ;
@@ -126,7 +126,17 @@ public class SelectSingleValueComponent extends Component {
 
     @Override
     public boolean onCommitChanges() {
-        setReturnValue(SELECTED_VALUE, getValueListControl().getValue());
+        String value = getValueListControl().getValue();
+        if(isContractCurrencyValue() || isDocumentCurrencyValue()) {
+            List<Option> options = getValueListControl().getOptions();
+            for (Option option : options) {
+                if(value.equals(option.getValue())) {
+                    value = option.getLabel();
+                }
+            }
+
+        }
+        setReturnValue(SELECTED_VALUE, value);
         return super.onCommitChanges();
     }
 }

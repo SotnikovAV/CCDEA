@@ -20,7 +20,7 @@
                <search_filter filter_type="accept_reject_date" field="t_accept_date"/>
                <search_filter filter_type="change_date"/>
                <search_filter filter_type="ps_close_date"/>
-               <search_filter filter_type="contract_currency" field="s_contract_currency_code"/>
+               <search_filter filter_type="contract_currency" field="s_contract_currency_code"  class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="contract_finish_date"/>
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="ps_close_reason"/>
@@ -62,7 +62,7 @@
                <search_filter filter_type="document_offer_date"/>
                <search_filter filter_type="contract_date"/>
                <search_filter filter_type="change_date"/>
-               <search_filter filter_type="contract_currency"/>
+               <search_filter filter_type="contract_currency" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="processing_unit"/>
             </search_filters>
@@ -86,7 +86,7 @@
                <search_filter filter_type="change_date"/>
                <!--search_filter filter_type="operation_date"/-->
                <search_filter filter_type="document_date"/>
-               <search_filter filter_type="document_currency"/>
+               <search_filter filter_type="document_currency" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <!--search_filter filter_type="contract_currency"/-->
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="confirm_document_type"/>
@@ -113,7 +113,7 @@
                <search_filter filter_type="change_date"/>
                <search_filter filter_type="operation_date"/>
                <search_filter filter_type="document_date"/>
-               <search_filter filter_type="document_currency" field="s_payment_currency_code"/>
+               <search_filter filter_type="document_currency" field="s_payment_currency_code" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="contract_currency" class="ru.rb.ccdea.search.filter.SvoContractCurrencyFilterProcessor"/>
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="operation_code"/>

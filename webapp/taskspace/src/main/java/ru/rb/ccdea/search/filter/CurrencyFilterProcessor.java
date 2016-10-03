@@ -10,12 +10,13 @@ import com.documentum.web.formext.component.Component;
 public class CurrencyFilterProcessor extends TextFilterProcessor {
 
     public String getCondition(Component component) {
-        String result ="";
+        String result = "";
         Text textfield = (Text) component.getControl(controlName);
-        if(textfield!=null) {
+        if (textfield != null) {
             String value = textfield.getValue();
             if (value != null && value.length() > 0) {
-                result = field + " IN ( SELECT s_code FROM ccdea_currency WHERE upper(s_code) like upper(" + DfUtil.toQuotedString(value + '%') + ") or upper(s_name) LIKE upper(" + DfUtil.toQuotedString(value + '%') + "))";
+                result = field + " IN ( SELECT s_code FROM ccdea_currency WHERE upper(s_code) like upper(" + DfUtil.toQuotedString(value + '%') + ") or upper(s_name) LIKE upper(" + DfUtil.toQuotedString(value + '%') + ")) " +
+                        "or upper(" + field + ") like upper(" + DfUtil.toQuotedString(value + '%') + ")";
             }
         }
         return result;

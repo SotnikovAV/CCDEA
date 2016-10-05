@@ -161,6 +161,7 @@
                <search_filter filter_type="document_date"/>
                <search_filter filter_type="document_currency"/>
                <search_filter filter_type="processing_unit"/>
+               <search_filter filter_type="passport_type_code"/>
             </search_filters>
             <select_fields>r_object_id,'ccdea_pd_view' as view_template,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_type,s_doc_number,t_doc_date as t_doc_date,s_currency_code,d_amount,s_passport_number,s_contract_number,t_contract_date as t_contract_date,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
             <multitype_select_fields>r_object_id,'ccdea_pd_view' as view_template,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>

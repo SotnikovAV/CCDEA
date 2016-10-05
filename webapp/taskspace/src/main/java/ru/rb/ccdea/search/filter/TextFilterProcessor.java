@@ -1,5 +1,6 @@
 package ru.rb.ccdea.search.filter;
 
+import com.documentum.fc.common.DfUtil;
 import com.documentum.web.form.control.Text;
 import com.documentum.web.formext.component.Component;
 
@@ -26,7 +27,7 @@ public class TextFilterProcessor extends BasicFilterProcessor {
         if(textfield!=null) {
             String value = textfield.getValue();
             if (value != null && value.length() > 0) {
-                result = (repeating ? " ANY " : "") + field + " LIKE '" + value + "%'";
+                result = (repeating ? " ANY " : "") + "upper(" + field + ") LIKE upper(" + DfUtil.toQuotedString(value + '%') +")";
             }
         }
         return result;

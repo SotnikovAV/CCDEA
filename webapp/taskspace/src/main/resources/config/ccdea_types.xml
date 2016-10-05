@@ -170,8 +170,10 @@
       <filter_types>
          <filter_type name="document_status" class="ru.rb.ccdea.search.filter.DropDownListFilterProcessor"
                       field="s_state"/>
-         <filter_type name="customer_name" class="ru.rb.ccdea.search.filter.ClientNameFilterProcessor"
-                 field="s_customer_number"/>
+         <!-- filter_type name="customer_name" class="ru.rb.ccdea.search.filter.ClientNameFilterProcessor"
+                 field="s_customer_number"/-->
+         <filter_type name="customer_name" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
+                 field="s_customer_name"/>
          <filter_type name="customer_number" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
                  field="s_customer_number"/>
          <filter_type name="passport_number" class="ru.rb.ccdea.search.filter.MultivalueFilterProcessor"

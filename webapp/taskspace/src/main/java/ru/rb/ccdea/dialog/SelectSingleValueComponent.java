@@ -71,10 +71,10 @@ public class SelectSingleValueComponent extends Component {
             return "select s_code as s_value, s_name as s_label from ccdea_currency where upper(s_code) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ") or upper(s_name) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")";
         }
         else if (isCustomerNumberValue()) {
-            return "select s_number as s_value, s_number as s_label from ccdea_customer where s_number like " + DfUtil.toQuotedString(valueStart + '%') ;
+            return "select s_number as s_value, s_number as s_label from ccdea_customer where upper(s_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")" ;
         }
         else if (isCustomerNameValue()) {
-            return "select s_name as s_value, s_name as s_label from ccdea_customer where s_name like " + DfUtil.toQuotedString(valueStart + '%') ;
+            return "select s_name as s_value, s_name as s_label from ccdea_customer where upper(s_name) like upper(" + DfUtil.toQuotedString(valueStart + '%') + ")";
         }
         else if (isDocumentNumberValue()) {
             return "select distinct s_doc_number as s_value, s_doc_number as s_label from ccdea_pd where upper(s_doc_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') +") UNION ALL " +
@@ -85,7 +85,7 @@ public class SelectSingleValueComponent extends Component {
             return "select distinct s_contract_number as s_value, s_contract_number as s_label from ccdea_base_doc where upper(s_contract_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') +")";
         }
         else if (isPassportNumberValue()) {
-            return "select distinct s_passport_number as s_value, s_passport_number as s_label from ccdea_base_doc where s_passport_number like " + DfUtil.toQuotedString(valueStart + '%') ;
+            return "select distinct s_passport_number as s_value, s_passport_number as s_label from ccdea_base_doc where upper(s_passport_number) like upper(" + DfUtil.toQuotedString(valueStart + '%') +")";
         }
         else {
             return null;

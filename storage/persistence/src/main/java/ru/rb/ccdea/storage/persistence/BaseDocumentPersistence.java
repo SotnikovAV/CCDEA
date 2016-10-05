@@ -116,7 +116,7 @@ public class BaseDocumentPersistence extends BasePersistence{
         versionRecordDetails.setIdWithHistory(document, ATTR_DOSSIER, new DfId(keyDetails.dossierId));
         versionRecordDetails.setStringWithHistory(document, ATTR_BRANCH_CODE, keyDetails.branchCode);
         versionRecordDetails.setStringWithHistory(document, ATTR_CUSTOMER_NUMBER, keyDetails.customerNumber);
-        versionRecordDetails.setStringWithHistory(document, ATTR_CUSTOMER_NAME, keyDetails.customerName);
+        versionRecordDetails.setStringWithHistory(document, ATTR_CUSTOMER_NAME, getClientName(dfSession, keyDetails.customerNumber, keyDetails.branchCode));
         if (keyDetails.passportNumber != null && !keyDetails.passportNumber.trim().isEmpty()) {
             versionRecordDetails.setStringWithHistory(document, ATTR_PASSPORT_NUMBER, keyDetails.passportNumber);
             versionRecordDetails.setStringWithHistory(document, ATTR_CONTRACT_NUMBER, "");
@@ -128,6 +128,30 @@ public class BaseDocumentPersistence extends BasePersistence{
             versionRecordDetails.setTimeWithHistory(document, ATTR_CONTRACT_DATE, keyDetails.contractDate != null ? new DfTime(keyDetails.contractDate) : DfTime.DF_NULLDATE);
         }
         document.save();
+    }
+
+    private static String getClientName(IDfSession session, String customerNumber, String branchCode){
+        IDfQuery query = new DfQuery();
+        query.setDQL(String.format("select s_name from ccdea_customer where s_number = %s and s_branch_code = %s", DfUtil.toQuotedString(customerNumber), DfUtil.toQuotedString(branchCode)));
+        IDfCollection col = null;
+        String result = "Клиента нет в справочнике";
+        try {
+            col = query.execute(session, IDfQuery.DF_READ_QUERY);
+            while (col.next()) {
+                result = col.getString("s_name");
+            }
+        } catch (DfException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (col != null) {
+                    col.close();
+                }
+            } catch (DfException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     public static DossierKeyDetails getKeyDetails(IDfPersistentObject document) throws DfException {

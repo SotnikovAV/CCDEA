@@ -20,7 +20,7 @@
                <search_filter filter_type="accept_reject_date" field="t_accept_date"/>
                <search_filter filter_type="change_date"/>
                <search_filter filter_type="ps_close_date"/>
-               <search_filter filter_type="contract_currency" field="s_contract_currency_code"/>
+               <search_filter filter_type="contract_currency" field="s_contract_currency_code"  class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="contract_finish_date"/>
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="ps_close_reason"/>
@@ -62,7 +62,7 @@
                <search_filter filter_type="document_offer_date"/>
                <search_filter filter_type="contract_date"/>
                <search_filter filter_type="change_date"/>
-               <search_filter filter_type="contract_currency"/>
+               <search_filter filter_type="contract_currency" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="processing_unit"/>
             </search_filters>
@@ -86,7 +86,7 @@
                <search_filter filter_type="change_date"/>
                <!--search_filter filter_type="operation_date"/-->
                <search_filter filter_type="document_date"/>
-               <search_filter filter_type="document_currency"/>
+               <search_filter filter_type="document_currency" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <!--search_filter filter_type="contract_currency"/-->
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="confirm_document_type"/>
@@ -113,7 +113,7 @@
                <search_filter filter_type="change_date"/>
                <search_filter filter_type="operation_date"/>
                <search_filter filter_type="document_date"/>
-               <search_filter filter_type="document_currency" field="s_payment_currency_code"/>
+               <search_filter filter_type="document_currency" field="s_payment_currency_code" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="contract_currency" class="ru.rb.ccdea.search.filter.SvoContractCurrencyFilterProcessor"/>
                <search_filter filter_type="passport_type_code"/>
                <search_filter filter_type="operation_code"/>
@@ -159,8 +159,9 @@
                <search_filter filter_type="contract_date"/>
                <search_filter filter_type="change_date"/>
                <search_filter filter_type="document_date"/>
-               <search_filter filter_type="document_currency"/>
+               <search_filter filter_type="document_currency" class="ru.rb.ccdea.search.filter.CurrencyFilterProcessor"/>
                <search_filter filter_type="processing_unit"/>
+               <search_filter filter_type="passport_type_code"/>
             </search_filters>
             <select_fields>r_object_id,'ccdea_pd_view' as view_template,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_type,s_doc_number,t_doc_date as t_doc_date,s_currency_code,d_amount,s_passport_number,s_contract_number,t_contract_date as t_contract_date,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,'' as s_archive_number,DATE('01/02/1753') as t_archive_date,false as b_is_aml,'' as s_comment</select_fields>
             <multitype_select_fields>r_object_id,'ccdea_pd_view' as view_template,s_reg_branch_code,s_doc_source_id,s_doc_type,s_customer_number,s_customer_name,s_doc_number,t_doc_date as t_doc_date,DATE('01/02/1753') as t_receive_date,DATE('01/02/1753') as t_accept_reject_column,s_state,s_state_comment,DATE('01/02/1753') as t_close_date,'' as s_close_reason,ccdea_dossier.s_archive_number as s_archive_number,ccdea_dossier.t_archive_date as t_archive_date,false as b_is_aml,'' as s_comment,t_last_change_date as t_last_change_date,s_last_change_author,r_creation_date as r_creation_date</multitype_select_fields>
@@ -169,7 +170,9 @@
       <filter_types>
          <filter_type name="document_status" class="ru.rb.ccdea.search.filter.DropDownListFilterProcessor"
                       field="s_state"/>
-         <filter_type name="customer_name" class="ru.rb.ccdea.search.filter.ClientNameFilterProcessor"
+         <!-- filter_type name="customer_name" class="ru.rb.ccdea.search.filter.ClientNameFilterProcessor"
+                 field="s_customer_number"/-->
+         <filter_type name="customer_name" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
                  field="s_customer_number"/>
          <filter_type name="customer_number" class="ru.rb.ccdea.search.filter.TextFilterProcessor"
                  field="s_customer_number"/>

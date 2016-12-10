@@ -651,25 +651,14 @@ public class ContentLoader {
      */
 	public static void deleteContentFile(IDfSession dfSession, IDfSysObject messageObject, ContentType contentXmlObject) throws DfException {
 
-		DfLogger.info(dfSession, "Удаление файла сообщения " + messageObject.getObjectId(), null, null);
+		DfLogger.info(dfSession, "Удаление файла из сообщения " + messageObject.getObjectId(), null, null);
 
 		if (contentXmlObject.getDocScan() != null && contentXmlObject.getDocScan().size() > 0) {
-			ContentType.DocScan docScan = contentXmlObject.getDocScan().get(0);
-			if (docScan.getFileFormat() == null) {
-				throw new DfException("Не указан формат файла");
-			}
-
-			try {
-				DfLogger.info(dfSession, "Удалён dfc файл " + messageObject.getObjectId(), null, null);
-				messageObject.destroy(); // todo или искать контент через dm_relation? есть ли необходимость в destroyAllVersions ?
-			} catch (DfException ex) {
-				DfLogger.error(dfSession, "Не удалось удалить DocPut сообщение " + messageObject.getObjectId(), null, ex);
-			}
-
+			DfLogger.info(dfSession, "Невозможно удалить файл из сообщения " + messageObject.getObjectId() + " , т.к. контент находится в xml", null, null);
 		} else if (contentXmlObject.getDocReference() != null && contentXmlObject.getDocReference().size() > 0) {
 			ContentType.DocReference docReference = contentXmlObject.getDocReference().get(0);
 			if (docReference.getFileFormat() == null) {
-				throw new DfException("Не указан формат файла");
+				throw new DfException("Не указан формат файла.");
 			}
 			String fileReference;
 			if (docReference.getFileReference() != null && !docReference.getFileReference().trim().isEmpty()) {
@@ -677,7 +666,7 @@ public class ContentLoader {
 			} else if (docReference.getFileReferenceSMB() != null && !docReference.getFileReferenceSMB().trim().isEmpty()) {
 				fileReference = docReference.getFileReferenceSMB();
 			} else {
-				throw new CantFindFileReferenceException("Cant find file reference to load");
+				throw new CantFindFileReferenceException("Не найдена ссылка на файл контента.");
 			}
 			FileAccessProperties accessProperties = FileAccessProperties.parseUrl(fileReference);
 			if (JschSFTP.SFTP.equalsIgnoreCase(accessProperties.getProtocol())) {

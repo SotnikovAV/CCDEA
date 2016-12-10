@@ -650,7 +650,6 @@ public class ContentLoader {
 	 * @throws DfException ошибка обработки
      */
 	public static void deleteContentFile(IDfSession dfSession, IDfSysObject messageObject, ContentType contentXmlObject) throws DfException {
-
 		DfLogger.info(dfSession, "Удаление файла из сообщения " + messageObject.getObjectId(), null, null);
 
 		if (contentXmlObject.getDocScan() != null && contentXmlObject.getDocScan().size() > 0) {

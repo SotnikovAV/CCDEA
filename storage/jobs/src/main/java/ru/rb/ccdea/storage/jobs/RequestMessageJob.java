@@ -92,7 +92,7 @@ public class RequestMessageJob extends AbstractJob {
 				if (requestExistingObject == null) {
 					String requestObjectId = requestService.createDocumentFromMQType(dfSession, requestXmlObject,
 							docSourceCode, docSourceId, passportNumber);
-					
+					requestExistingObject = (IDfSysObject) dfSession.getObject(new DfId(requestObjectId));
 					modifiedDocIdList.add(requestObjectId);
 				} else {
 					requestService.updateDocumentFromMQType(dfSession, requestXmlObject, docSourceCode, docSourceId,
@@ -200,7 +200,7 @@ public class RequestMessageJob extends AbstractJob {
 			}
 
 		} catch (Exception ex) {
-			System.out.println(ex);
+			ex.printStackTrace();
 		} finally {
 			if (testSession != null) {
 				sessionManager.release(testSession);

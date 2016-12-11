@@ -67,11 +67,13 @@ public class VersionRecordDetails {
 	public void cleanRepeatingStringWithHistory(IDfPersistentObject document, String attrName, int attrValueIndex)
 			throws DfException {
 		try {
-			String oldAttrValue = document.getRepeatingString(attrName, attrValueIndex);
-			document.remove(attrName, attrValueIndex);
-			AttrHistory attrHistory = prepareAttrHistory(attrName);
-			attrHistory.attrOldValue = oldAttrValue;
-			attrHistory.attrValue = null;
+			if (document.getValueCount(attrName) > attrValueIndex) {
+				String oldAttrValue = document.getRepeatingString(attrName, attrValueIndex);
+				document.remove(attrName, attrValueIndex);
+				AttrHistory attrHistory = prepareAttrHistory(attrName);
+				attrHistory.attrOldValue = oldAttrValue;
+				attrHistory.attrValue = null;
+			}
 		} catch (DfException ex) {
 			DfLogger.debug(document,
 					"Ошибка при удалении атрибута документа " + attrName + " с индексом " + attrValueIndex, null, ex);
@@ -154,18 +156,20 @@ public class VersionRecordDetails {
         }
     }
 
-    public void cleanRepeatingXMLGregorianCalendarWithHistory(IDfPersistentObject document, String attrName, int attrValueIndex) throws DfException {
-        IDfTime oldAttrValue = document.getRepeatingTime(attrName, attrValueIndex);
-        document.remove(attrName, attrValueIndex);
-        AttrHistory attrHistory = prepareAttrHistory(attrName);
-        if (oldAttrValue.getDate() != null) {
-            attrHistory.attrOldValue = versionDateFormat.format(oldAttrValue.getDate());
-        }
-        else {
-            attrHistory.attrOldValue = null;
-        }
-        attrHistory.attrValue = null;
-    }
+	public void cleanRepeatingXMLGregorianCalendarWithHistory(IDfPersistentObject document, String attrName,
+			int attrValueIndex) throws DfException {
+		if (document.getValueCount(attrName) > attrValueIndex) {
+			IDfTime oldAttrValue = document.getRepeatingTime(attrName, attrValueIndex);
+			document.remove(attrName, attrValueIndex);
+			AttrHistory attrHistory = prepareAttrHistory(attrName);
+			if (oldAttrValue.getDate() != null) {
+				attrHistory.attrOldValue = versionDateFormat.format(oldAttrValue.getDate());
+			} else {
+				attrHistory.attrOldValue = null;
+			}
+			attrHistory.attrValue = null;
+		}
+	}
 
     public void setBooleanWithHistory(IDfPersistentObject document, String attrName, Boolean attrValueObject) throws DfException {
         boolean attrValue = attrValueObject != null ? attrValueObject : false;
@@ -203,11 +207,13 @@ public class VersionRecordDetails {
     }
 
     public void cleanRepeatingBooleanWithHistory(IDfPersistentObject document, String attrName, int attrValueIndex) throws DfException {
-        boolean oldAttrValue = document.getRepeatingBoolean(attrName, attrValueIndex);
-        document.remove(attrName, attrValueIndex);
-        AttrHistory attrHistory = prepareAttrHistory(attrName);
-        attrHistory.attrOldValue = oldAttrValue ? "Да" : "Нет";
-        attrHistory.attrValue = null;
+		if (document.getValueCount(attrName) > attrValueIndex) {
+			boolean oldAttrValue = document.getRepeatingBoolean(attrName, attrValueIndex);
+			document.remove(attrName, attrValueIndex);
+			AttrHistory attrHistory = prepareAttrHistory(attrName);
+			attrHistory.attrOldValue = oldAttrValue ? "Да" : "Нет";
+			attrHistory.attrValue = null;
+		}
     }
 
     public void setIntWithHistory(IDfPersistentObject document, String attrName, Integer attrValueObject) throws DfException {
@@ -245,13 +251,16 @@ public class VersionRecordDetails {
         }
     }
 
-    public void cleanRepeatingIntWithHistory(IDfPersistentObject document, String attrName, int attrValueIndex) throws DfException {
-        int oldAttrValue = document.getRepeatingInt(attrName, attrValueIndex);
-        document.remove(attrName, attrValueIndex);
-        AttrHistory attrHistory = prepareAttrHistory(attrName);
-        attrHistory.attrOldValue = "" + oldAttrValue;
-        attrHistory.attrValue = null;
-    }
+	public void cleanRepeatingIntWithHistory(IDfPersistentObject document, String attrName, int attrValueIndex)
+			throws DfException {
+		if (document.getValueCount(attrName) > attrValueIndex) {
+			int oldAttrValue = document.getRepeatingInt(attrName, attrValueIndex);
+			document.remove(attrName, attrValueIndex);
+			AttrHistory attrHistory = prepareAttrHistory(attrName);
+			attrHistory.attrOldValue = "" + oldAttrValue;
+			attrHistory.attrValue = null;
+		}
+	}
 
     public void setBigDecimalWithHistory(IDfPersistentObject document, String attrName, BigDecimal attrBigDecimalValue) throws DfException {
         double oldAttrValue = document.getDouble(attrName);
@@ -295,11 +304,13 @@ public class VersionRecordDetails {
     }
 
     public void cleanRepeatingBigDecimalWithHistory(IDfPersistentObject document, String attrName, int attrValueIndex) throws DfException {
-        double oldAttrValue = document.getRepeatingDouble(attrName, attrValueIndex);
-        document.remove(attrName, attrValueIndex);
-        AttrHistory attrHistory = prepareAttrHistory(attrName);
-        attrHistory.attrOldValue = "" + oldAttrValue;
-        attrHistory.attrValue = null;
+		if (document.getValueCount(attrName) > attrValueIndex) {
+			double oldAttrValue = document.getRepeatingDouble(attrName, attrValueIndex);
+			document.remove(attrName, attrValueIndex);
+			AttrHistory attrHistory = prepareAttrHistory(attrName);
+			attrHistory.attrOldValue = "" + oldAttrValue;
+			attrHistory.attrValue = null;
+		}
     }
 
     public AttrHistory prepareAttrHistory(String attrName) {

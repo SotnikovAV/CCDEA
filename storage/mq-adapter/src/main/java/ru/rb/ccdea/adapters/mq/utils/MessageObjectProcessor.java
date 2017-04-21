@@ -48,14 +48,28 @@ public abstract class MessageObjectProcessor {
         } else {
             boolean isFirstIdentification = true;
             for (MessageObjectIdentifiers originIdentification : originIdentificationList) {
-                if (ExternalMessagePersistence.SOURCE_SYSTEM_DVK.equalsIgnoreCase(originIdentification.getSourceSystem()) ||
-                        ExternalMessagePersistence.SOURCE_SYSTEM_TBSVK.equalsIgnoreCase(originIdentification.getSourceSystem())) {
+                if (ExternalMessagePersistence.SOURCE_SYSTEM_DVK.equalsIgnoreCase(originIdentification.getSourceSystem())) {
                     if (!isFirstIdentification) {
                         contentSourceId = docSourceId;
                         contentSourceSystem = docSourceSystem;
                     }
                     docSourceId = originIdentification.getSourceId();
                     docSourceSystem = originIdentification.getSourceSystem();
+                } else if (ExternalMessagePersistence.SOURCE_SYSTEM_TBSVK.equalsIgnoreCase(originIdentification.getSourceSystem())) {
+                    if (!isFirstIdentification) {
+                    	if(!ExternalMessagePersistence.SOURCE_SYSTEM_DVK.equals(docSourceSystem)) {
+	                        contentSourceId = docSourceId;
+	                        contentSourceSystem = docSourceSystem;
+	                        docSourceId = originIdentification.getSourceId();
+	                        docSourceSystem = originIdentification.getSourceSystem();
+                    	} else {
+                    		contentSourceId = originIdentification.getSourceId();
+                    		contentSourceSystem = originIdentification.getSourceSystem();
+                    	}
+                    } else {
+                    	docSourceId = originIdentification.getSourceId();
+                    	docSourceSystem = originIdentification.getSourceSystem();
+                    }
                 } else {
                     if (isFirstIdentification) {
                         docSourceId = originIdentification.getSourceId();

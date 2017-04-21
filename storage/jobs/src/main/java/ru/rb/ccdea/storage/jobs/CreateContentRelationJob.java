@@ -112,10 +112,13 @@ public class CreateContentRelationJob extends AbstractJob {
 										}
 									}
 
-									continue;
+//									continue;
+								} else {
+									ContentPersistence.createDocumentContentRelation(dfSession, baseDocId, docContentId);
 								}
+							} else {
+								ContentPersistence.createDocumentContentRelation(dfSession, baseDocId, docContentId);
 							}
-							ContentPersistence.createDocumentContentRelation(dfSession, baseDocId, docContentId);
 						} catch (DfException e) {
 							DfLogger.error(this, "Error while creating content with id=" + docContentId
 									+ " for document with id=" + baseDocId, null, e);

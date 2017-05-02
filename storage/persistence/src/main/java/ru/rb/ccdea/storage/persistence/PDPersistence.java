@@ -26,7 +26,7 @@ public class PDPersistence extends BaseDocumentPersistence{
     public static final String ATTR_SUMMAP = "d_summap";
     public static final String ATTR_KVALK = "s_kvalk";
     public static final String ATTR_SUMMAK = "d_summak";
-    public static final String ATTR_PRIZ_POST = "b_priz_post";
+    public static final String ATTR_PRIZ_POST = "s_priz_post";
     public static final String ATTR_SROK_WAIT = "t_srok_wait";
     public static final String ATTR_KSTRANA = "s_kstrana";
     public static final String ATTR_PRIMESH = "s_primesh";
@@ -91,7 +91,7 @@ public class PDPersistence extends BaseDocumentPersistence{
         versionRecordDetails.setBigDecimalWithHistory(document, ATTR_SUMMAP, documentXmlObject.getPDDetails().getSummap());
         versionRecordDetails.setStringWithHistory(document, ATTR_KVALK, documentXmlObject.getPDDetails().getKvalk());
         versionRecordDetails.setBigDecimalWithHistory(document, ATTR_SUMMAK, documentXmlObject.getPDDetails().getSummak());
-        versionRecordDetails.setBooleanWithHistory(document, ATTR_PRIZ_POST, documentXmlObject.getPDDetails().isPrizPost());
+        versionRecordDetails.setStringWithHistory(document, ATTR_PRIZ_POST, documentXmlObject.getPDDetails().getPrizPost());
         versionRecordDetails.setXMLGregorianCalendarWithHistory(document, ATTR_SROK_WAIT, documentXmlObject.getPDDetails().getSrokWait());
         versionRecordDetails.setStringWithHistory(document, ATTR_KSTRANA, documentXmlObject.getPDDetails().getKstrana());
         versionRecordDetails.setStringWithHistory(document, ATTR_PRIMESH, documentXmlObject.getPDDetails().getPrimesh());
